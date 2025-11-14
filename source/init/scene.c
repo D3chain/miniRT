@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:15:12 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 18:37:09 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char *argv[])
+bool init_scene(struct s_data *data, const char *filename)
 {
-	struct s_data	data;
-
-	if (init_data(&data, argc, argv))
-		return (clear_data(&data));
-	if (process_scene(&data))
-		return (clear_data(&data));
-	clear_data(&data);
-	return (0);
+	
 }

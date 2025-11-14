@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 15:25:44 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 17:22:06 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 
 # include "types.h"
 
+enum {
+	SPHERE		= 1,
+	PLANE		= 2,
+	CYLINDER	= 4
+};
+
 struct s_scene
 {
-	struct s_camera			*camera;
-	struct s_ambient_light	*ambient_light;
-	struct s_light			**lights;
-	struct s_elem			**elems;
+	struct s_camera			camera;
+
+	struct s_ambient_light	ambient_light;
+
+	struct s_light			light;
+
+	struct s_elem			*elems;
+	int						nb_elem;
 };
 
 struct s_elem
@@ -28,7 +38,7 @@ struct s_elem
 	int		type;
 };
 
-struct s_ambient_lightning
+struct s_ambient_light
 {
 	double	ratio;
 	t_rgb	color;

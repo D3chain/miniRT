@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:15:12 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 18:27:26 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 18:27:31 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int	main(int argc, char *argv[])
-{
-	struct s_data	data;
-
-	if (init_data(&data, argc, argv))
-		return (clear_data(&data));
-	if (process_scene(&data))
-		return (clear_data(&data));
-	clear_data(&data);
-	return (0);
-}

@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:15:12 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 18:35:18 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 18:36:40 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef INIT_H
+# define INIT_H
 
-int	main(int argc, char *argv[])
-{
-	struct s_data	data;
+bool	init_data(struct s_data *data, int argc, char *argv[]);
 
-	if (init_data(&data, argc, argv))
-		return (clear_data(&data));
-	if (process_scene(&data))
-		return (clear_data(&data));
-	clear_data(&data);
-	return (0);
-}
+bool	init_scene(struct s_data *data, const char *filename);
+
+#endif
