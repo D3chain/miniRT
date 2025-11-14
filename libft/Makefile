@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/07/16 11:27:59 by cgajean          ###   ########.fr        #
+#    Updated: 2025/11/14 12:32:28 by echatela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -fPIE -MMD -MP
 
 MAIN_DIR = .
 SRC_DIR = $(MAIN_DIR)/source
-INC_DIR = $(MAIN_DIR)/includes
+INC_DIR = $(MAIN_DIR)/include
 BUILD = $(MAIN_DIR)/build
 
 SRCS = \

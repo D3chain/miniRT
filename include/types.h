@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 15:09:22 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 15:25:23 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef TYPES_H
+# define TYPES_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <math.h>
-# include <sys/time.h>
+#include <stdint.h>
 
-# include "libft.h"
-
-# include "types.h"
-
-# include "scene.h"
-
-enum {
-	SPHERE		= 1,
-	PLANE		= 2,
-	CYLINDER	= 4
-};
-
+// TYPE DEF
 struct s_xyz
 {
 	double	x;
@@ -38,12 +23,32 @@ struct s_xyz
 	double	z;
 };
 
-struct s_rgb
+union u_rgb
 {
-	int	r;
-	int	g;
-	int	b;
+	uint32_t	color;
+	struct {
+		uint8_t	b;
+		uint8_t	g;
+		uint8_t	r;
+		uint8_t	t;
+	} s_rgb;
 };
+
+typedef struct s_xyz	t_point;
+typedef	struct s_xyz	t_dir;
+
+typedef union u_rgb	t_rgb;
+
+
+// ELEM
+struct s_elem;
+struct s_ambient_lightning;
+struct s_camera;
+struct s_light;
+struct s_sphere;
+struct s_plane;
+struct s_cylinder;
+struct s_scene;
 
 
 

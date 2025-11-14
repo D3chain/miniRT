@@ -6,14 +6,22 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 12:10:35 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 15:25:44 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "minirt.h"
+# include "types.h"
+
+struct s_scene
+{
+	struct s_camera			*camera;
+	struct s_ambient_light	*ambient_light;
+	struct s_light			**lights;
+	struct s_elem			**elems;
+};
 
 struct s_elem
 {
@@ -64,12 +72,6 @@ struct s_cylinder
 	t_rgb	color;
 };
 
-struct s_scene
-{
-	struct s_camera			*camera;
-	struct s_ambient_light	*ambient_light;
-	struct s_light			**lights;
-	struct s_elem			**elems;
-};
+
 
 #endif
