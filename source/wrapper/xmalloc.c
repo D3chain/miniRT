@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   xmalloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:31:38 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 19:11:02 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 19:13:10 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool init_scene(struct s_data *data, const char *file)
+void	*xmalloc(struct s_data *data, size_t size)
 {
-	int	fd;
+	void	*ptr;
 
-	fd = xopen(data, file, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	if (parse_file(data, fd))
-		return (1);
-	return (0);
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		data->status = errno;
+		err_per(errno, "xmalloc");
+		return (NULL);
+	}
+	return (ptr);
 }

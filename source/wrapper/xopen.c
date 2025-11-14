@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   xopen.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:31:38 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 19:09:34 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 19:14:25 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool init_scene(struct s_data *data, const char *file)
+int	xopen(struct s_data *data, const char *file, int oflag)
 {
 	int	fd;
 
-	fd = xopen(data, file, O_RDONLY);
+	fd = open(file, oflag);
 	if (fd < 0)
-		return (1);
-	if (parse_file(data, fd))
-		return (1);
-	return (0);
+	{
+		data->status = errno;
+		err_per(errno, "xopen");
+	}
+	return (fd);
 }

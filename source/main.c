@@ -6,20 +6,25 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:15:12 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 19:26:19 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static int	quit(struct s_data *data)
+{
+	clear_data(&data);
+	return (data->status);
+}
 
 int	main(int argc, char *argv[])
 {
 	struct s_data	data;
 
 	if (init_data(&data, argc, argv))
-		return (clear_data(&data));
+		return (quit(&data));
 	if (process_scene(&data))
-		return (clear_data(&data));
-	clear_data(&data);
-	return (0);
+		return (quit(&data));
+	return (quit(&data));
 }

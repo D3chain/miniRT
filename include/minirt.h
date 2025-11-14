@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:36:19 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 19:18:24 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <sys/time.h>
+# include <errno.h>
 
 # include "libft.h"
 
@@ -25,6 +26,8 @@
 
 # include "scene.h"
 # include "init.h"
+# include "error.h"
+# include "wrapper.h"
 
 typedef enum e_status
 {

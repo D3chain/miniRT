@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   wrapper.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:31:38 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 19:15:04 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 19:16:01 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef WRAPPER_H
+# define WRAPPER_H
 
-bool init_scene(struct s_data *data, const char *file)
-{
-	int	fd;
+# include "minirt.h"
 
-	fd = xopen(data, file, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	if (parse_file(data, fd))
-		return (1);
-	return (0);
-}
+void	*xmalloc(struct s_data *data, size_t size);
+int		xopen(struct s_data *data, const char *file, int oflag);
+
+
+#endif

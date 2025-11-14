@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:31:38 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 19:05:34 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/14 19:14:41 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool init_scene(struct s_data *data, const char *file)
+int	err_per(int code, const char *ctx)
 {
-	int	fd;
+	char	err_buf[BUFSIZ];
+	int		i;
 
-	fd = xopen(data, file, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	if (parse_file(data, fd))
-		return (1);
-	return (0);
+	if (ft_strlen(ctx) + ft_strlen(strerror(errno)) + 14 > BUFSIZ -1)
+		write(2, "miniRT: Pipi popo\n", 22);
+	i = 0;
+	i += fill2(err_buf, "miniRT: ", ctx);
+	i += fill3(err_buf + i, ": ", strerror(errno), "\n");
+	write(2, err_buf, i);
+	return (code);
 }
+
