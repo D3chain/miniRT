@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/11/14 12:32:28 by echatela         ###   ########.fr        #
+#    Updated: 2025/11/14 18:20:59 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRCS = \
 		$(SRC_DIR)/ft_strcpy.c							\
 		$(SRC_DIR)/ft_strlen.c 							\
 		$(SRC_DIR)/ft_strcmp.c							\
-		$(SRC_DIR)/ft_strncmp.c 						\
+		$(SRC_DIR)/ft_strncmp.c							\
+		$(SRC_DIR)/ft_strrcmp.c							\
+		$(SRC_DIR)/ft_strrncmp.c 						\
 		$(SRC_DIR)/ft_strlcat.c 						\
 		$(SRC_DIR)/ft_strlcpy.c 						\
 		$(SRC_DIR)/ft_nbrlen.c 							\
