@@ -1,0 +1,8 @@
+always_inline -> inline la fonction
+flatten -> inline le corps de la fonction
+
+const -> le compilateur stocke l'appel de la fonction et ses arguments et ne recalcule pas a appel identique
+pure -> meme style
+
+declarer des variables de la sorte :
+const int a = f_int(arg1, arg2, ...);

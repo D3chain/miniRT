@@ -6,20 +6,28 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/13 15:22:55 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:11:01 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MINIRT_H
+# define MINIRT_H
+
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+# include <sys/time.h>
+
+# include <scene.h>
+
 enum {
-	AMBIENT_LIGHTNING,
-	CAMERA,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	CYLINDER
+	SPHERE		= 1,
+	PLANE		= 2,
+	CYLINDER	= 4
 };
 
-struct s_point
+struct s_xyz
 {
 	double	x;
 	double	y;
@@ -33,63 +41,9 @@ struct s_rgb
 	int	b;
 };
 
-struct s_vec
-{
-	double	x;
-	double	y;
-	double	z;
-};
+typedef struct s_xyz	t_point;
+typedef	struct s_xyz	t_dir;
 
-struct s_elem
-{
-	int		type;
-};
+typedef struct s_rgb	t_rgb;
 
-
-struct s_ambient_lightning
-{
-	int				type;
-	double			ratio;
-	struct s_rgb	color;
-};
-
-struct s_camera
-{
-	struct s_point	coord;
-	struct s_vec	vector;
-	int				fov;
-};
-
-struct s_light
-{
-	struct s_point	coord;
-	double			ratio;
-};
-
-struct s_sphere
-{
-	struct s_point	coord;
-	double			diametre;
-	struct s_rgb	color;
-};
-
-struct s_plane
-{
-	struct s_point	coord;
-	struct s_vec	vector;
-};
-
-struct s_cylinder
-{
-	struct s_point	coord;
-	struct s_vec	vector;
-	double			diametre;
-	double			height;
-	struct s_rgb	color;
-};
-
-struct s_scene
-{
-	struct s_elem	**elem
-};
-
+#endif
