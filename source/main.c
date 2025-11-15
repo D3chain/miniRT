@@ -6,27 +6,25 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/15 15:52:34 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/15 15:55:20 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	init_scene(struct s_scene *scene, int argc, char *argv[])
+static int	quit(struct s_data *data)
 {
-	if (argc != 2 || !is_file_format_correct(argv[1]))
-		return (1);
-	ft_bzero(scene, sizeof(*scene));
+	clear_data(&data);
+	return (data->status);
 }
 
 int	main(int argc, char *argv[])
 {
-	struct s_scene	scene;
+	struct s_data	data;
 
-	if (init_scene(&scene, argc, argv) != 0)
-		return (1);
-	if (process_scene(&scene) != 0)
-		return (1);
-	clear_scene(&scene);
-	return (0);
+	if (init_data(&data, argc, argv))
+		return (quit(&data));
+	if (process_scene(&data))
+		return (quit(&data));
+	return (quit(&data));
 }

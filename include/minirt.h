@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 15:09:22 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/14 19:18:24 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,29 @@
 # include <stdlib.h>
 # include <math.h>
 # include <sys/time.h>
+# include <errno.h>
 
 # include "libft.h"
 
 # include "types.h"
 
 # include "scene.h"
+# include "init.h"
+# include "error.h"
+# include "wrapper.h"
 
-enum {
-	SPHERE		= 1,
-	PLANE		= 2,
-	CYLINDER	= 4
-};
-
-struct s_xyz
+typedef enum e_status
 {
-	double	x;
-	double	y;
-	double	z;
-};
+	NO_ERR		= 0,
+	ERR_SYS		= 1,
+	ERR_PARS	= 2
+}	t_status;
 
-struct s_rgb
+struct s_data
 {
-	int	r;
-	int	g;
-	int	b;
+	struct s_scene	scene;
+
+	t_status		status;
 };
-
-
 
 #endif
