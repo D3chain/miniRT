@@ -1,7 +1,24 @@
 {
 	"files.associations": {
-		"minirt.h": "c",
-		"scene.h": "c",
-		"types.h": "c"
+		"keysymdef.h": "c",
+		"stdio.h": "c",
+		"time.h": "c",
+		"stdlib.h": "c",
+		"x.h": "c",
+		"mlx.h": "c",
+		"basic_conf": "cpp",
+		"map.h": "c",
+		"libft.h": "c",
+		"fdf_map.h": "c",
+		"unistd.h": "c",
+		"map": "c",
+		"fdf.h": "c",
+		"mlx_displays.h": "c",
+		"enum.h": "c",
+		"keys.h": "c",
+		"math.h": "c",
+		"malloc.h": "c",
+		"cstdlib": "c",
+		"keysym.h": "c"
 	}
 }

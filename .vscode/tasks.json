@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+	"tasks": [
+         {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g3",
+				"${workspaceFolder}/source/*.c",
+				"${workspaceFolder}/libft/libft.a",
+				"-I", "${workspaceFolder}/include",
+				"-I", "${workspaceFolder}/libft/include",
+                // "-I", "${workspaceFolder}/minilibx-linux",
+                // "-L", "${workspaceFolder}/minilibx-linux",
+				// "-lmlx", "-lX11", "-lXext", "-lm",
+				"-o", "miniRT"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+    ],
+}
