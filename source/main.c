@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 18:03:43 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:49:50 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	mlx_create(void)
 
 static int	quit(struct s_data *data)
 {
-	clear_data(data);
+	print_error(data);
+	cleanup_data(data);
 	return (data->status);
 }
 
@@ -43,9 +44,9 @@ int	main(int argc, char *argv[])
 {
 	struct s_data	data;
 
-	mlx_create();
-	
 	if (init_data(&data, argc, argv))
+		return (quit(&data));
+	if (load_scene(&data, argv[1]))
 		return (quit(&data));
 	if (process_scene(&data))
 		return (quit(&data));

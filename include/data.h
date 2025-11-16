@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 19:06:36 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:51:43 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/16 19:56:10 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef DATA_H
+# define DATA_H
 
-int	err_per(int code, const char *ctx);
+# include "minirt.h"
 
-typedef enum e_status
+struct s_img
 {
-	ERR_NONE	= 0,
-	ERR_SYS		= 1,
-	ERR_PARS	= 2
-}	t_status;
+	
+};
+
+struct s_data
+{
+	void			*mlx;
+	void			*win;
+	struct s_img	img;
+
+	
+
+	struct s_scene	scene;
+
+	t_status		status;
+};
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 15:33:10 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/16 19:54:38 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TYPES_H
 
 # include <stdint.h>
+# include "error.h"
 
 // TYPE DEF
 struct s_xyz
