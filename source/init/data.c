@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:05:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 18:59:24 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:40:46 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+
+/* fake functions for compilation */
+
+int	init_mlx(struct s_data *data)
+{
+	(void) data;
+	return (0);
+}
+
+/*****/
 
 static bool	check_arg(struct s_data *data, int argc, char *argv[])
 {

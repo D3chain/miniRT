@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:31:38 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:29:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+/* fake functions for compilation */
+
+int	parse_file(struct s_data *data, int fd)
+{
+	(void) data;
+	(void) fd;
+	return (0);
+}
+
+/*****/
+
 
 bool init_scene(struct s_data *data, const char *file)
 {

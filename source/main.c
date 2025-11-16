@@ -6,15 +6,29 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/15 15:55:20 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:37:35 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/* fake functions for compilation */
+int process_scene(struct s_data *data)
+{
+	(void) data;
+	return (1);
+}
+
+void	clear_data(struct s_data *data)
+{
+	(void) data;
+}
+
+/**** */
+
 static int	quit(struct s_data *data)
 {
-	clear_data(&data);
+	clear_data(data);
 	return (data->status);
 }
 

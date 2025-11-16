@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/15 15:50:24 by cgajean          ###   ########.fr        #
+#    Updated: 2025/11/16 17:44:51 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,11 @@ CFLAGS		:=	-MMD -MP -g3
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
-INCLUDE		:=	include $(LIBFT_DIR)/include
+MLIBX_DIR	:=	../minilibx-linux
+INCLUDE		:=	include $(LIBFT_DIR)/include $(MLIBX_DIR) 
 CFLAGS		+=	$(addprefix -I, $(INCLUDE))
 
-ROOT_SRC	:=	main.c
+ROOT_SRC	:=	main.c init/data.c init/scene.c wrapper/xmalloc.c wrapper/xopen.c error/err_per.c error/fill.c
 
 SRC_PATHS	:= \
 	$(ROOT_SRC)
@@ -33,10 +34,13 @@ DEPS		:=	$(OBJ:.o=.d)
 
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
-all:	$(LIBFT) $(NAME)
+all:	$(LIBFT) mlibx $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+mlibx:
+	$(MAKE) -C $(MLIBX_DIR)
 
 $(NAME):	$(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $@ \
@@ -50,10 +54,12 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLIBX_DIR) clean
 
 fclean:	clean
 	rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(MLIBX_DIR) fclean
 
 re:		fclean all
 
@@ -67,3 +73,5 @@ test: all
 	@echo "\n"
 	@cat valgrind.log
 	@rm -f valgrind.log
+
+.PHONY: all mlibx clean fclean re test

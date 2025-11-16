@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 17:22:06 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:37:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,42 @@
 
 # include "types.h"
 
+
+typedef enum e_status
+{
+	NO_ERR		= 0,
+	ERR_SYS		= 1,
+	ERR_PARS	= 2
+}	t_status;
+
 enum {
 	SPHERE		= 1,
 	PLANE		= 2,
 	CYLINDER	= 4
+};
+
+struct s_camera
+{
+	t_point	coord;
+	t_dir	direction;
+	int		fov;
+};
+
+struct s_ambient_light
+{
+	double	ratio;
+	t_rgb	color;
+};
+
+struct s_light
+{
+	t_point	coord;
+	double	ratio;
+};
+
+struct s_elem
+{
+	int		type;
 };
 
 struct s_scene
@@ -33,29 +65,15 @@ struct s_scene
 	int						nb_elem;
 };
 
-struct s_elem
+struct s_data
 {
-	int		type;
+	struct s_scene	scene;
+
+	t_status		status;
 };
 
-struct s_ambient_light
-{
-	double	ratio;
-	t_rgb	color;
-};
 
-struct s_camera
-{
-	t_point	coord;
-	t_dir	direction;
-	int		fov;
-};
-
-struct s_light
-{
-	t_point	coord;
-	double	ratio;
-};
+/* shapes */
 
 struct s_sphere
 {
@@ -81,7 +99,5 @@ struct s_cylinder
 	double	height;
 	t_rgb	color;
 };
-
-
 
 #endif
