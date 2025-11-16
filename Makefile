@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/16 18:08:30 by cgajean          ###   ########.fr        #
+#    Updated: 2025/11/16 18:16:48 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		:=	-MMD -MP -g3
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
-MLIBX_DIR	:=	../minilibx-linux
+MLIBX_DIR	:=	minilibx-linux
 INCLUDE		:=	include $(LIBFT_DIR)/include $(MLIBX_DIR) 
 CFLAGS		+=	$(addprefix -I, $(INCLUDE))
 
