@@ -6,48 +6,52 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 18:03:43 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/16 19:01:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-/* phony functions for compilation */
-int process_scene(struct s_data *data)
+struct s_img
 {
-	(void) data;
-	return (1);
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+};
+
+struct	s_mlx
+{
+	char			*title;
+	void			*mlx;
+	void			*win;
+	struct s_img	img;
+};
+
+int	event_keyboard_press(int key, struct s_mlx *mlx)
+{
+	if (key == XK_Escape)
+	{
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		mlx_destroy_display(mlx->mlx);
+		exit(0);
+	}
 }
 
-void	clear_data(struct s_data *data)
-{
-	(void) data;
-}
-
-void	mlx_create(void)
-{
-	void	*mlx = mlx_init();
-	(void) mlx;
-	mlx_destroy_display(mlx);
-}
-
-/**** */
-
-static int	quit(struct s_data *data)
-{
-	clear_data(data);
-	return (data->status);
-}
 
 int	main(int argc, char *argv[])
 {
 	struct s_data	data;
-
-	mlx_create();
+	struct s_mlx	mlx;
 	
-	if (init_data(&data, argc, argv))
-		return (quit(&data));
-	if (process_scene(&data))
-		return (quit(&data));
-	return (quit(&data));
+	mlx.mlx = mlx_init();
+
+	mlx.win = mlx_new_window(mlx.mlx, 800, 600, "Draw");
+
+	mlx_hook(mlx.win, KeyPress, KeyPressMask, event_keyboard_press, &mlx);
+
+	mlx_loop(mlx.mlx);
+	
+	return (0);
 }
