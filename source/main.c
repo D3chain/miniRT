@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 17:37:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/16 18:03:43 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-/* fake functions for compilation */
+/* phony functions for compilation */
 int process_scene(struct s_data *data)
 {
 	(void) data;
@@ -22,6 +22,13 @@ int process_scene(struct s_data *data)
 void	clear_data(struct s_data *data)
 {
 	(void) data;
+}
+
+void	mlx_create(void)
+{
+	void	*mlx = mlx_init();
+	(void) mlx;
+	mlx_destroy_display(mlx);
 }
 
 /**** */
@@ -36,6 +43,8 @@ int	main(int argc, char *argv[])
 {
 	struct s_data	data;
 
+	mlx_create();
+	
 	if (init_data(&data, argc, argv))
 		return (quit(&data));
 	if (process_scene(&data))

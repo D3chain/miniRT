@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/16 17:44:51 by cgajean          ###   ########.fr        #
+#    Updated: 2025/11/16 18:08:30 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,10 @@ MLIBX_DIR	:=	../minilibx-linux
 INCLUDE		:=	include $(LIBFT_DIR)/include $(MLIBX_DIR) 
 CFLAGS		+=	$(addprefix -I, $(INCLUDE))
 
+# /* librairy flags */
+CFLAGS		+= -lm
+CFLAGS		+= -lX11 -lXext #-lmlx 
+
 ROOT_SRC	:=	main.c init/data.c init/scene.c wrapper/xmalloc.c wrapper/xopen.c error/err_per.c error/fill.c
 
 SRC_PATHS	:= \
@@ -33,6 +37,7 @@ OBJ			:=	$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 DEPS		:=	$(OBJ:.o=.d)
 
 LIBFT		:=	$(LIBFT_DIR)/libft.a
+MLX			:=	$(MLIBX_DIR)/libmlx_Linux.a
 
 all:	$(LIBFT) mlibx $(NAME)
 
@@ -43,7 +48,7 @@ mlibx:
 	$(MAKE) -C $(MLIBX_DIR)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $@ \
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $@ \
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -59,7 +64,7 @@ clean:
 fclean:	clean
 	rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MLIBX_DIR) fclean
+	$(MAKE) -C $(MLIBX_DIR) clean
 
 re:		fclean all
 
