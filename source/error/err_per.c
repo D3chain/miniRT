@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   err_per.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:05:34 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 19:14:41 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:21:06 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	err_per(int code, const char *ctx)
 	int		i;
 
 	if (ft_strlen(ctx) + ft_strlen(strerror(errno)) + 14 > BUFSIZ -1)
-		write(2, "miniRT: Pipi popo\n", 22);
+		write(2, "miniRT: Pipi popo\n", 19);
 	i = 0;
 	i += fill2(err_buf, "miniRT: ", ctx);
 	i += fill3(err_buf + i, ": ", strerror(errno), "\n");
