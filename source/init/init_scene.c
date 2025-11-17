@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 17:29:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 11:50:57 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* fake functions for compilation */
 
-int	parse_file(struct s_data *data, int fd)
+int	parse_file(struct s_app *app, int fd)
 {
-	(void) data;
+	(void) app;
 	(void) fd;
 	return (0);
 }
@@ -24,14 +24,14 @@ int	parse_file(struct s_data *data, int fd)
 /*****/
 
 
-bool init_scene(struct s_data *data, const char *file)
+int init_scene(struct s_app *app, const char *file)
 {
 	int	fd;
 
-	fd = xopen(data, file, O_RDONLY);
+	fd = xopen(app, file, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	if (parse_file(data, fd))
+	if (parse_file(app, fd))
 		return (1);
 	return (0);
 }

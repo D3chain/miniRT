@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 17:57:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 16:08:33 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@
 /*	Local headers	*/
 # include "types.h"
 # include "scene.h"
+# include "app.h"
 # include "init.h"
+# include "load.h"
+# include "run.h"
 # include "error.h"
 # include "wrapper.h"
+# include "util.h"
 
 #endif

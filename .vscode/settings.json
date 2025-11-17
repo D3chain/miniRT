@@ -19,6 +19,8 @@
 		"math.h": "c",
 		"malloc.h": "c",
 		"cstdlib": "c",
-		"keysym.h": "c"
+		"keysym.h": "c",
+		"minirt.h": "c",
+		"error.h": "c"
 	}
 }

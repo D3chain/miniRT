@@ -3,55 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:01:42 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 16:30:11 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-};
+/* phony functions for compilation */
 
-struct	s_mlx
+void	cleanup_app(struct s_app *app)
 {
-	char			*title;
-	void			*mlx;
-	void			*win;
-	struct s_img	img;
-};
-
-int	event_keyboard_press(int key, struct s_mlx *mlx)
-{
-	if (key == XK_Escape)
+	if (app->mlx.mlx)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		mlx_destroy_display(mlx->mlx);
-		exit(0);
+		if (app->mlx.win)
+			mlx_destroy_window(app->mlx.mlx, app->mlx.win);
+		if (app->mlx.img.img)
+			mlx_destroy_image(app->mlx.mlx, app->mlx.img.img);
+		mlx_destroy_display(app->mlx.mlx);
+		free(app->mlx.mlx);
 	}
+	if (app->scene.elems)
+		free(app->scene.elems);
 }
 
+void	print_error(struct s_app *app)
+{
+	;
+}
+
+/* ************************************************************************** */
+
+static int	quit(struct s_app *app)
+{
+	print_error(app);
+	cleanup_app(app);
+	return (app->status);
+}
 
 int	main(int argc, char *argv[])
 {
-	struct s_data	data;
-	struct s_mlx	mlx;
-	
-	mlx.mlx = mlx_init();
+	struct s_app	app;
 
-	mlx.win = mlx_new_window(mlx.mlx, 800, 600, "Draw");
-
-	mlx_hook(mlx.win, KeyPress, KeyPressMask, event_keyboard_press, &mlx);
-
-	mlx_loop(mlx.mlx);
-	
-	return (0);
+	if (init_app(&app, argc, argv))
+		return (quit(&app));
+	if (load_scene(&app, argv[1]))
+		return (quit(&app));
+	if (run_scene(&app))
+		return (quit(&app));
+	return (quit(&app));
 }

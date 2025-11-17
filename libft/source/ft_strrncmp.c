@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmprev.c                                    :+:      :+:    :+:   */
+/*   ft_strrncmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:09:26 by fox               #+#    #+#             */
-/*   Updated: 2025/11/14 18:19:28 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 15:55:53 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_strrncmp(const char *s1, const char *s2, size_t size)
 {
-	size_t	pos_s1;
-	size_t	pos_s2;
+	int	pos_s1;
+	int	pos_s2;
 
 	if (size > 0)
 	{

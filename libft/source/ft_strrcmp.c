@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrcmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:09:26 by fox               #+#    #+#             */
-/*   Updated: 2025/11/14 18:18:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 15:55:44 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_strrcmp(const char *s1, const char *s2)
 {
-	size_t	pos_s1;
-	size_t	pos_s2;
+	int	pos_s1;
+	int	pos_s2;
 
 	pos_s1 = ft_strlen(s1) - 1;
 	pos_s2 = ft_strlen(s2) - 1;

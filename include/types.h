@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/14 15:33:10 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:48:26 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 # define TYPES_H
 
 # include <stdint.h>
+# include "error.h"
 
 // TYPE DEF
-struct s_xyz
+
+typedef enum e_status
+{
+	ERR_NONE	= 0,
+	ERR_SYS		= 1,
+	ERR_MLX		= 2,
+	ERR_PARS	= 3
+}	t_status;
+
+typedef struct s_double3
 {
 	double	x;
 	double	y;
 	double	z;
-};
+}	t_double3;
 
 union u_rgb
 {
@@ -33,9 +43,6 @@ union u_rgb
 		uint8_t	t;
 	} s_rgb;
 };
-
-typedef struct s_xyz	t_point;
-typedef struct s_xyz	t_dir;
 
 typedef union u_rgb		t_rgb;
 

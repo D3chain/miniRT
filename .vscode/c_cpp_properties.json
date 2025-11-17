@@ -5,7 +5,7 @@
       "includePath": [
         "${workspaceFolder}/include/*",
 		"${workspaceFolder}/libft/include/*",
-		"${workspaceFolder}/minilibx-linux/*"
+		"${workspaceFolder}/mlx/*"
       ],
       "defines": [],
       "compilerPath": "/usr/bin/cc",
