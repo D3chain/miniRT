@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:06:36 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:51:43 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 11:56:01 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 # define ERROR_H
 
 int	err_per(int code, const char *ctx);
-
-typedef enum e_status
-{
-	ERR_NONE	= 0,
-	ERR_SYS		= 1,
-	ERR_PARS	= 2
-}	t_status;
 
 #endif

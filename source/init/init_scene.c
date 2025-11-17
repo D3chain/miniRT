@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:56:10 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/14 18:27:39 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/17 11:50:57 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include "minirt.h"
 
-# include "minirt.h"
+/* fake functions for compilation */
 
-struct s_img
+int	parse_file(struct s_app *app, int fd)
 {
-	
-};
+	(void) app;
+	(void) fd;
+	return (0);
+}
 
-struct s_data
+/*****/
+
+
+int init_scene(struct s_app *app, const char *file)
 {
-	void			*mlx;
-	void			*win;
-	struct s_img	img;
+	int	fd;
 
-	
-
-	struct s_scene	scene;
-
-	t_status		status;
-};
-
-#endif
+	fd = xopen(app, file, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	if (parse_file(app, fd))
+		return (1);
+	return (0);
+}

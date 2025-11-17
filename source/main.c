@@ -6,22 +6,22 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:49:50 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 11:51:01 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 /* phony functions for compilation */
-int process_scene(struct s_data *data)
+int process_scene(struct s_app *app)
 {
-	(void) data;
+	(void) app;
 	return (1);
 }
 
-void	clear_data(struct s_data *data)
+void	cleanup_app(struct s_app *app)
 {
-	(void) data;
+	(void) app;
 }
 
 void	mlx_create(void)
@@ -31,24 +31,35 @@ void	mlx_create(void)
 	mlx_destroy_display(mlx);
 }
 
-/**** */
-
-static int	quit(struct s_data *data)
+int		load_scene(struct s_app *app, char *arg)
 {
-	print_error(data);
-	cleanup_data(data);
-	return (data->status);
+	(void) app;
+	(void) arg;
+}
+
+void	print_error(struct s_app *app)
+{
+	;
+}
+
+/* ************************************************************************** */
+
+static int	quit(struct s_app *app)
+{
+	print_error(app);
+	cleanup_app(app);
+	return (app->status);
 }
 
 int	main(int argc, char *argv[])
 {
-	struct s_data	data;
+	struct s_app	app;
 
-	if (init_data(&data, argc, argv))
-		return (quit(&data));
-	if (load_scene(&data, argv[1]))
-		return (quit(&data));
-	if (process_scene(&data))
-		return (quit(&data));
-	return (quit(&data));
+	if (init_app(&app, argc, argv))
+		return (quit(&app));
+	if (load_scene(&app, argv[1]))
+		return (quit(&app));
+	if (process_scene(&app))
+		return (quit(&app));
+	return (quit(&app));
 }

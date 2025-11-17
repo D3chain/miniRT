@@ -3,25 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 17:37:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/17 11:55:48 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
+# include "minirt.h"
 # include "types.h"
-
-
-typedef enum e_status
-{
-	NO_ERR		= 0,
-	ERR_SYS		= 1,
-	ERR_PARS	= 2
-}	t_status;
 
 enum {
 	SPHERE		= 1,
@@ -64,14 +57,6 @@ struct s_scene
 	struct s_elem			*elems;
 	int						nb_elem;
 };
-
-struct s_data
-{
-	struct s_scene	scene;
-
-	t_status		status;
-};
-
 
 /* shapes */
 

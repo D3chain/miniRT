@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/16 19:54:38 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 11:56:12 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "error.h"
 
 // TYPE DEF
+
+typedef enum e_status
+{
+	ERR_NONE	= 0,
+	ERR_SYS		= 1,
+	ERR_PARS	= 2
+}	t_status;
+
 struct s_xyz
 {
 	double	x;
