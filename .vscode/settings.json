@@ -21,6 +21,8 @@
 		"cstdlib": "c",
 		"keysym.h": "c",
 		"minirt.h": "c",
-		"error.h": "c"
+		"error.h": "c",
+		"errno.h": "c",
+		"cmath": "c"
 	}
 }

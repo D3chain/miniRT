@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 14:48:26 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:05:29 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_double3
 	double	z;
 }	t_double3;
 
-union u_rgb
+union u_color
 {
-	uint32_t	color;
+	uint32_t	value;
 	struct {
 		uint8_t	b;
 		uint8_t	g;
@@ -44,7 +44,7 @@ union u_rgb
 	} s_rgb;
 };
 
-typedef union u_rgb		t_rgb;
+typedef union u_color	t_color;
 
 // ELEM
 struct					s_elem;

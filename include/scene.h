@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 15:05:52 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:05:21 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ enum {
 struct s_camera
 {
 	t_double3	coord;
-	t_double3	direction;
+	t_double3	dir;
 	int			fov;
 };
 
 struct s_ambient_light
 {
 	t_double3	ratio;
-	t_rgb		color;
+	t_color		color;
 };
 
 struct s_light
@@ -59,7 +59,7 @@ struct s_sphere
 {
 	t_double3	coord;
 	double		diametre;
-	t_rgb		color;
+	t_color		color;
 };
 
 struct s_plane
@@ -74,7 +74,7 @@ struct s_cylinder
 	t_double3	direction;
 	double		diametre;
 	double		height;
-	t_rgb		color;
+	t_color		color;
 };
 
 struct s_elem
@@ -85,6 +85,20 @@ struct s_elem
 		struct s_plane		plane;
 		struct s_cylinder	cylinder;
 	}	u;
+};
+
+struct s_ray
+{
+	t_double3	origin;
+	t_double3	dir;
+};
+
+struct s_hit_info
+{
+	bool		did_hit;
+	t_double3	hit_point;
+	t_double3	normal;
+	t_color		color;
 };
 
 #endif
