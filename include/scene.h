@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:16:39 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:19:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "types.h"
 
 enum {
+	PLANE		= 0,
 	SPHERE		= 1,
-	PLANE		= 2,
-	CYLINDER	= 4
+	CYLINDER	= 2
 };
 
 struct s_camera
@@ -50,7 +50,7 @@ struct s_scene
 	struct s_light			light;
 
 	struct s_elem			*elems;
-	int						nb_elem;
+	int						n_elem;
 };
 
 /* shapes */
@@ -58,21 +58,22 @@ struct s_scene
 struct s_sphere
 {
 	t_double3	coord;
-	double		diametre;
+	double		radius;
 	t_color		color;
 };
 
 struct s_plane
 {
 	t_double3	coord;
-	t_double3	direction;
+	t_double3	normal;
+	t_color		color;
 };
 
 struct s_cylinder
 {
 	t_double3	coord;
-	t_double3	direction;
-	double		diametre;
+	t_double3	normal;
+	double		radius;
 	double		height;
 	t_color		color;
 };
@@ -87,8 +88,6 @@ struct s_elem
 	}	u;
 };
 
-
-
 struct s_ray
 {
 	t_double3	origin;
@@ -101,6 +100,7 @@ struct s_hit_info
 	double		dst;
 	t_double3	hit_point;
 	t_double3	normal;
+	t_color		color_material;
 };
 
 #endif

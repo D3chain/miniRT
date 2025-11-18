@@ -23,6 +23,8 @@
 		"minirt.h": "c",
 		"error.h": "c",
 		"errno.h": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"types.h": "c",
+		"math_util.h": "c"
 	}
 }

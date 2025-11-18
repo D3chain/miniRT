@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:05:06 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:29:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@
 # include "error.h"
 # include "wrapper.h"
 # include "util.h"
-# include "math.h"
+# include "math_util.h"
 
 #endif

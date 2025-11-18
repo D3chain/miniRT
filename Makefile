@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/17 16:26:08 by echatela         ###   ########.fr        #
+#    Updated: 2025/11/18 14:34:35 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c init_mlx.c init_scene.c
 LOAD_SRC	:=	load_scene.c
-RUN_SRC		:=	run_scene.c event.c
+RUN_SRC		:=	run_scene.c event.c ray_collision.c draw.c
+MATH_SRC	:=	math_util.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
 UTIL_SRC	:=	color.c
@@ -38,6 +39,7 @@ SRC_PATHS	:= \
 	$(addprefix init/,$(INIT_SRC)) \
 	$(addprefix load/,$(LOAD_SRC)) \
 	$(addprefix run/,$(RUN_SRC)) \
+	$(addprefix math/,$(MATH_SRC)) \
 	$(addprefix wrapper/,$(WRAPPER_SRC)) \
 	$(addprefix util/,$(UTIL_SRC)) \
 	$(addprefix error/,$(ERROR_SRC)) \

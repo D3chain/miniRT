@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:08:58 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:22:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@ void	init_ray(struct s_ray *ray, int x, int y, int cam_z)
 
 void	trace(struct s_app *app, int x, int y)
 {
-	struct s_ray	ray;
+	struct s_ray		ray;
+	struct s_hit_info	hit_info;
 	
 	init_ray(&ray, x, y, app->scene.camera.coord.z);
-	if (hit(&ray, app->scene.elems, app->scene.nb_elem))
-		draw_pixel_to_img(&app->mlx.img, x, y, 0xFFFFFFFF);
+	hit_info = compute_ray_collision(&ray, app->scene.elems, app->scene.n_elem);
+	if (hit_info.did_hit)
+	{
+		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);
+	}
 	
 }
 
@@ -49,10 +53,6 @@ void	render(struct s_app *app)
 
 int run_scene(struct s_app *app)
 {
-	app->scene.nb_elem = 1;
-
-
-	
 	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.width, app->mlx.height, "miniRT");
 	render(app);
 	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);

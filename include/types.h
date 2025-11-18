@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 17:05:29 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:09:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include <stdint.h>
 # include "error.h"
+
+
+#define WHITE	0xFFFFFF
+#define BLACK	0x0
+#define RED		0xFF0000
+#define GREEN	0xFF00
+#define BLUE 	0xFF
 
 // TYPE DEF
 

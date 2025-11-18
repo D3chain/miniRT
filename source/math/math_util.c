@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   math_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:03:01 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 14:36:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-__attribute__((const, hot))
+// __attribute__((const, hot))
 double	dot(t_double3 a, t_double3 b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
