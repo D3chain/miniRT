@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 16:08:33 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:05:06 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@
 # include "error.h"
 # include "wrapper.h"
 # include "util.h"
+# include "math.h"
 
 #endif

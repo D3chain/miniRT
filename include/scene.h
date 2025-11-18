@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 18:05:21 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:16:39 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ struct s_elem
 	}	u;
 };
 
+
+
 struct s_ray
 {
 	t_double3	origin;
@@ -96,9 +98,9 @@ struct s_ray
 struct s_hit_info
 {
 	bool		did_hit;
+	double		dst;
 	t_double3	hit_point;
 	t_double3	normal;
-	t_color		color;
 };
 
 #endif

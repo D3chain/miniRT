@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.h                                              :+:      :+:    :+:   */
+/*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:06:31 by echatela         ###   ########.fr       */
+/*   Created: 2025/11/18 11:03:29 by echatela          #+#    #+#             */
+/*   Updated: 2025/11/18 11:04:42 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_H
-# define RUN_H
+#ifndef MATH_H
+# define MATH_H
 
 # include "minirt.h"
 
-int run_scene(struct s_app *app);
-
-
-// EVENTS
-int	event_keyboard_press(int key, struct s_app *app);
-
-
-// DRAW
-void    draw_pixel_to_img(struct s_img *img, int x, int y, int color);
+double		dot(t_double3 a, t_double3 b);
+t_double3	dot3(t_double3 a, t_double3 b);
+t_double3	plus3(t_double3 a, t_double3 b);
+t_double3	minus3(t_double3 a, t_double3 b);
 
 #endif

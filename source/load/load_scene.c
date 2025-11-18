@@ -6,13 +6,13 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 20:01:08 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/18 10:43:26 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-#define RED 0xFFFF
+#define RED 0x0000FFFF
 
 struct s_elem	create_sphere(t_double3 coord, double diametre, t_color color)
 {
