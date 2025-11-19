@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/18 14:34:35 by cgajean          ###   ########.fr        #
+#    Updated: 2025/11/19 15:34:06 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c init_mlx.c init_scene.c
 LOAD_SRC	:=	load_scene.c
-RUN_SRC		:=	run_scene.c event.c ray_collision.c draw.c
-MATH_SRC	:=	math_util.c
+RUN_SRC		:=	run_scene.c event.c ray_collision.c ray_cylinder.c draw.c util/closest_hit_dst.c
+MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
 UTIL_SRC	:=	color.c

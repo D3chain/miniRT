@@ -15,16 +15,23 @@
 
 # include "minirt.h"
 
-typedef struct s_poly2_root
+typedef struct s_sol2
 {
 	int	n;
 	double	r1;
 	double	r2;
-}	t_poly2_root;
+}	t_sol2;
 
 double		dot(t_double3 a, t_double3 b);
+double		sqdot(t_double3 v);
+
 t_double3	dot3(t_double3 a, t_double3 b);
 t_double3	plus3(t_double3 a, t_double3 b);
 t_double3	minus3(t_double3 a, t_double3 b);
+t_double3	mul3(t_double3 a, double factor);
+
+const t_sol2	polynome2(double a, double b, double c);
+
+t_double3	vector_normalise(t_double3 v);
 
 #endif

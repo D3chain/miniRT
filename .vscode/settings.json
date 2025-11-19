@@ -25,6 +25,7 @@
 		"errno.h": "c",
 		"cmath": "c",
 		"types.h": "c",
-		"math_util.h": "c"
+		"math_util.h": "c",
+		"wrapper.h": "c"
 	}
 }

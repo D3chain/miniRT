@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 11:29:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/19 15:32:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@
 # include "scene.h"
 # include "app.h"
 # include "init.h"
+# include "math_util.h"
 # include "load.h"
 # include "run.h"
 # include "error.h"
 # include "wrapper.h"
 # include "util.h"
-# include "math_util.h"
 
 #endif

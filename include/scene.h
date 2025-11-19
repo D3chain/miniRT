@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 16:19:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/19 13:39:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ struct s_plane
 struct s_cylinder
 {
 	t_double3	coord;
-	t_double3	normal;
+	t_double3	axis;
 	double		radius;
 	double		height;
 	t_color		color;

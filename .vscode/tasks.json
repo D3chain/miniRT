@@ -12,6 +12,7 @@
                 "${workspaceFolder}/source/init/*.c",
 				"${workspaceFolder}/source/load/*.c",
 				"${workspaceFolder}/source/run/*.c",
+				"${workspaceFolder}/source/run/util/*.c",
 				"${workspaceFolder}/source/util/*.c",
 				"${workspaceFolder}/source/math/*.c",
                 "${workspaceFolder}/source/wrapper/*.c",
