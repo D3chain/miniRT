@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/19 18:24:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:02:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	load_scene(struct s_app *app, char *file)
 	app->scene.camera.fov = 70;
 	app->scene.n_elem = 1;
 	app->scene.elems = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem);
-	app->scene.elems[0] = create_cylinder((t_double3){0.0, 0.0, 0.0}, (t_double3){1.0, 1.0, 0.0}, 5, 5, color_int(RED));
+	app->scene.elems[0] = create_cylinder((t_double3){0.0, 0.0, 0.0}, (t_double3){0.15, 0.15, 1.0}, 150, 50, color_int(RED));
+	// app->scene.elems[0] = create_sphere((t_double3){0.0, 0.0, 0.0}, 50, color_int(RED));
 	// app->scene.elems[1] = create_plane((t_double3){0.0, 0.0, 0.0}, (t_double3){1.0, 1.0, -1.0}, color_int(WHITE));
 	return (app->status);
 }
