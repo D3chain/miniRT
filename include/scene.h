@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/19 13:39:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/20 17:20:51 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 # define SCENE_H
 
 # include "minirt.h"
-# include "types.h"
+
+# define FOCAL_LENGTH	1.0
+// # define VIEW_HEIGHT	2.0
+# define FOV	70
+
 
 enum {
 	PLANE		= 0,
@@ -24,8 +28,15 @@ enum {
 
 struct s_camera
 {
-	t_double3	coord;
+	t_double3	camera_center;
 	t_double3	dir;
+	double		focal_length;
+	double		viewport_height;
+	double		wiewport_width;
+	t_double3	wiewport_u;
+	t_double3	wiewport_v;
+	t_double3	wiewport_upper_left;
+	t_double3	pixel00_loc;
 	int			fov;
 };
 

@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 12:15:00 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:12:55 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # ifndef WIN_HEIGHT
 #  define WIN_HEIGHT 600
 # endif
+
+# define IMG_RATIO	(double)(WIN_WIDTH / WIN_HEIGHT)
 
 struct s_img
 {
