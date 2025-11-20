@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 16:22:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/11/20 16:26:41 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void	trace(struct s_app *app, int x, int y)
 	
 	init_ray(&ray, x, y, app->scene.camera.coord.z);
 	hit_info = compute_ray_collision(&ray, app->scene.elems, app->scene.n_elem);
+
 	if (hit_info.did_hit)
-	{
 		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);
-	}
 	
 }
 
