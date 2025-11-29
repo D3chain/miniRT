@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/29 10:26:45 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/29 11:06:44 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,23 @@ struct s_elem	create_cylinder(const t_double3 coord, const t_double3 axis,
 	return (elem);
 }
 
+void	init_cam(struct s_camera *cam)
+{
+	cam->camera_center = (t_double3){0.0, 0.0, -500.0};
+	cam->dir = (t_double3){0.0, 0.0, 1.0};
+	cam->focal_length = FOCAL_LENGTH;
+	cam->viewport_height = 2 * tan(ft_toradian(FOV) / 2) * FOCAL_LENGTH;
+	cam->viewport_width = cam->viewport_height * IMG_RATIO;
+	cam->viewport_u = (t_double3){cam->viewport_width, 0.0, 0.0};
+	cam->viewport_v = (t_double3){0.0, cam->viewport_height, 0.0};
+	// cam->viewport_upper_left = minus3(cam->camera_center, 
+}
+
 int	load_scene(struct s_app *app, char *file)
 {
 	(void) file;
-	app->scene.camera.coord = (t_double3){0.0, 0.0, -100.0};
+	init_cam(&app->scene.camera);
+	app->scene.camera.camera_center = (t_double3){0.0, 0.0, -100.0};
 	app->scene.camera.dir = (t_double3){0.0, 0.0, 1.0};
 	app->scene.camera.fov = 70;
 
