@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/20 17:24:59 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/29 09:04:19 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void	init_cam(struct s_camera *cam)
 	cam->dir = (t_double3){0.0, 0.0, 1.0};
 	cam->focal_length = FOCAL_LENGTH;
 	cam->viewport_height = 2 * tan(ft_toradian(FOV) / 2) * FOCAL_LENGTH;
-	cam->wiewport_width = cam->viewport_height * IMG_RATIO;
-	cam->wiewport_u = (t_double3){cam->wiewport_width, 0.0, 0.0};
-	cam->wiewport_v = (t_double3){0.0, cam->viewport_height, 0.0};
-	cam->wiewport_upper_left = minus3(cam->camera_center, 
+	cam->viewport_width = cam->viewport_height * IMG_RATIO;
+	cam->viewport_u = (t_double3){cam->viewport_width, 0.0, 0.0};
+	cam->viewport_v = (t_double3){0.0, cam->viewport_height, 0.0};
+	// cam->viewport_upper_left = minus3(cam->camera_center, 
 }
 
 int	load_scene(struct s_app *app, char *file)
 {
 	(void) file;
 	init_cam(&app->scene.camera);
-	app->scene.camera.coord = (t_double3){0.0, 0.0, -100.0};
+	app->scene.camera.camera_center = (t_double3){0.0, 0.0, -100.0};
 	app->scene.camera.dir = (t_double3){0.0, 0.0, 1.0};
 	app->scene.camera.fov = 70;
 
