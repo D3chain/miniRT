@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 10:25:22 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/29 11:04:00 by echatela         ###   ########.fr       */
+/*   Updated: 2025/11/29 11:17:45 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,21 @@ int	parse_A(struct s_app *app, const char *line);
 
 int	parse_C(struct s_app *app, const char *line)
 {
+	char	*cur_tok;
 
+	cur_tok = next_tok(line);
+	app->scene.camera.camera_center = check_get_double3(app, cur_tok);
+	if (app->status)
+		return (app->status);
+	cur_tok = next_tok(cur_tok);
+	app->scene.camera.dir = check_get_double3(app, cur_tok);
+	if (app->status)
+		return (app->status);
+	cur_tok = next_tok(cur_tok);
+	app->scene.camera.fov = check_get_int(app, cur_tok);
+	if (next_tok(cur_tok))
+		return (app->status = ERR_PARS);
+	return (0);
 }
 
 int	parse_L(struct s_app *app, const char *line);
