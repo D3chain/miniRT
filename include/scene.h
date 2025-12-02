@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/29 09:03:20 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:45:21 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "minirt.h"
 
-# define FOCAL_LENGTH	1.0
+# define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
-# define FOV	70
+# define 	FOV	70
+# define	N_SCENE_ITEMS	6
 
 
 enum {
@@ -33,6 +34,7 @@ struct s_camera
 	double		focal_length;
 	double		viewport_height;
 	double		viewport_width;
+	t_double3	viewport_center;
 	t_double3	viewport_u;
 	t_double3	viewport_v;
 	t_double3	viewport_upper_left;

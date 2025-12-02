@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_set_elem.c                                   :+:      :+:    :+:   */
+/*   scan_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 10:25:22 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/29 11:17:45 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:34:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ int	parse_C(struct s_app *app, const char *line)
 {
 	char	*cur_tok;
 
-	cur_tok = next_tok(line);
-	app->scene.camera.camera_center = check_get_double3(app, cur_tok);
+	app->scene.camera.viewport_center = scan_double3(app, next_tok(&cur_tok));
 	if (app->status)
 		return (app->status);
-	cur_tok = next_tok(cur_tok);
-	app->scene.camera.dir = check_get_double3(app, cur_tok);
+	app->scene.camera.dir = scan_double3(app, next_tok(&cur_tok));
 	if (app->status)
 		return (app->status);
-	cur_tok = next_tok(cur_tok);
-	app->scene.camera.fov = check_get_int(app, cur_tok);
-	if (next_tok(cur_tok))
+	app->scene.camera.fov = scan_int(app, next_tok(&cur_tok));
+	if (next_tok(&cur_tok))
 		return (app->status = ERR_PARS);
 	return (0);
 }
@@ -38,28 +35,24 @@ int	parse_pl(struct s_app *app, const char *line);
 int	parse_sp(struct s_app *app, const char *line); 
 int	parse_cy(struct s_app *app, const char *line);
 
-int	check_get_i_elem(const char *line)
+int	scan_elem(struct s_app *app, const char *line)
 {
-	const char	*l_elem[7] = {"A", "C", "L", "pl", "sp", "cy", NULL};
-	int			i;
+	int					i;
+	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy"};
+	static const int	(*parse_fct[N_SCENE_ITEMS])(struct s_app *, const char *) = {
+		parse_A, parse_C, parse_L, parse_pl, parse_sp, parse_cy};
 
 	i = 0;
-	while (l_elem[i])
+	while (i < N_SCENE_ITEMS)
 	{
 		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
-			return (i);
-		i++;
+		{
+			parse_fct[i](app, line);
+			break ;
+		}
+		++i;
 	}
-	return (i);
-}
-
-int	check_set_elem(struct s_app *app, const char *line)
-{
-	const int	(*parse_fct[7])(struct s_app *, const char *) = {
-		parse_A, parse_C, parse_L, parse_pl, parse_sp, parse_cy, NULL};
-
-	parse_fct[check_get_i_elem(line)](app, line);
-	if (app->status)
-		return (app->status);
-	return (0);
+	if (i == N_SCENE_ITEMS)
+		app->status = ERR_PARS;
+	return (app->status);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:52:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 12:53:27 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:54:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "minirt.h"
 
-int	load_scene(struct s_app *app, char *file);
+int			load_scene(struct s_app *app, char *file);
+t_double3	scan_double3(struct s_app *app, const char *tok);
+
 
 #endif

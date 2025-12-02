@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/29 11:06:44 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:38:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	count_elems_from_file(struct s_app *app, const char *file)
 	line = gets_next_line(fd);
 	while (line)
 	{
-		if (ft_isspace_str(line))
+		if (!ft_isspace_str(line))
 			n_elem++;
 		free(line);
 		line = gets_next_line(fd);
@@ -121,7 +121,7 @@ int	count_elems_from_file(struct s_app *app, const char *file)
 	return (n_elem);
 }
 
-int	check_set_elems_from_file(struct s_app *app, const char *file)
+int	scan_elems_from_file(struct s_app *app, const char *file)
 {
 	int		fd;
 	char	*line;
@@ -135,7 +135,7 @@ int	check_set_elems_from_file(struct s_app *app, const char *file)
 	line = gets_next_line(fd);
 	while (line)
 	{
-		if (check_set_elem(app, line) != 0)
+		if (scan_elem(app, line) != 0)
 			return (free(line), app->status);
 		free(line);
 		line = gets_next_line(fd);
@@ -153,7 +153,7 @@ int	load_scene(struct s_app *app, const char *file)
 	if (app->status)
 		return (app->status);
 	app->scene.n_elem = n_elem;
-	if (check_set_elems_from_file(app, file));
+	if (scan_elems_from_file(app, file));
 		return (app->status);
 	return (0);
 }
