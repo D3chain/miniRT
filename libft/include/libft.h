@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:24:44 by cgajean           #+#    #+#             */
-/*   Updated: 2025/11/16 17:41:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/02 17:04:55 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+void	ft_skipspaces(const char **nptr);
 
 //	<stdio.h>
 int		ft_printf(const char *__format, ...);

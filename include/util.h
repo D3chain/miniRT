@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/17 18:30:20 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:28:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 # include "minirt.h"
 
-t_color	color_trgb(int r, int g, int b, int t);
-t_color	color_int(int color_value);
+int		scan_int(struct s_app *app, int *res, const char *str);
+int		scan_uint8_t(struct s_app *app, uint8_t *res, const char *str);
+int		scan_double(struct s_app *app, double *res, const char *str);
+int		scan_double3(struct s_app *app, t_double3 *res, const char *str);
+int		scan_color(struct s_app *app, t_color *res, const char *str);
+int		scan_elem(struct s_app *app, const char *line);
 
 
 #endif

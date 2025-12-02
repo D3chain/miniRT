@@ -6,14 +6,14 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/11/19 15:34:06 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/02 18:31:36 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3
+CFLAGS		:=	-MMD -MP -g3 -v
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -28,7 +28,7 @@ CFLAGS		+= -lX11 -lXext #-lmlx
 ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c init_mlx.c init_scene.c
-LOAD_SRC	:=	load_scene.c
+LOAD_SRC	:=	load_scene.c check_set_elem.c scan_numbers.c
 RUN_SRC		:=	run_scene.c event.c ray_collision.c ray_cylinder.c draw.c util/closest_hit_dst.c
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c

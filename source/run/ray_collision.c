@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/20 16:38:25 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:14:15 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ struct s_hit_info	compute_ray_collision(struct s_ray *ray, struct s_elem *elems,
 	return (closest_hit);
 }
 
-int	ray_color(struct s_ray *ray, struct s_elem *elems, int n)
-{
-	return (compute_ray_collision(ray, elems, n).color_material);
-}
+// int	ray_color(struct s_ray *ray, struct s_elem *elems, int n)
+// {
+// 	return (compute_ray_collision(ray, elems, n).color_material);
+// }

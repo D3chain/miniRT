@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 11:45:21 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/02 18:18:41 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ struct s_camera
 
 struct s_ambient_light
 {
-	t_double3	ratio;
+	double		ratio;
 	t_color		color;
 };
 
@@ -52,6 +52,7 @@ struct s_light
 {
 	t_double3	coord;
 	double		ratio;
+	t_color		color;
 };
 
 struct s_scene

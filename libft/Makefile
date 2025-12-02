@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/11/14 18:20:59 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/02 18:29:54 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INC_DIR = $(MAIN_DIR)/include
 BUILD = $(MAIN_DIR)/build
 
 SRCS = \
+		$(SRC_DIR)/ft_skipspaces.c 						\
 		$(SRC_DIR)/ft_printf.c 							\
 														\
 		$(SRC_DIR)/ft_strcpy.c							\
@@ -103,7 +104,7 @@ SRCS = \
 		$(SRC_DIR)/ft_lstclear.c 						\
 		$(SRC_DIR)/ft_lstiter.c 						\
 		$(SRC_DIR)/ft_lstmap.c							\
-		$(SRC_DIR)/ft_lstfree.c 							\
+		$(SRC_DIR)/ft_lstfree.c 						\
 														\
 		$(SRC_DIR)/ft_toradian.c
 
