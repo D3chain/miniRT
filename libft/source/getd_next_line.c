@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   getd_next_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:21:09 by cgajean           #+#    #+#             */
-/*   Updated: 2025/06/21 00:01:40 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/03 11:36:19 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_extract_data(int fd)
+static char	*ft_extract_data(int fd)
 {
 	char	*stash;
 	int		bytes_read;
@@ -32,7 +32,7 @@ char	*ft_extract_data(int fd)
 		return (stash[0] = -1, stash);
 }
 
-void	line_builder(char **stsh, char **p, char **nl)
+static void	line_builder(char **stsh, char **p, char **nl)
 {
 	char		*temp;
 	size_t		len;
@@ -45,7 +45,7 @@ void	line_builder(char **stsh, char **p, char **nl)
 	free(temp);
 }
 
-void	gnl_mainloop(int fd, char **stsh, char **p, char **nl)
+static void	gnl_mainloop(int fd, char **stsh, char **p, char **nl)
 {
 	while (true)
 	{

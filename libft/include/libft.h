@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:24:44 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/02 17:04:55 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:21:44 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-int		ft_isspace(char c);
+int		ft_isspace(int c);
 int		ft_isupper(int c);
 int		ft_islower(int c);
 int		ft_toupper(int c);

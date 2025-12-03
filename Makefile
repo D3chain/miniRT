@@ -6,14 +6,14 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/02 18:31:36 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/03 11:54:48 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3 -v
+CFLAGS		:=	-MMD -MP -g3
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -33,16 +33,16 @@ RUN_SRC		:=	run_scene.c event.c ray_collision.c ray_cylinder.c draw.c util/close
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
-UTIL_SRC	:=	color.c
+UTIL_SRC	:=	color.c token.c
 
 SRC_PATHS	:= \
-	$(addprefix init/,$(INIT_SRC)) \
-	$(addprefix load/,$(LOAD_SRC)) \
-	$(addprefix run/,$(RUN_SRC)) \
-	$(addprefix math/,$(MATH_SRC)) \
-	$(addprefix wrapper/,$(WRAPPER_SRC)) \
-	$(addprefix util/,$(UTIL_SRC)) \
-	$(addprefix error/,$(ERROR_SRC)) \
+	$(addprefix init/,$(INIT_SRC)) 			\
+	$(addprefix load/,$(LOAD_SRC)) 			\
+	$(addprefix run/,$(RUN_SRC)) 			\
+	$(addprefix math/,$(MATH_SRC)) 			\
+	$(addprefix wrapper/,$(WRAPPER_SRC)) 	\
+	$(addprefix util/,$(UTIL_SRC)) 			\
+	$(addprefix error/,$(ERROR_SRC)) 		\
 	$(ROOT_SRC)
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC_PATHS))

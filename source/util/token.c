@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 10:26:49 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/03 11:27:57 by cgajean          ###   ########.fr       */
+/*   Created: 2025/12/03 11:52:06 by cgajean           #+#    #+#             */
+/*   Updated: 2025/12/03 12:32:34 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minirt.h"
 
-int	ft_islower(int c)
+char	*next_tok(const char *str)
 {
-	return (c >= 'a' && c <= 'z');
+	while (*str && !ft_isspace(*str))
+		str++;
+	while (*str && ft_isspace(*str))
+		str++;
+	return ((char *)str);
 }

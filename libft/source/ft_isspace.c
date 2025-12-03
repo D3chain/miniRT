@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:26:41 by cgajean           #+#    #+#             */
-/*   Updated: 2025/11/13 17:54:43 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:21:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(char c)
+int	ft_isspace(int c)
 {
 	return ((c >= 9 && c <= 13) || c == ' ');
 }

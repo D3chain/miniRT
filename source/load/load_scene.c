@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 18:30:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/03 12:50:44 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	count_elems_from_file(struct s_app *app, const char *file)
 	line = gets_next_line(fd);
 	while (line)
 	{
-		if (!ft_isspace_str(line) && ft_islower(*line))
+		if (!ft_isspace_str(line) && ft_islower(*line) && *line != '#')
 			n_elem++;
 		free(line);
 		line = gets_next_line(fd);
@@ -135,8 +135,8 @@ int	scan_elems_from_file(struct s_app *app, const char *file)
 	line = gets_next_line(fd);
 	while (line)
 	{
-		if (scan_elem(app, line) != 0)
-			return (free(line), app->status);
+		if (!ft_isspace_str(line) && *line != '#' && scan_elem(app, line) != 0)
+			return (close(fd), free(line), app->status);
 		free(line);
 		line = gets_next_line(fd);
 	}
@@ -155,5 +155,10 @@ int	load_scene(struct s_app *app, const char *file)
 	app->scene.n_elem = n_elem;
 	if (scan_elems_from_file(app, file))
 		return (app->status);
+	// for (int i = 0; i < app->scene.n_elem; i++) {
+	// 	printf("%d\n", app->scene.elems[i].type);
+	// }
+	printf("rad: %f\n", app->scene.elems[0].u.sphere.coord.x);
+	
 	return (0);
 }

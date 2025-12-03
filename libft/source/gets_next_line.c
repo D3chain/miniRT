@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:21:09 by cgajean           #+#    #+#             */
-/*   Updated: 2025/06/19 10:29:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:36:04 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	line_builder(char *stsh, char *p, char **nl)
 	free(temp);
 }
 
-void	gnl_mainloop(int fd, char *stsh, char *p, char **nl)
+static void	gnl_mainloop(int fd, char *stsh, char *p, char **nl)
 {
 	while (true)
 	{

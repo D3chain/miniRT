@@ -63,6 +63,7 @@ int	parse_L(struct s_app *app, const char *line, int *_)
 
 int	parse_pl(struct s_app *app, const char *line, int *i_elem)
 {
+	app->scene.elems[*i_elem].type = PLANE;
 	line += scan_double3(app, &app->scene.elems[*i_elem].u.plane.coord, line);
 	if (app->status)
 		return (app->status);
@@ -127,20 +128,19 @@ int	parse_cy(struct s_app *app, const char *line, int *i_elem)
 int	scan_elem(struct s_app *app, const char *line)
 {
 	int					i;
-	int					i_elem;
+	static int			i_elem;
 	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy"};
 	static int			(*parse_fct[N_SCENE_ITEMS])(struct s_app *, const char *, int *) = {
 		parse_A, parse_C, parse_L, parse_pl, parse_sp, parse_cy};
 
-	i_elem = 0;
 	i = 0;
 	while (i < N_SCENE_ITEMS)
 	{
 		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
 		{
-			if (i > 3)
+			parse_fct[i](app, next_tok(line), &i_elem);
+			if (i > 2)
 				i_elem++;
-			parse_fct[i](app, line, &i_elem);
 			break ;
 		}
 		++i;

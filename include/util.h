@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 18:28:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:53:30 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int		scan_double(struct s_app *app, double *res, const char *str);
 int		scan_double3(struct s_app *app, t_double3 *res, const char *str);
 int		scan_color(struct s_app *app, t_color *res, const char *str);
 int		scan_elem(struct s_app *app, const char *line);
-
+char	*next_tok(const char *str);
 
 #endif
