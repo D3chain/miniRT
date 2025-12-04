@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/04 13:26:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/04 14:43:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
-# define 	FOV	70
 # define	N_SCENE_ITEMS	6
-
 
 enum {
 	PLANE		= 0,
@@ -29,17 +27,17 @@ enum {
 
 struct s_camera
 {
-	t_double3	camera_center;
+	t_double3	focal_center;
 	t_double3	dir;
+	double		fov;
 	double		focal_length;
-	double		viewport_height;
 	double		viewport_width;
+	double		viewport_height;
 	t_double3	viewport_center;
 	t_double3	viewport_u;
 	t_double3	viewport_v;
 	t_double3	viewport_upper_left;
 	t_double3	pixel00_loc;
-	int			fov;
 };
 
 struct s_ambient_light

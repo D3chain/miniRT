@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/19 16:14:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/04 15:15:08 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ t_double3	mul3(t_double3 a, double factor)
 	res.y = a.y * factor;
 	res.z = a.z * factor;
 	return (res);
+}
+
+t_double3	cross3(t_double3 a, t_double3 b)
+{
+	return ((t_double3){
+		a.y * b.z - a.z * b.y, 
+		a.z * b.x - a.x * b.z, 
+		a.x * b.y - a.y * b.x});
 }
 
 t_double3	vector_normalise(t_double3 v)
