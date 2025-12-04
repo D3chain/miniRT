@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/12/02 18:29:54 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/04 12:44:22 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS = \
 		$(SRC_DIR)/ft_isupper.c 						\
 		$(SRC_DIR)/ft_islower.c 						\
 		$(SRC_DIR)/ft_isspace.c 						\
+		$(SRC_DIR)/ft_isspace_str.c						\
 		$(SRC_DIR)/ft_tolower.c 						\
 		$(SRC_DIR)/ft_toupper.c 						\
 		$(SRC_DIR)/ft_tolower_str.c 					\
