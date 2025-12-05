@@ -27,7 +27,7 @@ int	parse_A(struct s_app *app, const char *line, int *_)
 
 int	parse_C(struct s_app *app, const char *line, int *_)
 {
-	line += scan_double3(app, &app->scene.camera.viewport_center, line);
+	line += scan_double3(app, &app->scene.camera.focal_center, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
@@ -35,7 +35,7 @@ int	parse_C(struct s_app *app, const char *line, int *_)
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_int(app, &app->scene.camera.fov, line);
+	line += scan_double(app, &app->scene.camera.fov, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);

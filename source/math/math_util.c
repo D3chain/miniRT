@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/04 15:15:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:06:59 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_double3	mul3(t_double3 a, double factor)
 	res.z = a.z * factor;
 	return (res);
 }
+
 
 t_double3	cross3(t_double3 a, t_double3 b)
 {

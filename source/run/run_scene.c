@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 18:13:00 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:02:48 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@
 // 	draw_pixel_to_img(&app->mlx.img, x, y, pixel_color);
 // }
 
-void	init_ray(struct s_ray *ray, int x, int y, int cam_z)
+void	init_ray(struct s_app *app, struct s_ray *ray, int x, int y)
 {
-	ray->dir.x = 0;
-	ray->dir.y = 0;
-	ray->dir.z = 1;
-	ray->origin.x = x - WIN_WIDTH / 2;
-	ray->origin.y = -(y - WIN_HEIGHT / 2);
-	ray->origin.z = cam_z;
+	const t_double3	delta = plus3(mul3(app->scene.camera.viewport_u_px, (double)x), mul3(app->scene.camera.viewport_v_px, (double)y));
+	const t_double3	px_pos = plus3(app->scene.camera.pixel00_loc, delta);
+
+	ray->dir = minus3(px_pos, app->scene.camera.focal_center);
+	ray->origin = app->scene.camera.focal_center;
+
 }
 
 void	trace(struct s_app *app, int x, int y)
@@ -46,12 +46,12 @@ void	trace(struct s_app *app, int x, int y)
 	struct s_ray		ray;
 	struct s_hit_info	hit_info;
 	
-	init_ray(&ray, x, y, app->scene.camera.viewport_center.z);
+	init_ray(app, &ray, x, y);
+
 	hit_info = compute_ray_collision(&ray, app->scene.elems, app->scene.n_elem);
 
 	if (hit_info.did_hit)
 		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);
-	
 }
 
 void	render(struct s_app *app)

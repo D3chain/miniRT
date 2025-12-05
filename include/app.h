@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   app.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 17:38:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:30:19 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #  define WIN_HEIGHT 600
 # endif
 
-# define IMG_RATIO	(double)(WIN_WIDTH / WIN_HEIGHT)
+# define IMG_RATIO	((double) WIN_WIDTH / WIN_HEIGHT)
 
 struct s_img
 {

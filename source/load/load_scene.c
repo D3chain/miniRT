@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/04 15:19:45 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:28:17 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,28 @@ static int	scan_elems_from_file(struct s_app *app, const char *file)
 static void	set_camera_parameters(struct s_app *app, struct s_camera *camera)
 {
 	const double	theta = ft_toradian(camera->fov);
-	const double	w = tan(theta / 2);
+	const double	w = tan(theta / 2.0);
 	
-	camera->focal_center = minus3(camera->viewport_center, mul3(camera->dir, -1.0));
 	camera->focal_length = FOCAL_LENGTH;
-	camera->viewport_width = 2 * w * camera->focal_length;
-	camera->viewport_height = camera->viewport_width * IMG_RATIO;
-	camera->viewport_u = cross3(camera->dir, (t_double3){camera->dir.x, 0.0, camera->dir.z});
-	camera->viewport_v = cross3(camera->dir, camera->viewport_u);
-	camera->viewport_upper_left;
-	camera->pixel00_loc;
+	camera->viewport_height = 2.0 * w * camera->focal_length;
+	camera->viewport_width = camera->viewport_height * IMG_RATIO;
+	if (camera->dir.y > 0.99)
+		camera->viewport_u = (t_double3){1.0, 0.0, 0.0};
+	else
+		camera->viewport_u = mul3(vector_normalise(cross3(camera->dir, (t_double3){0.0, 1.0, 0.0})), camera->viewport_width);
+	camera->viewport_u_px = mul3(camera->viewport_u, 1.0 / WIN_WIDTH);
+	camera->viewport_v = mul3(vector_normalise(cross3(camera->dir, camera->viewport_u)), camera->viewport_height);
+	camera->viewport_v_px = mul3(camera->viewport_v, 1.0 / WIN_HEIGHT);
+	camera->viewport_upper_left = minus3(plus3(camera->focal_center, camera->dir), plus3(mul3(camera->viewport_u, 0.5), mul3(camera->viewport_v, 0.5)));
+	camera->pixel00_loc = plus3(plus3(camera->viewport_upper_left, mul3(camera->viewport_u_px, 0.5)),
+			mul3(camera->viewport_v_px, 0.5));
+	printf("w=%lf\n", w);
+	printf("wh=%lf\n", camera->viewport_height);
+	printf("ww=%lf\n", camera->viewport_width);
+	print_double3(camera->viewport_u);
+	print_double3(camera->viewport_v);
+	printf("\n");
+	
 }
 
 int	load_scene(struct s_app *app, const char *file)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 18:14:15 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 13:42:18 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct s_hit_info	ray_plane(const struct s_ray *ray, const void *elem)
 
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	closest_hit.dst = plane_dst(ray, plane.normal, plane.coord);
-	closest_hit.did_hit = (closest_hit.dst > 0);
+	closest_hit.did_hit = (closest_hit.dst > 0.0);
 	closest_hit.color_material = plane.color;
 	return (closest_hit);
 }
@@ -38,7 +38,7 @@ struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem)
 	const t_double3				offset = minus3(ray->origin, sphere.coord);
 	const t_sol2				dst = polynome2(dot(ray->dir, ray->dir),
 				2 * dot(offset, ray->dir),
-				dot(offset, offset) - pow(sphere.radius, 2.0));
+				dot(offset, offset) - sphere.radius * sphere.radius);
 	
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	if (dst.n)
@@ -47,7 +47,7 @@ struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem)
 			closest_hit.dst = dst.r1;
 		else
 			closest_hit.dst = closest_hit_dst_sol2(dst);
-		closest_hit.did_hit = (closest_hit.dst > 0);
+		closest_hit.did_hit = (closest_hit.dst > 0.0);
 		closest_hit.color_material = sphere.color;
 	}
 	return (closest_hit);

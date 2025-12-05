@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/04 14:43:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:20:34 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ struct s_camera
 	double		focal_length;
 	double		viewport_width;
 	double		viewport_height;
-	t_double3	viewport_center;
 	t_double3	viewport_u;
+	t_double3	viewport_u_px;
 	t_double3	viewport_v;
+	t_double3	viewport_v_px;
 	t_double3	viewport_upper_left;
 	t_double3	pixel00_loc;
 };
