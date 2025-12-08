@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 16:30:19 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:36:14 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # ifndef WIN_WIDTH
 #  define WIN_WIDTH 800
 # endif
+
+# define EPSILON	0.00001
 
 # ifndef WIN_HEIGHT
 #  define WIN_HEIGHT 600

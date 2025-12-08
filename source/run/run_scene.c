@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 16:02:48 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:47:38 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	trace(struct s_app *app, int x, int y)
 	
 	init_ray(app, &ray, x, y);
 
-	hit_info = compute_ray_collision(&ray, app->scene.elems, app->scene.n_elem);
+	hit_info = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
 
 	if (hit_info.did_hit)
 		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);

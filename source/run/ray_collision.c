@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 13:42:18 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:45:37 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ struct s_hit_info	ray_plane(const struct s_ray *ray, const void *elem)
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	closest_hit.dst = plane_dst(ray, plane.normal, plane.coord);
 	closest_hit.did_hit = (closest_hit.dst > 0.0);
-	closest_hit.color_material = plane.color;
+	if (closest_hit.did_hit)
+	{
+		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
+		closest_hit.normal = orient_normal(plane.normal, ray->dir);
+		closest_hit.color_material = plane.color;
+	}
 	return (closest_hit);
 }
 
@@ -43,17 +48,19 @@ struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem)
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	if (dst.n)
 	{
-		if (dst.n == 1)
-			closest_hit.dst = dst.r1;
-		else
-			closest_hit.dst = closest_hit_dst_sol2(dst);
-		closest_hit.did_hit = (closest_hit.dst > 0.0);
-		closest_hit.color_material = sphere.color;
+		closest_hit.dst = closest_hit_dst_sol2(dst);
+		closest_hit.did_hit = (closest_hit.dst >= EPSILON);
+		if (closest_hit.did_hit)
+		{
+			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
+			closest_hit.normal = orient_normal(vector_normalise(minus3(closest_hit.hit_point, sphere.coord)), ray->dir);
+			closest_hit.color_material = sphere.color;
+		}
 	}
 	return (closest_hit);
 }
 
-struct s_hit_info	compute_ray_collision(struct s_ray *ray, struct s_elem *elems, int n)
+struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 {
 	static struct s_hit_info	(*ray_func[])(const struct s_ray *, const void*) = {ray_plane, ray_sphere, ray_cylinder};
 	struct s_hit_info	closest_hit;
@@ -79,5 +86,5 @@ struct s_hit_info	compute_ray_collision(struct s_ray *ray, struct s_elem *elems,
 
 // int	ray_color(struct s_ray *ray, struct s_elem *elems, int n)
 // {
-// 	return (compute_ray_collision(ray, elems, n).color_material);
+// 	return (ray_hit(ray, elems, n).color_material);
 // }

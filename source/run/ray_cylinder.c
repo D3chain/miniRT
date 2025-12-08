@@ -6,33 +6,31 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:47:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/11/20 14:37:42 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:56:38 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-const t_double3	project(const t_double3 origin, const t_double3 dir, const double dst)
+static const t_sol2	caps_intersect(const struct s_ray *ray,
+	const struct s_cylinder *cylinder)
 {
-	return (plus3(origin, mul3(dir, dst)));
-}
-
-// static const t_sol2	caps_intersect(const struct s_ray *ray,
-// 	const struct s_cylinder *cylinder)
-// {
-// 	t_sol2			sol;
-// 	const t_double3	p1 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
-// 	const t_double3	p2 = project(cylinder->coord, mul3(cylinder->axis, -1.0), cylinder->height / 2);
+	t_sol2			sol;
+	const t_double3	p1 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
+	const t_double3	p2 = project(cylinder->coord, mul3(cylinder->axis, -1.0), cylinder->height / 2);
+	const double	rdot = dot(cylinder->axis, ray->dir);
 	
-// 	sol.n = 2;
-// 	sol.r1 = plane_dst(ray, cylinder->axis, p1);
-// 	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r1), p1)) > pow(cylinder->radius, 2.0))
-// 		sol.r1 = -1.0;
-// 	sol.r2 = plane_dst(ray, cylinder->axis, p2);
-// 	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r2), p1)) > pow(cylinder->radius, 2.0))
-// 		sol.r2 = -1.0;
-// 	return (sol);
-// }
+	if (ft_dblcmp(rdot, 0.0, EPSILON) == 0.0)
+		return (sol.n = 0, sol);
+	sol.n = 2;
+	sol.r1 = plane_dst(ray, cylinder->axis, p1);
+	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r1), p1)) > pow(cylinder->radius, 2.0))
+		sol.r1 = -1.0;
+	sol.r2 = plane_dst(ray, cylinder->axis, p2);
+	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r2), p1)) > pow(cylinder->radius, 2.0))
+		sol.r2 = -1.0;
+	return (sol);
+}
 
 static const t_sol2	tube_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
@@ -46,12 +44,12 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), 2 * dot(tmp_a, tmp_b),
 		dot(tmp_b, tmp_b) - pow(cylinder->radius, 2.0));
 	
-	if (sol.r1 > 0)
+	if (sol.r1 > 0.0)
 		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), p1)) <= 0
 			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), p2)) >= 0)
 		sol.r1 = -1.0;
 
-	if (sol.r2 > 0)
+	if (sol.r2 > 0.0)
 		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), p1)) <= 0
 			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), p2)) >= 0)
 		sol.r2 = -1.0;
@@ -60,12 +58,12 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 
 static double	cylinder_dst(const struct s_ray *ray, const struct s_cylinder *cylinder)
 {
-	// const t_sol2	dst_caps = caps_intersect(ray, cylinder);
+	const t_sol2	dst_caps = caps_intersect(ray, cylinder);
 	const t_sol2	dst_tube = tube_intersect(ray, cylinder);
 	
-	return (closest_hit_dst_sol2(dst_tube));
-	// return (closest_hit_dst_dbl(closest_hit_dst_sol2(dst_caps),
-	// 	closest_hit_dst_sol2(dst_tube)));
+	// return (closest_hit_dst_sol2(dst_tube));
+	return (closest_hit_dst_dbl(closest_hit_dst_sol2(dst_caps),
+		closest_hit_dst_sol2(dst_tube)));
 }
 
 struct s_hit_info	ray_cylinder(const struct s_ray *ray, const void *elem)
@@ -75,8 +73,13 @@ struct s_hit_info	ray_cylinder(const struct s_ray *ray, const void *elem)
 
 	ft_bzero(&closest_hit, sizeof(closest_hit));	
 	closest_hit.dst = cylinder_dst(ray, &cylinder);
-	closest_hit.did_hit = (closest_hit.dst > 0.0);
-	closest_hit.color_material = cylinder.color;
+	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
+	if (closest_hit.did_hit)
+	{
+		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
+		closest_hit.normal = 
+		closest_hit.color_material = cylinder.color;
+	}
 	return (closest_hit);
 }
 

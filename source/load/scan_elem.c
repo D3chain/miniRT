@@ -14,11 +14,11 @@
 
 int	parse_A(struct s_app *app, const char *line, int *_)
 {
-	line += scan_double(app, &app->scene.ambient_light.ratio, line);
+	line += scan_double(app, &app->scene.ambient.ratio, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.ambient_light.color, line);
+	line += scan_color(app, &app->scene.ambient.color, line);
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);

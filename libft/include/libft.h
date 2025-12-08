@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:24:44 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/04 12:44:42 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/08 16:41:53 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	ft_lstfree(t_list *data);
 
 // misc / maths
 double	ft_toradian(double angle);
+double	ft_dblcmp(double d1, double d2, double epsilon);
+double	ft_dabs(double a);
 
 //	get_next_line
 # if BUFFER_SIZE >= 4096

@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 15:06:59 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:45:46 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,16 @@ t_double3	vector_normalise(t_double3 v)
 double	sqdot(t_double3 v)
 {
 	return (dot(v, v));
+}
+
+t_double3	project(const t_double3 origin, const t_double3 dir, const double dst)
+{
+	return (plus3(origin, mul3(dir, dst)));
+}
+
+t_double3	orient_normal(t_double3 normal, t_double3 ray)
+{
+	if (dot(ray, normal) >= EPSILON)
+		return (mul3(normal, -1.0));
+	return (normal);
 }

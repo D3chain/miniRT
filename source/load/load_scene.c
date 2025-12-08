@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 16:28:17 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:06:21 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,19 @@ static int	scan_elems_from_file(struct s_app *app, const char *file)
 	return (0);
 }
 
-static void	set_camera_parameters(struct s_app *app, struct s_camera *camera)
+void	complete_A(struct s_app *app, struct s_ambient *ambient)
 {
-	const double	theta = ft_toradian(camera->fov);
-	const double	w = tan(theta / 2.0);
-	
+	if (ambient->ratio > 1.0)
+		ambient->ratio = 1.0;
+	if (ambient->ratio < 0.0)
+		ambient->ratio = 0.0;
+}
+
+void	complete_C(struct s_app *app, struct s_camera *camera)
+{
 	camera->focal_length = FOCAL_LENGTH;
-	camera->viewport_height = 2.0 * w * camera->focal_length;
+	camera->fov_rad = ft_toradian(camera->fov);
+	camera->viewport_height = 2.0 * tan(camera->fov_rad / 2.0) * camera->focal_length;
 	camera->viewport_width = camera->viewport_height * IMG_RATIO;
 	if (camera->dir.y > 0.99)
 		camera->viewport_u = (t_double3){1.0, 0.0, 0.0};
@@ -74,13 +80,53 @@ static void	set_camera_parameters(struct s_app *app, struct s_camera *camera)
 	camera->viewport_upper_left = minus3(plus3(camera->focal_center, camera->dir), plus3(mul3(camera->viewport_u, 0.5), mul3(camera->viewport_v, 0.5)));
 	camera->pixel00_loc = plus3(plus3(camera->viewport_upper_left, mul3(camera->viewport_u_px, 0.5)),
 			mul3(camera->viewport_v_px, 0.5));
-	printf("w=%lf\n", w);
-	printf("wh=%lf\n", camera->viewport_height);
-	printf("ww=%lf\n", camera->viewport_width);
-	print_double3(camera->viewport_u);
-	print_double3(camera->viewport_v);
-	printf("\n");
-	
+}
+
+void	complete_L(struct s_app *app, struct s_light *light)
+{
+	if (light->ratio > 1.0)
+		light->ratio = 1.0;
+	if (light->ratio < 0.0)
+		light->ratio = 0.0;
+}
+
+void	complete_pl(struct s_app *app, struct s_elem *elem)
+{
+	struct s_plane	*plane;
+
+	plane = &elem->u.plane;
+	plane->normal = vector_normalise(plane->normal);
+}
+
+void	complete_sp(struct s_app *app, struct s_elem *elem)
+{
+	struct s_sphere	*sphere;
+
+	sphere = &elem->u.sphere;
+	sphere->radius_sq = sphere->radius * sphere->radius;
+}
+
+void	complete_cy(struct s_app *app, struct s_elem *elem)
+{
+	struct s_cylinder	*cylinder;
+
+	cylinder = &elem->u.cylinder;
+	cylinder->radius_sq = cylinder->radius * cylinder->radius;
+	cylinder->axis = vector_normalise(cylinder->axis);
+}
+
+static void	complete_scene(struct s_app *app, struct s_scene *scene)
+{
+	static int	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
+		complete_pl, complete_sp, complete_cy};
+	int	i;
+
+	complete_C(app, &scene->camera);
+	complete_A(app, &scene->ambient);
+	complete_L(app, &scene->light);
+	i = -1;
+	while (++i < scene->n_elem)
+		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
 }
 
 int	load_scene(struct s_app *app, const char *file)
@@ -94,6 +140,6 @@ int	load_scene(struct s_app *app, const char *file)
 	app->scene.n_elem = n_elem;
 	if (scan_elems_from_file(app, file))
 		return (app->status);
-	set_camera_parameters(app, &app->scene.camera);
+	complete_scene(app, &app->scene);
 	return (0);
 }

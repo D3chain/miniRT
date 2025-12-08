@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/05 15:20:34 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:02:18 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
 # define	N_SCENE_ITEMS	6
+# define	N_SCENE_ELEMS	(N_SCENE_ITEMS - 3)
 
 enum {
 	PLANE		= 0,
@@ -30,6 +31,7 @@ struct s_camera
 	t_double3	focal_center;
 	t_double3	dir;
 	double		fov;
+	double		fov_rad;
 	double		focal_length;
 	double		viewport_width;
 	double		viewport_height;
@@ -41,7 +43,7 @@ struct s_camera
 	t_double3	pixel00_loc;
 };
 
-struct s_ambient_light
+struct s_ambient
 {
 	double		ratio;
 	t_color		color;
@@ -58,7 +60,7 @@ struct s_scene
 {
 	struct s_camera			camera;
 
-	struct s_ambient_light	ambient_light;
+	struct s_ambient		ambient;
 
 	struct s_light			light;
 
@@ -72,6 +74,7 @@ struct s_sphere
 {
 	t_double3	coord;
 	double		radius;
+	double		radius_sq;
 	t_color		color;
 };
 
@@ -87,6 +90,7 @@ struct s_cylinder
 	t_double3	coord;
 	t_double3	axis;
 	double		radius;
+	double		radius_sq;
 	double		height;
 	t_color		color;
 };

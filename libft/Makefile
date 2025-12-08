@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/12/04 12:44:22 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/08 16:42:41 by echatela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,9 @@ SRCS = \
 		$(SRC_DIR)/ft_lstmap.c							\
 		$(SRC_DIR)/ft_lstfree.c 						\
 														\
-		$(SRC_DIR)/ft_toradian.c
+		$(SRC_DIR)/ft_toradian.c 						\
+		$(SRC_DIR)/ft_dblcmp.c	 						\
+		$(SRC_DIR)/ft_dabs.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD)/%.o)
