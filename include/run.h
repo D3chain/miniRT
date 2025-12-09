@@ -24,8 +24,8 @@ int	event_keyboard_press(int key, struct s_app *app);
 // HIT
 struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n);
 struct s_hit_info	(*ray_func(int type))(const struct s_ray*, const void*);
-struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem);
-struct s_hit_info	ray_cylinder(const struct s_ray *ray, const void *elem);
+struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
+struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
 
 double	plane_dst(const struct s_ray *ray, const t_double3 normal, const t_double3 point);
 

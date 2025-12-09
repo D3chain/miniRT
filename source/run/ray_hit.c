@@ -19,7 +19,7 @@ double	plane_dst(const struct s_ray *ray, const t_double3 normal, const t_double
 	return (dot(minus3(point, ray->origin), normal) / dot(ray->dir, normal));
 }
 
-struct s_hit_info	ray_plane(const struct s_ray *ray, const void *elem)
+struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 {
 	struct s_hit_info		closest_hit;
 	const struct s_plane	plane = ((struct s_elem *)elem)->u.plane;
@@ -36,7 +36,7 @@ struct s_hit_info	ray_plane(const struct s_ray *ray, const void *elem)
 	return (closest_hit);
 }
 
-struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem)
+struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 {
 	struct s_hit_info			closest_hit;
 	const struct s_sphere		sphere = ((struct s_elem *)elem)->u.sphere;
@@ -62,7 +62,7 @@ struct s_hit_info	ray_sphere(const struct s_ray *ray, const void *elem)
 
 struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 {
-	static struct s_hit_info	(*ray_func[])(const struct s_ray *, const void*) = {ray_plane, ray_sphere, ray_cylinder};
+	static struct s_hit_info	(*ray_hit_func[])(const struct s_ray *, const void*) = {ray_hit_plane, ray_hit_sphere, ray_hit_cylinder};
 	struct s_hit_info	closest_hit;
 	struct s_hit_info	hit_point;
 	int					i;
@@ -72,7 +72,7 @@ struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 	i = -1;
 	while (++i < n)
 	{
-		hit_point = ray_func[elems[i].type](ray, &elems[i]);
+		hit_point = ray_hit_func[elems[i].type](ray, &elems[i]);
 		if (hit_point.did_hit)
 		{
 			if (closest_hit.did_hit && closest_hit.dst > hit_point.dst)

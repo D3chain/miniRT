@@ -29,7 +29,7 @@ ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c init_mlx.c init_scene.c
 LOAD_SRC	:=	load_scene.c scan_elem.c scan_numbers.c
-RUN_SRC		:=	run_scene.c event.c ray_collision.c ray_cylinder.c draw.c util/closest_hit_dst.c
+RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_cylinder.c draw.c util/closest_hit_dst.c
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c

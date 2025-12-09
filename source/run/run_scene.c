@@ -49,7 +49,7 @@ void	trace(struct s_app *app, int x, int y)
 	init_ray(app, &ray, x, y);
 
 	hit_info = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
-
+	
 	if (hit_info.did_hit)
 		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);
 }

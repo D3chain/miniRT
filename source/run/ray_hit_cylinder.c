@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cylinder.c                                     :+:      :+:    :+:   */
+/*   ray_hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -66,20 +66,31 @@ static double	cylinder_dst(const struct s_ray *ray, const struct s_cylinder *cyl
 		closest_hit_dst_sol2(dst_tube)));
 }
 
-struct s_hit_info	ray_cylinder(const struct s_ray *ray, const void *elem)
+struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 {
 	struct s_hit_info		closest_hit;
 	const struct s_cylinder	cylinder = ((struct s_elem *)elem)->u.cylinder;
+	const double			dst_tube = closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
 
 	ft_bzero(&closest_hit, sizeof(closest_hit));	
-	closest_hit.dst = cylinder_dst(ray, &cylinder);
-	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
-	if (closest_hit.did_hit)
+	// closest_hit.dst = cylinder_dst(ray, &cylinder);
+	closest_hit.dst = closest_hit_dst_sol2(caps_intersect(ray, &cylinder));
+	if (closest_hit.dst >= EPSILON)
 	{
-		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
-		closest_hit.normal = 
-		closest_hit.color_material = cylinder.color;
+		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);	// normale
+		closest_hit.normal = orient_normal(cylinder.axis, ray->dir);
 	}
+	if (dst_tube >= EPSILON)
+	{
+		if (closest_hit.dst < EPSILON || ft_dblcmp(dst_tube, closest_hit.dst, EPSILON) < 0.0)
+		{
+			closest_hit.dst = dst_tube;
+			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);	// normale
+			closest_hit.normal = orient_normal(cross3(cylinder.axis, closest_hit.hit_point), ray->dir); 
+		}
+	}
+	closest_hit.color_material.value = cylinder.color.value;
+	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	return (closest_hit);
 }
 
