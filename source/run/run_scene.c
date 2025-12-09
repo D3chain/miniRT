@@ -44,14 +44,17 @@ void	init_ray(struct s_app *app, struct s_ray *ray, int x, int y)
 void	trace(struct s_app *app, int x, int y)
 {
 	struct s_ray		ray;
-	struct s_hit_info	hit_info;
+	struct s_hit_info	hit_info_1;
+	struct s_hit_info	hit_info_2;
 	
 	init_ray(app, &ray, x, y);
 
-	hit_info = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
-	
-	if (hit_info.did_hit)
-		draw_pixel_to_img(&app->mlx.img, x, y, hit_info.color_material.value);
+	hit_info_1 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
+	ray.dir = vector_normalise(minus3(app->scene.light.coord, hit_info_1.hit_point));
+	ray.origin = hit_info_1.hit_point;
+	hit_info_2 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
+	if (hit_info_2.did_hit)
+		draw_pixel_to_img(&app->mlx.img, x, y, hit_info_1.color_material.value);
 }
 
 void	render(struct s_app *app)
