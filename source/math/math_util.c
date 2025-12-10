@@ -67,7 +67,7 @@ t_double3	cross3(t_double3 a, t_double3 b)
 		a.x * b.y - a.y * b.x});
 }
 
-t_double3	vector_normalise(t_double3 v)
+t_double3	normalize3(t_double3 v)
 {
 	const double	norm = sqrt(pow(v.x, 2.0) + pow(v.y, 2.0) + pow(v.z, 2.0));
 	return ((t_double3){v.x / norm, v.y / norm, v.z / norm});
@@ -88,4 +88,20 @@ t_double3	orient_normal(t_double3 normal, t_double3 ray)
 	if (dot(ray, normal) >= EPSILON)
 		return (mul3(normal, -1.0));
 	return (normal);
+}
+
+double	norm3(t_double3 vec)
+{
+	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
+}
+
+union u_color	mul_color(union u_color color, double factor)
+{
+	union u_color	res;
+
+	res.s_rgb.b = color.s_rgb.b * factor;
+	res.s_rgb.g = color.s_rgb.g * factor;
+	res.s_rgb.r = color.s_rgb.r * factor;
+	res.s_rgb.t = color.s_rgb.t;
+	return (res);
 }

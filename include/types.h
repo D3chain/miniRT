@@ -54,13 +54,13 @@ union u_color
 typedef union u_color	t_color;
 
 // ELEM
-struct					s_elem;
-struct					s_ambient_lightning;
-struct					s_camera;
-struct					s_light;
-struct					s_sphere;
-struct					s_plane;
-struct					s_cylinder;
-struct					s_scene;
+struct	s_elem;
+struct	s_ambient_lightning;
+struct	s_camera;
+struct	s_light;
+struct	s_sphere;
+struct	s_plane;
+struct	s_cylinder;
+struct	s_scene;
 
 #endif

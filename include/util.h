@@ -25,4 +25,7 @@ char	*next_tok(const char *str);
 
 void	print_double3(t_double3 d);
 
+t_color	color_blend(t_color object, t_color light);
+
+
 #endif

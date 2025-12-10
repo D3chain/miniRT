@@ -73,9 +73,9 @@ void	complete_C(struct s_app *app, struct s_camera *camera)
 	if (camera->dir.y > 0.99)
 		camera->viewport_u = (t_double3){1.0, 0.0, 0.0};
 	else
-		camera->viewport_u = mul3(vector_normalise(cross3(camera->dir, (t_double3){0.0, 1.0, 0.0})), camera->viewport_width);
+		camera->viewport_u = mul3(normalize3(cross3(camera->dir, (t_double3){0.0, 1.0, 0.0})), camera->viewport_width);
 	camera->viewport_u_px = mul3(camera->viewport_u, 1.0 / WIN_WIDTH);
-	camera->viewport_v = mul3(vector_normalise(cross3(camera->dir, camera->viewport_u)), camera->viewport_height);
+	camera->viewport_v = mul3(normalize3(cross3(camera->dir, camera->viewport_u)), camera->viewport_height);
 	camera->viewport_v_px = mul3(camera->viewport_v, 1.0 / WIN_HEIGHT);
 	camera->viewport_upper_left = minus3(plus3(camera->focal_center, camera->dir), plus3(mul3(camera->viewport_u, 0.5), mul3(camera->viewport_v, 0.5)));
 	camera->pixel00_loc = plus3(plus3(camera->viewport_upper_left, mul3(camera->viewport_u_px, 0.5)),
@@ -95,7 +95,7 @@ void	complete_pl(struct s_app *app, struct s_elem *elem)
 	struct s_plane	*plane;
 
 	plane = &elem->u.plane;
-	plane->normal = vector_normalise(plane->normal);
+	plane->normal = normalize3(plane->normal);
 }
 
 void	complete_sp(struct s_app *app, struct s_elem *elem)
@@ -112,7 +112,7 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 
 	cylinder = &elem->u.cylinder;
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
-	cylinder->axis = vector_normalise(cylinder->axis);
+	cylinder->axis = normalize3(cylinder->axis);
 }
 
 static void	complete_scene(struct s_app *app, struct s_scene *scene)

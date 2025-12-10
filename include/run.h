@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/08 16:47:38 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:28:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n);
 struct s_hit_info	(*ray_func(int type))(const struct s_ray*, const void*);
 struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
+struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem);
+
 
 double	plane_dst(const struct s_ray *ray, const t_double3 normal, const t_double3 point);
 

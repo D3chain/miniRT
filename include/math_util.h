@@ -22,20 +22,22 @@ typedef struct s_sol2
 	double	r2;
 }	t_sol2;
 
-double		dot(t_double3 a, t_double3 b);
-double		sqdot(t_double3 v);
+double			dot(t_double3 a, t_double3 b);
+double			sqdot(t_double3 v);
 
-t_double3	dot3(t_double3 a, t_double3 b);
-t_double3	plus3(t_double3 a, t_double3 b);
-t_double3	minus3(t_double3 a, t_double3 b);
-t_double3	mul3(t_double3 a, double factor);
-t_double3	cross3(t_double3 a, t_double3 b);
+t_double3		dot3(t_double3 a, t_double3 b);
+t_double3		plus3(t_double3 a, t_double3 b);
+t_double3		minus3(t_double3 a, t_double3 b);
+t_double3		mul3(t_double3 a, double factor);
+t_double3		cross3(t_double3 a, t_double3 b);
 
-t_sol2		polynome2(double a, double b, double c);
+t_sol2			polynome2(double a, double b, double c);
 
-t_double3	vector_normalise(t_double3 v);
+t_double3		normalize3(t_double3 v);
 
-t_double3	project(const t_double3 origin, const t_double3 dir, const double dst);
-t_double3	orient_normal(t_double3 normal, t_double3 ray);
+t_double3		project(const t_double3 origin, const t_double3 dir, const double dst);
+t_double3		orient_normal(t_double3 normal, t_double3 ray);
+double			norm3(t_double3 vec);
+union u_color	mul_color(union u_color color, double factor);
 
 #endif

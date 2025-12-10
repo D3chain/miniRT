@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/08 16:47:38 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:38:28 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,33 @@ void	trace(struct s_app *app, int x, int y)
 	struct s_ray		ray;
 	struct s_hit_info	hit_info_1;
 	struct s_hit_info	hit_info_2;
+	union u_color		color;
 	
 	init_ray(app, &ray, x, y);
 
 	hit_info_1 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
-	ray.dir = vector_normalise(minus3(app->scene.light.coord, hit_info_1.hit_point));
+	ray.dir = normalize3(minus3(app->scene.light.coord, hit_info_1.hit_point));
 	ray.origin = hit_info_1.hit_point;
-	hit_info_2 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
-	if (hit_info_2.did_hit)
-		draw_pixel_to_img(&app->mlx.img, x, y, hit_info_1.color_material.value);
+	color = hit_info_1.color_material;
+
+	double	ratio = dot(hit_info_1.normal, ray.dir);;
+
+	if (ratio < EPSILON)
+		ratio = 0.0;
+	else
+	{
+		hit_info_2 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
+		if (hit_info_2.did_hit
+			&& ft_dblcmp(hit_info_2.dst,
+				norm3(minus3(app->scene.light.coord, ray.origin)), EPSILON) < 0.0)
+			ratio = 0.0;
+	}
+
+	ratio = fmin(1.0, ratio + app->scene.ambient.ratio);
+	color = mul_color(color, ratio * app->scene.light.ratio);
+	color = color_blend(color, app->scene.ambient.color);
+
+	draw_pixel_to_img(&app->mlx.img, x, y, color.value);
 }
 
 void	render(struct s_app *app)
