@@ -117,7 +117,7 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 
 static void	complete_scene(struct s_app *app, struct s_scene *scene)
 {
-	static int	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
+	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
 		complete_pl, complete_sp, complete_cy};
 	int	i;
 
@@ -140,6 +140,7 @@ int	load_scene(struct s_app *app, const char *file)
 	app->scene.n_elem = n_elem;
 	if (scan_elems_from_file(app, file))
 		return (app->status);
+	print_double3(app->scene.camera.focal_center);
 	complete_scene(app, &app->scene);
 	return (0);
 }

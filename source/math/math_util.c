@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/08 17:45:46 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/13 16:16:08 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,3 @@ double	norm3(t_double3 vec)
 	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }
 
-union u_color	mul_color(union u_color color, double factor)
-{
-	union u_color	res;
-
-	res.s_rgb.b = color.s_rgb.b * factor;
-	res.s_rgb.g = color.s_rgb.g * factor;
-	res.s_rgb.r = color.s_rgb.r * factor;
-	res.s_rgb.t = color.s_rgb.t;
-	return (res);
-}

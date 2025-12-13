@@ -13,7 +13,7 @@
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3
+CFLAGS		:=	-MMD -MP -g3 -O3 -ffast-math
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft

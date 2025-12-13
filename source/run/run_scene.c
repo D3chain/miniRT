@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/10 14:38:28 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/13 16:15:05 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ void	trace(struct s_app *app, int x, int y)
 	struct s_ray		ray;
 	struct s_hit_info	hit_info_1;
 	struct s_hit_info	hit_info_2;
-	union u_color		color;
+	t_color				color_light;
+	t_color				color_ambient;
+	t_color				color;
 	
 	init_ray(app, &ray, x, y);
 
 	hit_info_1 = ray_hit(&ray, app->scene.elems, app->scene.n_elem);
 	ray.dir = normalize3(minus3(app->scene.light.coord, hit_info_1.hit_point));
 	ray.origin = hit_info_1.hit_point;
-	color = hit_info_1.color_material;
 
 	double	ratio = dot(hit_info_1.normal, ray.dir);;
 
@@ -67,10 +68,11 @@ void	trace(struct s_app *app, int x, int y)
 				norm3(minus3(app->scene.light.coord, ray.origin)), EPSILON) < 0.0)
 			ratio = 0.0;
 	}
+	// ratio = fmin(1.0, ratio + app->scene.ambient.ratio);
+	color_light = mul_color(hit_info_1.color_material, app->scene.light.color, ratio * app->scene.light.ratio);
 
-	ratio = fmin(1.0, ratio + app->scene.ambient.ratio);
-	color = mul_color(color, ratio * app->scene.light.ratio);
-	color = color_blend(color, app->scene.ambient.color);
+	color_ambient = mul_color(hit_info_1.color_material, app->scene.ambient.color, app->scene.ambient.ratio);
+	color = color_blend(color_ambient, color_light);
 
 	draw_pixel_to_img(&app->mlx.img, x, y, color.value);
 }
@@ -86,8 +88,10 @@ void	render(struct s_app *app)
 		y = -1;
 		while (++y < WIN_HEIGHT)
 			trace(app, x, y);
+		// mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
 	}
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
+	printf("caca\n");
 }
 
 int run_scene(struct s_app *app)
