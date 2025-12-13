@@ -38,6 +38,7 @@ t_double3		normalize3(t_double3 v);
 t_double3		project(const t_double3 origin, const t_double3 dir, const double dst);
 t_double3		orient_normal(t_double3 normal, t_double3 ray);
 double			norm3(t_double3 vec);
-t_color			mul_color(t_color color, t_color color_light, double factor);
+t_color			color_add(t_color color1, t_color color2);
+t_color			mul_color(t_color color, t_color light, double factor);
 
 #endif

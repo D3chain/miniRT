@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/13 16:15:05 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:04:56 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	trace(struct s_app *app, int x, int y)
 	color_light = mul_color(hit_info_1.color_material, app->scene.light.color, ratio * app->scene.light.ratio);
 
 	color_ambient = mul_color(hit_info_1.color_material, app->scene.ambient.color, app->scene.ambient.ratio);
-	color = color_blend(color_ambient, color_light);
+	color = color_add(color_ambient, color_light);
 
 	draw_pixel_to_img(&app->mlx.img, x, y, color.value);
 }
@@ -88,10 +88,8 @@ void	render(struct s_app *app)
 		y = -1;
 		while (++y < WIN_HEIGHT)
 			trace(app, x, y);
-		// mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
 	}
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
-	printf("caca\n");
 }
 
 int run_scene(struct s_app *app)
