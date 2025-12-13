@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/13 17:04:56 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:23:08 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	render(struct s_app *app)
 			trace(app, x, y);
 	}
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
+	printf("caca\n");
 }
 
 int run_scene(struct s_app *app)

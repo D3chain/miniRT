@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:18:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/13 17:03:28 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:17:53 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_color	mul_color(t_color object, t_color light, double factor)
 {
 	t_color	res;
 
-	res.s_rgb.b = object.s_rgb.b * (light.s_rgb.b * factor / 255.0); 
-	res.s_rgb.g = object.s_rgb.g * (light.s_rgb.g * factor / 255.0);
-	res.s_rgb.r = object.s_rgb.r * (light.s_rgb.r * factor / 255.0);
+	res.s_rgb.b = fmin(255.0, object.s_rgb.b * (light.s_rgb.b * factor / 255.0)); 
+	res.s_rgb.g = fmin(255.0, object.s_rgb.g * (light.s_rgb.g * factor / 255.0));
+	res.s_rgb.r = fmin(255.0, object.s_rgb.r * (light.s_rgb.r * factor / 255.0));
 	res.s_rgb.t = object.s_rgb.t;
 	return (res);
 }
