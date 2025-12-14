@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/08 16:02:18 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/14 16:15:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ struct s_light
 	t_double3	coord;
 	double		ratio;
 	t_color		color;
+	// t_color		i_i;	/*	light intensity	*/
 };
 
 struct s_scene
@@ -120,4 +121,41 @@ struct s_hit_info
 	t_color		color_material;
 };
 
+struct s_material
+{
+	t_color	color;	/*	material color	*/
+	
+	t_color	ks;		/*	specular color	*/
+	t_color	kd;		/*	diffuse color (albedo)	*/
+	t_color	ka;		/*	ambiant color	*/
+	
+	t_color	i_s;	/*	specular result	*/
+	t_color	i_d;	/*	diffuse result*/
+
+	double	shininess;
+	// double	i_or;		/*	refraction	*/
+};
+
+
 #endif
+
+// // VECTEURS (directions, positions)
+// t_vector normal;           // N
+// t_vector view_dir;         // V
+// t_vector light_dir;        // L
+// t_vector reflection_dir;   // R
+// t_vector incident_dir;     // I
+
+// // COULEURS (RGB)
+// t_color light_color;       // Ii (couleur de lumière)
+// t_color specular_color;    // ks (couleur spéculaire matériau)
+// t_color diffuse_color;     // kd (couleur diffuse matériau)
+// t_color result_specular;   // Is
+// t_color result_diffuse;    // Id
+
+// // SCALAIRES (nombres)
+// double fresnel_coef;       // R de Schlick
+// double shininess;          // n (exposant)
+// double cos_theta;          // N·V ou R·V
+// double light_ratio;        // intensité lumière
+// double n1, n2;             // indices réfraction

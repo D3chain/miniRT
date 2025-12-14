@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 15:22:52 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/14 14:51:32 by cgajean          ###   ########.fr       */
+/*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
+/*   Updated: 2025/12/14 16:44:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-void	print_double3(t_double3 d, char *text)
+# include <stdint.h>
+
+typedef union u_color	t_color;
+
+t_color			color_add(t_color color1, t_color color2);
+t_color			mul_color(t_color color, t_color light, double factor);
+t_color			scale_color(t_color color, double factor);
+
+union u_color
 {
-	if (text)
-		printf("%s", text);
-	printf("(%lf, %lf, %lf)\n", d.x, d.y, d.z);
-}
+	uint32_t	value;
+	struct {
+		uint8_t	b;
+		uint8_t	g;
+		uint8_t	r;
+		uint8_t	t;
+	} s_rgb;
+};
+
+#endif

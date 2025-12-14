@@ -6,14 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/11/18 16:09:56 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/14 16:43:13 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-# include <stdint.h>
 # include "error.h"
 
 
@@ -40,18 +39,18 @@ typedef struct s_double3
 	double	z;
 }	t_double3;
 
-union u_color
-{
-	uint32_t	value;
-	struct {
-		uint8_t	b;
-		uint8_t	g;
-		uint8_t	r;
-		uint8_t	t;
-	} s_rgb;
-};
+// union u_color
+// {
+// 	uint32_t	value;
+// 	struct {
+// 		uint8_t	b;
+// 		uint8_t	g;
+// 		uint8_t	r;
+// 		uint8_t	t;
+// 	} s_rgb;
+// };
 
-typedef union u_color	t_color;
+// typedef union u_color	t_color;
 
 // ELEM
 struct	s_elem;
