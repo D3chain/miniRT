@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/14 16:15:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 11:19:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,17 +123,17 @@ struct s_hit_info
 
 struct s_material
 {
-	t_color	color;	/*	material color	*/
+	t_color	color;	/*	material color			*/
 	
-	t_color	ks;		/*	specular color	*/
+	t_color	ks;		/*	specular color			*/
 	t_color	kd;		/*	diffuse color (albedo)	*/
-	t_color	ka;		/*	ambiant color	*/
+	t_color	ka;		/*	ambiant color			*/
 	
-	t_color	i_s;	/*	specular result	*/
-	t_color	i_d;	/*	diffuse result*/
+	t_color	i_s;	/*	specular result			*/
+	t_color	i_d;	/*	diffuse result			*/
 
 	double	shininess;
-	// double	i_or;		/*	refraction	*/
+	double	i_or;	/*	refraction				*/
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/14 17:00:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 10:47:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,14 @@ void trace(struct s_app *app, int x, int y)
 	{
 		t_double3	R = reflect(mul3(L, -1.0), N);     			// Direction de réflexion
 		double		RdotV = fmax(0.0, dot(R, V));        		// Alignement réflexion-vue
-		double		shininess = 32.0;                      		// Netteté du reflet (10-200)
+		double		shininess = 8.0;                      		// Netteté du reflet (10-200)
 		double		ks = 1.0;                              		// Intensité spéculaire (0-1)
+		double		schlick = 0.4;								// Coefficient de Fresnel-Schlick (modulation de la reflexion speculaire)
 				
 		double		specular_factor = pow(RdotV, shininess);
 		specular = scale_color(
 									app->scene.light.color,
-									specular_factor * ks
+									specular_factor * ks * schlick
 								);
 	}
 	
