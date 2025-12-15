@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/14 16:41:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:56:59 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include "libft.h"
 
 /*	Local headers	*/
+# include "config.h"
 # include "color.h"
 # include "types.h"
 # include "scene.h"

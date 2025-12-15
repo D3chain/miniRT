@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 14:33:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:46:39 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,8 @@
 # include "minirt.h"
 
 # define 	FOCAL_LENGTH	1.0
-// # define VIEW_HEIGHT	2.0
 # define	N_SCENE_ITEMS	6
 # define	N_SCENE_ELEMS	(N_SCENE_ITEMS - 3)
-
-
-/*	refraction coefficients	*/
-# define IOR_AIR    		1.0
-# define IOR_WATER  		1.33
-# define IOR_GLASS  		1.5
-# define IOR_DIAMOND 		2.42
-# define IOR_ENVIRONMENT	IOR_AIR
 
 enum {
 	PLANE		= 0,
@@ -82,12 +73,6 @@ struct s_scene
 	double					environment_ior;
 };
 
-/*	material	*/
-
-// typedef struct s_ray		t_ray;
-// typedef struct s_hit_info	t_hit_info;
-
-
 typedef struct s_phong_effect
 {
 	// t_ray		primary_ray;
@@ -139,7 +124,6 @@ struct s_sphere
 	t_double3	coord;
 	double		radius;
 	double		radius_sq;
-	// t_color		color;
 	t_material	material;
 };
 
@@ -147,7 +131,6 @@ struct s_plane
 {
 	t_double3	coord;
 	t_double3	normal;
-	// t_color		color;
 	t_material	material;
 
 };
@@ -159,7 +142,6 @@ struct s_cylinder
 	double		radius;
 	double		radius_sq;
 	double		height;
-	// t_color		color;
 	t_material	material;
 };
 
@@ -185,10 +167,8 @@ struct s_hit_info
 	double		dst;
 	t_double3	hit_point;
 	t_double3	normal;
-	// t_color		color_material;
 	t_material	material;
 };
-
 
 #endif
 

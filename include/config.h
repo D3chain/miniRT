@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:11:58 by cgajean          ###   ########.fr       */
+/*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
+/*   Updated: 2025/12/15 16:02:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#ifndef CONFIG_H
+# define CONFIG_H
 
 # include "minirt.h"
 
-// TYPE DEF
+# define COEF_SPEC 0.75
+# define SHININESS 100
 
-typedef enum e_status
-{
-	ERR_NONE	= 0,
-	ERR_SYS		= 1,
-	ERR_MLX		= 2,
-	ERR_PARS	= 3
-}	t_status;
+# ifndef WIN_WIDTH
+#  define WIN_WIDTH 1920
+# endif
 
-typedef struct s_double3
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_double3;
+# ifdef WIN_WIDTH
+#  if WIN_WIDTH < 1
+#   define WIN_WIDTH 1
+#  endif
+# endif
 
-// ELEM
-struct	s_elem;
-struct	s_ambient_lightning;
-struct	s_camera;
-struct	s_light;
-struct	s_sphere;
-struct	s_plane;
-struct	s_cylinder;
-struct	s_scene;
+# define EPSILON	0.00001
+
+# ifndef WIN_HEIGHT
+#  define WIN_HEIGHT 1080
+# endif
+
+# ifdef WIN_HEIGHT
+#  if WIN_HEIGHT < 1
+#   define WIN_HEIGHT 1
+#  endif
+# endif
+
+# define IMG_RATIO	((double) WIN_WIDTH / WIN_HEIGHT)
 
 #endif

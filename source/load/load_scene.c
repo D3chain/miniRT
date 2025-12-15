@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 13:59:10 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:34:59 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,31 @@ static int	count_elems_from_file(struct s_app *app, const char *file)
 	return (n_elem);
 }
 
+static int	scan_elem(struct s_app *app, const char *line)
+{
+	int					i;
+	static int			i_elem;
+	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy"};
+	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, const char *, int *) = {
+		scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy};
+
+	i = 0;
+	while (i < N_SCENE_ITEMS)
+	{
+		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
+		{
+			scan_fct[i](app, next_tok(line), &i_elem);
+			if (i > 2)
+				i_elem++;
+			break ;
+		}
+		++i;
+	}
+	if (i == N_SCENE_ITEMS)
+		app->status = ERR_PARS;
+	return (app->status);
+}
+
 static int	scan_elems_from_file(struct s_app *app, const char *file)
 {
 	int		fd;
@@ -56,65 +81,6 @@ static int	scan_elems_from_file(struct s_app *app, const char *file)
 	return (0);
 }
 
-void	complete_A(struct s_app *app, struct s_ambient *ambient)
-{
-	if (ambient->ratio > 1.0)
-		ambient->ratio = 1.0;
-	if (ambient->ratio < 0.0)
-		ambient->ratio = 0.0;
-}
-
-void	complete_C(struct s_app *app, struct s_camera *camera)
-{
-	camera->focal_length = FOCAL_LENGTH;
-	camera->fov_rad = ft_toradian(camera->fov);
-	camera->viewport_height = 2.0 * tan(camera->fov_rad / 2.0) * camera->focal_length;
-	camera->viewport_width = camera->viewport_height * IMG_RATIO;
-	if (camera->dir.y > 0.99 || camera->dir.y < -0.99)
-		camera->viewport_u = (t_double3){1.0, 0.0, 0.0};
-	else
-		camera->viewport_u = mul3(normalize3(cross3(camera->dir, (t_double3){0.0, -1.0, 0.0})), camera->viewport_width);
-	camera->viewport_u_px = mul3(camera->viewport_u, 1.0 / WIN_WIDTH);
-	camera->viewport_v = mul3(normalize3(cross3(camera->dir, camera->viewport_u)), -camera->viewport_height);
-	camera->viewport_v_px = mul3(camera->viewport_v, 1.0 / WIN_HEIGHT);
-	camera->viewport_upper_left = minus3(plus3(camera->focal_center, camera->dir), plus3(mul3(camera->viewport_u, 0.5), mul3(camera->viewport_v, 0.5)));
-	camera->pixel00_loc = plus3(plus3(camera->viewport_upper_left, mul3(camera->viewport_u_px, 0.5)),
-			mul3(camera->viewport_v_px, 0.5));
-}
-
-void	complete_L(struct s_app *app, struct s_light *light)
-{
-	if (light->ratio > 1.0)
-		light->ratio = 1.0;
-	if (light->ratio < 0.0)
-		light->ratio = 0.0;
-}
-
-void	complete_pl(struct s_app *app, struct s_elem *elem)
-{
-	struct s_plane	*plane;
-
-	plane = &elem->u.plane;
-	plane->normal = normalize3(plane->normal);
-}
-
-void	complete_sp(struct s_app *app, struct s_elem *elem)
-{
-	struct s_sphere	*sphere;
-
-	sphere = &elem->u.sphere;
-	sphere->radius_sq = sphere->radius * sphere->radius;
-}
-
-void	complete_cy(struct s_app *app, struct s_elem *elem)
-{
-	struct s_cylinder	*cylinder;
-
-	cylinder = &elem->u.cylinder;
-	cylinder->radius_sq = cylinder->radius * cylinder->radius;
-	cylinder->axis = normalize3(cylinder->axis);
-}
-
 static void	complete_scene(struct s_app *app, struct s_scene *scene)
 {
 	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
@@ -127,8 +93,6 @@ static void	complete_scene(struct s_app *app, struct s_scene *scene)
 	i = -1;
 	while (++i < scene->n_elem)
 		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
-	
-	scene->environment_ior = IOR_ENVIRONMENT;
 }
 
 int	load_scene(struct s_app *app, const char *file)

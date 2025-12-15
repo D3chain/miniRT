@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/10 14:28:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:11:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	event_keyboard_press(int key, struct s_app *app);
 
 // HIT
 struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n);
-struct s_hit_info	(*ray_func(int type))(const struct s_ray*, const void*);
 struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem);

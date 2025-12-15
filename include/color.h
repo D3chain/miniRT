@@ -6,14 +6,20 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/14 16:44:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:12:12 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-# include <stdint.h>
+# include <minirt.h>
+
+# define WHITE	0xFFFFFF
+# define BLACK	0x0
+# define RED	0xFF0000
+# define GREEN	0xFF00
+# define BLUE 	0xFF
 
 typedef union u_color	t_color;
 

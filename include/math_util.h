@@ -17,7 +17,7 @@
 
 typedef struct s_sol2
 {
-	int	n;
+	int		n;
 	double	r1;
 	double	r2;
 }	t_sol2;

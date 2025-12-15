@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/15 13:13:07 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/15 15:35:37 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ CFLAGS		+= -lX11 -lXext #-lmlx
 
 ROOT_SRC	:=	main.c
 
-INIT_SRC	:=	init_app.c init_mlx.c init_scene.c
-LOAD_SRC	:=	load_scene.c scan_elem.c scan_numbers.c
+INIT_SRC	:=	init_app.c
+LOAD_SRC	:=	load_scene.c scan_CAL.c scan_elem.c scan_numbers.c complete_CAL.c complete_elem.c
 RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ray_hit_plane.c draw_pixel_to_img.c util/closest_hit_dst.c
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c

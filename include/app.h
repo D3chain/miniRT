@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   app.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/08 16:36:14 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:48:06 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 # define APP_H
 
 # include "minirt.h"
-
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH 800
-# endif
-
-# define EPSILON	0.00001
-
-# ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 600
-# endif
-
-# define IMG_RATIO	((double) WIN_WIDTH / WIN_HEIGHT)
 
 struct s_img
 {

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 13:34:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:07:39 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static int	quit(struct s_app *app)
 
 int	main(int argc, char *argv[])
 {
-	srand(time(NULL));
-
 	struct s_app	app;
 
 	if (init_app(&app, argc, argv))
