@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:42 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/15 11:27:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 13:20:04 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 	{
 		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
 		closest_hit.normal = orient_normal(plane.normal, ray->dir);
-		closest_hit.color_material = plane.material.color;
+		// closest_hit.material.color = plane.material.color;
+		closest_hit.material = plane.material;
 	}
 	return (closest_hit);
 }

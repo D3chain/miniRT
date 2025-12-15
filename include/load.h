@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:52:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 18:22:46 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 13:16:41 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include "minirt.h"
 
 int	load_scene(struct s_app *app, const char *file);
+
+void	randomize_material(t_material *original);
 
 #endif

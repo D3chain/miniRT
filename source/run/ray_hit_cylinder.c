@@ -87,8 +87,8 @@ struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 			closest_hit.normal = orient_normal(normal_tube(&cylinder, closest_hit.hit_point), ray->dir); 
 		}
 	}
-	closest_hit.color_material.value = cylinder.material.color.value;
+	// closest_hit.material.color.value = cylinder.material.color.value;
+	closest_hit.material = cylinder.material;
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	return (closest_hit);
 }
-

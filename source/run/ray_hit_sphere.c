@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/15 11:27:39 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 13:20:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 		{
 			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
 			closest_hit.normal = orient_normal(normalize3(minus3(closest_hit.hit_point, sphere.coord)), ray->dir);
-			closest_hit.color_material = sphere.material.color;
+			// closest_hit.material.color = sphere.material.color;
+			closest_hit.material = sphere.material;
 		}
 	}
 	return (closest_hit);

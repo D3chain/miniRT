@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/10 14:28:31 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/15 13:13:07 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ra
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
-UTIL_SRC	:=	color.c token.c print.c
+UTIL_SRC	:=	color.c token.c print.c randomize_material.c
 
 SRC_PATHS	:= \
 	$(addprefix init/,$(INIT_SRC)) 			\

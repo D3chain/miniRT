@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/10 14:27:55 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 12:24:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 {
 	static struct s_hit_info	(*ray_hit_func[])(const struct s_ray *, const void*) = {ray_hit_plane, ray_hit_sphere, ray_hit_cylinder};
-	struct s_hit_info	closest_hit;
-	struct s_hit_info	hit_point;
-	int					i;
+	struct s_hit_info			closest_hit;
+	struct s_hit_info			hit_point;
+	int							i;
 
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	ft_bzero(&hit_point, sizeof(hit_point));

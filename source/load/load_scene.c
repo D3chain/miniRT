@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/13 17:29:31 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:59:10 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ static void	complete_scene(struct s_app *app, struct s_scene *scene)
 	i = -1;
 	while (++i < scene->n_elem)
 		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
+	
+	scene->environment_ior = IOR_ENVIRONMENT;
 }
 
 int	load_scene(struct s_app *app, const char *file)
