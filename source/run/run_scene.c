@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 10:47:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 11:36:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void trace(struct s_app *app, int x, int y)
 		double		RdotV = fmax(0.0, dot(R, V));        		// Alignement réflexion-vue
 		double		shininess = 8.0;                      		// Netteté du reflet (10-200)
 		double		ks = 1.0;                              		// Intensité spéculaire (0-1)
-		double		schlick = 0.4;								// Coefficient de Fresnel-Schlick (modulation de la reflexion speculaire)
+		double		schlick = 1.0;								// Coefficient de Fresnel-Schlick (modulation de la reflexion speculaire)
 				
 		double		specular_factor = pow(RdotV, shininess);
 		specular = scale_color(
@@ -184,7 +184,7 @@ void trace(struct s_app *app, int x, int y)
 /********************************************************************************************************************************************************* */
 
 
-//	version speculaire 1 qui fonctionne
+	// version speculaire 1 qui fonctionne
 
 
 // void	trace(struct s_app *app, int x, int y)

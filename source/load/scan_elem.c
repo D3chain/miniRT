@@ -72,7 +72,7 @@ int	parse_pl(struct s_app *app, const char *line, int *i_elem)
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.elems[*i_elem].u.plane.color, line);
+	line += scan_color(app, &app->scene.elems[*i_elem].u.plane.material.color, line);
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
@@ -91,7 +91,7 @@ int	parse_sp(struct s_app *app, const char *line, int *i_elem)
 		return (app->status);
 	app->scene.elems[*i_elem].u.sphere.radius /= 2;
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.elems[*i_elem].u.sphere.color, line);
+	line += scan_color(app, &app->scene.elems[*i_elem].u.sphere.material.color, line);
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
@@ -118,7 +118,7 @@ int	parse_cy(struct s_app *app, const char *line, int *i_elem)
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.elems[*i_elem].u.cylinder.color, line);
+	line += scan_color(app, &app->scene.elems[*i_elem].u.cylinder.material.color, line);
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);

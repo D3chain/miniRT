@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 11:19:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/15 11:26:08 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ enum {
 	SPHERE		= 1,
 	CYLINDER	= 2
 };
+
+/*	scene	*/
 
 struct s_camera
 {
@@ -54,7 +56,7 @@ struct s_light
 	t_double3	coord;
 	double		ratio;
 	t_color		color;
-	// t_color		i_i;	/*	light intensity	*/
+	
 };
 
 struct s_scene
@@ -69,6 +71,23 @@ struct s_scene
 	int						n_elem;
 };
 
+/*	material	*/
+
+typedef struct s_material
+{
+	t_color	color;	/*	material color			*/
+	
+	t_color	ks;		/*	specular color			*/
+	t_color	kd;		/*	diffuse color (albedo)	*/
+	t_color	ka;		/*	ambiant color			*/
+	
+	t_color	i_s;	/*	specular result			*/
+	t_color	i_d;	/*	diffuse result			*/
+	
+	double	shininess;
+	double	i_or;	/*	refraction				*/
+} t_material;
+
 /* shapes */
 
 struct s_sphere
@@ -76,14 +95,17 @@ struct s_sphere
 	t_double3	coord;
 	double		radius;
 	double		radius_sq;
-	t_color		color;
+	// t_color		color;
+	t_material	material;
 };
 
 struct s_plane
 {
 	t_double3	coord;
 	t_double3	normal;
-	t_color		color;
+	// t_color		color;
+	t_material	material;
+
 };
 
 struct s_cylinder
@@ -93,7 +115,8 @@ struct s_cylinder
 	double		radius;
 	double		radius_sq;
 	double		height;
-	t_color		color;
+	// t_color		color;
+	t_material	material;
 };
 
 struct s_elem
@@ -119,21 +142,7 @@ struct s_hit_info
 	t_double3	hit_point;
 	t_double3	normal;
 	t_color		color_material;
-};
-
-struct s_material
-{
-	t_color	color;	/*	material color			*/
-	
-	t_color	ks;		/*	specular color			*/
-	t_color	kd;		/*	diffuse color (albedo)	*/
-	t_color	ka;		/*	ambiant color			*/
-	
-	t_color	i_s;	/*	specular result			*/
-	t_color	i_d;	/*	diffuse result			*/
-
-	double	shininess;
-	double	i_or;	/*	refraction				*/
+	t_material	material;
 };
 
 
