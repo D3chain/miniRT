@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complete_elem.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/15 16:05:15 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/16 15:24:38 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	complete_pl(struct s_app *app, struct s_elem *elem)
 
 	plane = &elem->u.plane;
 	plane->normal = normalize3(plane->normal);
-	complete_material(&plane->material);
+	randomize_material(&plane->material);
 }
 
 void	complete_sp(struct s_app *app, struct s_elem *elem)
@@ -33,7 +33,7 @@ void	complete_sp(struct s_app *app, struct s_elem *elem)
 
 	sphere = &elem->u.sphere;
 	sphere->radius_sq = sphere->radius * sphere->radius;
-	complete_material(&sphere->material);
+	randomize_material(&sphere->material);
 }
 
 void	complete_cy(struct s_app *app, struct s_elem *elem)
@@ -43,5 +43,5 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 	cylinder = &elem->u.cylinder;
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
 	cylinder->axis = normalize3(cylinder->axis);
-	complete_material(&cylinder->material);
+	randomize_material(&cylinder->material);
 }

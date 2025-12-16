@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 14:49:00 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/16 17:14:32 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-#define NEW
+#define PHONG
 
 void	init_ray(struct s_app *app, struct s_ray *ray, int x, int y)
 {
@@ -126,7 +126,7 @@ void trace(struct s_app *app, int x, int y)
 		double			RdotV = fmax(0.0, dot(R, V));        		// Alignement réflexion-vue
 		// double		shininess = 200.0;                      	// Netteté du reflet (10-200)
 		// double		ks = 1.0;                              		// Intensité spéculaire (0-1)
-		double		schlick = 0.95;								// Coefficient de Fresnel-Schlick (modulation de la reflexion speculaire)
+		double			schlick = 0.95;								// Coefficient de Fresnel-Schlick (modulation de la reflexion speculaire)
 		// double			schlick = fresnel_schlick(app, hit_info);
 		// printf("schlick = %lf\n", schlick);
 				
@@ -142,6 +142,8 @@ void trace(struct s_app *app, int x, int y)
 	// ============================================================================
 	// Modèle de Phong : I = Ia + Id + Is
 	t_color			final = color_add(ambient, color_add(diffuse, specular));
+
+	// final = linear_to_srgb_approx(final);
 	
 	draw_pixel_to_img(&app->mlx.img, x, y, final.value);
 }

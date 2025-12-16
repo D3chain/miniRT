@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:36:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/16 16:44:40 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int		scan_color(struct s_app *app, t_color *res, const char *str);
 char	*next_tok(const char *str);
 
 void	print_double3(t_double3 d, char *text);
+void	print_color(t_color color, char *text);
+
 
 #endif

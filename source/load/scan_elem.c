@@ -24,6 +24,9 @@ int	scan_pl(struct s_app *app, const char *line, int *i_elem)
 		return (app->status);
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.elems[*i_elem].u.plane.material.color, line);
+
+	app->scene.elems[*i_elem].u.plane.material.color_linear = srgb_to_linear_color(app->scene.elems[*i_elem].u.plane.material.color);
+
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
@@ -43,6 +46,9 @@ int	scan_sp(struct s_app *app, const char *line, int *i_elem)
 	app->scene.elems[*i_elem].u.sphere.radius /= 2;
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.elems[*i_elem].u.sphere.material.color, line);
+
+	app->scene.elems[*i_elem].u.sphere.material.color_linear = srgb_to_linear_color(app->scene.elems[*i_elem].u.sphere.material.color);
+
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
@@ -70,6 +76,9 @@ int	scan_cy(struct s_app *app, const char *line, int *i_elem)
 		return (app->status);
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.elems[*i_elem].u.cylinder.material.color, line);
+
+	app->scene.elems[*i_elem].u.cylinder.material.color_linear = srgb_to_linear_color(app->scene.elems[*i_elem].u.cylinder.material.color);
+
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);			

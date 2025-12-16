@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/15 15:35:37 by cgajean          ###   ########.fr        #
+#    Updated: 2025/12/16 15:39:01 by fox              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@ INCLUDE		:=	include $(LIBFT_DIR)/include $(MLX_DIR)
 CFLAGS		+=	$(addprefix -I, $(INCLUDE))
 
 # /* librairy flags */
-CFLAGS		+= -lm
-CFLAGS		+= -lX11 -lXext #-lmlx 
+LDLIBS		+= -lXext -lX11 -lm -lbsd
 
 ROOT_SRC	:=	main.c
 
@@ -63,7 +62,7 @@ mlx:
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $@ \
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(LDLIBS) -o $@ \
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)

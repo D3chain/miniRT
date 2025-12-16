@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_per.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:05:34 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:13:11 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/16 15:13:44 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	err_per(int code, const char *ctx)
 {
-	char	err_buf[BUFSIZ];
+/* 	char	err_buf[BUFSIZ];
 	int		i;
 
 	if (ft_strlen(ctx) + ft_strlen(strerror(errno)) + 14 > BUFSIZ - 1)
@@ -22,7 +22,7 @@ int	err_per(int code, const char *ctx)
 	i = 0;
 	i += fill2(err_buf, "miniRT: ", ctx);
 	i += fill3(err_buf + i, ": ", strerror(errno), "\n");
-	write(2, err_buf, i);
+	write(2, err_buf, i); */
 	return (code);
 }
 
