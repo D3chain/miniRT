@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 11:57:19 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 13:59:22 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ typedef struct s_phong_effect
 	t_color	diffuse_color;
 	t_color	specular_color;
 	t_color	final_color;
+
+	t_color_linear	ambient_light_color_linear;
+	t_color_linear	light_color_linear;
 
 	t_color_linear	diffuse_color_linear;
 	t_color_linear	specular_color_linear;

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 12:27:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 14:05:36 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static inline t_double3 reflect(t_double3 incident, t_double3 normal)
 
 static inline void	ambient_light(struct s_scene *scene, t_phong *phong)
 {
-	scene->ambient.color_linear = mul_color_linear(
+	phong->ambient_light_color_linear = mul_color_linear(
 		phong->hit_info.material.color_linear,
 		scene->ambient.color_linear,
-		scene->ambient.ratio
+		scene->ambient.ratio * phong->hit_info.material.ka
 	);
-	phong->final_color_linear = scene->ambient.color_linear;
+	phong->final_color_linear = phong->ambient_light_color_linear;
 }
 
 static inline void	diffuse_specular_light(struct s_scene *scene, t_phong *phong)
@@ -38,7 +38,7 @@ static inline void	diffuse_specular_light(struct s_scene *scene, t_phong *phong)
 		phong->diffuse_color_linear = mul_color_linear(
 			phong->hit_info.material.color_linear,
 			scene->light.color_linear,
-			phong->NdotL * scene->light.ratio
+			phong->NdotL * scene->light.ratio * phong->hit_info.material.kd
 		);
 
 		phong->R = reflect(mul3(phong->L, -1.0), phong->N);
