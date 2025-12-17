@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_linear.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/16 23:56:46 by fox               #+#    #+#             */
+/*   Updated: 2025/12/17 00:09:53 by fox              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minirt.h"
+
+t_color_linear mul_color_linear(t_color_linear a, t_color_linear b, double factor)
+{
+	return ((t_color_linear){a.r * b.r * factor, a.g * b.g * factor, a.b * b.b * factor});
+};
+
+t_color_linear scale_color_linear(t_color_linear col, double factor)
+{
+	col.r *= factor;
+	col.g *= factor;
+	col.b *= factor;
+	return (col);
+}
+
+t_color_linear color_add_linear(t_color_linear a, t_color_linear b)
+{
+	return ((t_color_linear){a.r + b.r, a.g + b.g, a.b + b.b});
+}

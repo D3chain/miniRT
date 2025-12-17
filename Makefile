@@ -6,7 +6,7 @@
 #    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/16 15:39:01 by fox              ###   ########.fr        #
+#    Updated: 2025/12/17 00:46:15 by fox              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ra
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
-UTIL_SRC	:=	color.c token.c print.c randomize_material.c
+COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c
+UTIL_SRC	:=	token.c print.c randomize_material.c
 
 SRC_PATHS	:= \
 	$(addprefix init/,$(INIT_SRC)) 			\
@@ -42,6 +43,7 @@ SRC_PATHS	:= \
 	$(addprefix wrapper/,$(WRAPPER_SRC)) 	\
 	$(addprefix util/,$(UTIL_SRC)) 			\
 	$(addprefix error/,$(ERROR_SRC)) 		\
+	$(addprefix color/,$(COLOR_SRC)) 		\
 	$(ROOT_SRC)
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC_PATHS))

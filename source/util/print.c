@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:22:52 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 16:46:33 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/16 17:17:52 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ void	print_color(t_color color, char *text)
 	if (text)
 		printf("%s", text);
 	printf("(r=%du, g=%du, b=%du)\n", color.s_rgb.r, color.s_rgb.g, color.s_rgb.b);
+}
+
+void	print_color_linear(t_color_linear color, char *text)
+{
+	if (text)
+		printf("%s", text);
+	printf("(r=%lf, g=%lf, b=%lf)\n", color.r, color.g, color.b);
 }
