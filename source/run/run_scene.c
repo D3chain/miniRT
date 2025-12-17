@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 12:19:37 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 14:48:25 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,26 @@ static inline void	trace(struct s_app *app, int x, int y)
 	phong.hit_info = ray_hit(&phong.primary_ray, app->scene.elems, app->scene.n_elem);
 	
 	if (!phong.hit_info.did_hit)
-		return draw_pixel_to_img(&app->mlx.img, x, y, BLACK);
+		return (draw_pixel_to_img(&app->mlx.img, x, y, BLACK));
 
 	phong_effect(&app->scene, &phong);
-
+	
 	draw_pixel_to_img(&app->mlx.img, x, y, phong.final_color.value);
+}
+
+static int	trace(struct s_app *app, struct s_ray *ray)
+{
+	t_phong	phong;
+
+	ft_bzero(&phong, sizeof(phong));
+	phong.hit_info = ray_hit(&phong.primary_ray, app->scene.elems, app->scene.n_elem);
+	if (!phong.hit_info.did_hit)
+		return (BLACK);
+	
+	phong_init;
+
+
+	return (phong.final_color.value);
 }
 
 void	render(struct s_app *app)
@@ -51,7 +66,7 @@ void	render(struct s_app *app)
 	{
 		y = -1;
 		while (++y < WIN_HEIGHT)
-			trace(app, x, y);
+			draw_pixel_to_img(&app->mlx.img, x, y, trace(app, ));
 	}
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
 	printf("image printed\n");
