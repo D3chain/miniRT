@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:40:36 by fox               #+#    #+#             */
-/*   Updated: 2025/12/17 12:35:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 12:39:37 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	scan_pl(struct s_app *app, const char *line, int *i_elem)
 		return (app->status);
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.elems[*i_elem].u.plane.material.color, line);
-
-
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
