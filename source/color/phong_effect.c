@@ -6,19 +6,11 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 14:44:59 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:46:50 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static inline t_double3 reflect(t_double3 incident, t_double3 normal)
-{
-	// Formule : R = I - 2(I·N)N
-	const double		dot_product = dot(incident, normal);
-	const t_double3		scaled_normal = mul3(normal, 2.0 * dot_product);
-	return (minus3(incident, scaled_normal));
-}
 
 static inline void	ambient_light(struct s_scene *scene, t_phong *phong)
 {
@@ -56,8 +48,9 @@ static inline void	diffuse_specular_light(struct s_scene *scene, t_phong *phong)
 	}	
 }
 
-static inline void	collision(struct s_scene *scene, t_phong *phong)
+static inline void	collision(struct s_scene *scene, t_phong *phong, t_hit_info *hit_info)
 {
+	phong->hit_info = *hit_info;
 	phong->P = phong->hit_info.hit_point;
 	phong->N = normalize3(phong->hit_info.normal);
 	phong->V = normalize3(minus3(scene->camera.focal_center, phong->P));
@@ -72,16 +65,17 @@ static inline void	collision(struct s_scene *scene, t_phong *phong)
 	phong->in_shadow = (phong->shadow_hit.did_hit && phong->shadow_hit.dst < phong->light_distance - EPSILON);
 }
 
-void phong_effect(struct s_scene *scene, t_phong *phong)
+t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 {
-	collision(scene, phong);
-	ambient_light(scene, phong);
-	diffuse_specular_light(scene, phong);	
+	t_phong	phong;
 
-	phong->final_color_linear = tone_map_aces(phong->final_color_linear);
+	ft_bzero(&phong, sizeof(phong));
+	collision(scene, &phong, hit_info);
+	ambient_light(scene, &phong);
+	diffuse_specular_light(scene, &phong);	
+	return (phong.final_color_linear);
+	// phong->final_color_linear = tone_map_aces(phong->final_color_linear);
 	// phong->final_color_linear = tone_map_reinhard(phong->final_color_linear);
 	// phong->final_color_linear = tone_map_luminance(phong->final_color_linear);
-	// phong->final_color_linear = tone_map_clamp(phong->final_color_linear);
-	
-	phong->final_color = linear_to_srgb_color(phong->final_color_linear);
+	// phong->final_color_linear = tone_map_clamp(phong->final_color_linear);	
 }

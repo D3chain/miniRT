@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:02:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/13 16:16:08 by echatela         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:47:00 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,13 @@ t_double3	orient_normal(t_double3 normal, t_double3 ray)
 double	norm3(t_double3 vec)
 {
 	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
+}
+
+t_double3 reflect(t_double3 incident, t_double3 normal)
+{
+	// Formule : R = I - 2(I·N)N
+	const double		dot_product = dot(incident, normal);
+	const t_double3		scaled_normal = mul3(normal, 2.0 * dot_product);
+	return (minus3(incident, scaled_normal));
 }
 

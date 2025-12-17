@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randomize_material.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:51:11 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 14:14:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 17:03:32 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	randomize_material(t_material *original)
 	original->ks_intensity = 1.0;
 	original->shininess = 400;
 	original->ior = 1.5;
+
+	original->kr = 0.7;
+	original->kt = 0.7;
 }
 
 

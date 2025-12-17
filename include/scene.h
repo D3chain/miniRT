@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 13:59:22 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 16:25:22 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ typedef struct s_material
 	double	shininess;		/*	nettete du reflet (10-200)					*/
 	double	ks_intensity;	/*	intensite du reflet (0-1)					*/
 	double	ior;			/*	indice de refraction						*/
+
+	double	kr;
+	double	kt;
 } t_material;
 
 struct s_hit_info
@@ -117,7 +120,6 @@ struct s_hit_info
 	double		dst;
 	t_double3	hit_point;
 	t_double3	normal;
-	// t_color		color_material;
 	t_material	material;
 };
 
@@ -141,17 +143,14 @@ typedef struct s_phong_effect
 	t_color	i_d;	/*	intensite diffuse calculee		*/
 	t_color	i_s;	/*	intensite speculaire calculee	*/
 
-	t_color	ambient_color;
-	t_color	diffuse_color;
-	t_color	specular_color;
-	t_color	final_color;
-
 	t_color_linear	ambient_light_color_linear;
 	t_color_linear	light_color_linear;
 
 	t_color_linear	diffuse_color_linear;
 	t_color_linear	specular_color_linear;
+
 	t_color_linear	final_color_linear;
+
 
 	double	light_distance;
 	
@@ -161,8 +160,6 @@ typedef struct s_phong_effect
 	bool	in_shadow;
 } t_phong;
 
-
-
 /* shapes */
 
 struct s_sphere
@@ -170,7 +167,6 @@ struct s_sphere
 	t_double3	coord;
 	double		radius;
 	double		radius_sq;
-	// t_color		color;
 	t_material	material;
 };
 
@@ -178,7 +174,6 @@ struct s_plane
 {
 	t_double3	coord;
 	t_double3	normal;
-	// t_color		color;
 	t_material	material;
 
 };
@@ -190,7 +185,6 @@ struct s_cylinder
 	double		radius;
 	double		radius_sq;
 	double		height;
-	// t_color		color;
 	t_material	material;
 };
 
