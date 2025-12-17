@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:51:11 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 14:07:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 14:14:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	randomize_material(t_material *original)
 // 	tmp_s = (double) rand() / RAND_MAX;	
 
 // 	tmp_a = tmp_a < 0.1 ? 0.1 : tmp_a;
-// 	tmp_d = tmp_d < 0.4 ? 0.5 : tmp_d;
+// 	tmp_d = tmp_d < 0.4 ? 0.5 255: tmp_d;
 // 	tmp_s = tmp_s < 0.6 ? 0.8 : tmp_s;
 	
 // 	tmp_a = tmp_a > 0.2 ? 0.2 : tmp_a;
