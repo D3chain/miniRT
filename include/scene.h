@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 01:00:31 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/17 11:33:20 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,45 +86,15 @@ struct s_scene
 
 /*	material	*/
 
-// typedef struct s_ray		t_ray;
-// typedef struct s_hit_info	t_hit_info;
+typedef struct s_ray		t_ray;
+typedef struct s_hit_info	t_hit_info;
 
 
-typedef struct s_phong_effect
+struct s_ray
 {
-	// t_ray		primary_ray;
-	// t_ray		shadow_ray;
-	// t_hit_info	hit_info;
-	// t_hit_info	shadow_hit;	
-	
-	t_double3	N;	
-	t_double3	P;	/*	point d'impact							*/
-	t_double3	V;	/*	direction vers la camera				*/
-	t_double3	L;	/*	direction vers la lumiere				*/
-	t_double3	R;	/*	direction des reflexions (speculaire)	*/
-
-	double		NdotL;
-	double		RdotV;
-	
-	t_color	i_a;	/*	intensite ambient calculee		*/
-	t_color	i_d;	/*	intensite diffuse calculee		*/
-	t_color	i_s;	/*	intensite speculaire calculee	*/
-
-	// t_color	ambient_color;
-	// t_color	diffuse_color;
-	// t_color	specular_color;
-	// t_color	final_color;
-	
-	t_color_linear	ambient_color_linear;
-	t_color_linear	diffuse_color_linear;
-	t_color_linear	specular_color_linear;
-	t_color_linear	final_color_linear;
-
-	double	schlick_factor;
-	double	specular_factor;
-
-	bool	in_shadow;
-} t_phong;
+	t_double3	origin;
+	t_double3	dir;
+};
 
 typedef struct s_material
 {
@@ -140,6 +110,55 @@ typedef struct s_material
 	double	ks_intensity;	/*	intensite du reflet (0-1)					*/
 	double	ior;			/*	indice de refraction						*/
 } t_material;
+
+struct s_hit_info
+{
+	bool		did_hit;
+	double		dst;
+	t_double3	hit_point;
+	t_double3	normal;
+	// t_color		color_material;
+	t_material	material;
+};
+
+typedef struct s_phong_effect
+{
+	t_ray		primary_ray;
+	t_ray		shadow_ray;
+	t_hit_info	hit_info;
+	t_hit_info	shadow_hit;	
+	
+	t_double3	N;	
+	t_double3	P;	/*	point d'impact							*/
+	t_double3	V;	/*	direction vers la camera				*/
+	t_double3	L;	/*	direction vers la lumiere				*/
+	t_double3	R;	/*	direction des reflexions (speculaire)	*/
+
+	double		NdotL;
+	double		RdotV;
+	
+	t_color	i_a;	/*	intensite ambient calculee		*/
+	t_color	i_d;	/*	intensite diffuse calculee		*/
+	t_color	i_s;	/*	intensite speculaire calculee	*/
+
+	t_color	ambient_color;
+	t_color	diffuse_color;
+	t_color	specular_color;
+	t_color	final_color;
+
+	t_color_linear	diffuse_color_linear;
+	t_color_linear	specular_color_linear;
+	t_color_linear	final_color_linear;
+
+	double	light_distance;
+	
+	double	fresnel_factor;
+	double	specular_factor;
+
+	bool	in_shadow;
+} t_phong;
+
+
 
 /* shapes */
 
@@ -182,21 +201,7 @@ struct s_elem
 	}	u;
 };
 
-struct s_ray
-{
-	t_double3	origin;
-	t_double3	dir;
-};
 
-struct s_hit_info
-{
-	bool		did_hit;
-	double		dst;
-	t_double3	hit_point;
-	t_double3	normal;
-	// t_color		color_material;
-	t_material	material;
-};
 
 
 #endif

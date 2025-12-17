@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 00:58:24 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/17 10:59:20 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_color_linear	t_color_linear;
 typedef struct s_double3		t_double3;
 typedef struct s_material		t_material;
 struct s_app;
+struct s_scene;
 
 union u_color
 {
@@ -72,6 +73,7 @@ t_color_linear		tone_map_aces(t_color_linear x);
 t_color_linear		tone_map_luminance(t_color_linear c);
 
 
-double				fresnel_schlick(struct s_app *app, t_material mat, t_double3 N, t_double3 V);
+double				fresnel_schlick(struct s_scene *scene, t_material mat, t_double3 N, t_double3 V);
+
 
 #endif

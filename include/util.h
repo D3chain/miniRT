@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 17:18:03 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/17 10:32:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ char	*next_tok(const char *str);
 void	print_double3(t_double3 d, char *text);
 void	print_color(t_color color, char *text);
 void	print_color_linear(t_color_linear color, char *text);
+
+void	randomize_material(t_material *original);
+
 
 #endif

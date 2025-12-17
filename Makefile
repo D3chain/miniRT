@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/17 00:46:15 by fox              ###   ########.fr        #
+#    Updated: 2025/12/17 11:52:26 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c
 LOAD_SRC	:=	load_scene.c scan_CAL.c scan_elem.c scan_numbers.c complete_CAL.c complete_elem.c
-RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ray_hit_plane.c draw_pixel_to_img.c util/closest_hit_dst.c
+RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ray_hit_plane.c draw_pixel_to_img.c util/closest_hit_dst.c 
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
-COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c
+COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c
 UTIL_SRC	:=	token.c print.c randomize_material.c
 
 SRC_PATHS	:= \

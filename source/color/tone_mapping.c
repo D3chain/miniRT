@@ -25,9 +25,9 @@ t_color_linear	tone_map_clamp(t_color_linear col)
 
 t_color_linear tone_map_reinhard(t_color_linear col)
 {
-	col.r = col.r / (1.0 + col.r);
-    col.g = col.g / (1.0 + col.g);
-   	col.b = col.b / (1.0 + col.b);
+	col.r = col.r / (1.5 + col.r);
+    col.g = col.g / (1.5 + col.g);
+   	col.b = col.b / (1.5 + col.b);
     return (col);
 }
 

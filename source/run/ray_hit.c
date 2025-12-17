@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 12:24:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 11:51:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,3 @@ struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 	}
 	return (closest_hit);
 }
-
-// int	ray_color(struct s_ray *ray, struct s_elem *elems, int n)
-// {
-// 	return (ray_hit(ray, elems, n).color_material);
-// }

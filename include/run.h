@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:11:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 10:58:00 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void    draw_pixel_to_img(struct s_img *img, int x, int y, int color);
 // UTIL
 double				closest_hit_dst_dbl(const double a, const double b);
 double				closest_hit_dst_sol2(t_sol2 sol);
+
+void 		phong_effect(struct s_scene *scene, t_phong	*phong);
+
 
 
 
