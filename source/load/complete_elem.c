@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complete_elem.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/16 15:24:38 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/17 12:36:28 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	complete_pl(struct s_app *app, struct s_elem *elem)
 
 	plane = &elem->u.plane;
 	plane->normal = normalize3(plane->normal);
+	plane->material.color_linear = srgb_to_linear_color(plane->material.color);
 	randomize_material(&plane->material);
 }
 
@@ -33,6 +34,7 @@ void	complete_sp(struct s_app *app, struct s_elem *elem)
 
 	sphere = &elem->u.sphere;
 	sphere->radius_sq = sphere->radius * sphere->radius;
+	sphere->material.color_linear = srgb_to_linear_color(sphere->material.color);
 	randomize_material(&sphere->material);
 }
 
@@ -43,5 +45,6 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 	cylinder = &elem->u.cylinder;
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
 	cylinder->axis = normalize3(cylinder->axis);
+	cylinder->material.color_linear = srgb_to_linear_color(cylinder->material.color);
 	randomize_material(&cylinder->material);
 }

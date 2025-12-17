@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 10:59:20 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 11:57:15 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ struct s_color_linear {
 	double	r;
 	double	t;
 };
-
 
 /*	sRGB colors	*/
 

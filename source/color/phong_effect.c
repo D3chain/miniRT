@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 11:51:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 12:27:48 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ static inline void	diffuse_specular_light(struct s_scene *scene, t_phong *phong)
 			scene->light.color_linear,
 			phong->specular_factor * phong->hit_info.material.ks * phong->fresnel_factor
 		);
-	}
-	if (!phong->in_shadow)
-	{
 		phong->final_color_linear = color_add_linear(phong->final_color_linear, phong->diffuse_color_linear);
-		phong->final_color_linear = color_add_linear(phong->final_color_linear, phong->specular_color_linear);
-	}		
+		phong->final_color_linear = color_add_linear(phong->final_color_linear, phong->specular_color_linear);		
+	}	
 }
 
 static inline void	collision(struct s_scene *scene, t_phong *phong)
@@ -84,7 +81,7 @@ void phong_effect(struct s_scene *scene, t_phong *phong)
 	phong->final_color_linear = tone_map_aces(phong->final_color_linear);
 	// phong->final_color_linear = tone_map_reinhard(phong->final_color_linear);
 	// phong->final_color_linear = tone_map_luminance(phong->final_color_linear);
-	phong->final_color_linear = tone_map_clamp(phong->final_color_linear);
+	// phong->final_color_linear = tone_map_clamp(phong->final_color_linear);
 	
 	phong->final_color = linear_to_srgb_color(phong->final_color_linear);
 }

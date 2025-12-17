@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_CAL.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 00:40:18 by fox              ###   ########.fr       */
+/*   Updated: 2025/12/17 12:34:12 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ int	scan_A(struct s_app *app, const char *line, int *_)
 		return (app->status);
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.ambient.color, line);
-
-	app->scene.ambient.color_linear = srgb_to_linear_color(app->scene.ambient.color);
-
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
@@ -58,9 +55,6 @@ int	scan_L(struct s_app *app, const char *line, int *_)
 		return (app->status);
 	ft_skipspaces(&line);
 	line += scan_color(app, &app->scene.light.color, line);
-
-	app->scene.light.color_linear = srgb_to_linear_color(app->scene.light.color);
-
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);

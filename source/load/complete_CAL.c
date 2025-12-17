@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complete.c                                         :+:      :+:    :+:   */
+/*   complete_CAL.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:17:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/15 15:19:33 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 12:34:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	complete_A(struct s_app *app, struct s_ambient *ambient)
 		ambient->ratio = 1.0;
 	if (ambient->ratio < 0.0)
 		ambient->ratio = 0.0;
+	ambient->color_linear = srgb_to_linear_color(ambient->color);
 }
 
 void	complete_C(struct s_app *app, struct s_camera *camera)
@@ -44,4 +45,6 @@ void	complete_L(struct s_app *app, struct s_light *light)
 		light->ratio = 1.0;
 	if (light->ratio < 0.0)
 		light->ratio = 0.0;
+	light->color_linear = srgb_to_linear_color(light->color);
+
 }

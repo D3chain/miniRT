@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 11:03:21 by cgajean          ###   ########.fr       */
+/*   Updated: 2025/12/17 12:19:37 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static inline void	trace(struct s_app *app, int x, int y)
 	phong.hit_info = ray_hit(&phong.primary_ray, app->scene.elems, app->scene.n_elem);
 	
 	if (!phong.hit_info.did_hit)
-		return draw_pixel_to_img(&app->mlx.img, x, y, 0x000000);
+		return draw_pixel_to_img(&app->mlx.img, x, y, BLACK);
 
 	phong_effect(&app->scene, &phong);
 

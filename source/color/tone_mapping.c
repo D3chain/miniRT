@@ -40,8 +40,14 @@ t_color_linear tone_map_aces(t_color_linear col)
 	static const double	e = 0.14;
 
 	col.r = (col.r * (a * col.r + b)) / (col.r * (c * col.r + d) + e);
+	if (col.r - 1.0 > EPSILON)
+		col.r = 1;
 	col.g = (col.g * (a * col.g + b)) / (col.g * (c * col.g + d) + e);
+	if (col.g - 1.0 > EPSILON)
+		col.g = 1;	
 	col.b = (col.b * (a * col.b + b)) / (col.b * (c * col.b + d) + e);
+	if (col.b - 1.0 > EPSILON)
+		col.b = 1;	
 	return (col);
 }
 
