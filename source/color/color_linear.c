@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_linear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 23:56:46 by fox               #+#    #+#             */
-/*   Updated: 2025/12/17 00:09:53 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/06 17:15:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@ t_color_linear scale_color_linear(t_color_linear col, double factor)
 
 t_color_linear color_add_linear(t_color_linear a, t_color_linear b)
 {
-	return ((t_color_linear){a.r + b.r, a.g + b.g, a.b + b.b});
+	t_color_linear	col;
+
+	ft_bzero(&col, sizeof(col));
+	col.r = fmin(1.0, a.r + b.r);
+	col.g = fmin(1.0, a.g + b.g);
+	col.b = fmin(1.0, a.b + b.b);
+	col.t = 0.0;
+	return (col);
 }

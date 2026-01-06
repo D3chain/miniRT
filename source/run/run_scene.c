@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/06 16:31:04 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/06 16:57:03 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static t_color_linear	reflection_effect(struct s_scene *scene, const t_ray *ray,
 static t_color_linear	trace(struct s_scene *scene, const t_ray *ray)
 {
 	t_hit_info		hit_info;
-	double			fresnel;
 
 	hit_info = ray_hit(ray, scene->elems, scene->n_elem);
 	if (!hit_info.did_hit)
