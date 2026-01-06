@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/06 17:11:44 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/06 17:36:44 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 		else
 			final_color_linear = phong.final_color_linear;
 	}
+	// final_color_linear = tone_map_aces(final_color_linear);
+	// final_color_linear = tone_map_reinhard(final_color_linear);
+	// final_color_linear = tone_map_luminance(final_color_linear);
+	// final_color_linear = tone_map_clamp(final_color_linear);
 	return (final_color_linear);
-	// phong->final_color_linear = tone_map_aces(phong->final_color_linear);
-	// phong->final_color_linear = tone_map_reinhard(phong->final_color_linear);
-	// phong->final_color_linear = tone_map_luminance(phong->final_color_linear);
-	// phong->final_color_linear = tone_map_clamp(phong->final_color_linear);	
 }
