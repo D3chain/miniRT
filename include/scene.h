@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 16:25:22 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:11:18 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ struct s_scene
 
 	struct s_ambient		ambient;
 
-	struct s_light			light;
+	struct s_light			*light;
+	int						n_light;
 
 	struct s_elem			*elems;
 	int						n_elem;

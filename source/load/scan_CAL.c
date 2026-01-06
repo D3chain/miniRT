@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 12:34:12 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/06 16:25:12 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,18 @@ int	scan_A(struct s_app *app, const char *line, int *_)
 
 int	scan_L(struct s_app *app, const char *line, int *_)
 {
-	line += scan_double3(app, &app->scene.light.coord, line);
+	static int	light_index;
+	
+	line += scan_double3(app, &app->scene.light[light_index].coord, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_double(app, &app->scene.light.ratio, line);
+	line += scan_double(app, &app->scene.light[light_index].ratio, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.light.color, line);
+	line += scan_color(app, &app->scene.light[light_index].color, line);
+	++light_index;
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);

@@ -3,35 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 16:34:30 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/06 16:28:23 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	count_elems_from_file(struct s_app *app, const char *file)
+static void	count_scene_from_file(struct s_app *app, const char *file)
 {
 	int		fd;
 	char	*line;
-	int		n_elem;
 
 	fd = xopen(app, file, O_RDONLY);
 	if (app->status)
-		return (app->status);
-	n_elem = 0;
+		return ;
 	line = gets_next_line(fd);
 	while (line)
 	{
-		if (!ft_isspace_str(line) && ft_islower(*line) && *line != '#')
-			n_elem++;
+		if (!ft_isspace_str(line) && *line != '#')
+		{
+			if (*line == 'L')
+				++app->scene.n_light;
+			else if (ft_islower(*line))
+				++app->scene.n_elem;
+		}
 		free(line);
 		line = gets_next_line(fd);
 	}
-	return (n_elem);
+	close(fd);
 }
+
+
 
 static int	scan_elem(struct s_app *app, const char *line)
 {
@@ -58,12 +63,29 @@ static int	scan_elem(struct s_app *app, const char *line)
 	return (app->status);
 }
 
-static int	scan_elems_from_file(struct s_app *app, const char *file)
+static void	complete_scene(struct s_app *app, struct s_scene *scene)
+{
+	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
+		complete_pl, complete_sp, complete_cy};
+	int	i;
+
+	complete_C(app, &scene->camera);
+	complete_A(app, &scene->ambient);
+	i = -1;
+	while (++i < scene->n_light)
+		complete_L(app, &scene->light[i]);
+	i = -1;
+	while (++i < scene->n_elem)
+		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
+}
+
+static int	scan_scene_from_file(struct s_app *app, const char *file)
 {
 	int		fd;
 	char	*line;
 
 	app->scene.elems = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem);
+	app->scene.light = xmalloc(app, sizeof(struct s_light) * app->scene.n_light);
 	if (app->status)
 		return (app->status);
 	fd = xopen(app, file, O_RDONLY);
@@ -81,30 +103,15 @@ static int	scan_elems_from_file(struct s_app *app, const char *file)
 	return (0);
 }
 
-static void	complete_scene(struct s_app *app, struct s_scene *scene)
-{
-	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
-		complete_pl, complete_sp, complete_cy};
-	int	i;
-
-	complete_C(app, &scene->camera);
-	complete_A(app, &scene->ambient);
-	complete_L(app, &scene->light);
-	i = -1;
-	while (++i < scene->n_elem)
-		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
-}
-
 int	load_scene(struct s_app *app, const char *file)
 {
 	char		*line;
 	int			n_elem;
 
-	n_elem = count_elems_from_file(app, file);
+	count_scene_from_file(app, file);
 	if (app->status)
 		return (app->status);
-	app->scene.n_elem = n_elem;
-	if (scan_elems_from_file(app, file))
+	if (scan_scene_from_file(app, file))
 		return (app->status);
 	complete_scene(app, &app->scene);
 	return (0);
