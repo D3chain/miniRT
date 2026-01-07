@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 17:53:53 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:31:16 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@
 int run_scene(struct s_app *app);
 
 
+
+// RENDER
+void			render(struct s_app *app);
+void			init_ray(struct s_app *app, struct s_ray *ray, double x, double y);
+t_color_linear	trace(struct s_scene *scene, const t_ray *ray);
+
+
 // EVENTS
 int	event_keyboard_press(int key, struct s_app *app);
 
 // HIT
+
 struct s_hit_info	ray_hit(const t_ray *ray, struct s_elem *elems, int n);
 struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
@@ -29,6 +37,7 @@ struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem);
 
 
 double	plane_dst(const struct s_ray *ray, const t_double3 normal, const t_double3 point);
+
 
 // DRAW
 void    draw_pixel_to_img(struct s_img *img, int x, int y, int color);
@@ -38,6 +47,9 @@ double				closest_hit_dst_dbl(const double a, const double b);
 double				closest_hit_dst_sol2(t_sol2 sol);
 
 t_color_linear 		phong_effect(struct s_scene *scene, t_hit_info *hit_info);
+t_color_linear		basic_render(struct s_app *app, double x, double y);
+t_color_linear		antialiasing(struct s_app *app, double x, double y);
+
 
 
 

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_scene.c                                        :+:      :+:    :+:   */
+/*   ray_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 17:34:46 by fox              ###   ########.fr       */
+/*   Created: 2026/01/07 17:11:06 by fox               #+#    #+#             */
+/*   Updated: 2026/01/07 17:13:14 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int run_scene(struct s_app *app)
+inline void	init_ray(struct s_app *app, struct s_ray *ray, double x, double y)
 {
-	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.width, app->mlx.height, "miniRT");
-	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
-	render(app);
-	mlx_loop(app->mlx.mlx);
-	return (0);
+	const t_double3	delta = plus3(mul3(app->scene.camera.viewport_u_px, (double)x), mul3(app->scene.camera.viewport_v_px, (double)y));
+	const t_double3	px_pos = plus3(app->scene.camera.pixel00_loc, delta);
+
+	ray->dir = minus3(px_pos, app->scene.camera.focal_center);
+	ray->origin = app->scene.camera.focal_center;
 }
+

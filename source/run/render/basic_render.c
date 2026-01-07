@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_scene.c                                        :+:      :+:    :+:   */
+/*   basic_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 17:34:46 by fox              ###   ########.fr       */
+/*   Created: 2026/01/07 17:08:25 by fox               #+#    #+#             */
+/*   Updated: 2026/01/07 17:14:41 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int run_scene(struct s_app *app)
+inline t_color_linear	basic_render(struct s_app *app, double x, double y)
 {
-	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.width, app->mlx.height, "miniRT");
-	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
-	render(app);
-	mlx_loop(app->mlx.mlx);
-	return (0);
+	t_ray	ray;
+
+	init_ray(app, &ray, x, y);
+	return (trace(&app->scene, &ray));
 }

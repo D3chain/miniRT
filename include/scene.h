@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/06 15:11:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/07 17:51:45 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ struct s_light
 	
 };
 
+typedef struct s_antialiasing
+{
+	bool			enabled;
+	int				oversampling;
+	int				grid_size;
+
+	t_color_linear	sample_color;
+
+	t_double2		xy_offset;
+	
+} t_antialiasing;
+
 struct s_scene
 {
 	struct s_camera			camera;
@@ -83,7 +95,10 @@ struct s_scene
 	int						n_elem;
 
 	double					environment_ior;
+
+	t_antialiasing			antialiasing;
 };
+
 
 /*	material	*/
 

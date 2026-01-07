@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_scene.c                                        :+:      :+:    :+:   */
+/*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 17:34:46 by fox              ###   ########.fr       */
+/*   Created: 2026/01/07 17:10:09 by fox               #+#    #+#             */
+/*   Updated: 2026/01/07 17:13:54 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int run_scene(struct s_app *app)
+inline t_color_linear	trace(struct s_scene *scene, const t_ray *ray)
 {
-	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.width, app->mlx.height, "miniRT");
-	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
-	render(app);
-	mlx_loop(app->mlx.mlx);
-	return (0);
+	t_hit_info		hit_info;
+
+	hit_info = ray_hit(ray, scene->elems, scene->n_elem);
+	if (!hit_info.did_hit)
+		return (srgb_to_linear_color((t_color){.value = BLACK}));
+	return (phong_effect(scene, &hit_info));
 }

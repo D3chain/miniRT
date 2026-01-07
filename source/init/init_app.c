@@ -57,5 +57,10 @@ int	init_app(struct s_app *app, int argc, char *argv[])
 		return (app->status);
 	if (init_mlx(app))
 		return (app->status);
+	app->scene.antialiasing = (t_antialiasing){
+		.enabled = true, 
+		.oversampling = OVERSAMPLING, 
+		.grid_size = sqrt(OVERSAMPLING)
+	};
 	return (ERR_NONE);
 }

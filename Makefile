@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2025/12/17 11:52:26 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/07 17:31:35 by fox              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,15 @@ ROOT_SRC	:=	main.c
 
 INIT_SRC	:=	init_app.c
 LOAD_SRC	:=	load_scene.c scan_CAL.c scan_elem.c scan_numbers.c complete_CAL.c complete_elem.c
-RUN_SRC		:=	run_scene.c event.c ray_hit.c ray_hit_sphere.c ray_hit_cylinder.c ray_hit_plane.c draw_pixel_to_img.c util/closest_hit_dst.c 
+RUN_SRC		:=	run_scene.c	\
+				event.c	\
+				ray/init_ray.c ray/ray_hit.c ray/ray_hit_sphere.c ray/ray_hit_cylinder.c ray/ray_hit_plane.c	\
+				render/render.c render/draw_pixel_to_img.c render/antialiasing.c render/trace.c render/basic_render.c
 MATH_SRC	:=	math_util.c polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
-COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c
+COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c	\
+				util/closest_hit_dst.c
 UTIL_SRC	:=	token.c print.c randomize_material.c
 
 SRC_PATHS	:= \
@@ -89,6 +93,6 @@ test: all
 	--leak-check=full \
 	--show-leak-kinds=all \
 	--trace-children=yes \
-	./miniRT caca.rt
+	./miniRT file.rt
 
 .PHONY: all mlx clean fclean re test

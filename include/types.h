@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:11:58 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/07 16:19:13 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef enum e_status
 	ERR_MLX		= 2,
 	ERR_PARS	= 3
 }	t_status;
+
+typedef struct s_double2
+{
+	double	x;
+	double	y;
+}	t_double2;
 
 typedef struct s_double3
 {
