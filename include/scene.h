@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 11:57:19 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:56:38 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,16 @@ struct s_cylinder
 	double		radius_sq;
 	double		height;
 	// t_color		color;
+	t_material	material;
+};
+
+struct s_cone
+{
+	t_double3	coord;
+	t_double3	axis;
+	double		radius;
+	double		radius_sq;
+	double		height;
 	t_material	material;
 };
 
