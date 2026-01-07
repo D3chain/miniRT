@@ -16,18 +16,22 @@ static const t_sol2	caps_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
 {
 	t_sol2			sol;
-	const t_double3	p1 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
-	const t_double3	p2 = project(cylinder->coord, mul3(cylinder->axis, -1.0), cylinder->height / 2);
+	const t_double3	p1 = project(cylinder->coord, cylinder->axis,
+		cylinder->height / 2);
+	const t_double3	p2 = project(cylinder->coord,
+		mul3(cylinder->axis, -1.0), cylinder->height / 2);
 	const double	rdot = dot(cylinder->axis, ray->dir);
 	
 	if (ft_dblcmp(rdot, 0.0, EPSILON) == 0.0)
 		return (sol.n = 0, sol);
 	sol.n = 2;
 	sol.r1 = plane_dst(ray, cylinder->axis, p1);
-	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r1), p1)) > pow(cylinder->radius, 2.0))
+	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r1), p1))
+		> pow(cylinder->radius, 2.0))
 		sol.r1 = -1.0;
 	sol.r2 = plane_dst(ray, cylinder->axis, p2);
-	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r2), p2)) > pow(cylinder->radius, 2.0))
+	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r2), p2))
+		> pow(cylinder->radius, 2.0))
 		sol.r2 = -1.0;
 	return (sol);
 }
@@ -38,20 +42,18 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	const t_double3	offset = minus3(ray->origin, cylinder->coord);
 	const t_double3	tmp_a = minus3(ray->dir, mul3(cylinder->axis, dot(ray->dir, cylinder->axis)));
 	const t_double3	tmp_b = minus3(offset, mul3(cylinder->axis, dot(offset, cylinder->axis)));	
-	const t_double3	p1 = project(cylinder->coord, mul3(cylinder->axis, -1.0), cylinder->height / 2);
-	const t_double3	p2 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
 	
 	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), 2 * dot(tmp_a, tmp_b),
 		dot(tmp_b, tmp_b) - pow(cylinder->radius, 2.0));
 	
 	if (sol.r1 > 0.0)
-		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), p1)) <= 0
-			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), p2)) >= 0)
+		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p1)) <= 0
+			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p2)) >= 0)
 		sol.r1 = -1.0;
 
 	if (sol.r2 > 0.0)
-		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), p1)) <= 0
-			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), p2)) >= 0)
+		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p1)) <= 0
+			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p2)) >= 0)
 		sol.r2 = -1.0;
 	return (sol);
 }
@@ -87,7 +89,6 @@ struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 			closest_hit.normal = orient_normal(normal_tube(&cylinder, closest_hit.hit_point), ray->dir); 
 		}
 	}
-	// closest_hit.material.color.value = cylinder.material.color.value;
 	closest_hit.material = cylinder.material;
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	return (closest_hit);

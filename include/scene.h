@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 12:58:03 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/07 13:35:00 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,17 +183,20 @@ struct s_plane
 struct s_cylinder
 {
 	t_double3	coord;
+	t_double3	p1;
+	t_double3	p2;
 	t_double3	axis;
 	double		radius;
 	double		radius_sq;
 	double		height;
-	// t_color		color;
 	t_material	material;
 };
 
 struct s_cone
 {
 	t_double3	coord;
+	t_double3	p1;
+	t_double3	p2;
 	t_double3	axis;
 	double		radius;
 	double		radius_sq;
