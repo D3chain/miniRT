@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 12:29:11 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:57:56 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static const double	cap_intersect(const struct s_ray *ray,
 	double			sol;
 	const double	rdot = dot(cone->axis, ray->dir);
 	
-	if (ft_dblcmp(rdot, 0.0, EPSILON) == 0.0)
+	if (fabs(rdot) < EPSILON)
 		return (-1.0);
 	sol = plane_dst(ray, cone->axis, cone->p1);
 	if (sqdot(minus3(project(ray->origin, ray->dir, sol), cone->p1))
