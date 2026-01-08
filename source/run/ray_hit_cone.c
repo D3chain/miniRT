@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 15:34:16 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 04:34:25 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ static const t_sol2	cornet_intersect(const struct s_ray *ray,
 	return (sol);
 }
 
+t_double3	normal_cornet(const struct s_cone *cone, const t_double3 hit_point)
+{
+	const t_double3	v = minus3(hit_point, cone->p2);
+	const double	h = dot(v, cone->axis);
+	const t_double3	v_perp = minus3(v, mul3(cone->axis , h));
+	const double	k = cone->radius / cone->height;
+	return (minus3(v_perp, mul3(cone->axis, k * h)));
+}
+
 struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 {
 	struct s_hit_info	closest_hit;
@@ -77,9 +86,21 @@ struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 
 	ft_bzero(&closest_hit, sizeof(closest_hit));
 	closest_hit.dst = cap_intersect(ray, &cone);
-	if (closest_hit.dst > EPSILON)
+	if (closest_hit.dst >= EPSILON)
 	{
 		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
-		closest_hit.normal = orient_normal(normal_cornet)
+		closest_hit.normal = orient_normal(cone.axis, ray->dir);
 	}
+	if (dst_cornet >= EPSILON)
+	{
+		if (closest_hit.dst < EPSILON || ft_dblcmp(dst_cornet, closest_hit.dst, EPSILON) < 0.0)
+		{
+			closest_hit.dst = dst_cornet;
+			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
+			closest_hit.normal = orient_normal(normal_cornet(&cone, closest_hit.hit_point), ray->dir);
+		}
+	}
+	closest_hit.material = cone.material;
+	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
+	return (closest_hit);
 }

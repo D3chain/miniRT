@@ -58,7 +58,7 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	return (sol);
 }
 
-t_double3	normal_tube(const struct s_cylinder *cylinder, t_double3 hit_point)
+t_double3	normal_tube(const struct s_cylinder *cylinder, const t_double3 hit_point)
 {
 	const t_double3	oc = minus3(hit_point, cylinder->coord);
 	double			projection = dot(oc, cylinder->axis);

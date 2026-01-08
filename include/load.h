@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:52:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:33:45 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/08 04:54:18 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		scan_L(struct s_app *app, const char *line, int *_);
 int		scan_pl(struct s_app *app, const char *line, int *i_elem);
 int		scan_sp(struct s_app *app, const char *line, int *i_elem);
 int		scan_cy(struct s_app *app, const char *line, int *i_elem);
-
-
+int		scan_co(struct s_app *app, const char *line, int *i_elem);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 16:34:30 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/08 04:36:15 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	scan_elem(struct s_app *app, const char *line)
 {
 	int					i;
 	static int			i_elem;
-	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy"};
+	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy", "co"};
 	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, const char *, int *) = {
-		scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy};
+		scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy, scan_co};
 
 	i = 0;
 	while (i < N_SCENE_ITEMS)

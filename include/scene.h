@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 13:35:00 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 04:37:37 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
-# define	N_SCENE_ITEMS	6
+# define	N_SCENE_ITEMS	7
 # define	N_SCENE_ELEMS	(N_SCENE_ITEMS - 3)
 
 
@@ -31,7 +31,8 @@
 enum {
 	PLANE		= 0,
 	SPHERE		= 1,
-	CYLINDER	= 2
+	CYLINDER	= 2,
+	CONE		= 3
 };
 
 
