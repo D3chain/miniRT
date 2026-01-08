@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/06 16:28:23 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/08 11:33:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	scan_elem(struct s_app *app, const char *line)
 {
 	int					i;
 	static int			i_elem;
-	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy"};
+	static const char	*l_elem[N_SCENE_ITEMS] = {"A", "C", "L", "pl", "sp", "cy", "co"};
 	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, const char *, int *) = {
-		scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy};
+		scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy, scan_co};
 
 	i = 0;
 	while (i < N_SCENE_ITEMS)
@@ -66,7 +66,7 @@ static int	scan_elem(struct s_app *app, const char *line)
 static void	complete_scene(struct s_app *app, struct s_scene *scene)
 {
 	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
-		complete_pl, complete_sp, complete_cy};
+		complete_pl, complete_sp, complete_cy, complete_co};
 	int	i;
 
 	complete_C(app, &scene->camera);

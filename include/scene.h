@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 17:51:45 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/08 11:33:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
-# define	N_SCENE_ITEMS	6
+# define	N_SCENE_ITEMS	7
 # define	N_SCENE_ELEMS	(N_SCENE_ITEMS - 3)
 
 
@@ -31,7 +31,8 @@
 enum {
 	PLANE		= 0,
 	SPHERE		= 1,
-	CYLINDER	= 2
+	CYLINDER	= 2,
+	CONE		= 3
 };
 
 
@@ -197,6 +198,20 @@ struct s_plane
 struct s_cylinder
 {
 	t_double3	coord;
+	t_double3	p1;
+	t_double3	p2;
+	t_double3	axis;
+	double		radius;
+	double		radius_sq;
+	double		height;
+	t_material	material;
+};
+
+struct s_cone
+{
+	t_double3	coord;
+	t_double3	p1;
+	t_double3	p2;
 	t_double3	axis;
 	double		radius;
 	double		radius_sq;
@@ -211,6 +226,7 @@ struct s_elem
 		struct s_sphere 	sphere;
 		struct s_plane		plane;
 		struct s_cylinder	cylinder;
+		struct s_cone		cone;
 	}	u;
 };
 

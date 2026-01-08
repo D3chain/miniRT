@@ -3,9 +3,9 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/include/*",
-		"${workspaceFolder}/libft/include/*",
-		"${workspaceFolder}/mlx/*"
+        "${workspaceFolder}/include",
+		    "${workspaceFolder}/libft/include",
+		    "${workspaceFolder}/mlx"
       ],
       "defines": [],
       "compilerPath": "/usr/bin/cc",
