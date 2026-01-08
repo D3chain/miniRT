@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randomize_material.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:51:11 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/16 14:54:37 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/08 08:06:20 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	randomize_material(t_material *original)
 	original->shininess = rand() % 200;
 	original->ior = (double) rand() / RAND_MAX;
 
-	printf("ka = %lf\n", original->ka);
-	printf("kd = %lf\n", original->kd);
-	printf("ks = %lf\n", original->ks);
-	printf("ksi = %lf\n", original->ks_intensity);
-	printf("shi = %lf\n", original->shininess);
-	printf("ior = %lf\n\n", original->ior);
+	// printf("ka = %lf\n", original->ka);
+	// printf("kd = %lf\n", original->kd);
+	// printf("ks = %lf\n", original->ks);
+	// printf("ksi = %lf\n", original->ks_intensity);
+	// printf("shi = %lf\n", original->shininess);
+	// printf("ior = %lf\n\n", original->ior);
 }
 
