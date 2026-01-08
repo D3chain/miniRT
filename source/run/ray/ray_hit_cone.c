@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 11:47:11 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/08 11:57:45 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static const t_sol2	cornet_intersect(const struct s_ray *ray,
 
 t_double3	normal_cornet(const struct s_cone *cone, const t_double3 hit_point)
 {
-	const t_double3	v = minus3(hit_point, cone->p1);
+	const t_double3	v = minus3(hit_point, cone->p2);
 	const double	h = dot(v, cone->axis);
 	const t_double3	v_perp = minus3(v, mul3(cone->axis , h));
 	const double	k = cone->radius / cone->height;
