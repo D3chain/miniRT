@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/07 18:42:40 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/08 16:50:51 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	event_keyboard_press(int key, struct s_app *app)
 			app->scene.antialiasing.enabled = true;
 			printf("Oversampling has been enabled\n");
 		}
-		app->scene.antialiasing.grid_size *= 2;
+		++app->scene.antialiasing.grid_size;
 		app->scene.antialiasing.oversampling = pow(app->scene.antialiasing.grid_size, 2.0);
 		printf("Oversampling=%d\n", app->scene.antialiasing.oversampling);
 		render(app);
@@ -48,7 +48,7 @@ int	event_keyboard_press(int key, struct s_app *app)
 		}
 		else if (app->scene.antialiasing.grid_size > 2)
 		{
-			app->scene.antialiasing.grid_size /= 2;
+			--app->scene.antialiasing.grid_size;
 			app->scene.antialiasing.oversampling = pow(app->scene.antialiasing.grid_size, 2.0);
 			printf("Oversampling=%d\n", app->scene.antialiasing.oversampling);
 			render(app);
