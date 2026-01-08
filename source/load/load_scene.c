@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 05:12:48 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 08:15:56 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static int	scan_elem(struct s_app *app, const char *line)
 	i = 0;
 	while (i < N_SCENE_ITEMS)
 	{
-		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
+		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0
+			&& ft_isspace(line[ft_strlen(l_elem[i])]))
 		{
 			scan_fct[i](app, next_tok(line), &i_elem);
 			if (i > 2)
