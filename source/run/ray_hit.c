@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/17 11:51:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/08 05:00:04 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 struct s_hit_info	ray_hit(struct s_ray *ray, struct s_elem *elems, int n)
 {
-	static struct s_hit_info	(*ray_hit_func[])(const struct s_ray *, const void*) = {ray_hit_plane, ray_hit_sphere, ray_hit_cylinder};
+	static struct s_hit_info	(*ray_hit_func[])(const struct s_ray *,
+		const void*) = {ray_hit_plane, ray_hit_sphere,
+			ray_hit_cylinder, ray_hit_cone};
 	struct s_hit_info			closest_hit;
 	struct s_hit_info			hit_point;
 	int							i;

@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 04:36:15 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 05:12:48 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int	scan_elems_from_file(struct s_app *app, const char *file)
 static void	complete_scene(struct s_app *app, struct s_scene *scene)
 {
 	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
-		complete_pl, complete_sp, complete_cy};
+		complete_pl, complete_sp, complete_cy, complete_co};
 	int	i;
 
 	complete_C(app, &scene->camera);

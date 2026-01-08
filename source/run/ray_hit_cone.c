@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 04:34:25 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 05:43:33 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static struct s_co	get_co(const struct s_ray *ray,
 	co.off_dot_axis = dot(co.offset, cone->axis);
 	co.d_perp = minus3(ray->dir, mul3(cone->axis, co.d_dot_axis));
 	co.off_perp = minus3(co.offset, mul3(cone->axis, co.off_dot_axis));
+	return (co);
 }
 
 static const t_sol2	cornet_intersect(const struct s_ray *ray,
@@ -54,7 +55,7 @@ static const t_sol2	cornet_intersect(const struct s_ray *ray,
 	const struct s_co	co = get_co(ray, cone);
 	const double		k = pow(cone->radius / cone->height, 2.0);
 	const double		a = dot(co.d_perp, co.d_perp) - k * pow(co.d_dot_axis, 2.0);
-	const double		b = 2.0 * (dot(co.d_perp, co.off_perp) - k * co.d_dot_axis * co.d_dot_axis);
+	const double		b = 2.0 * (dot(co.d_perp, co.off_perp) - k * co.d_dot_axis * co.off_dot_axis);
 	const double		c = dot(co.off_perp, co.off_perp) - k * pow(co.off_dot_axis, 2.0);
 	t_sol2				sol = polynome2(a, b, c);
 
@@ -75,7 +76,7 @@ t_double3	normal_cornet(const struct s_cone *cone, const t_double3 hit_point)
 	const double	h = dot(v, cone->axis);
 	const t_double3	v_perp = minus3(v, mul3(cone->axis , h));
 	const double	k = cone->radius / cone->height;
-	return (minus3(v_perp, mul3(cone->axis, k * h)));
+	return (normalize3(minus3(v_perp, mul3(cone->axis, k * h))));
 }
 
 struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
