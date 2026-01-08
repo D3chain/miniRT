@@ -6,7 +6,7 @@
 /*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 11:57:45 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/08 12:29:11 by echatela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ struct s_co
 	double		off_dot_axis;
 	t_double3	d_perp;
 	t_double3	off_perp;
+	double		k;
 };
 
 static struct s_co	get_co(const struct s_ray *ray,
@@ -46,6 +47,7 @@ static struct s_co	get_co(const struct s_ray *ray,
 	co.off_dot_axis = dot(co.offset, cone->axis);
 	co.d_perp = minus3(ray->dir, mul3(cone->axis, co.d_dot_axis));
 	co.off_perp = minus3(co.offset, mul3(cone->axis, co.off_dot_axis));
+	co.k = pow(cone->radius / cone->height, 2.0);
 	return (co);
 }
 
@@ -53,19 +55,18 @@ static const t_sol2	cornet_intersect(const struct s_ray *ray,
 	const struct s_cone *cone)
 {
 	const struct s_co	co = get_co(ray, cone);
-	const double		k = pow(cone->radius / cone->height, 2.0);
-	const double		a = dot(co.d_perp, co.d_perp) - k * pow(co.d_dot_axis, 2.0);
-	const double		b = 2.0 * (dot(co.d_perp, co.off_perp) - k * co.d_dot_axis * co.off_dot_axis);
-	const double		c = dot(co.off_perp, co.off_perp) - k * pow(co.off_dot_axis, 2.0);
+	const double		a = dot(co.d_perp, co.d_perp) - co.k * pow(co.d_dot_axis, 2.0);
+	const double		b = 2.0 * (dot(co.d_perp, co.off_perp) - co.k * co.d_dot_axis * co.off_dot_axis);
+	const double		c = dot(co.off_perp, co.off_perp) - co.k * pow(co.off_dot_axis, 2.0);
 	t_sol2				sol = polynome2(a, b, c);
 
 	if (sol.r1 > EPSILON)
-		if (dot(minus3(project(ray->origin, ray->dir, sol.r1), cone->p2), cone->axis) < EPSILON
-			|| dot(minus3(project(ray->origin, ray->dir, sol.r1), cone->p2), cone->axis) > cone->height)
+		if (dot(minus3(project(ray->origin, ray->dir, sol.r1), cone->p2), cone->axis) < -EPSILON
+			|| dot(minus3(project(ray->origin, ray->dir, sol.r1), cone->p2), cone->axis) > cone->height + EPSILON)
 			sol.r1 = -1.0;
 	if (sol.r2 > EPSILON)
-		if (dot(minus3(project(ray->origin, ray->dir, sol.r2), cone->p2), cone->axis) < EPSILON
-			|| dot(minus3(project(ray->origin, ray->dir, sol.r2), cone->p2), cone->axis) > cone->height)
+		if (dot(minus3(project(ray->origin, ray->dir, sol.r2), cone->p2), cone->axis) < -EPSILON
+			|| dot(minus3(project(ray->origin, ray->dir, sol.r2), cone->p2), cone->axis) > cone->height + EPSILON)
 			sol.r2 = -1.0;
 	return (sol);
 }
@@ -90,7 +91,7 @@ struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 	if (closest_hit.dst >= EPSILON)
 	{
 		closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
-		closest_hit.normal = orient_normal(cone.axis, ray->dir);
+		closest_hit.normal = cone.axis;
 	}
 	if (dst_cornet >= EPSILON)
 	{
