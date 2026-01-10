@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 11:33:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:11:31 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SCENE_H
 
 # include "minirt.h"
+
+typedef struct s_bvh_base t_bvh_base;
+
 
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
@@ -34,7 +37,6 @@ enum {
 	CYLINDER	= 2,
 	CONE		= 3
 };
-
 
 /*	scene	*/
 
@@ -98,6 +100,8 @@ struct s_scene
 	double					environment_ior;
 
 	t_antialiasing			antialiasing;
+
+	t_bvh_base				*bvh_root;
 };
 
 
@@ -219,19 +223,22 @@ struct s_cone
 	t_material	material;
 };
 
+struct s_any
+{
+	t_double3	coord;
+};
+
 struct s_elem
 {
 	int		type;
 	union {
+		struct s_any		any;
 		struct s_sphere 	sphere;
 		struct s_plane		plane;
 		struct s_cylinder	cylinder;
 		struct s_cone		cone;
 	}	u;
 };
-
-
-
 
 #endif
 

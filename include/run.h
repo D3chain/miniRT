@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 11:30:21 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/10 13:03:28 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "minirt.h"
 
+typedef struct s_bvh_elem_box	t_bvh_elem_box;
+
 int run_scene(struct s_app *app);
 
 
@@ -22,7 +24,10 @@ int run_scene(struct s_app *app);
 // RENDER
 void			render(struct s_app *app);
 void			init_ray(struct s_app *app, struct s_ray *ray, double x, double y);
+// t_color_linear	trace(struct s_scene *scene, const t_ray *ray);
 t_color_linear	trace(struct s_scene *scene, const t_ray *ray);
+
+
 
 
 // EVENTS
@@ -30,7 +35,9 @@ int	event_keyboard_press(int key, struct s_app *app);
 
 // HIT
 
-struct s_hit_info	ray_hit(const t_ray *ray, struct s_elem *elems, int n);
+struct s_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray);
+// struct s_hit_info	ray_hit(const t_ray *ray, struct s_elem *elems, int n);
+
 struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem);

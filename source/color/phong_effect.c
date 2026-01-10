@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/07 18:35:49 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/10 13:40:39 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ static inline void	collision(struct s_scene *scene, t_phong *phong, t_hit_info *
 	phong->shadow_ray.dir = phong->L;
 	
 	phong->light_distance = norm3(minus3(scene->light[light_index].coord, phong->P));
-	phong->shadow_hit = ray_hit(&phong->shadow_ray, scene->elems, scene->n_elem);
-	phong->in_shadow = (phong->shadow_hit.did_hit && phong->shadow_hit.dst < phong->light_distance - EPSILON);
+	
+	phong->shadow_hit = bvh_traverse(scene->bvh_root, &phong->shadow_ray);
+	// phong->shadow_hit = ray_hit(&phong->shadow_ray, scene->elems, scene->n_elem);
+	
+	phong->in_shadow = bvh_any_hit(scene->bvh_root, &phong->shadow_ray, phong->light_distance);
+
+	// phong->in_shadow = (phong->shadow_hit.did_hit && phong->shadow_hit.dst < phong->light_distance - EPSILON);
 }
 
 t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
@@ -83,9 +88,6 @@ t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 		else
 			final_color_linear = phong.final_color_linear;
 	}
-	// final_color_linear = tone_map_aces(final_color_linear);
-	// final_color_linear = tone_map_reinhard(final_color_linear);
-	// final_color_linear = tone_map_luminance(final_color_linear);
-	// final_color_linear = tone_map_clamp(final_color_linear);
+
 	return (final_color_linear);
 }

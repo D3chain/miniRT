@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_render.c                                     :+:      :+:    :+:   */
+/*   xcalloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 17:08:25 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:03:18 by fox              ###   ########.fr       */
+/*   Created: 2026/01/09 14:03:14 by fox               #+#    #+#             */
+/*   Updated: 2026/01/09 14:05:06 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-inline t_color_linear	basic_render(struct s_app *app, double x, double y)
+void	*xcalloc(struct s_app *app, size_t size)
 {
-	t_ray	ray;
+	void	*ptr;
 
-	init_ray(app, &ray, x, y);
-	return (trace(&app->scene, &ray));
+	ptr = xmalloc(app, size);
+	if (!app->status)
+		ft_memset(ptr, 0, size);
+	return (ptr);
 }
-
-// inline t_color_linear	basic_render(struct s_app *app, double x, double y)
-// {
-// 	t_ray	ray;
-
-// 	init_ray(app, &ray, x, y);
-// 	return (trace(&app->scene, &ray));
-// }

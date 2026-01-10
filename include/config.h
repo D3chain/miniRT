@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/08 11:51:00 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/10 13:44:08 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@
 # ifdef OVERSAMPLING
 #  if OVERSAMPLING < 1
 #   define OVERSAMPLING 4
+#  endif
+# endif
+
+
+/*																*/
+/*	This part defines the behavior of the bvh grouping system	*/
+/*																*/
+# ifndef BVH_MIN_ELEM
+#  define BVH_MIN_ELEM	4
+# endif
+
+# ifdef BVH_MIN_ELEM
+#  if BVH_MIN_ELEM < 1
+#   define BVH_MIN_ELEM 4
 #  endif
 # endif
 

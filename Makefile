@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2026/01/08 11:30:05 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/10 13:41:16 by fox              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ INIT_SRC	:=	init_app.c
 LOAD_SRC	:=	load_scene.c scan_CAL.c scan_elem.c scan_numbers.c complete_CAL.c complete_elem.c
 RUN_SRC		:=	run_scene.c	\
 				event.c	\
+				bvh/bvh.c bvh/elem_bounding_box.c bvh/bound_boxes.c bvh/sort_elems.c bvh/collision_aabb.c bvh/bvh_any_hit.c bvh/print_tree.c	\
 				ray/init_ray.c ray/ray_hit.c ray/ray_hit_sphere.c ray/ray_hit_cylinder.c ray/ray_hit_plane.c ray/ray_hit_cone.c	\
 				render/render.c render/draw_pixel_to_img.c render/antialiasing.c render/trace.c render/basic_render.c
 MATH_SRC	:=	math_util.c polynome2.c
-WRAPPER_SRC	:=	xmalloc.c xopen.c
+WRAPPER_SRC	:=	xmalloc.c xcalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
 COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c	\
 				util/closest_hit_dst.c

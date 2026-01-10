@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 11:33:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:11:47 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,21 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 	close(fd);
 }
 
+static void	 complete_scene(struct s_app *app, struct s_scene *scene)
+{
+	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
+		complete_pl, complete_sp, complete_cy, complete_co};
+	int	i;
 
+	complete_C(app, &scene->camera);
+	complete_A(app, &scene->ambient);
+	i = -1;
+	while (++i < scene->n_light)
+		complete_L(app, &scene->light[i]);
+	i = -1;
+	while (++i < scene->n_elem)
+		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
+}
 
 static int	scan_elem(struct s_app *app, const char *line)
 {
@@ -61,22 +75,6 @@ static int	scan_elem(struct s_app *app, const char *line)
 	if (i == N_SCENE_ITEMS)
 		app->status = ERR_PARS;
 	return (app->status);
-}
-
-static void	complete_scene(struct s_app *app, struct s_scene *scene)
-{
-	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
-		complete_pl, complete_sp, complete_cy, complete_co};
-	int	i;
-
-	complete_C(app, &scene->camera);
-	complete_A(app, &scene->ambient);
-	i = -1;
-	while (++i < scene->n_light)
-		complete_L(app, &scene->light[i]);
-	i = -1;
-	while (++i < scene->n_elem)
-		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
 }
 
 static int	scan_scene_from_file(struct s_app *app, const char *file)
@@ -114,5 +112,6 @@ int	load_scene(struct s_app *app, const char *file)
 	if (scan_scene_from_file(app, file))
 		return (app->status);
 	complete_scene(app, &app->scene);
+	bvh_build(app, &app->scene);
 	return (0);
 }

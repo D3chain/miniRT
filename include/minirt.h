@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 17:36:04 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/10 13:00:03 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # include "color.h"
 # include "types.h"
 # include "scene.h"
+# include "bvh.h"
 # include "app.h"
 # include "init.h"
 # include "math_util.h"
