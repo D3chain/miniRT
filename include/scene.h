@@ -209,13 +209,14 @@ struct s_cylinder
 
 struct s_cone
 {
-	t_double3	coord;
-	t_double3	p1;
-	t_double3	p2;
+	t_double3	apex;
+	t_double3	base;
 	t_double3	axis;
 	double		radius;
 	double		radius_sq;
 	double		height;
+	double		theta;
+	double		cos2_theta;
 	t_material	material;
 };
 

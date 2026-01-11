@@ -13,7 +13,7 @@
 #ifndef COLOR_H
 # define COLOR_H
 
-# include <minirt.h>
+# include "minirt.h"
 
 # define WHITE	0xFFFFFF
 # define BLACK	0x0

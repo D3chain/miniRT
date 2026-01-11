@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-static const double	cap_intersect(const struct s_ray *ray,
+static double	cap_intersect(const struct s_ray *ray,
 	const struct s_cone *cone)
 {
 	double			sol;
@@ -51,7 +51,7 @@ static struct s_co	get_co(const struct s_ray *ray,
 	return (co);
 }
 
-static const t_sol2	cornet_intersect(const struct s_ray *ray,
+static t_sol2	cornet_intersect(const struct s_ray *ray,
 	const struct s_cone *cone)
 {
 	const struct s_co	co = get_co(ray, cone);
@@ -106,3 +106,4 @@ struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	return (closest_hit);
 }
+
