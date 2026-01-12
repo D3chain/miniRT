@@ -79,7 +79,7 @@ int	scan_cy(struct s_app *app, const char *line, int *i_elem)
 int	scan_co(struct s_app *app, const char *line, int *i_elem)
 {
 	app->scene.elems[*i_elem].type = CONE;
-	line += scan_double3(app, &app->scene.elems[*i_elem].u.cone.coord, line);
+	line += scan_double3(app, &app->scene.elems[*i_elem].u.cone.apex, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);

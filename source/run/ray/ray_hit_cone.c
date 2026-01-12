@@ -1,8 +1,4 @@
-#include "color.h"
-#include "config.h"
-#include "math_util.h"
 #include "minirt.h"
-#include "scene.h"
 
 t_hit_info	create_hit(double dst, const t_ray *ray,
 	const struct s_cone *cone, t_double3 normal)
@@ -119,7 +115,7 @@ struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 	t_hit_info		body_hit;
 	t_hit_info		cap_hit;
 
-	body_hit = intersect_cone_body(ray, cone);
+	body_hit = intersect_cone_body(ray, &cone);
 	cap_hit = intersect_cap(ray, &cone);
 	if (body_hit.did_hit && cap_hit.did_hit)
 	{

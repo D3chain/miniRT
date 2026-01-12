@@ -1,4 +1,4 @@
-.build/init/init_app.o: source/init/init_app.c include/minirt.h mlx/mlx.h \
+.build/run/run_scene.o: source/run/run_scene.c include/minirt.h mlx/mlx.h \
   libft/include/libft.h include/config.h include/color.h include/types.h \
   include/scene.h include/app.h include/init.h include/math_util.h \
   include/load.h include/run.h include/error.h include/wrapper.h \
