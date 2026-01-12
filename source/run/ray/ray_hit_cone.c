@@ -46,7 +46,7 @@ static bool	is_within_cone_height(const struct s_cone *cone, t_double3 point)
 	t_double3	apex_to_point;
 	double		projection;
 
-	apex_to_point = minus3(point, cone->apex);
+	apex_to_point = minus3(point, cone->axis);
 	projection = dot(apex_to_point, cone->axis);
 	return (projection >= 0.0 && projection <= cone->height);
 }
