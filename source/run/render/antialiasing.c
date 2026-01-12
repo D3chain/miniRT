@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   antialiasing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:03:00 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 14:42:25 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_color_linear	antialiasing(struct s_app *app, double x, double y)
 	{
 		for (int sy = 0; sy < alias.grid_size; sy++)
 		{
-			// alias.xy_offset.x = (sx * (sx % 2 ? -1.0 : 1.0) + 0.5) / alias.grid_size;
-			// alias.xy_offset.y = (sy * (sy % 2 ? -1.0 : 1.0) + 0.5) / alias.grid_size;
 			offset = 0.0;
 			if (alias.grid_size % 2)
 				offset = 1.0 / alias.grid_size;		

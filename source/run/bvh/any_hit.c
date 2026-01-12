@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bvh_any_hit.c                                      :+:      :+:    :+:   */
+/*   any_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:35:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:35:44 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 14:35:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ bool	bvh_any_hit(t_bvh_base *tree, const t_ray *ray, double max_dist)
 	}
 	else
 		return (check_leaf_shadow((t_bvh_elem_box *)tree, ray, max_dist));
+}
+
+bool	elem_inf_any_hit(const struct s_scene *scene, const t_ray *ray, double max_dist)
+{
+	struct s_hit_info	hit;
+	int					i;
+	
+	i = -1;
+	while (++i < scene->n_elem_inf)
+	{
+		hit = ray_hit_plane(ray, &scene->elems_inf[i]);
+		if (hit.did_hit && hit.dst > 0.001 && hit.dst < max_dist)
+			return (true);
+	}
+	return (false);
 }

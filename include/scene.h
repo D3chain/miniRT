@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/10 12:11:31 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 14:14:30 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ struct s_scene
 	struct s_elem			*elems;
 	int						n_elem;
 
+	struct s_elem			*elems_inf;
+	int						n_elem_inf;
+	
 	double					environment_ior;
 
 	t_antialiasing			antialiasing;
@@ -149,7 +152,7 @@ typedef struct s_phong_effect
 	t_ray		primary_ray;
 	t_ray		shadow_ray;
 	t_hit_info	hit_info;
-	t_hit_info	shadow_hit;	
+	t_hit_info	shadow_hit;
 	
 	t_double3	N;	
 	t_double3	P;	/*	point d'impact							*/

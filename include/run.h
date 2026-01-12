@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/10 13:03:28 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 14:14:21 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	event_keyboard_press(int key, struct s_app *app);
 // HIT
 
 struct s_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray);
-// struct s_hit_info	ray_hit(const t_ray *ray, struct s_elem *elems, int n);
+
+t_hit_info	elem_inf_hit(const struct s_scene *scene, const t_ray *ray);
+t_hit_info	cmp_hit_info(t_hit_info a, t_hit_info b);
+
 
 struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
 struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);

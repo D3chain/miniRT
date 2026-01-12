@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/10 12:11:47 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 15:16:09 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 			if (*line == 'L')
 				++app->scene.n_light;
 			else if (ft_islower(*line))
-				++app->scene.n_elem;
+			{
+				if (!ft_strncmp(line, "pl", 2))
+					++app->scene.n_elem_inf;
+				else
+					++app->scene.n_elem;
+
+			}
 		}
 		free(line);
 		line = gets_next_line(fd);
@@ -50,6 +56,9 @@ static void	 complete_scene(struct s_app *app, struct s_scene *scene)
 	i = -1;
 	while (++i < scene->n_elem)
 		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
+	i = -1;
+	while (++i < scene->n_elem_inf)
+		complete_fct[scene->elems_inf[i].type](app, &scene->elems_inf[i]);
 }
 
 static int	scan_elem(struct s_app *app, const char *line)
@@ -66,8 +75,8 @@ static int	scan_elem(struct s_app *app, const char *line)
 		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
 		{
 			scan_fct[i](app, next_tok(line), &i_elem);
-			if (i > 2)
-				i_elem++;
+			if (i > 3)
+				++i_elem;
 			break ;
 		}
 		++i;
@@ -83,6 +92,7 @@ static int	scan_scene_from_file(struct s_app *app, const char *file)
 	char	*line;
 
 	app->scene.elems = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem);
+	app->scene.elems_inf = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem_inf);
 	app->scene.light = xmalloc(app, sizeof(struct s_light) * app->scene.n_light);
 	if (app->status)
 		return (app->status);

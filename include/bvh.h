@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bvh.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:52:18 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:43:33 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 14:36:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_boundbox	elem_bounding_box(struct s_elem *elem);
 
 t_hit_info	bvh_traverse(t_bvh_base *tree, const t_ray *ray);
 bool		bvh_any_hit(t_bvh_base *tree, const t_ray *ray, double max_dist);
+bool		elem_inf_any_hit(const struct s_scene *scene, const t_ray *ray, double max_dist);
 
 
 

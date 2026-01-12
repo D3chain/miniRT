@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_elem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echatela <echatela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:40:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/08 04:44:36 by echatela         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:50:00 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 int	scan_pl(struct s_app *app, const char *line, int *i_elem)
 {
-	app->scene.elems[*i_elem].type = PLANE;
-	line += scan_double3(app, &app->scene.elems[*i_elem].u.plane.coord, line);
+	static int	i;
+	
+	app->scene.elems_inf[i].type = PLANE;
+	line += scan_double3(app, &app->scene.elems_inf[i].u.plane.coord, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_double3(app, &app->scene.elems[*i_elem].u.plane.normal, line);
+	line += scan_double3(app, &app->scene.elems_inf[i].u.plane.normal, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_color(app, &app->scene.elems[*i_elem].u.plane.material.color, line);
+	line += scan_color(app, &app->scene.elems_inf[i].u.plane.material.color, line);
 	ft_skipspaces(&line);
 	if (app->status || *line)
 		return (app->status = ERR_PARS);
+	++i;
 	return (0);
 }
 
