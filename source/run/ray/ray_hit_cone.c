@@ -46,7 +46,7 @@ static bool	is_within_cone_height(const struct s_cone *cone, t_double3 point)
 	t_double3	apex_to_point;
 	double		projection;
 
-	apex_to_point = minus3(point, cone->axis);
+	apex_to_point = minus3(point, cone->apex);
 	projection = dot(apex_to_point, cone->axis);
 	return (projection >= 0.0 && projection <= cone->height);
 }
@@ -57,7 +57,7 @@ static t_double3	compute_cone_normal(const struct s_cone *cone, t_double3 point)
 	double		projection;
 	t_double3	axis_point;
 
-	apex_to_point = minus3(point, cone->axis);
+	apex_to_point = minus3(point, cone->apex);
 	projection = dot(apex_to_point, cone->axis);
 	axis_point = project(cone->apex, cone->axis, projection);
 	return (normalize3(minus3(point, axis_point)));
