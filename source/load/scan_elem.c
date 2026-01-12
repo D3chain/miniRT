@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:40:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 16:40:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/12 17:15:20 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,30 +105,3 @@ int	scan_co(struct s_app *app, const char *line, int *i_elem)
 		return (app->status = ERR_PARS);			
 	return (0);
 }
-
-// int	scan_co(struct s_app *app, const char *line, int *i_elem)
-// {
-// 	app->scene.elems[*i_elem].type = CONE;
-// 	line += scan_double3(app, &app->scene.elems[*i_elem].u.cone.coord, line);
-// 	if (app->status)
-// 		return (app->status);
-// 	ft_skipspaces(&line);
-// 	line += scan_double3(app, &app->scene.elems[*i_elem].u.cone.axis, line);
-// 	if (app->status)
-// 		return (app->status);
-// 	ft_skipspaces(&line);
-// 	line += scan_double(app, &app->scene.elems[*i_elem].u.cone.radius, line);
-// 	if (app->status)
-// 		return (app->status);
-// 	app->scene.elems[*i_elem].u.cone.radius /= 2;
-// 	ft_skipspaces(&line);
-// 	line += scan_double(app, &app->scene.elems[*i_elem].u.cone.height, line);
-// 	if (app->status)
-// 		return (app->status);
-// 	ft_skipspaces(&line);
-// 	line += scan_color(app, &app->scene.elems[*i_elem].u.cone.material.color, line);
-// 	ft_skipspaces(&line);
-// 	if (app->status || *line)
-// 		return (app->status = ERR_PARS);			
-// 	return (0);
-// }

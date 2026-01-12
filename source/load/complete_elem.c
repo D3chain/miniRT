@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/12 16:40:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/12 17:21:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,16 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 void	complete_co(struct s_app *app, struct s_elem *elem)
 {
 	struct s_cone	*cone;
+	double			cos_theta;
 
 	cone = &elem->u.cone;
 	cone->axis = normalize3(cone->axis);
 	cone->apex = project(cone->coord, mul3(cone->axis, -1.0), cone->height / 2);
-	cone->base = project(cone->apex, cone->axis, cone->height / 2);
+	cone->base = project(cone->coord, cone->axis, cone->height / 2);
 	cone->radius_sq = cone->radius * cone->radius;
 	cone->theta = atan(cone->radius / cone->height);
-	cone->cos2_theta = cos(cone->theta) * cos(cone->theta);
+	cos_theta = cos(cone->theta);
+	cone->cos2_theta = cos_theta * cos_theta;
 	cone->material.color_linear = srgb_to_linear_color(cone->material.color);
 	randomize_material(&cone->material);
 }
-
-// void	complete_co(struct s_app *app, struct s_elem *elem)
-// {
-// 	struct s_cone	*cone;
-
-// 	cone = &elem->u.cone;
-// 	cone->axis = normalize3(cone->axis);
-// 	cone->p1 = project(cone->coord, cone->axis, cone->height / 2);
-// 	cone->p2 = project(cone->coord, mul3(cone->axis, -1.0), cone->height / 2);
-// 	cone->radius_sq = cone->radius * cone->radius;
-// 	cone->material.color_linear = srgb_to_linear_color(cone->material.color);
-// 	randomize_material(&cone->material);
-// }
