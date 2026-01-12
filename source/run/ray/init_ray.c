@@ -17,7 +17,7 @@ inline void	init_ray(struct s_app *app, struct s_ray *ray, double x, double y)
 	const t_double3	delta = plus3(mul3(app->scene.camera.viewport_u_px, (double)x), mul3(app->scene.camera.viewport_v_px, (double)y));
 	const t_double3	px_pos = plus3(app->scene.camera.pixel00_loc, delta);
 
-	ray->dir = minus3(px_pos, app->scene.camera.focal_center);
+	ray->dir = normalize3(minus3(px_pos, app->scene.camera.focal_center));
 	ray->origin = app->scene.camera.focal_center;
 }
 
