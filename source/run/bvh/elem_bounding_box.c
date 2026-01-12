@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aabb_volume.c                                      :+:      :+:    :+:   */
+/*   elem_bounding_box.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 21:24:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 11:36:36 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/12 16:46:31 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,21 @@ static t_boundbox	cone_box(struct s_elem *elem)
 
 	radius = elem->u.cone.radius;
 	axis = elem->u.cone.axis;
-	base = elem->u.cone.p1;
-	apex = elem->u.cone.p2;
+	apex = elem->u.cone.apex;
+	base = elem->u.cone.base;
 	
 	ext.x = radius * sqrt(1.0 - axis.x * axis.x);
 	ext.y = radius * sqrt(1.0 - axis.y * axis.y);
 	ext.z = radius * sqrt(1.0 - axis.z * axis.z);
 	
 	return ((t_boundbox) {
-		.beg.x = fmin(base.x - ext.x, apex.x),
-		.beg.y = fmin(base.y - ext.y, apex.y),
-		.beg.z = fmin(base.z - ext.z, apex.z),
-		.end.x = fmax(base.x + ext.x, apex.x),
-		.end.y = fmax(base.y + ext.y, apex.y),
-		.end.z = fmax(base.z + ext.z, apex.z),
+		.beg.x = fmin(base.x, apex.x) - ext.x,
+		.beg.y = fmin(base.y, apex.y) - ext.y,
+		.beg.z = fmin(base.z, apex.z) - ext.z,
+		
+		.end.x = fmax(base.x, apex.x) + ext.x,
+		.end.y = fmax(base.y, apex.y) + ext.y,
+		.end.z = fmax(base.z, apex.z) + ext.z,
 	});
 }
 
@@ -96,12 +97,12 @@ t_boundbox	elem_bounding_box(struct s_elem *elem)
 	else if (type == CONE)
 		return (cone_box(elem));
 	else
-		return ((t_boundbox){{INFINITY, INFINITY, INFINITY}, 
-		.beg.x = -INFINITY,
-		.beg.y = -INFINITY,
-		.beg.z = -INFINITY,
-		.end.x = INFINITY,
-		.end.y = INFINITY,
-		.end.z = INFINITY,		
+		return ((t_boundbox){
+			.beg.x = -INFINITY,
+			.beg.y = -INFINITY,
+			.beg.z = -INFINITY,
+			.end.x = INFINITY,
+			.end.y = INFINITY,
+			.end.z = INFINITY,		
 	});
 }

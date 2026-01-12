@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/12 14:14:30 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/12 16:39:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,15 +217,16 @@ struct s_cylinder
 struct s_cone
 {
 	t_double3	coord;
-	t_double3	p1;
-	t_double3	p2;
+	t_double3	apex;
+	t_double3	base;
 	t_double3	axis;
 	double		radius;
 	double		radius_sq;
 	double		height;
+	double		theta;
+	double		cos2_theta;
 	t_material	material;
 };
-
 struct s_any
 {
 	t_double3	coord;
