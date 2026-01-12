@@ -31,6 +31,7 @@ static bool	solve_quadratic(double coefs[3], double *t1, double *t2)
 {
 	double	discriminant;
 	double	sqrt_disc;
+	double	tmp;
 
 	discriminant = coefs[1] * coefs[1] - 4.0 * coefs[0] * coefs[2];
 	if (discriminant < 0)
@@ -38,6 +39,12 @@ static bool	solve_quadratic(double coefs[3], double *t1, double *t2)
 	sqrt_disc = sqrt(discriminant);
 	*t1 = (- coefs[1] - sqrt_disc) / (2.0 * coefs[0]);
 	*t2 = (- coefs[1] + sqrt_disc) / (2.0 * coefs[0]);
+	if (*t1 > *t2)
+	{
+		tmp = *t1;
+		*t1 = *t2;
+		*t2 = tmp;
+	}
 	return (true);
 }
 
