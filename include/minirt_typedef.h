@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_typedef.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:01:20 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:53:41 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:26:38 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 # define MINIRT_TYPEDEF
 
 # ifdef USE_DBL_NUMBER
-	typedef double					t_real;
+	typedef double				t_real;
 # else
-	typedef float					t_real;
+	typedef float				t_real;
 # endif
 
 typedef enum e_status			t_status;
 
-typedef struct s_int2		t_int2;
-typedef struct s_int3		t_int3;
-
-typedef struct s_real2		t_real2;
-typedef struct s_real3		t_real3;
+typedef struct s_int2			t_int2;
+typedef struct s_int3			t_int3;
+	
+typedef struct s_real2			t_real2;
+typedef struct s_real3			t_real3;
 
 typedef struct s_bounding_box	t_boundbox;
 typedef struct s_bvh_base		t_bvh_base;

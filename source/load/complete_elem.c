@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complete_elem.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:01:29 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 
 	cylinder = &elem->u.cylinder;
 	cylinder->axis = normalize3(cylinder->axis);
-	cylinder->p1 = project(cylinder->coord, mul3(cylinder->axis, -1.0), cylinder->height / 2);
+	cylinder->p1 = project(cylinder->coord, fmul3(cylinder->axis, -1.0), cylinder->height / 2);
 	cylinder->p2 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
 	cylinder->material.color_linear = srgb_to_linear_color(cylinder->material.color);
@@ -58,7 +58,7 @@ void	complete_co(struct s_app *app, struct s_elem *elem)
 
 	cone = &elem->u.cone;
 	cone->axis = normalize3(cone->axis);
-	cone->apex = project(cone->coord, mul3(cone->axis, -1.0), cone->height / 2);
+	cone->apex = project(cone->coord, fmul3(cone->axis, -1.0), cone->height / 2);
 	cone->base = project(cone->coord, cone->axis, cone->height / 2);
 	cone->radius_sq = cone->radius * cone->radius;
 	cone->theta = atan(cone->radius / cone->height);

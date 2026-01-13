@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:31 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 17:01:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 00:28:54 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void render_tile(struct s_app *app, int tile_x, int tile_y,
 	}
 }
 
+__attribute__((const))
 static bool	next_tile(int cores, int *x, int *y)
 {
 	*x = *x + TILE_SIDE * cores;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 17:24:40 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:11:54 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # include "app.h"              // Structure principale app
 
 /*	Niveau 4 : Fonctions utilitaires */
-# include "math_basic.h"        // Fonctions mathématiques
+# include "mathematics.h"        // Fonctions mathématiques
 # include "util.h"             // Fonctions utilitaires diverses
 # include "error.h"            // Gestion d'erreurs
 # include "wrapper.h"          // Wrappers malloc, etc.

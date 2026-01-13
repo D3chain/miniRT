@@ -53,13 +53,13 @@ t_color_linear tone_map_aces(t_color_linear col)
 
 t_color_linear tone_map_luminance(t_color_linear col)
 {
-	t_real L = 0.2126 * col.r + 0.7152 * col.g + 0.0722 * col.b;	// Calcul de la luminance perceptuelle
+	t_real L = 0.2126 * col.r + 0.7152 * col.g + 0.0722 * col.b;
 
 	if (L <= 0.0001)
 		return (col);
 
-	t_real L_compressed = L / (1.0 + L);	// Compression de la luminance
-	t_real scale = L_compressed / L;		// Application du ratio à toutes les composantes
+	t_real L_compressed = L / (1.0 + L);
+	t_real scale = L_compressed / L;
 
 	col.r *= scale;
 	col.g *= scale;

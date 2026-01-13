@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 17:28:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:09:26 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
+t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 {
-	struct s_hit_info			closest_hit;
+	t_hit_info					closest_hit;
 	const struct s_sphere		sphere = ((struct s_elem *)elem)->u.sphere;
 	const t_real3				offset = minus3(ray->origin, sphere.coord);
 	const t_sol2				dst = polynome2(dot(ray->dir, ray->dir),

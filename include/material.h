@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:16:40 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:44:56 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:40:03 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ struct s_material
 	t_real	ks;
 	
 	t_real	shininess;
-	t_real	ks_intensity;
 	t_real	ior;
 
 	t_real	kr;

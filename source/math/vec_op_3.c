@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.h                                              :+:      :+:    :+:   */
+/*   vec_op_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/14 00:16:47 by fox              ###   ########.fr       */
+/*   Created: 2026/01/13 23:06:11 by fox               #+#    #+#             */
+/*   Updated: 2026/01/13 23:21:33 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_H
-# define RUN_H
+#include "minirt.h"
 
-# include "minirt.h"
+__attribute__((const, hot))
+t_real3	orient_normal(t_real3 normal, t_real3 ray)
+{
+	if (dot(ray, normal) >= EPSILON)
+		return (fmul3(normal, -1.0));
+	return (normal);
+}
 
-
-int run_scene(struct s_app *app);
-int	render(struct s_app *app);
-
-// RENDER
-void 			*render_routine(void *p);
-
-t_color_linear	trace(struct s_scene *scene, t_ray *ray);
-
-// EVENTS
-int				event_keyboard_press(int key, struct s_app *app);
-
-// DRAW
-void  			draw_pixel_to_img(struct s_img *img, int x, int y, int color);
-
-#endif
+__attribute__((pure, hot))
+t_real	norm3(t_real3 vec)
+{
+	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basic_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:08:25 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:09:49 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,3 @@ inline t_color_linear	basic_render(struct s_app *app, t_real x, t_real y)
 	init_ray(app, &ray, x, y);
 	return (trace(&app->scene, &ray));
 }
-
-// inline t_color_linear	basic_render(struct s_app *app, t_real x, t_real y)
-// {
-// 	t_ray	ray;
-
-// 	init_ray(app, &ray, x, y);
-// 	return (trace(&app->scene, &ray));
-// }

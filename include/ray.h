@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:04:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:46:37 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 00:24:53 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ struct s_hit_info
 };
 
 void				init_ray(struct s_app *app, struct s_ray *ray, t_real x, t_real y);
-struct s_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray);
+t_hit_info			ray_hit(t_bvh_elem_box *box, const t_ray *ray);
 
-t_hit_info			elem_inf_hit(const struct s_scene *scene, const t_ray *ray);
+t_hit_info			elem_inf_hit(struct s_scene *scene, t_ray *ray);
 t_hit_info			cmp_hit_info(t_hit_info a, t_hit_info b);
 
 t_real				closest_hit_dst_dbl(const t_real a, const t_real b);
 t_real				closest_hit_dst_sol2(t_sol2 sol);
 t_real	plane_dst(const struct s_ray *ray, const t_real3 normal, const t_real3 point);
 
-struct s_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem);
-struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem);
-struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem);
-struct s_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem);
+t_hit_info			ray_hit_sphere(const struct s_ray *ray, const void *elem);
+t_hit_info			ray_hit_cylinder(const struct s_ray *ray, const void *elem);
+t_hit_info			ray_hit_cone(const struct s_ray *ray, const void *elem);
+t_hit_info			ray_hit_plane(const struct s_ray *ray, const void *elem);
 
 #endif

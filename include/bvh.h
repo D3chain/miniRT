@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bvh.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:52:18 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 17:03:34 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 00:23:54 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ t_boundbox	elem_bounding_box(struct s_elem *elem);
 
 
 /*	Traversal of the BVH and hit analysis	*/
-t_hit_info	bvh_traverse(t_bvh_base *tree, const t_ray *ray);
-bool		bvh_any_hit(t_bvh_base *tree, const t_ray *ray, t_real max_dist);
-bool		elem_inf_any_hit(const struct s_scene *scene, const t_ray *ray, t_real max_dist);
+t_hit_info	bvh_traverse(t_bvh_base *tree, t_ray *ray);
+bool		bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist);
+bool		elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist);
 bool		collision_aabb(t_bvh_node *node, t_ray *ray);
 bool		collision_aabb_base(t_bvh_base *base, t_ray *ray);
 

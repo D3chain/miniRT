@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:08:52 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 	return ((t_hit_info){false, -1, {0}, {0}, cone->material});
 }
 
-struct s_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
+t_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 {
 	const struct s_cone	cone = ((struct s_elem *)elem)->u.cone;
 	t_hit_info		body_hit;

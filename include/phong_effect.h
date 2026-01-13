@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_effect.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:46:19 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 00:06:39 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ struct s_phong_effect
 
 	bool	in_shadow;
 };
-
-/*	sRGB colors	*/
-
-t_color				color_add(t_color color1, t_color color2);
-t_color				mul_color(t_color color, t_color light, t_real factor);
-t_color				scale_color(t_color color, t_real factor);
 
 /*	Linear colors	*/
 
