@@ -15,12 +15,12 @@
 
 # include "minirt.h"
 
-typedef struct s_sol2
+struct s_sol2
 {
 	int		n;
 	double	r1;
 	double	r2;
-}	t_sol2;
+};
 
 double			dot(t_double3 a, t_double3 b);
 double			sqdot(t_double3 v);

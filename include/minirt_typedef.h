@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minirt_typedef.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/13 15:01:20 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/13 15:40:50 by cgajean          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINIRT_TYPEDEF
+# define MINIRT_TYPEDEF
+
+typedef enum e_status			t_status;
+
+typedef struct s_double2		t_double2;
+typedef struct s_double3		t_double3;
+typedef t_double3				t_point3;
+
+typedef struct s_bounding_box	t_boundbox;
+typedef struct s_bvh_base		t_bvh_base;
+typedef struct s_bvh_elem_box	t_bvh_elem_box;
+typedef struct s_bvh_node		t_bvh_node;
+
+typedef struct s_ray			t_ray;
+typedef struct s_hit_info		t_hit_info;
+
+typedef union u_color			t_color;
+typedef struct s_color_linear	t_color_linear;
+typedef struct s_double3		t_double3;
+typedef struct s_material		t_material;
+
+typedef struct s_sol2			t_sol2;
+
+typedef struct s_phong_effect	t_phong;
+
+typedef struct s_antialiasing	t_antialiasing;
+
+#endif

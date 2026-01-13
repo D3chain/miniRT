@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/12 17:43:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:30:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /*	This part defines the screen size	*/
 /*										*/
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 800
+#  define WIN_WIDTH 1920
 # endif
 
 # ifdef WIN_WIDTH
@@ -35,7 +35,7 @@
 
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 600
+#  define WIN_HEIGHT 1080
 # endif
 
 # ifdef WIN_HEIGHT
@@ -70,6 +70,19 @@
 # ifdef BVH_MIN_ELEM
 #  if BVH_MIN_ELEM < 1
 #   define BVH_MIN_ELEM 1
+#  endif
+# endif
+
+/*																*/
+/*	This part defines the size of the thread's tiles			*/
+/*																*/
+# ifndef TILE_SIDE
+#  define TILE_SIDE	16
+# endif
+
+# ifdef TILE_SIDE
+#  if TILE_SIDE != 16 && TILE_SIDE != 32
+#   define TILE_SIDE 16
 #  endif
 # endif
 

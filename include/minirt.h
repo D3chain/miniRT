@@ -3,50 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/10 13:00:03 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 15:41:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-/*	STD headers		*/
+/*	STD headers	*/
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
 # include <time.h>
 # include <errno.h>
+# include <pthread.h>
 
-/*	X11 headers		*/
+/*	X11 headers	*/
 # include <X11/keysym.h>
 # include <X11/keysymdef.h>
 # include <X11/Xlib.h>
 # include <X11/X.h>
 
-/*	MLX headers		*/
+/*	MLX headers	*/
 # include "mlx.h"
-// # include "mlx_int.h"
 
 /*	libft header	*/
 # include "libft.h"
 
-/*	Local headers	*/
-# include "config.h"
-# include "color.h"
-# include "types.h"
-# include "scene.h"
-# include "bvh.h"
-# include "app.h"
-# include "init.h"
-# include "math_util.h"
-# include "load.h"
-# include "run.h"
-# include "error.h"
-# include "wrapper.h"
-# include "util.h"
+/*	Niveau 1 : Types de base et config (ne dépendent de rien) */
+# include "config.h"          // Constantes
+# include "minirt_typedef.h"  // Typedefs
+# include "types.h"            // Structures de base (double2, double3)
+
+/*	Niveau 2 : Structures de données (dépendent du niveau 1) */
+# include "material.h"
+# include "ray.h"              // Structures ray et hit_info
+# include "scene.h"            // Structures de scène (camera, light, elems)
+# include "bvh.h"              // Structures BVH
+# include "phong_effect.h"            // Structures couleur et matériaux
+
+/*	Niveau 3 : Application (dépend de scene et autres) */
+# include "app.h"              // Structure principale app
+
+/*	Niveau 4 : Fonctions utilitaires */
+# include "math_util.h"        // Fonctions mathématiques
+# include "util.h"             // Fonctions utilitaires diverses
+# include "error.h"            // Gestion d'erreurs
+# include "wrapper.h"          // Wrappers malloc, etc.
+
+/*	Niveau 5 : Logique métier */
+# include "init.h"             // Initialisation
+# include "load.h"             // Chargement de scène
+# include "run.h"              // Boucle principale
 
 #endif

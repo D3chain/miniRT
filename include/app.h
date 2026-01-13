@@ -6,14 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/15 15:48:06 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:21:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APP_H
 # define APP_H
 
-# include "minirt.h"
+struct s_app;
+struct s_scene;
 
 struct s_img
 {
@@ -37,12 +38,28 @@ struct	s_mlx
 	struct s_img	img;
 };
 
+struct	s_thread
+{
+	pthread_t		*th_tab;
+	
+	pthread_mutex_t	th_idx_mtx;
+	int				th_idx;
+
+	pthread_mutex_t	print_mtx;
+
+	int				cpu_cores;
+};
+
 struct s_app
 {
 	struct s_mlx	mlx;
 
 	struct s_scene	scene;
 
+	struct s_render	render;
+
+	struct s_thread	threads;
+	
 	t_status		status;
 };
 

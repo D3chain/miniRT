@@ -6,12 +6,11 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/08 16:50:51 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 15:31:12 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
 
 int	event_keyboard_press(int key, struct s_app *app)
 {

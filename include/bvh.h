@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:52:18 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 14:36:16 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 15:42:21 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define BVH_H
 
 # include "minirt.h"
+
+struct s_app;
+struct s_scene;
 
 enum e_bvh_type
 {
@@ -27,8 +30,6 @@ typedef enum e_divide_axis
 	DIV_ALONG_Y = 2,
 	DIV_ALONG_Z = 4
 } t_div_axis;
-
-typedef t_double3	t_point3;
 
 typedef struct s_bounding_box
 {
@@ -74,8 +75,6 @@ t_boundbox	elem_bounding_box(struct s_elem *elem);
 t_hit_info	bvh_traverse(t_bvh_base *tree, const t_ray *ray);
 bool		bvh_any_hit(t_bvh_base *tree, const t_ray *ray, double max_dist);
 bool		elem_inf_any_hit(const struct s_scene *scene, const t_ray *ray, double max_dist);
-
-
 
 bool		collision_aabb(t_bvh_node *node, t_ray *ray);
 bool		collision_aabb_base(t_bvh_base *base, t_ray *ray);
