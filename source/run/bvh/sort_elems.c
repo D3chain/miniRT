@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 11:38:20 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 14:35:04 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static double get_coord(struct s_elem elem, t_div_axis axis)
+static t_real get_coord(struct s_elem elem, t_div_axis axis)
 {
 	if (axis == DIV_ALONG_X)
 		return (elem.u.any.coord.x);
@@ -25,8 +25,8 @@ void	sort_elems(t_bvh_elem_box *cur_box, t_div_axis div_axis)
 {
 	int				i;
 	struct s_elem	tmp_elem;
-	double			coord_i;
-	double			coord_i_plus_1;
+	t_real			coord_i;
+	t_real			coord_i_plus_1;
 
 	i = -1;
 	while (++i < cur_box->n_elems - 1)

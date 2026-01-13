@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2026/01/12 14:35:17 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/13 17:25:20 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ RUN_SRC		:=	run_scene.c	\
 				bvh/bvh_build.c bvh/elem_bounding_box.c bvh/bound_boxes.c bvh/sort_elems.c bvh/collision_aabb.c bvh/any_hit.c bvh/print_tree.c	\
 				ray/init_ray.c ray/ray_hit.c ray/ray_hit_sphere.c ray/ray_hit_cylinder.c ray/ray_hit_plane.c ray/ray_hit_cone.c	\
 				render/render.c render/draw_pixel_to_img.c render/antialiasing.c render/trace.c render/basic_render.c
-MATH_SRC	:=	math_util.c polynome2.c
+MATH_SRC	:=	polynome2.c
 WRAPPER_SRC	:=	xmalloc.c xcalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
 COLOR_SRC	:=	color_sRGB.c color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c	\

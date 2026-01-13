@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 21:24:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 16:46:31 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:53:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static t_boundbox	cone_box(struct s_elem *elem)
 {
-	double			radius;
-	t_double3		axis;
-	t_double3		apex;
-	t_double3		base;
-	t_double3		ext;
+	t_real			radius;
+	t_real3		axis;
+	t_real3		apex;
+	t_real3		base;
+	t_real3		ext;
 
 	radius = elem->u.cone.radius;
 	axis = elem->u.cone.axis;
@@ -42,11 +42,11 @@ static t_boundbox	cone_box(struct s_elem *elem)
 
 static t_boundbox	cylinder_box(struct s_elem *elem)
 {
-	double				radius;
-	t_double3			axis;
-	t_double3			p1;
-	t_double3			p2;
-	t_double3			ext;
+	t_real				radius;
+	t_real3			axis;
+	t_real3			p1;
+	t_real3			p2;
+	t_real3			ext;
 
 	radius = elem->u.cylinder.radius;
 	axis = elem->u.cylinder.axis;
@@ -70,8 +70,8 @@ static t_boundbox	cylinder_box(struct s_elem *elem)
 
 static t_boundbox	sphere_box(struct s_elem *elem)
 {
-	t_point3	coord;
-	double		radius;
+	t_real3	coord;
+	t_real		radius;
 
 	coord = elem->u.sphere.coord;
 	radius = elem->u.sphere.radius;

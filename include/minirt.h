@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 15:41:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:24:40 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 /*	Niveau 1 : Types de base et config (ne dépendent de rien) */
 # include "config.h"          // Constantes
 # include "minirt_typedef.h"  // Typedefs
-# include "types.h"            // Structures de base (double2, double3)
+# include "types.h"            // Structures de base (t_real2, t_real3)
 
 /*	Niveau 2 : Structures de données (dépendent du niveau 1) */
 # include "material.h"
@@ -50,7 +50,7 @@
 # include "app.h"              // Structure principale app
 
 /*	Niveau 4 : Fonctions utilitaires */
-# include "math_util.h"        // Fonctions mathématiques
+# include "math_basic.h"        // Fonctions mathématiques
 # include "util.h"             // Fonctions utilitaires diverses
 # include "error.h"            // Gestion d'erreurs
 # include "wrapper.h"          // Wrappers malloc, etc.

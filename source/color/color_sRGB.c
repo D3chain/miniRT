@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_sRGB.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:18:39 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 23:57:30 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_color	color_add(t_color color1, t_color color2)
 	return (res);
 }
 
-t_color	mul_color(t_color object, t_color light, double factor)
+t_color	mul_color(t_color object, t_color light, t_real factor)
 {
 	t_color	res;
 
@@ -34,7 +34,7 @@ t_color	mul_color(t_color object, t_color light, double factor)
 	return (res);
 }
 
-t_color scale_color(t_color color, double factor)
+t_color scale_color(t_color color, t_real factor)
 {
 	t_color res;
 	

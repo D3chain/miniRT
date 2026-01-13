@@ -33,11 +33,11 @@ t_color_linear tone_map_reinhard(t_color_linear col)
 
 t_color_linear tone_map_aces(t_color_linear col)
 {
-	static const double	a = 2.51;
-	static const double	b = 0.03;
-	static const double	c = 2.43;
-	static const double	d = 0.59;
-	static const double	e = 0.14;
+	static const t_real	a = 2.51;
+	static const t_real	b = 0.03;
+	static const t_real	c = 2.43;
+	static const t_real	d = 0.59;
+	static const t_real	e = 0.14;
 
 	col.r = (col.r * (a * col.r + b)) / (col.r * (c * col.r + d) + e);
 	if (col.r - 1.0 > EPSILON)
@@ -53,13 +53,13 @@ t_color_linear tone_map_aces(t_color_linear col)
 
 t_color_linear tone_map_luminance(t_color_linear col)
 {
-	double L = 0.2126 * col.r + 0.7152 * col.g + 0.0722 * col.b;	// Calcul de la luminance perceptuelle
+	t_real L = 0.2126 * col.r + 0.7152 * col.g + 0.0722 * col.b;	// Calcul de la luminance perceptuelle
 
 	if (L <= 0.0001)
 		return (col);
 
-	double L_compressed = L / (1.0 + L);	// Compression de la luminance
-	double scale = L_compressed / L;		// Application du ratio à toutes les composantes
+	t_real L_compressed = L / (1.0 + L);	// Compression de la luminance
+	t_real scale = L_compressed / L;		// Application du ratio à toutes les composantes
 
 	col.r *= scale;
 	col.g *= scale;

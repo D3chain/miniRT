@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:08:41 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/12 14:00:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:28:13 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ struct s_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray)
 	struct s_hit_info			hit_point;
 	int							i;
 
-	ft_bzero(&closest_hit, sizeof(closest_hit));
-	ft_bzero(&hit_point, sizeof(hit_point));
+	ft_memset(&closest_hit, 0, sizeof(closest_hit));
+	ft_memset(&hit_point, 0, sizeof(hit_point));
 	i = -1;
 	while (++i < box->n_elems)
 	{

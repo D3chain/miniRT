@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   basic_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:08:25 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:03:18 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-inline t_color_linear	basic_render(struct s_app *app, double x, double y)
+inline t_color_linear	basic_render(struct s_app *app, t_real x, t_real y)
 {
 	t_ray	ray;
 
@@ -20,7 +20,7 @@ inline t_color_linear	basic_render(struct s_app *app, double x, double y)
 	return (trace(&app->scene, &ray));
 }
 
-// inline t_color_linear	basic_render(struct s_app *app, double x, double y)
+// inline t_color_linear	basic_render(struct s_app *app, t_real x, t_real y)
 // {
 // 	t_ray	ray;
 

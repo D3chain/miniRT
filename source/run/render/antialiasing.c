@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 14:42:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static inline t_color_linear	average_linear_color(t_color_linear incremented, in
 	return (incremented);
 }
 
-t_color_linear	antialiasing(struct s_app *app, double x, double y)
+t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 {
 	t_antialiasing	alias;
 	t_ray			ray;
 	t_color_linear	final_color_linear;
-	double			offset;
+	t_real			offset;
 
 	final_color_linear = (t_color_linear){0};
 	

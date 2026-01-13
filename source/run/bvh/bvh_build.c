@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 12:12:19 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 12:44:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:44:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 struct s_span
 {
-	t_double3	min;
-	t_double3	max;
-	t_double3	span;
+	t_real3	min;
+	t_real3	max;
+	t_real3	span;
 	int			i;
 };
 

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:51:11 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/08 11:34:36 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	randomize_material(t_material *original)
 
 // void	randomize_material(t_material *original)
 // {	
-// 	double	tmp_a;
-// 	double	tmp_d;
-// 	double	tmp_s;
-// 	double	tmp_ads;
+// 	t_real	tmp_a;
+// 	t_real	tmp_d;
+// 	t_real	tmp_s;
+// 	t_real	tmp_ads;
 	
-// 	tmp_a = (double) rand() / RAND_MAX;
-// 	tmp_d = (double) rand() / RAND_MAX;
-// 	tmp_s = (double) rand() / RAND_MAX;	
+// 	tmp_a = (t_real) rand() / RAND_MAX;
+// 	tmp_d = (t_real) rand() / RAND_MAX;
+// 	tmp_s = (t_real) rand() / RAND_MAX;	
 
 // 	tmp_a = tmp_a < 0.1 ? 0.1 : tmp_a;
 // 	tmp_d = tmp_d < 0.4 ? 0.5 255: tmp_d;
@@ -58,7 +58,7 @@ void	randomize_material(t_material *original)
 // 	original->kd = tmp_d / tmp_ads;;
 // 	original->ks = tmp_s / tmp_ads;;
 	
-// 	original->ks_intensity = (double) rand() / RAND_MAX;
+// 	original->ks_intensity = (t_real) rand() / RAND_MAX;
 // 	original->shininess = rand() % 200;
 // 	original->ior = 1.5;
 

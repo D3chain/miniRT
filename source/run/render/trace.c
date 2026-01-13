@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:10:09 by fox               #+#    #+#             */
-/*   Updated: 2026/01/12 14:51:01 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:27:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_hit_info	bvh_traverse(t_bvh_base *tree, const t_ray *ray)
 	t_hit_info	hit_left;
 	t_hit_info	hit_right;
 
-	ft_bzero(&hit_left, sizeof(hit_left));
-	ft_bzero(&hit_right, sizeof(hit_right));
+	ft_memset(&hit_left, 0, sizeof(hit_left));
+	ft_memset(&hit_right, 0, sizeof(hit_right));
 	if (tree->type == NODE_BOX)
 	{
 		if (!collision_aabb((t_bvh_node *)tree, (t_ray *)ray))

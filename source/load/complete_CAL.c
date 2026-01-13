@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:17:32 by cgajean           #+#    #+#             */
-/*   Updated: 2025/12/17 12:34:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:44:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	complete_C(struct s_app *app, struct s_camera *camera)
 	camera->viewport_height = 2.0 * tan(camera->fov_rad / 2.0) * camera->focal_length;
 	camera->viewport_width = camera->viewport_height * IMG_RATIO;
 	if (camera->dir.y > 0.99 || camera->dir.y < -0.99)
-		camera->viewport_u = (t_double3){1.0, 0.0, 0.0};
+		camera->viewport_u = (t_real3){1.0, 0.0, 0.0};
 	else
-		camera->viewport_u = mul3(normalize3(cross3(camera->dir, (t_double3){0.0, -1.0, 0.0})), camera->viewport_width);
+		camera->viewport_u = mul3(normalize3(cross3(camera->dir, (t_real3){0.0, -1.0, 0.0})), camera->viewport_width);
 	camera->viewport_u_px = mul3(camera->viewport_u, 1.0 / WIN_WIDTH);
 	camera->viewport_v = mul3(normalize3(cross3(camera->dir, camera->viewport_u)), -camera->viewport_height);
 	camera->viewport_v_px = mul3(camera->viewport_v, 1.0 / WIN_HEIGHT);

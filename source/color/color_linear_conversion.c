@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color_linear_conversion.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:09:15 by fox               #+#    #+#             */
-/*   Updated: 2025/12/17 00:23:23 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	rgb_to_linear(double channel)
+t_real	rgb_to_linear(t_real channel)
 {
 	if (channel <= 0.04045)
 		return (channel / 12.92);
@@ -29,7 +29,7 @@ t_color_linear	srgb_to_linear_color(t_color color)
 	};
 }
 
-double	linear_to_srgb(double channel)
+t_real	linear_to_srgb(t_real channel)
 {
 	if (channel <= 0.0031308)
 		return (channel * 12.92);

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:41:16 by cgajean           #+#    #+#             */
-/*   Updated: 2025/04/29 12:42:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:28:01 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
+	ft_memset(ptr, 0, nmemb * size);
 	return (ptr);
 }

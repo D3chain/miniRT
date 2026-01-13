@@ -16,11 +16,11 @@ static const t_sol2	caps_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
 {
 	t_sol2			sol;
-	const t_double3	p1 = project(cylinder->coord, cylinder->axis,
+	const t_real3	p1 = project(cylinder->coord, cylinder->axis,
 		cylinder->height / 2);
-	const t_double3	p2 = project(cylinder->coord,
+	const t_real3	p2 = project(cylinder->coord,
 		mul3(cylinder->axis, -1.0), cylinder->height / 2);
-	const double	rdot = dot(cylinder->axis, ray->dir);
+	const t_real	rdot = dot(cylinder->axis, ray->dir);
 	
 	if (ft_dblcmp(rdot, 0.0, EPSILON) == 0.0)
 		return (sol.n = 0, sol);
@@ -39,9 +39,9 @@ static const t_sol2	caps_intersect(const struct s_ray *ray,
 static const t_sol2	tube_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
 {
-	const t_double3	offset = minus3(ray->origin, cylinder->coord);
-	const t_double3	tmp_a = minus3(ray->dir, mul3(cylinder->axis, dot(ray->dir, cylinder->axis)));
-	const t_double3	tmp_b = minus3(offset, mul3(cylinder->axis, dot(offset, cylinder->axis)));	
+	const t_real3	offset = minus3(ray->origin, cylinder->coord);
+	const t_real3	tmp_a = minus3(ray->dir, mul3(cylinder->axis, dot(ray->dir, cylinder->axis)));
+	const t_real3	tmp_b = minus3(offset, mul3(cylinder->axis, dot(offset, cylinder->axis)));	
 	
 	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), 2 * dot(tmp_a, tmp_b),
 		dot(tmp_b, tmp_b) - pow(cylinder->radius, 2.0));
@@ -58,11 +58,11 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	return (sol);
 }
 
-t_double3	normal_tube(const struct s_cylinder *cylinder, const t_double3 hit_point)
+t_real3	normal_tube(const struct s_cylinder *cylinder, const t_real3 hit_point)
 {
-	const t_double3	oc = minus3(hit_point, cylinder->coord);
-	double			projection = dot(oc, cylinder->axis);
-	const t_double3	closest_on_axis = plus3(cylinder->coord, mul3(cylinder->axis, projection));
+	const t_real3	oc = minus3(hit_point, cylinder->coord);
+	t_real			projection = dot(oc, cylinder->axis);
+	const t_real3	closest_on_axis = plus3(cylinder->coord, mul3(cylinder->axis, projection));
 	
 	return (normalize3(minus3(hit_point, closest_on_axis)));
 }
@@ -71,9 +71,9 @@ struct s_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 {
 	struct s_hit_info		closest_hit;
 	const struct s_cylinder	cylinder = ((struct s_elem *)elem)->u.cylinder;
-	const double			dst_tube = closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
+	const t_real			dst_tube = closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
 
-	ft_bzero(&closest_hit, sizeof(closest_hit));	
+	ft_memset(&closest_hit, 0, sizeof(closest_hit));	
 	closest_hit.dst = closest_hit_dst_sol2(caps_intersect(ray, &cylinder));
 	if (closest_hit.dst >= EPSILON)
 	{

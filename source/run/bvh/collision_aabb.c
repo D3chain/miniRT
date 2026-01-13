@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision_aabb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:35:04 by fox               #+#    #+#             */
-/*   Updated: 2026/01/10 13:42:07 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 struct s_intersect
 {
-	double	nearest;
-	double	farthest;
+	t_real	nearest;
+	t_real	farthest;
 };
 
 bool	collision_aabb_base(t_bvh_base *base, t_ray *ray)
 {
-	t_double3			t_lo;
-	t_double3			t_hi;
-	t_double3			t_close;
-	t_double3			t_far;
-	double				t_near;
-	double				t_far_final;
+	t_real3			t_lo;
+	t_real3			t_hi;
+	t_real3			t_close;
+	t_real3			t_far;
+	t_real				t_near;
+	t_real				t_far_final;
 
 	t_lo.x = (base->bbox.beg.x - ray->origin.x) / ray->dir.x;
 	t_lo.y = (base->bbox.beg.y - ray->origin.y) / ray->dir.y;
@@ -50,10 +50,10 @@ bool	collision_aabb_base(t_bvh_base *base, t_ray *ray)
 
 bool	collision_aabb(t_bvh_node *node, t_ray *ray)
 {
-	t_double3			t_lo;
-	t_double3			t_hi;
-	t_double3			t_close;
-	t_double3			t_far;
+	t_real3			t_lo;
+	t_real3			t_hi;
+	t_real3			t_close;
+	t_real3			t_far;
 	struct s_intersect	t;
 
 	t_lo.x = (node->bbox.beg.x - ray->origin.x) / ray->dir.x;

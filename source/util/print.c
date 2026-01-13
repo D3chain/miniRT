@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:22:52 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/16 17:17:52 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/13 16:44:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	print_double3(t_double3 d, char *text)
+void	print_real3(t_real3 d, char *text)
 {
 	if (text)
 		printf("%s", text);

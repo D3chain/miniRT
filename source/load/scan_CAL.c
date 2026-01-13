@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/06 16:25:12 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	scan_C(struct s_app *app, const char *line, int *_)
 {
-	line += scan_double3(app, &app->scene.camera.focal_center, line);
+	line += scan_t_real3(app, &app->scene.camera.focal_center, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_double3(app, &app->scene.camera.dir, line);
+	line += scan_t_real3(app, &app->scene.camera.dir, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_double(app, &app->scene.camera.fov, line);
+	line += scan_t_real(app, &app->scene.camera.fov, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
@@ -33,7 +33,7 @@ int	scan_C(struct s_app *app, const char *line, int *_)
 
 int	scan_A(struct s_app *app, const char *line, int *_)
 {
-	line += scan_double(app, &app->scene.ambient.ratio, line);
+	line += scan_t_real(app, &app->scene.ambient.ratio, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
@@ -48,11 +48,11 @@ int	scan_L(struct s_app *app, const char *line, int *_)
 {
 	static int	light_index;
 	
-	line += scan_double3(app, &app->scene.light[light_index].coord, line);
+	line += scan_t_real3(app, &app->scene.light[light_index].coord, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);
-	line += scan_double(app, &app->scene.light[light_index].ratio, line);
+	line += scan_t_real(app, &app->scene.light[light_index].ratio, line);
 	if (app->status)
 		return (app->status);
 	ft_skipspaces(&line);

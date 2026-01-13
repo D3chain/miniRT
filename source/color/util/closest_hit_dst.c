@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:02:24 by cgajean           #+#    #+#             */
-/*   Updated: 2025/11/19 16:25:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	closest_hit_dst_dbl(const double a, const double b)
+t_real	closest_hit_dst_dbl(const t_real a, const t_real b)
 {
 	if (a <= 0 && b > 0)
 		return (b);
@@ -22,7 +22,7 @@ double	closest_hit_dst_dbl(const double a, const double b)
 		return (fmin(a, b));
 }
 
-double	closest_hit_dst_sol2(t_sol2 sol)
+t_real	closest_hit_dst_sol2(t_sol2 sol)
 {
 	if (sol.n == 0)
 		return (-1.0);

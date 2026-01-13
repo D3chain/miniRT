@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 16:26:45 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:55:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ int run_scene(struct s_app *app)
 {
 	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.width, app->mlx.height, "miniRT");
 	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
-
 	render(app);
-
 	mlx_loop(app->mlx.mlx);
 	return (0);
 }

@@ -276,7 +276,7 @@
 	}
 
 	__attribute__((pure))
-	double hypot(double x, double y) {
+	t_real hypot(t_real x, t_real y) {
 		return sqrt(x*x + y*y);
 	}
 

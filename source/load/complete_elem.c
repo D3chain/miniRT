@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/12 17:21:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 void	complete_co(struct s_app *app, struct s_elem *elem)
 {
 	struct s_cone	*cone;
-	double			cos_theta;
+	t_real			cos_theta;
 
 	cone = &elem->u.cone;
 	cone->axis = normalize3(cone->axis);

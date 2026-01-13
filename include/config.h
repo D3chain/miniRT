@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:30:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:04:15 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@
 /*	This part defines the size of the thread's tiles			*/
 /*																*/
 # ifndef TILE_SIDE
-#  define TILE_SIDE	16
+#  define TILE_SIDE	32
 # endif
 
 # ifdef TILE_SIDE

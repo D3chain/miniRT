@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/12 15:17:23 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 17:29:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 	t_color_linear	final_color_linear;
 	int				i;
 
-	ft_bzero(&final_color_linear, sizeof(final_color_linear));
+	ft_memset(&final_color_linear, 0, sizeof(final_color_linear));
 	i = 0;
 	
 	while (i < scene->n_light)
 	{
-		ft_bzero(&phong, sizeof(phong));
+		ft_memset(&phong, 0, sizeof(phong));
 		collision(scene, &phong, hit_info, i);
 		ambient_light(scene, &phong);
 		diffuse_specular_light(scene, &phong, i);

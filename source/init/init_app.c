@@ -65,12 +65,12 @@ void	init_graphic_data(struct s_app *app)
 	app->render.resolution = WIN_WIDTH * WIN_HEIGHT;
 	app->render.tile_side = TILE_SIDE;
 	app->render.tile_area  = TILE_SIDE * TILE_SIDE;
-	app->render.n_tiles = ceil((double) app->render.resolution / app->render.tile_area);
+	app->render.n_tiles = ceil((t_real) app->render.resolution / app->render.tile_area);
 }
 
 int	init_app(struct s_app *app, int argc, char *argv[])
 {
-	ft_bzero(app, sizeof(*app));
+	ft_memset(app, 0, sizeof(*app));
 	if (check_arg(app, argc, argv))
 		return (app->status);
 	if (init_mlx(app))

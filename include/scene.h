@@ -6,12 +6,14 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 15:13:31 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:49:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
+
+# include "minirt.h"
 
 struct s_app;
 struct s_scene;
@@ -48,32 +50,32 @@ struct s_render
 
 struct s_camera
 {
-	t_double3	focal_center;
-	t_double3	dir;
-	double		fov;
-	double		fov_rad;
-	double		focal_length;
-	double		viewport_width;
-	double		viewport_height;
-	t_double3	viewport_u;
-	t_double3	viewport_u_px;
-	t_double3	viewport_v;
-	t_double3	viewport_v_px;
-	t_double3	viewport_upper_left;
-	t_double3	pixel00_loc;
+	t_real3	focal_center;
+	t_real3	dir;
+	t_real	fov;
+	t_real	fov_rad;
+	t_real	focal_length;
+	t_real	viewport_width;
+	t_real	viewport_height;
+	t_real3	viewport_u;
+	t_real3	viewport_u_px;
+	t_real3	viewport_v;
+	t_real3	viewport_v_px;
+	t_real3	viewport_upper_left;
+	t_real3	pixel00_loc;
 };
 
 struct s_ambient
 {
-	double			ratio;
+	t_real			ratio;
 	t_color			color;
 	t_color_linear	color_linear;
 };
 
 struct s_light
 {
-	t_double3		coord;
-	double			ratio;
+	t_real3			coord;
+	t_real			ratio;
 	t_color			color;
 	t_color_linear	color_linear;
 	
@@ -87,7 +89,7 @@ struct s_antialiasing
 
 	t_color_linear	sample_color;
 
-	t_double2		xy_offset;
+	t_real2		xy_offset;
 	
 };
 
@@ -106,7 +108,7 @@ struct s_scene
 	struct s_elem			*elems_inf;
 	int						n_elem_inf;
 	
-	double					environment_ior;
+	t_real					environment_ior;
 
 	t_antialiasing			antialiasing;
 
@@ -118,48 +120,48 @@ struct s_scene
 
 struct s_sphere
 {
-	t_double3	coord;
-	double		radius;
-	double		radius_sq;
+	t_real3	coord;
+	t_real		radius;
+	t_real		radius_sq;
 	t_material	material;
 };
 
 struct s_plane
 {
-	t_double3	coord;
-	t_double3	normal;
+	t_real3	coord;
+	t_real3	normal;
 	t_material	material;
 
 };
 
 struct s_cylinder
 {
-	t_double3	coord;
-	t_double3	p1;
-	t_double3	p2;
-	t_double3	axis;
-	double		radius;
-	double		radius_sq;
-	double		height;
+	t_real3	coord;
+	t_real3	p1;
+	t_real3	p2;
+	t_real3	axis;
+	t_real		radius;
+	t_real		radius_sq;
+	t_real		height;
 	t_material	material;
 };
 
 struct s_cone
 {
-	t_double3	coord;
-	t_double3	apex;
-	t_double3	base;
-	t_double3	axis;
-	double		radius;
-	double		radius_sq;
-	double		height;
-	double		theta;
-	double		cos2_theta;
+	t_real3	coord;
+	t_real3	apex;
+	t_real3	base;
+	t_real3	axis;
+	t_real		radius;
+	t_real		radius_sq;
+	t_real		height;
+	t_real		theta;
+	t_real		cos2_theta;
 	t_material	material;
 };
 struct s_any
 {
-	t_double3	coord;
+	t_real3	coord;
 };
 
 struct s_elem
