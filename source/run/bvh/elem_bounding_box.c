@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 21:24:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 16:53:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 13:48:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,66 @@
 
 static t_boundbox	cone_box(struct s_elem *elem)
 {
-	t_real			radius;
-	t_real3		axis;
-	t_real3		apex;
-	t_real3		base;
-	t_real3		ext;
+	t_real	radius;
+	t_real3	axis;
+	t_real3	apex;
+	t_real3	base;
+	t_real3	ext;
 
 	radius = elem->u.cone.radius;
 	axis = elem->u.cone.axis;
 	apex = elem->u.cone.apex;
 	base = elem->u.cone.base;
-	
 	ext.x = radius * sqrt(1.0 - axis.x * axis.x);
 	ext.y = radius * sqrt(1.0 - axis.y * axis.y);
 	ext.z = radius * sqrt(1.0 - axis.z * axis.z);
-	
-	return ((t_boundbox) {
+	return ((t_boundbox){
 		.beg.x = fmin(base.x, apex.x) - ext.x,
 		.beg.y = fmin(base.y, apex.y) - ext.y,
 		.beg.z = fmin(base.z, apex.z) - ext.z,
-		
 		.end.x = fmax(base.x, apex.x) + ext.x,
 		.end.y = fmax(base.y, apex.y) + ext.y,
-		.end.z = fmax(base.z, apex.z) + ext.z,
-	});
+		.end.z = fmax(base.z, apex.z) + ext.z});
 }
 
 static t_boundbox	cylinder_box(struct s_elem *elem)
 {
-	t_real				radius;
-	t_real3			axis;
-	t_real3			p1;
-	t_real3			p2;
-	t_real3			ext;
+	t_real	radius;
+	t_real3	axis;
+	t_real3	p1;
+	t_real3	p2;
+	t_real3	ext;
 
 	radius = elem->u.cylinder.radius;
 	axis = elem->u.cylinder.axis;
 	p1 = elem->u.cylinder.p1;
 	p2 = elem->u.cylinder.p2;
-
 	ext.x = radius * sqrt(1.0 - axis.x * axis.x);
 	ext.y = radius * sqrt(1.0 - axis.y * axis.y);
 	ext.z = radius * sqrt(1.0 - axis.z * axis.z);
-
-	return ((t_boundbox) {
+	return ((t_boundbox){
 		.beg.x = fmin(p1.x, p2.x) - ext.x,
 		.beg.y = fmin(p1.y, p2.y) - ext.y,
 		.beg.z = fmin(p1.z, p2.z) - ext.z,
-	
 		.end.x = fmax(p1.x, p2.x) + ext.x,
 		.end.y = fmax(p1.y, p2.y) + ext.y,
-		.end.z = fmax(p1.z, p2.z) + ext.z,
-	});
+		.end.z = fmax(p1.z, p2.z) + ext.z});
 }
 
 static t_boundbox	sphere_box(struct s_elem *elem)
 {
 	t_real3	coord;
-	t_real		radius;
+	t_real	radius;
 
 	coord = elem->u.sphere.coord;
 	radius = elem->u.sphere.radius;
-	return ((t_boundbox) {
+	return ((t_boundbox){
 		.beg.x = coord.x - radius,
 		.beg.y = coord.y - radius,
 		.beg.z = coord.z - radius,
 		.end.x = coord.x + radius,
 		.end.y = coord.y + radius,
-		.end.z = coord.z + radius,		
-	});
+		.end.z = coord.z + radius});
 }
 
 t_boundbox	elem_bounding_box(struct s_elem *elem)
@@ -103,6 +94,5 @@ t_boundbox	elem_bounding_box(struct s_elem *elem)
 			.beg.z = -INFINITY,
 			.end.x = INFINITY,
 			.end.y = INFINITY,
-			.end.z = INFINITY,		
-	});
+			.end.z = INFINITY});
 }
