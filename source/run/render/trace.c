@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:10:09 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 00:27:53 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:25:21 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ t_hit_info	bvh_traverse(t_bvh_base *tree, t_ray *ray)
 		return (ray_hit((t_bvh_elem_box *)tree, ray));
 }
 
-__attribute__((hot))
-t_hit_info	elem_inf_hit(struct s_scene *scene, t_ray *ray)
+inline t_hit_info	elem_inf_hit(struct s_scene *scene, t_ray *ray)
 {
 	t_hit_info	hit_point;
 	t_hit_info	closest_hit;
@@ -59,7 +58,6 @@ t_hit_info	elem_inf_hit(struct s_scene *scene, t_ray *ray)
 	return (closest_hit);
 }
 
-__attribute__((always_inline))
 inline t_hit_info	cmp_hit_info(t_hit_info a, t_hit_info b)
 {
 	if (!a.did_hit && !b.did_hit)

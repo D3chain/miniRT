@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 23:56:46 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 17:28:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 12:59:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_color_linear color_add_linear(t_color_linear a, t_color_linear b)
 {
 	t_color_linear	col;
 
-	ft_memset(&col, 0, sizeof(col));
 	col.r = fmin(1.0, a.r + b.r);
 	col.g = fmin(1.0, a.g + b.g);
 	col.b = fmin(1.0, a.b + b.b);

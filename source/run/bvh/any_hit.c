@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   any_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:35:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 00:24:06 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:21:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static bool	check_leaf_shadow(t_bvh_elem_box *box, t_ray *ray,
 	return (false);
 }
 
+__attribute__((hot))
 bool	bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist)
 {
 	if (!collision_aabb_base(tree, (t_ray *)ray))
@@ -48,6 +49,7 @@ bool	bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist)
 		return (check_leaf_shadow((t_bvh_elem_box *)tree, ray, max_dist));
 }
 
+__attribute__((hot))
 bool	elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist)
 {
 	struct s_hit_info	hit;

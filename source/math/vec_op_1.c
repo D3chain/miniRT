@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec_op_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 22:54:48 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 23:20:50 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:07:04 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-__attribute__((const, hot))
+__attribute__((const))
 t_real3	plus3(t_real3 a, t_real3 b)
 {
 	return ((t_real3){
@@ -22,7 +22,7 @@ t_real3	plus3(t_real3 a, t_real3 b)
 	});
 }
 
-__attribute__((const, hot))
+__attribute__((const))
 t_real3	minus3(t_real3 a, t_real3 b)
 {
 	return ((t_real3){
@@ -32,7 +32,7 @@ t_real3	minus3(t_real3 a, t_real3 b)
 	});
 }
 
-__attribute__((const, hot))
+__attribute__((const))
 t_real3	fmul3(t_real3 a, t_real factor)
 {
 	return ((t_real3){

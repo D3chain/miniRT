@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:35:04 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 12:46:48 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ struct s_intersect
 	t_real	farthest;
 };
 
+__attribute__((hot))
 bool	collision_aabb_base(t_bvh_base *base, t_ray *ray)
 {
 	t_real3			t_lo;
 	t_real3			t_hi;
 	t_real3			t_close;
 	t_real3			t_far;
-	t_real				t_near;
-	t_real				t_far_final;
+	t_real			t_near;
+	t_real			t_far_final;
 
 	t_lo.x = (base->bbox.beg.x - ray->origin.x) / ray->dir.x;
 	t_lo.y = (base->bbox.beg.y - ray->origin.y) / ray->dir.y;
@@ -48,12 +49,13 @@ bool	collision_aabb_base(t_bvh_base *base, t_ray *ray)
 	return (true);
 }
 
+__attribute__((hot))
 bool	collision_aabb(t_bvh_node *node, t_ray *ray)
 {
-	t_real3			t_lo;
-	t_real3			t_hi;
-	t_real3			t_close;
-	t_real3			t_far;
+	t_real3				t_lo;
+	t_real3				t_hi;
+	t_real3				t_close;
+	t_real3				t_far;
 	struct s_intersect	t;
 
 	t_lo.x = (node->bbox.beg.x - ray->origin.x) / ray->dir.x;

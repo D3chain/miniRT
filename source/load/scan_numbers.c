@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:14:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 17:29:04 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 13:00:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	scan_t_real3(struct s_app *app, t_real3 *res, const char *str)
 {
 	int			i;
 
-	ft_memset(res, 0, sizeof(*res));
+	// ft_memset(res, 0, sizeof(*res));
 	i = scan_t_real(app, &res->x, str);
 	if (app->status)
 		return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 23:09:26 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 12:55:03 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 				2 * dot(offset, ray->dir),
 				dot(offset, offset) - sphere.radius * sphere.radius);
 	
-	ft_memset(&closest_hit, 0, sizeof(closest_hit));
+	// ft_memset(&closest_hit, 0, sizeof(closest_hit));
+	closest_hit = (t_hit_info){0};
 	if (dst.n)
 	{
 		closest_hit.dst = closest_hit_dst_sol2(dst);

@@ -12,6 +12,7 @@
 
 #include "minirt.h"
 
+__attribute__((hot))
 static const t_sol2	caps_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
 {
@@ -36,6 +37,7 @@ static const t_sol2	caps_intersect(const struct s_ray *ray,
 	return (sol);
 }
 
+__attribute__((hot))
 static const t_sol2	tube_intersect(const struct s_ray *ray,
 	const struct s_cylinder *cylinder)
 {
@@ -73,7 +75,6 @@ t_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 	const struct s_cylinder	cylinder = ((struct s_elem *)elem)->u.cylinder;
 	const t_real			dst_tube = closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
 
-	ft_memset(&closest_hit, 0, sizeof(closest_hit));	
 	closest_hit.dst = closest_hit_dst_sol2(caps_intersect(ray, &cylinder));
 	if (closest_hit.dst >= EPSILON)
 	{

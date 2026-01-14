@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 23:11:54 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 12:27:39 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # include "libft.h"
 
 /*	Niveau 1 : Types de base et config (ne dépendent de rien) */
-# include "config.h"          // Constantes
 # include "minirt_typedef.h"  // Typedefs
+# include "config.h"          // Constantes
 # include "types.h"            // Structures de base (t_real2, t_real3)
 
 /*	Niveau 2 : Structures de données (dépendent du niveau 1) */

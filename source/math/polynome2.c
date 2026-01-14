@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   polynome2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:14:57 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 23:06:38 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:06:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-__attribute__((pure, hot))
+__attribute__((pure))
 t_sol2	polynome2(t_real a, t_real b, t_real c)
 {
 	const t_real		dis = b * b - 4 * a * c;

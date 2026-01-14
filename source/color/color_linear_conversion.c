@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_linear_conversion.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:09:15 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 23:58:40 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:24:08 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_color_linear	srgb_to_linear_color(t_color color)
 	};
 }
 
-__attribute__((pure, hot))
+__attribute__((pure))
 t_real	linear_to_srgb(t_real channel)
 {
 	if (channel <= 0.0031308)
@@ -41,12 +41,9 @@ t_real	linear_to_srgb(t_real channel)
 		return (1.055 * pow(channel, 1.0/2.4) - 0.055);
 }
 
-__attribute__((pure, hot))
+__attribute__((pure))
 t_color	linear_to_srgb_color(t_color_linear col)
 {
-	// col.r = fmin(fmax(col.r, 0.0), 1.0);
-	// col.g = fmin(fmax(col.g, 0.0), 1.0);
-	// col.b = fmin(fmax(col.b, 0.0), 1.0);
 	return ((t_color){
 		.s_rgb.r = (uint8_t)(linear_to_srgb(col.r) * 255.0),
 		.s_rgb.g = (uint8_t)(linear_to_srgb(col.g) * 255.0),

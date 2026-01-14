@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_effect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 00:03:30 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/14 13:00:51 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 	t_phong phong;
 	int i;
 
-	ft_memset(&phong, 0, sizeof(phong));
+	phong = (t_phong){0};
+	// ft_memset(&phong, 0, sizeof(phong));
 	phong.hit_info = *hit_info;
 	ambient_light(scene, &phong);
 	i = 0;
