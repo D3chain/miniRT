@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/12 15:16:09 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 17:42:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 	close(fd);
 }
 
-static void	 complete_scene(struct s_app *app, struct s_scene *scene)
+void	 complete_scene(struct s_app *app, struct s_scene *scene)
 {
 	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
 		complete_pl, complete_sp, complete_cy, complete_co};

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 17:01:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 15:01:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 struct s_app;
 struct s_scene;
+
+struct s_mouse
+{
+	int		button;
+	t_int2	pos_cur;
+	t_int2	pos_prv;
+	t_int2	dir;
+};
 
 struct s_img
 {
@@ -50,6 +58,16 @@ struct	s_thread
 	int				cpu_cores;
 };
 
+struct s_render
+{
+	int				resolution;	
+	int				n_tiles;
+	int				tile_side;
+	int				tile_area;
+
+	struct s_mouse	mouse;
+};
+
 struct s_app
 {
 	struct s_mlx	mlx;
@@ -62,5 +80,14 @@ struct s_app
 	
 	t_status		status;
 };
+
+/*	PROTOTYPES	*/
+
+int		init_app(struct s_app *app, int argc, char *argv[]);
+
+int		init_scene(struct s_app *app, const char *filename);
+
+void	cleanup_app(struct s_app *app);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 16:49:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/14 14:49:02 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ enum {
 };
 
 /*	scene	*/
-
-struct s_render
-{
-	int		resolution;	
-	int		n_tiles;
-	int		tile_side;
-	int		tile_area;
-};
 
 struct s_camera
 {
