@@ -6,22 +6,30 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/14 15:01:05 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:58:03 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APP_H
 # define APP_H
 
+typedef t_int2	t_resolution;
+
 struct s_app;
 struct s_scene;
 
+struct s_screen
+{
+	t_resolution	resolution;
+	t_real			img_ratio;
+};
+
 struct s_mouse
 {
-	int		button;
-	t_int2	pos_cur;
-	t_int2	pos_prv;
-	t_int2	dir;
+	int				button;
+	t_int2			pos_cur;
+	t_int2			pos_prv;
+	t_int2			dir;
 };
 
 struct s_img
@@ -40,8 +48,8 @@ struct	s_mlx
 	void			*mlx;
 
 	void			*win;
-	int				width;
-	int				height;
+	
+	struct s_screen	screen;	
 
 	struct s_img	img;
 };
@@ -52,8 +60,6 @@ struct	s_thread
 	
 	pthread_mutex_t	th_idx_mtx;
 	int				th_idx;
-
-	pthread_mutex_t	print_mtx;
 
 	int				cpu_cores;
 };
@@ -84,10 +90,7 @@ struct s_app
 /*	PROTOTYPES	*/
 
 int		init_app(struct s_app *app, int argc, char *argv[]);
-
 int		init_scene(struct s_app *app, const char *filename);
-
 void	cleanup_app(struct s_app *app);
-
 
 #endif

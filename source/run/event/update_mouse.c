@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:15:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 16:10:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 15:27:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	update_mouse_nobutton(struct s_mouse *mouse, int x, int y)
 	m.dir.y = m.pos_cur.y - m.pos_prv.y;
 	*mouse = m;
 }
-
 
 void	update_mouse(struct s_mouse *mouse, int button, int x, int y)
 {

@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_CAL.c                                         :+:      :+:    :+:   */
+/*   scan_RCAL.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 13:07:25 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	scan_R(struct s_app *app, const char *line, int *_)
+{
+	line += scan_int(app, &app->mlx.screen.resolution.x, line);
+	if (app->status)
+		return (app->status);
+	ft_skipspaces(&line);
+	line += scan_int(app, &app->mlx.screen.resolution.y, line);
+	if (app->status)
+		return (app->status);
+	ft_skipspaces(&line);
+	if (*line)
+		return (app->status = ERR_PARS);
+	return (0);
+}
 
 int	scan_C(struct s_app *app, const char *line, int *_)
 {

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/14 14:49:02 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 17:24:27 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ struct s_scene;
 
 # define 	FOCAL_LENGTH	1.0
 // # define VIEW_HEIGHT	2.0
-# define	N_SCENE_ITEMS	7
-# define	N_SCENE_ELEMS	(N_SCENE_ITEMS - 3)
+# define	N_SCENE_ITEMS	8
+# define	N_SETUP_ITEMS	4
+# define	N_SCENE_ELEMS	(N_SCENE_ITEMS - N_SETUP_ITEMS)
+
 
 
 /*	refraction coefficients	*/
@@ -38,15 +40,34 @@ enum {
 	CONE		= 3
 };
 
+# define	N_MOVE_OPTIONS	3
+
+enum {
+	MOVE_OBJETCS,
+	MOVE_CAMERA_ANGLE,
+	MOVE_CAMERA_POS
+};
+
+enum {
+	MID_ZOOM,
+	MID_TILT	
+};
+
+
 /*	scene	*/
 
 struct s_camera
 {
+	/*	camera values members	*/
 	t_real3	focal_center;
 	t_real3	dir;
+	
+	t_real	focal_length;
+	
 	t_real	fov;
 	t_real	fov_rad;
-	t_real	focal_length;
+
+	/*	viewport members	*/
 	t_real	viewport_width;
 	t_real	viewport_height;
 	t_real3	viewport_u;
@@ -54,7 +75,19 @@ struct s_camera
 	t_real3	viewport_v;
 	t_real3	viewport_v_px;
 	t_real3	viewport_upper_left;
+	
 	t_real3	pixel00_loc;
+
+	/*	zoom members	*/
+	t_real	pan_speed;
+	t_real	base_pan_speed;
+	t_real	fov_reference;
+	t_real	pan_fov_ratio;
+
+	/*	movement members	*/
+	bool	fast_zoom;
+	int		move_what;
+	int		mid_button_what;
 };
 
 struct s_ambient

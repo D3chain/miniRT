@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:31 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 00:28:54 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/15 13:20:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,23 @@ static int	get_th_idx(struct s_thread *t)
 static void render_tile(struct s_app *app, int tile_x, int tile_y, 
                         t_color_linear (*rendering)(struct s_app*, t_real, t_real))
 {
-	int		start_x = tile_x;
-	int		start_y = tile_y;
-	int		end_x = tile_x + TILE_SIDE;
-	int		end_y = tile_y + TILE_SIDE;
-	t_int2	coord;
-
-	if (end_x > WIN_WIDTH) 
-		end_x = WIN_WIDTH;
-	if (end_y > WIN_HEIGHT) 
-		end_y = WIN_HEIGHT;
-
-	coord.y = start_y;
-	while (coord.y < end_y)
+	const t_int2	r = app->mlx.screen.resolution;
+	const t_int2	start = {tile_x, tile_y};
+	t_int2			end;
+	t_int2			coord;
+	
+	end = (t_int2){tile_x + TILE_SIDE, tile_y + TILE_SIDE};
+	if (end.x > r.x) 
+		end.x = r.x;
+	if (end.y > r.y) 
+		end.y = r.y;
+	coord.y = start.y;
+	while (coord.y < end.y)
 	{
-		coord.x = start_x;
-		while (coord.x < end_x)
+		coord.x = start.x;
+		while (coord.x < end.x)
 		{
-			draw_pixel_to_img(&app->mlx.img, coord.x, coord.y, 
+			draw_pixel_to_img(&app->mlx.img, app->mlx.screen.resolution, coord, 
 				linear_to_srgb_color(rendering(app, coord.x, coord.y)).value);
 			++coord.x;
 		}
@@ -51,16 +50,16 @@ static void render_tile(struct s_app *app, int tile_x, int tile_y,
 }
 
 __attribute__((const))
-static bool	next_tile(int cores, int *x, int *y)
+static bool	next_tile(int cores, int *x, int *y, t_int2 screen_resolution)
 {
 	*x = *x + TILE_SIDE * cores;
 	while (true)
 	{
-		if (*x >= WIN_WIDTH)
+		if (*x >= screen_resolution.x)
 		{
-			*x -= WIN_WIDTH;
+			*x -= screen_resolution.x;
 			*y += TILE_SIDE;
-			if (*y >= WIN_HEIGHT)
+			if (*y >= screen_resolution.y)
 				return (false);
 		}
 		else
@@ -88,7 +87,7 @@ void *render_routine(void *p)
 	while (true)
 	{
 		render_tile(app, coord.x, coord.y, rendering);
-		if (!next_tile(cores, &coord.x, &coord.y))
+		if (!next_tile(cores, &coord.x, &coord.y, app->mlx.screen.resolution))
 			break ;
 	}
 	return (NULL);

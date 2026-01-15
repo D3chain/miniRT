@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:03:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 17:45:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 17:29:27 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,40 @@ int	event_mouse_close(struct s_app *app)
 
 int	event_mouse_click(int button, int x, int y, struct s_app *app)
 {
-	struct s_mouse	m;
-	
 	update_mouse(&app->render.mouse, button, x, y);
-
-	if(button == Button4)
-	{
-		update_camera(&app->scene.camera, 1);
-		complete_scene(app, &app->scene);
-		render(app);
-	}
-	else if(button == Button5)
-	{
-		update_camera(&app->scene.camera, -1);
-		complete_scene(app, &app->scene);
-		render(app);
-	}
+	app->scene.antialiasing.enabled = false;
 	return (0);
 }
 
 int	event_mouse_release(int button, int x, int y, struct s_app *app)
 {
+	t_real2	xy_offset;
+	int		factor;
+	
 	update_mouse(&app->render.mouse, button, x, y);
-
-	if (button == Button1)
+	if (app->scene.camera.move_what == MOVE_OBJETCS && button == Button1)
 	{
 		bvh_update_coord(app->scene.bvh_root, app->render.mouse.dir);
 		complete_scene(app, &app->scene);
 		bound_boxes(app->scene.bvh_root);
-		render(app);
 	}
-
+	else if (app->scene.camera.move_what == MOVE_CAMERA_ANGLE && button == Button1)
+	{
+		xy_offset.x = (app->render.mouse.pos_prv.x - app->render.mouse.pos_cur.x) * app->scene.camera.pan_speed / 10; 
+		xy_offset.y = (app->render.mouse.pos_cur.y - app->render.mouse.pos_prv.y) * app->scene.camera.pan_speed / 10;
+		update_cam_dir_xy(&app->scene.camera, xy_offset);
+		complete_C(app, &app->scene.camera, false);
+	}
+	else if (button == Button4 || button == Button5)
+	{
+		if (button == Button5)
+			factor = -1;
+		else
+			factor = 1;
+		update_camera_z(&app->scene.camera, factor * app->scene.camera.pan_speed);
+		complete_C(app, &app->scene.camera, false);
+	}
+	app->scene.antialiasing.enabled = true;
+	render(app);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2026/01/14 16:06:21 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/15 13:09:07 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LDLIBS		+= -lXext -lX11 -lm -lbsd
 ROOT_SRC	:=	main.c
 
 APP_SRC		:=	init_app.c cleanup_app.c
-LOAD_SRC	:=	load_scene.c scan_CAL.c scan_elem.c scan_numbers.c complete_CAL.c complete_elem.c
+LOAD_SRC	:=	load_scene.c scan_RCAL.c scan_shapes.c scan_numbers.c complete_RCAL.c complete_shapes.c
 RUN_SRC		:=	run_scene.c	\
 				event/event_keyboard.c event/event_mouse.c  event/event_mouse_motion.c	event/update_mouse.c event/update_bvh_coord.c	\
 				bvh/bvh_build.c bvh/elem_bounding_box.c bvh/bound_boxes.c bvh/sort_elems.c bvh/collision_aabb.c bvh/any_hit.c bvh/print_tree.c	\

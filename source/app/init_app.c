@@ -31,9 +31,7 @@ static int	init_mlx(struct s_app *app)
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		return (app->status = ERR_MLX);
-	mlx.width = WIN_WIDTH;
-	mlx.height = WIN_HEIGHT;
-	mlx.img.img = mlx_new_image(mlx.mlx, mlx.width, mlx.height);
+	mlx.img.img = mlx_new_image(mlx.mlx, mlx.screen.resolution.x, mlx.screen.resolution.y);
 	if (!mlx.img.img)
 	{
 		mlx_destroy_display(mlx.mlx);
@@ -62,7 +60,7 @@ void	init_graphic_data(struct s_app *app)
 	app->scene.antialiasing.enabled = true;
 	app->scene.antialiasing.oversampling = OVERSAMPLING;
 	app->scene.antialiasing.grid_size = sqrt(OVERSAMPLING);
-	app->render.resolution = WIN_WIDTH * WIN_HEIGHT;
+	app->render.resolution = app->mlx.screen.resolution.x * app->mlx.screen.resolution.y;
 	app->render.tile_side = TILE_SIDE;
 	app->render.tile_area  = TILE_SIDE * TILE_SIDE;
 	app->render.n_tiles = ceil((t_real) app->render.resolution / app->render.tile_area);
@@ -70,7 +68,6 @@ void	init_graphic_data(struct s_app *app)
 
 int	init_app(struct s_app *app, int argc, char *argv[])
 {
-	ft_memset(app, 0, sizeof(*app));
 	if (check_arg(app, argc, argv))
 		return (app->status);
 	if (init_mlx(app))
