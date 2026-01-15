@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/15 17:35:16 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/15 17:55:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,5 @@ int	event_mouse_motion(int x, int y, struct s_app *app)
 	return (0);
 }
 
+
+// Simplifier le traitement de l'image lorsqu'on est en deplacement en adaptant Phong
