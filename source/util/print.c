@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:22:52 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 16:44:56 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:00:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void	print_real3(t_real3 d, char *text)
 {
-	if (text)
-		printf("%s", text);
-	printf("(%lf, %lf, %lf)\n", d.x, d.y, d.z);
+	static const int	t_real_size = sizeof(t_real);
+	
+	printf("%s", text);
+	if (t_real_size == sizeof(float))
+		printf("%.3f,%.3f,%.3f\n", d.x, d.y, d.z);
+	
+	else
+		printf("%.3lf,%.3lf,%.3lf\n", d.x, d.y, d.z);
 }
 
 void	print_color(t_color color, char *text)

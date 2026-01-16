@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:42 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 12:55:43 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:22:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 	t_hit_info				closest_hit;
 	const struct s_plane	plane = ((struct s_elem *)elem)->u.plane;
 
-	// ft_memset(&closest_hit, 0, sizeof(closest_hit));
-	// closest_hit = (t_hit_info){0};
 	closest_hit.dst = plane_dst(ray, plane.normal, plane.coord);
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	if (closest_hit.did_hit)

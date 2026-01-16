@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/15 16:58:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:27:19 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ struct s_screen
 {
 	t_resolution	resolution;
 	t_real			img_ratio;
-};
-
-struct s_mouse
-{
-	int				button;
-	t_int2			pos_cur;
-	t_int2			pos_prv;
-	t_int2			dir;
 };
 
 struct s_img
@@ -71,7 +63,7 @@ struct s_render
 	int				tile_side;
 	int				tile_area;
 
-	struct s_mouse	mouse;
+	t_antialiasing			antialiasing;
 };
 
 struct s_app

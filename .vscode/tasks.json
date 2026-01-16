@@ -18,6 +18,7 @@
 				"${workspaceFolder}/source/run/bvh/*.c",
 				"${workspaceFolder}/source/run/ray/*.c",
 				"${workspaceFolder}/source/run/event/*.c",
+				"${workspaceFolder}/source/run/event/update/*.c",
 				"${workspaceFolder}/source/run/render/*.c",
 				"${workspaceFolder}/source/util/*.c",
                 "${workspaceFolder}/source/wrapper/*.c",

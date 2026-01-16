@@ -6,14 +6,14 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2026/01/15 13:09:07 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/16 22:29:01 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3 -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
+CFLAGS		:=	-MMD -MP -g3 -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops -pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -29,7 +29,7 @@ ROOT_SRC	:=	main.c
 APP_SRC		:=	init_app.c cleanup_app.c
 LOAD_SRC	:=	load_scene.c scan_RCAL.c scan_shapes.c scan_numbers.c complete_RCAL.c complete_shapes.c
 RUN_SRC		:=	run_scene.c	\
-				event/event_keyboard.c event/event_mouse.c  event/event_mouse_motion.c	event/update_mouse.c event/update_bvh_coord.c	\
+				event/event_keyboard.c event/event_mouse.c event/event_mouse_motion.c event/update/update_antialiasing.c event/update/update_speed.c event/update/update_mouse.c event/update/update_camera.c event/update/update_bvh_coord.c	\
 				bvh/bvh_build.c bvh/elem_bounding_box.c bvh/bound_boxes.c bvh/sort_elems.c bvh/collision_aabb.c bvh/any_hit.c bvh/print_tree.c	\
 				ray/init_ray.c ray/ray_hit.c ray/ray_hit_sphere.c ray/ray_hit_cylinder.c ray/ray_hit_plane.c ray/ray_hit_cone.c	\
 				render/render.c render/draw_pixel_to_img.c render/antialiasing.c render/trace.c render/basic_render.c
@@ -38,7 +38,7 @@ WRAPPER_SRC	:=	xmalloc.c xcalloc.c xopen.c
 ERROR_SRC	:=	err_per.c fill.c
 COLOR_SRC	:=	color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c	\
 				util/closest_hit_dst.c
-UTIL_SRC	:=	token.c print.c randomize_material.c
+UTIL_SRC	:=	token.c print.c
 
 SRC_PATHS	:= \
 	$(addprefix app/,$(APP_SRC)) 			\

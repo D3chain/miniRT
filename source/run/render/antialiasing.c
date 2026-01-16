@@ -6,12 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+__attribute__((always_inline))
 static inline t_color_linear	increment_linear_color(t_color_linear incremented, t_color_linear with)
 {
 	incremented.r += with.r;
@@ -20,6 +21,7 @@ static inline t_color_linear	increment_linear_color(t_color_linear incremented, 
 	return (incremented);
 }
 
+__attribute__((always_inline))
 static inline t_color_linear	average_linear_color(t_color_linear incremented, int samples)
 {
 	incremented.r /= samples;
@@ -28,32 +30,41 @@ static inline t_color_linear	average_linear_color(t_color_linear incremented, in
 	return (incremented);
 }
 
+__attribute__((always_inline))
+static inline t_real	offset(struct s_app *app, t_real x, t_real y)
+{
+	
+}
+
 t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 {
 	t_antialiasing	alias;
 	t_ray			ray;
 	t_color_linear	final_color_linear;
 	t_real			offset;
+	t_int2			grid;
 
 	final_color_linear = (t_color_linear){0};
-	
-	alias = app->scene.antialiasing;
-	
-	for (int sx = 0; sx < alias.grid_size; sx++)
+	alias = app->render.antialiasing;
+	grid.x = 0;
+	while (grid.x < alias.grid_size)
 	{
-		for (int sy = 0; sy < alias.grid_size; sy++)
+		grid.y = 0;
+		while (grid.y < alias.grid_size)
 		{
-			offset = 0.0;
+			offset = ZERO;
 			if (alias.grid_size % 2)
-				offset = 1.0 / alias.grid_size;		
-			alias.xy_offset.x = (sx + offset - alias.grid_size / 2) / alias.grid_size;
-			alias.xy_offset.y = (sy + offset - alias.grid_size / 2) / alias.grid_size;
+				offset = ONE / alias.grid_size;		
+			alias.xy_offset.x = (grid.x + offset - alias.grid_size / 2) / alias.grid_size;
+			alias.xy_offset.y = (grid.y + offset - alias.grid_size / 2) / alias.grid_size;
 
 
 			init_ray(app, &ray, x + alias.xy_offset.x, y + alias.xy_offset.y);
 			
 			final_color_linear = increment_linear_color(final_color_linear, trace(&app->scene, &ray));
+			++grid.y;	
 		}
+		++grid.x;
 	}
 	return (average_linear_color(final_color_linear, alias.oversampling));
 }

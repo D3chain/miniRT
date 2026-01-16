@@ -57,9 +57,9 @@ int	init_threads(struct s_app *app)
 
 void	init_graphic_data(struct s_app *app)
 {
-	app->scene.antialiasing.enabled = true;
-	app->scene.antialiasing.oversampling = OVERSAMPLING;
-	app->scene.antialiasing.grid_size = sqrt(OVERSAMPLING);
+	app->render.antialiasing.enabled = true;
+	app->render.antialiasing.oversampling = OVERSAMPLING;
+	app->render.antialiasing.grid_size = sqrt(OVERSAMPLING);
 	app->render.resolution = app->mlx.screen.resolution.x * app->mlx.screen.resolution.y;
 	app->render.tile_side = TILE_SIDE;
 	app->render.tile_area  = TILE_SIDE * TILE_SIDE;

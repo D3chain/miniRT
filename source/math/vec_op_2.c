@@ -6,31 +6,34 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 22:57:46 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 13:07:09 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 19:02:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((const))
-t_real	dot(t_real3 a, t_real3 b)
+t_real3	fplus3(t_real3 a, t_real factor)
 {
-	return (a.x * b.x + a.y * b.y + a.z * b.z);
+	return ((t_real3){
+		.x = a.x + factor,
+		.y = a.y + factor,
+		.z = a.z + factor
+	});
 }
 
 __attribute__((const))
-t_real	sqdot(t_real3 v)
+t_real3	fmul3(t_real3 a, t_real factor)
 {
-	return (dot(v, v));
+	return ((t_real3){
+		.x = a.x * factor,
+		.y = a.y * factor,
+		.z = a.z * factor
+	});
 }
 
-__attribute__((pure))
-t_real3	normalize3(t_real3 v)
-{
-	const t_real	norm = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-	
-	return ((t_real3){v.x / norm, v.y / norm, v.z / norm});
-}
+
+
 
 __attribute__((const))
 t_real3 reflect(t_real3 incident, t_real3 normal)

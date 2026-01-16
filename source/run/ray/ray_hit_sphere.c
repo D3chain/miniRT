@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 12:55:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:21:55 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 				2 * dot(offset, ray->dir),
 				dot(offset, offset) - sphere.radius * sphere.radius);
 	
-	// ft_memset(&closest_hit, 0, sizeof(closest_hit));
 	closest_hit = (t_hit_info){0};
 	if (dst.n)
 	{
@@ -31,7 +30,6 @@ t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 		{
 			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
 			closest_hit.normal = orient_normal(normalize3(minus3(closest_hit.hit_point, sphere.coord)), ray->dir);
-			// closest_hit.material.color = sphere.material.color;
 			closest_hit.material = sphere.material;
 		}
 	}

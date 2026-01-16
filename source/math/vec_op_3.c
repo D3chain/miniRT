@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 23:06:11 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 13:07:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 19:02:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,16 @@ __attribute__((pure))
 t_real	norm3(t_real3 vec)
 {
 	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
+}
+
+__attribute__((always_inline, const))
+inline t_real	dot(t_real3 a, t_real3 b)
+{
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
+
+__attribute__((const))
+t_real	sqdot(t_real3 v)
+{
+	return (dot(v, v));
 }

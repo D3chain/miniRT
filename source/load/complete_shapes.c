@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complete_elem.c                                    :+:      :+:    :+:   */
+/*   complete_shapes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 23:01:29 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/16 17:18:06 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static void	complete_material(t_material *mat)
-{
+{	
+	// il faudra parser les materiaux
+	
+	mat->ka = 0.1;
+	mat->kd = 0.7;
 	mat->ks = COEF_SPEC;
+		
 	mat->shininess = SHININESS;
+	mat->ior = 1.5;
+
+	mat->kr = 0.7;
+	mat->kt = 0.7;
 }
 
 void	complete_pl(struct s_app *app, struct s_elem *elem)
@@ -25,7 +34,7 @@ void	complete_pl(struct s_app *app, struct s_elem *elem)
 	plane = &elem->u.plane;
 	plane->normal = normalize3(plane->normal);
 	plane->material.color_linear = srgb_to_linear_color(plane->material.color);
-	randomize_material(&plane->material);
+	complete_material(&plane->material);
 }
 
 void	complete_sp(struct s_app *app, struct s_elem *elem)
@@ -35,7 +44,7 @@ void	complete_sp(struct s_app *app, struct s_elem *elem)
 	sphere = &elem->u.sphere;
 	sphere->radius_sq = sphere->radius * sphere->radius;
 	sphere->material.color_linear = srgb_to_linear_color(sphere->material.color);
-	randomize_material(&sphere->material);
+	complete_material(&sphere->material);
 }
 
 void	complete_cy(struct s_app *app, struct s_elem *elem)
@@ -48,7 +57,7 @@ void	complete_cy(struct s_app *app, struct s_elem *elem)
 	cylinder->p2 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
 	cylinder->material.color_linear = srgb_to_linear_color(cylinder->material.color);
-	randomize_material(&cylinder->material);
+	complete_material(&cylinder->material);
 }
 
 void	complete_co(struct s_app *app, struct s_elem *elem)
@@ -65,5 +74,5 @@ void	complete_co(struct s_app *app, struct s_elem *elem)
 	cos_theta = cos(cone->theta);
 	cone->cos2_theta = cos_theta * cos_theta;
 	cone->material.color_linear = srgb_to_linear_color(cone->material.color);
-	randomize_material(&cone->material);
+	complete_material(&cone->material);
 }

@@ -3,27 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_typedef.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:01:20 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 23:26:38 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/16 17:00:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_TYPEDEF
-# define MINIRT_TYPEDEF
+#ifndef MINIRT_TYPEDEF_H
+# define MINIRT_TYPEDEF_H
 
 # ifdef USE_DBL_NUMBER
-	typedef double				t_real;
+#  define FLT_TYPE	double
+#  define ZERO		0.0
+#  define ONE		1.0
+
 # else
-	typedef float				t_real;
+#  define FLT_TYPE	float
+#  define ZERO		0.0f
+#  define ONE		1.0f
 # endif
+
+typedef FLT_TYPE				t_real;
 
 typedef enum e_status			t_status;
 
 typedef struct s_int2			t_int2;
 typedef struct s_int3			t_int3;
-	
+
 typedef struct s_real2			t_real2;
 typedef struct s_real3			t_real3;
 

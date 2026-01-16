@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 17:14:41 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:42:27 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ char	*next_tok(const char *str);
 void	print_real3(t_real3 d, char *text);
 void	print_color(t_color color, char *text);
 void	print_color_linear(t_color_linear color, char *text);
-
-void	randomize_material(t_material *original);
 
 #endif

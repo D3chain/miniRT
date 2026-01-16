@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/15 16:57:51 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 17:07:15 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <time.h>
 # include <errno.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 /*	X11 headers	*/
 # include <X11/keysym.h>

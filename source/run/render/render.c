@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:31 by fox               #+#    #+#             */
-/*   Updated: 2026/01/15 13:20:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void *render_routine(void *p)
 	app = p;
 	cores = app->threads.cpu_cores;
 	th_idx = get_th_idx(&app->threads);
-	if (app->scene.antialiasing.enabled)
+	if (app->render.antialiasing.enabled)
 		rendering = antialiasing;
 	else
 		rendering = basic_render;

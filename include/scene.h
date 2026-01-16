@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/15 17:24:27 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/16 22:28:22 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ enum {
 	CONE		= 3
 };
 
-# define	N_MOVE_OPTIONS	3
+# define	N_MOVE_OPTIONS	2
 
 enum {
-	MOVE_OBJETCS,
 	MOVE_CAMERA_ANGLE,
 	MOVE_CAMERA_POS
 };
@@ -56,38 +55,66 @@ enum {
 
 /*	scene	*/
 
-struct s_camera
+struct s_mouse_motion
 {
-	/*	camera values members	*/
-	t_real3	focal_center;
-	t_real3	dir;
-	
-	t_real	focal_length;
-	
-	t_real	fov;
-	t_real	fov_rad;
-
-	/*	viewport members	*/
-	t_real	viewport_width;
-	t_real	viewport_height;
-	t_real3	viewport_u;
-	t_real3	viewport_u_px;
-	t_real3	viewport_v;
-	t_real3	viewport_v_px;
-	t_real3	viewport_upper_left;
-	
-	t_real3	pixel00_loc;
-
-	/*	zoom members	*/
 	t_real	pan_speed;
 	t_real	base_pan_speed;
-	t_real	fov_reference;
-	t_real	pan_fov_ratio;
 
-	/*	movement members	*/
-	bool	fast_zoom;
-	int		move_what;
-	int		mid_button_what;
+	bool	fast_move;
+};
+
+
+struct s_mouse_position
+{
+	t_int2			cur;
+	t_int2			prv;
+	t_int2			dir;
+};
+
+struct s_mouse
+{
+	int						button;
+
+	struct s_mouse_position	pos;
+	
+	struct s_mouse_motion	zoom;
+	struct s_mouse_motion	motion;
+
+	struct timeval			last_action_time;
+	bool					is_scrolling;
+};
+
+struct s_viewport
+{
+	t_real	width;
+	t_real	height;
+	t_real3	u;
+	t_real3	u_px;
+	t_real3	v;
+	t_real3	v_px;
+	t_real3	upper_left;
+	
+	t_real3	pixel00_loc;
+};
+
+struct s_camera
+{
+	t_real3				focal_center;
+	t_real3				dir;
+
+	t_real3				dir_up;
+	t_real3				dir_right;
+	
+	t_real				focal_length;
+	t_real				fov;
+	t_real				fov_rad;
+	
+	t_real				fov_reference;
+	t_real				pan_fov_ratio;
+	
+	struct s_viewport	wp;
+
+	struct s_mouse		mouse;
 };
 
 struct s_ambient
@@ -111,10 +138,10 @@ struct s_antialiasing
 	bool			enabled;
 	int				oversampling;
 	int				grid_size;
-
+	
 	t_color_linear	sample_color;
 
-	t_real2		xy_offset;
+	t_real2			xy_offset;
 	
 };
 
@@ -134,8 +161,6 @@ struct s_scene
 	int						n_elem_inf;
 	
 	t_real					environment_ior;
-
-	t_antialiasing			antialiasing;
 
 	t_bvh_base				*bvh_root;
 };
