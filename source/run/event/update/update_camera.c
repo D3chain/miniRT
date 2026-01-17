@@ -3,49 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   update_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 22:21:42 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:44:57 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// void	update_camera(struct s_camera *camera)
-// {
-// 	static const t_real3	world_up = (t_real3){ZERO,ONE,ZERO};
-// 	static const t_real3	fallback = (t_real3){ZERO,ZERO,ONE};
-// 	static const t_real		vlimit = ONE - EPSILON;
-// 	const t_real3			cam_dir_norm = camera->dir;
-	
-// 	if (fabs(dot(cam_dir_norm, world_up)) >  vlimit)
-// 		camera->dir_right = normalize3(cross3(cam_dir_norm, fallback));
-// 	else
-// 		camera->dir_right = normalize3(cross3(cam_dir_norm, world_up));
-// 	camera->dir_up = cross3(camera->dir_right, cam_dir_norm);
-// }
+struct s_rodrigues
+{
+	t_real	cos_a;
+	t_real	sin_a;
+	t_real	dot_va;
+	t_real3	cross_av;
+	t_real3	term1;
+	t_real3	term2;
+	t_real3	term3;
+};
 
 void	update_camera(struct s_camera *camera)
 {
-	static const t_real3	world_up = (t_real3){ZERO, ONE, ZERO};
-	static const t_real3	fallback = (t_real3){ZERO, ZERO, ONE};
-	static const t_real		vlimit = ONE - EPSILON;
+	static const t_real3	world_up = (t_real3){FLT_0,FLT_1,FLT_0};
+	static const t_real3	fallback = (t_real3){FLT_0,FLT_0,FLT_1};
+	static const t_real		vlimit = FLT_1 - EPSILON;
 	const t_real3			cam_dir_norm = camera->dir;
-	t_real3					reference_up;
 	
-	if (fabs(dot(cam_dir_norm, world_up)) > vlimit)
-		reference_up = fallback;
+	if (fabs(dot(cam_dir_norm, world_up)) >  vlimit)
+		camera->dir_right = normalize3(cross3(cam_dir_norm, fallback));
 	else
-		reference_up = world_up;
-	camera->dir_right = normalize3(cross3(cam_dir_norm, reference_up));
+		camera->dir_right = normalize3(cross3(cam_dir_norm, world_up));
 	camera->dir_up = cross3(camera->dir_right, cam_dir_norm);
+	
 }
 
-void	update_cam_dir_xy(struct s_camera *camera, t_real2 value)
+// Rotation around an arbitrary axix (Rodrigues's formula)
+__attribute__((always_inline))
+static inline t_real3	rotate_around_axis(t_real3 vec, t_real3 axis, t_real angle)
 {
-	camera->dir.x += value.x;
-	camera->dir.y += value.y;
+	struct s_rodrigues	r;
+
+	r.cos_a = cos(angle);
+	r.sin_a = sin(angle);
+	r.dot_va = dot(vec, axis);
+	r.cross_av = cross3(axis, vec);
+	r.term1 = fmul3(vec, r.cos_a);
+	r.term2 = fmul3(r.cross_av, r.sin_a);
+	r.term3 = fmul3(axis, r.dot_va * (FLT_1 - r.cos_a));
+	return (plus3(r.term1, plus3(r.term2, r.term3)));
+}
+
+void	camera_view(struct s_camera *camera, t_real2 value)
+{
+	t_real3	new_dir;
+	
+	new_dir = rotate_around_axis(camera->dir, camera->dir_up, -value.x);
+	new_dir = rotate_around_axis(new_dir, camera->dir_right, value.y);
+	camera->dir = normalize3(new_dir);
 	update_camera(camera);
 }
 
@@ -65,9 +80,8 @@ void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
 
 void	camera_pan(struct s_camera *camera, struct s_mouse *mouse)
 {
-	t_real3	offset;
-	t_real	factor;
-	factor = camera->mouse.zoom.pan_speed;
+	const t_real	factor = camera->mouse.zoom.pan_speed * ZOOM_MIN_SPEED;
+	t_real3			offset;
 
 	offset = fmul3(camera->dir_right, mouse->pos.dir.x * factor);
 	camera->focal_center = plus3(camera->focal_center, offset);
@@ -76,3 +90,4 @@ void	camera_pan(struct s_camera *camera, struct s_mouse *mouse)
 	camera->focal_center = plus3(camera->focal_center, offset);
 	update_camera(camera);
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   antialiasing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:44:16 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,23 @@ static inline t_real	offset(struct s_app *app, t_real x, t_real y)
 
 t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 {
+	t_real			offset_factor;
 	t_antialiasing	alias;
 	t_ray			ray;
 	t_color_linear	final_color_linear;
-	t_real			offset;
 	t_int2			grid;
 
-	final_color_linear = (t_color_linear){0};
+	offset_factor = FLT_0_5 - alias.grid_size / FLT_2;
 	alias = app->render.antialiasing;
+	final_color_linear = (t_color_linear){0};
 	grid.x = 0;
 	while (grid.x < alias.grid_size)
 	{
 		grid.y = 0;
 		while (grid.y < alias.grid_size)
 		{
-			offset = ZERO;
-			if (alias.grid_size % 2)
-				offset = ONE / alias.grid_size;		
-			alias.xy_offset.x = (grid.x + offset - alias.grid_size / 2) / alias.grid_size;
-			alias.xy_offset.y = (grid.y + offset - alias.grid_size / 2) / alias.grid_size;
-
+			alias.xy_offset.x = (grid.x + offset_factor) / alias.grid_size;
+			alias.xy_offset.y = (grid.y + offset_factor) / alias.grid_size;
 
 			init_ray(app, &ray, x + alias.xy_offset.x, y + alias.xy_offset.y);
 			

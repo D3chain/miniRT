@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_mouse_motion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 21:22:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:19:16 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static inline void	mouse_left_button(struct s_app *app)
 	t_int2			offset;
 	
 	offset = app->scene.camera.mouse.pos.dir;
-	update_cam_dir_xy(&app->scene.camera, 
-			(t_real2){-ONE * offset.x * pan_speed, offset.y * pan_speed});
+	camera_view(&app->scene.camera, 
+			(t_real2){offset.x * pan_speed, offset.y * pan_speed});
 	complete_C(app, &app->scene.camera, false);
 }
 

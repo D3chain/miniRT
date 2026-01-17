@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_mouse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:03:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:18:55 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	event_mouse_click(int button, int x, int y, struct s_app *app)
 	{
 		gettimeofday(&app->scene.camera.mouse.last_action_time, NULL);
 		app->scene.camera.mouse.is_scrolling = true;
-		
 		if (button == Button5)
 			factor = -1;
 		else
@@ -73,8 +72,8 @@ int	event_mouse_release(int button, int x, int y, struct s_app *app)
 	t_real2	xy_offset;
 	
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
-
-	if (button == Button1)
+	
+	if (button == Button1 || button == Button2 || button == Button3)
 		app->render.antialiasing.enabled = true;
 
 	render(app);

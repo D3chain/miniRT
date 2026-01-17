@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 21:02:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:23:25 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void	 complete_scene(struct s_app *app, struct s_scene *scene);
 
 // RENDER
 void 			*render_routine(void *p);
-
 t_color_linear	trace(struct s_scene *scene, t_ray *ray);
 
 // EVENTS
 int				event_keyboard_press(int key, struct s_app *app);
 int				event_mouse_close(struct s_app *app);
-
 int				event_mouse_click(int button, int x, int y, struct s_app *app);
 int				event_mouse_release(int button, int x, int y, struct s_app *app);
 int				zoom_aliasing_reenable(void *p);
@@ -44,17 +42,11 @@ void			update_antialiasing(int key, struct s_app *app);
 void			zoom_speed(int key, struct s_app *app);
 void			bvh_update_coord(t_bvh_base *tree, t_int2 offset);
 
-void			update_cam_dir_xy(struct s_camera *camera, t_real2 value);
-void			update_cam_pos_xy(struct s_camera *camera, t_real2 value);
-
+void			update_camera(struct s_camera *camera);
+void			camera_view(struct s_camera *camera, t_real2 value);
+void			camera_pan(struct s_camera *camera, struct s_mouse *mouse);
 void			camera_zoom(struct s_app *app, struct s_camera *camera, t_real value);
 
-/*	pan reel	*/
-void			update_camera(struct s_camera *camera);
-void			camera_pan(struct s_camera *camera, struct s_mouse *mouse);
-
-// DRAW
-// void  			draw_pixel_to_img(struct s_img *img, int x, int y, int color);
 void    		draw_pixel_to_img(struct s_img *img, t_int2 resolution, t_int2 pos, int color);
 
 

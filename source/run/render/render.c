@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:31 by fox               #+#    #+#             */
-/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:17:30 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void render_tile(struct s_app *app, int tile_x, int tile_y,
 	}
 }
 
-__attribute__((const))
 static bool	next_tile(int cores, int *x, int *y, t_int2 screen_resolution)
 {
 	*x = *x + TILE_SIDE * cores;
@@ -57,10 +56,10 @@ static bool	next_tile(int cores, int *x, int *y, t_int2 screen_resolution)
 	{
 		if (*x >= screen_resolution.x)
 		{
-			*x -= screen_resolution.x;
 			*y += TILE_SIDE;
 			if (*y >= screen_resolution.y)
 				return (false);
+			*x = (*x / TILE_SIDE) % cores * TILE_SIDE;
 		}
 		else
 			return (true);

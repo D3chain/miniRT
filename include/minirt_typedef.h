@@ -3,26 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_typedef.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:01:20 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 17:00:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:40:35 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_TYPEDEF_H
 # define MINIRT_TYPEDEF_H
-
-# ifdef USE_DBL_NUMBER
-#  define FLT_TYPE	double
-#  define ZERO		0.0
-#  define ONE		1.0
-
-# else
-#  define FLT_TYPE	float
-#  define ZERO		0.0f
-#  define ONE		1.0f
-# endif
 
 typedef FLT_TYPE				t_real;
 

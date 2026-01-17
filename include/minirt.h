@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 17:07:15 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:41:59 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 /*	libft header	*/
 # include "libft.h"
 
+# include "flt_constants.h"
 # include "minirt_typedef.h"  // Typedefs
 # include "config.h"          // Constantes
 # include "types.h"            // Structures de base (t_real2, t_real3)

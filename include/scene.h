@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 22:28:22 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 12:49:36 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 struct s_app;
 struct s_scene;
 
-# define 	FOCAL_LENGTH	1.0
+# define 	FOCAL_LENGTH	FLT_1
 // # define VIEW_HEIGHT	2.0
 # define	N_SCENE_ITEMS	8
 # define	N_SETUP_ITEMS	4
