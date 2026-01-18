@@ -6,18 +6,11 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/17 21:14:01 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 13:50:03 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static inline void	print_camera(struct s_app *app)
-{
-	printf("CAMERA:\n");
-	print_real3(app->scene.camera.focal_center, "\tposition:");
-	print_real3(app->scene.camera.dir, "\tdirection:");
-}
 
 static inline void	fov_modify(struct s_app *app, int key)
 {
@@ -52,11 +45,13 @@ int	event_keyboard_press(int key, struct s_app *app)
 		mlx_loop_end(app->mlx.mlx);
 	else if (key == XK_a || key == XK_z || key == XK_e)
 		update_antialiasing(key, app);
-	else if (key == XK_p)
+	else if (key == XK_c)
 		print_camera(app);
 	else if (key == XK_equal || key == XK_minus || key == XK_BackSpace)
 		update_zoom_speed(key, app);
 	else if (key == XK_KP_Add || key == XK_KP_Subtract)
 		fov_modify(app, key);
+	else if (key == XK_t)
+		print_bvh_tree(app->scene.bvh_root);
 	return (0);
 }

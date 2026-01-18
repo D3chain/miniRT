@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/17 19:12:15 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:06:26 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,13 +141,11 @@ struct s_light
 struct s_antialiasing
 {
 	bool			enabled;
-	int				oversampling;
+	int				samples;
 	int				grid_size;
-	
-	t_color_linear	sample_color;
-
-	t_real2			xy_offset;
-	
+	t_real			inv_samples;
+	t_real			inv_grid_size;
+	t_real			offset_factor;
 };
 
 struct s_scene

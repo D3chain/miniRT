@@ -6,14 +6,14 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/17 21:09:03 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:19:45 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((always_inline))
-static inline t_color_linear	increment_linear_color(t_color_linear incremented, t_color_linear with)
+static inline t_color_linear	increment_color_linear(t_color_linear incremented, t_color_linear with)
 {
 	incremented.r += with.r;
 	incremented.g += with.g;
@@ -22,40 +22,35 @@ static inline t_color_linear	increment_linear_color(t_color_linear incremented, 
 }
 
 __attribute__((always_inline))
-static inline t_color_linear	average_linear_color(t_color_linear incremented, int samples)
+static inline t_color_linear	average_color_linear(t_color_linear color, t_real inv_samples)
 {
-	incremented.r /= samples;
-	incremented.g /= samples;
-	incremented.b /= samples;
-	return (incremented);
+	return (scale_color_linear(color, inv_samples));
 }
+
 
 t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 {
-	t_real			offset_factor;
-	t_antialiasing	alias;
-	t_ray			ray;
-	t_color_linear	final_color_linear;
-	t_int2			grid;
+	const struct s_antialiasing	*aa;
+	t_color_linear				color;
+	t_ray						ray;
+	t_real2						offset;
+	t_int2						grid;
 
-	offset_factor = FLT_0_5 - alias.grid_size / FLT_2;
-	alias = app->render.antialiasing;
-	final_color_linear = (t_color_linear){0};
+	aa = &app->render.antialiasing;
+	color = (t_color_linear){0};
 	grid.x = 0;
-	while (grid.x < alias.grid_size)
+	while (grid.x < aa->grid_size)
 	{
 		grid.y = 0;
-		while (grid.y < alias.grid_size)
+		while (grid.y < aa->grid_size)
 		{
-			alias.xy_offset.x = (grid.x + offset_factor) / alias.grid_size;
-			alias.xy_offset.y = (grid.y + offset_factor) / alias.grid_size;
-
-			init_ray(app, &ray, x + alias.xy_offset.x, y + alias.xy_offset.y);
-			
-			final_color_linear = increment_linear_color(final_color_linear, trace(&app->scene, &ray));
-			++grid.y;	
+			offset.x = (grid.x + aa->offset_factor) * aa->inv_grid_size;
+			offset.y = (grid.y + aa->offset_factor) * aa->inv_grid_size;
+			init_ray(app, &ray, x + offset.x, y + offset.y);
+			color = increment_color_linear(color, trace(&app->scene, &ray));
+			grid.y++;
 		}
-		++grid.x;
+		grid.x++;
 	}
-	return (average_linear_color(final_color_linear, alias.oversampling));
+	return (average_color_linear(color, aa->inv_samples));
 }

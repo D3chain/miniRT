@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bvh_build.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:42:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 13:50:22 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 12:43:16 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ void	bvh_build(struct s_app *app, struct s_scene *scene)
 	((t_bvh_elem_box *)scene->bvh_root)->n_elems = scene->n_elem;
 	scene->bvh_root = bvh_subdivide(app, (t_bvh_elem_box *)scene->bvh_root);
 	bound_boxes(scene->bvh_root);
-	print_tree(scene->bvh_root, 0);
 	return ;
 }

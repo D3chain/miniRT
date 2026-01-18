@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:52:18 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 00:23:54 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:52:38 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,5 @@ bool		bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist);
 bool		elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist);
 bool		collision_aabb(t_bvh_node *node, t_ray *ray);
 bool		collision_aabb_base(t_bvh_base *base, t_ray *ray);
-
-/*	Misc	*/
-void		print_tree(t_bvh_base *root, int depth);
 
 #endif

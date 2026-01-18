@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_effect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/15 17:19:12 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 12:17:39 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static inline void	diffuse_specular_light(struct s_scene *scene, t_phong *phong,
 			scene->light[light_index].color_linear,
 			phong->specular_factor * phong->hit_info.material.ks * phong->fresnel_factor * scene->light[light_index].ratio
 		);
-		phong->final_color_linear = color_add_linear(phong->final_color_linear, phong->diffuse_color_linear);
-		phong->final_color_linear = color_add_linear(phong->final_color_linear, phong->specular_color_linear);		
+		phong->final_color_linear = add_color_linear(phong->final_color_linear, phong->diffuse_color_linear);
+		phong->final_color_linear = add_color_linear(phong->final_color_linear, phong->specular_color_linear);		
 	}	
 }
 

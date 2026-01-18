@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:16:40 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 23:40:03 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:22:05 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ struct s_color_linear {
 	t_real	b;
 	t_real	g;
 	t_real	r;
-	t_real	t;
 };
 
 struct s_material

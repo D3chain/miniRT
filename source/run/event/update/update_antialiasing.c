@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_antialiasing.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 20:27:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 22:27:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 12:07:24 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static inline void	toggle_antialiasing(struct s_antialiasing *a)
 	a->enabled = !a->enabled;
 	printf("\nAntialiasing=%d\n", a->enabled);
 	if (a->enabled)
-		printf("Oversampling=%d\n\n", a->oversampling);
+		printf("Oversampling=%d\n\n", a->samples);
 }
 
 __attribute__((always_inline))
@@ -30,8 +30,8 @@ static inline void	increase_sample_amount(t_antialiasing *a)
 		printf("\nOversampling has been enabled\n");
 	}
 	++a->grid_size;
-	a->oversampling = a->grid_size * a->grid_size;
-	printf("Oversampling=%d\n", a->oversampling);
+	a->samples = a->grid_size * a->grid_size;
+	printf("Oversampling=%d\n", a->samples);
 }
 
 __attribute__((always_inline))
@@ -45,8 +45,8 @@ static inline void	decrease_sample_amount(t_antialiasing *a)
 	else if (a->grid_size > 2)
 	{
 		--a->grid_size;
-		a->oversampling = a->grid_size * a->grid_size;
-		printf("Oversampling=%d\n", a->oversampling);
+		a->samples = a->grid_size * a->grid_size;
+		printf("Oversampling=%d\n", a->samples);
 	}
 	else
 		printf("Oversampling is already disabled.\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 15:42:27 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 13:46:56 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ char	*next_tok(const char *str);
 void	print_real3(t_real3 d, char *text);
 void	print_color(t_color color, char *text);
 void	print_color_linear(t_color_linear color, char *text);
+
+void	print_bvh_tree(t_bvh_base *root);
+void	print_render(struct s_app *app);
+void	print_camera(struct s_app *app);
 
 #endif

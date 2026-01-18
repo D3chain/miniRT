@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   color_linear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 23:56:46 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 12:59:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 12:22:14 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_color_linear add_color_linear(t_color_linear a, t_color_linear b)
+{
+	t_color_linear	col;
+
+	col.r = fmin(1.0, a.r + b.r);
+	col.g = fmin(1.0, a.g + b.g);
+	col.b = fmin(1.0, a.b + b.b);
+	return (col);
+}
 
 t_color_linear mul_color_linear(t_color_linear a, t_color_linear b, t_real factor)
 {
@@ -25,13 +35,3 @@ t_color_linear scale_color_linear(t_color_linear col, t_real factor)
 	return (col);
 }
 
-t_color_linear color_add_linear(t_color_linear a, t_color_linear b)
-{
-	t_color_linear	col;
-
-	col.r = fmin(1.0, a.r + b.r);
-	col.g = fmin(1.0, a.g + b.g);
-	col.b = fmin(1.0, a.b + b.b);
-	col.t = 0.0;
-	return (col);
-}

@@ -27,7 +27,7 @@ Each sample counts as 0.01 seconds.
   0.00      3.69     0.00        1     0.00     0.00  bound_boxes
   0.00      3.69     0.00        1     0.00     0.00  bvh_subdivide
   0.00      3.69     0.00        1     0.00     0.00  event_keyboard_press
-  0.00      3.69     0.00        1     0.00     0.00  print_tree
+  0.00      3.69     0.00        1     0.00     0.00  print_bvh_tree
   0.00      3.69     0.00        1     0.00     0.00  render
   0.00      3.69     0.00        1     0.00     0.00  scan_A
   0.00      3.69     0.00        1     0.00     0.00  scan_C
@@ -183,10 +183,10 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           mlx_loop [82]
 [24]     0.0    0.00    0.00       1         event_keyboard_press [24]
 -----------------------------------------------
-                                  59             print_tree [25]
+                                  59             print_bvh_tree [25]
                 0.00    0.00       1/1           main [56]
-[25]     0.0    0.00    0.00       1+59      print_tree [25]
-                                  59             print_tree [25]
+[25]     0.0    0.00    0.00       1+59      print_bvh_tree [25]
+                                  59             print_bvh_tree [25]
 -----------------------------------------------
                 0.00    0.00       1/1           main [56]
 [26]     0.0    0.00    0.00       1         render [26]
@@ -296,7 +296,7 @@ Index by function name
    [2] antialiasing (antialiasing.c) [10] ft_dabs         [21] scan_L (scan_CAL.c)
   [22] bound_boxes (bound_boxes.c) [11] ft_dblcmp         [15] scan_color (scan_numbers.c)
    [4] bvh_any_hit (any_hit.c) [5] ft_memset              [20] scan_cy (scan_elem.c)
-  [23] bvh_subdivide (bvh_build.c) [25] print_tree (print_tree.c) [18] scan_sp (scan_elem.c)
+  [23] bvh_subdivide (bvh_build.c) [25] print_bvh_tree (print_bvh_tree.c) [18] scan_sp (scan_elem.c)
    [7] bvh_traverse (trace.c)  [6] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
   [19] setup_cy (setup_elem.c) [8] ray_hit_sphere (ray_hit_sphere.c) [14] scan_t_real3 (scan_numbers.c)
   [17] setup_sp (setup_elem.c) [26] render (run_scene.c) [3] trace (trace.c)

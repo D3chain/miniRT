@@ -72,8 +72,7 @@ BVH_SRC		:=	bvh/bvh_build.c														\
 				bvh/bound_boxes.c													\
 				bvh/sort_elems.c													\
 				bvh/collision_aabb.c												\
-				bvh/any_hit.c														\
-				bvh/print_tree.c
+				bvh/any_hit.c
 
 # Ray tracing
 RAY_SRC		:=	ray/init_ray.c														\
@@ -105,6 +104,8 @@ SETUP_SRC	:=	setup_RCAL.c														\
 
 # Utilities
 UTIL_SRC	:=	token.c																\
+				print_bvh_tree.c													\
+				print_parameters.c													\
 				print.c
 
 # Wrappers

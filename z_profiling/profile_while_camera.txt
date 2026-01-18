@@ -34,7 +34,7 @@ Each sample counts as 0.01 seconds.
   0.00     25.80     0.00        1     0.00     0.00  setup_cy
   0.00     25.80     0.00        1     0.00     0.00  setup_sp
   0.00     25.80     0.00        1     0.00     0.00  event_keyboard_press
-  0.00     25.80     0.00        1     0.00     0.00  print_tree
+  0.00     25.80     0.00        1     0.00     0.00  print_bvh_tree
   0.00     25.80     0.00        1     0.00     0.00  scan_A
   0.00     25.80     0.00        1     0.00     0.00  scan_C
   0.00     25.80     0.00        1     0.00     0.00  scan_R
@@ -224,7 +224,7 @@ index % time    self  children    called     name
 [31]     0.0    0.00    0.00       1         event_keyboard_press [31]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
-[32]     0.0    0.00    0.00       1         print_tree [32]
+[32]     0.0    0.00    0.00       1         print_bvh_tree [32]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
 [33]     0.0    0.00    0.00       1         scan_A [33]
@@ -354,7 +354,7 @@ Index by function name
   [26] bound_boxes (bound_boxes.c) [18] event_mouse_release (event_mouse.c) [36] scan_co (scan_shapes.c)
    [6] bvh_any_hit (any_hit.c) [12] ft_dabs               [19] scan_color (scan_numbers.c)
   [27] bvh_subdivide (bvh_build.c) [11] ft_dblcmp         [37] scan_cy (scan_shapes.c)
-   [5] bvh_traverse (trace.c) [32] print_tree (print_tree.c) [24] scan_pl (scan_shapes.c)
+   [5] bvh_traverse (trace.c) [32] print_bvh_tree (print_bvh_tree.c) [24] scan_pl (scan_shapes.c)
   [15] setup_C (setup_RCAL.c) [7] ray_hit_cone (ray_hit_cone.c) [38] scan_sp (scan_shapes.c)
   [28] setup_co (setup_shapes.c) [8] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
   [29] setup_cy (setup_shapes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [16] scan_t_real3 (scan_numbers.c)

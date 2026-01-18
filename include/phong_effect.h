@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 00:06:39 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:17:39 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_color_linear		srgb_to_linear_color(t_color color);
 t_real				linear_to_srgb(t_real channel);
 t_color 			linear_to_srgb_color(t_color_linear linear);
 
-t_color_linear 		color_add_linear(t_color_linear a, t_color_linear b);
+t_color_linear 		add_color_linear(t_color_linear a, t_color_linear b);
 t_color_linear 		scale_color_linear(t_color_linear c, t_real factor);
 t_color_linear 		mul_color_linear(t_color_linear a, t_color_linear b, t_real factor);
 

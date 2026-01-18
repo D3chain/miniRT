@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 01:16:38 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 12:42:52 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@
 # endif
 
 # ifdef TILE_SIDE
-#  if TILE_SIDE != 16 && TILE_SIDE != 32
+#  if TILE_SIDE < 1
 #   define TILE_SIDE 16
 #  endif
 # endif

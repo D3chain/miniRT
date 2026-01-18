@@ -21,7 +21,7 @@ Each sample counts as 0.01 seconds.
   1.72     16.08     0.31  1630182     0.00     0.00  collision_aabb
   1.55     16.36     0.28   318612     0.00     0.00  diffuse_specular_light
   1.16     16.57     0.21   495261     0.00     0.00  ray_hit_sphere
-  0.94     16.74     0.17   341862     0.00     0.00  color_add_linear
+  0.94     16.74     0.17   341862     0.00     0.00  add_color_linear
   0.72     16.87     0.13   215469     0.00     0.00  scale_color_linear
   0.66     16.99     0.12                             define_pattern
   0.61     17.10     0.11  1227747     0.00     0.00  closest_hit_dst_dbl
@@ -99,7 +99,7 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00        1     0.00     0.00  init_threads
   0.00     18.06     0.00        1     0.00     0.25  load_scene
   0.00     18.06     0.00        1     0.00     0.00  print_error
-  0.00     18.06     0.00        1     0.00     0.00  print_tree
+  0.00     18.06     0.00        1     0.00     0.00  print_bvh_tree
   0.00     18.06     0.00        1     0.00     0.00  quit
   0.00     18.06     0.00        1     0.00     0.00  render
   0.00     18.06     0.00        1     0.00     0.00  reset_th_idx
@@ -288,7 +288,7 @@ index % time    self  children    called     name
                 0.28    0.80  318612/318612      phong_effect [5]
 [19]     6.0    0.28    0.80  318612         diffuse_specular_light [19]
                 0.11    0.17  217926/217926      reflect [29]
-                0.17    0.00  341862/341862      color_add_linear [30]
+                0.17    0.00  341862/341862      add_color_linear [30]
                 0.13    0.00  215469/215469      scale_color_linear [32]
                 0.08    0.00  207877/250398      mul_color_linear [36]
                 0.08    0.00  229634/7480958     fmul3 [14]
@@ -356,7 +356,7 @@ index % time    self  children    called     name
                 0.01    0.00  221707/14604213     dot [23]
 -----------------------------------------------
                 0.17    0.00  341862/341862      diffuse_specular_light [19]
-[30]     0.9    0.17    0.00  341862         color_add_linear [30]
+[30]     0.9    0.17    0.00  341862         add_color_linear [30]
 -----------------------------------------------
                 0.01    0.02  304438/1980434     ray_hit_sphere [20]
                 0.04    0.09 1675996/1980434     ray_hit_cylinder [8]
@@ -487,7 +487,7 @@ index % time    self  children    called     name
                 0.00    0.00     723/964         scan_t_real3 [62]
 [58]     0.0    0.00    0.00     964         scan_t_real [58]
 -----------------------------------------------
-                0.00    0.00     704/704         print_tree [99]
+                0.00    0.00     704/704         print_bvh_tree [99]
 [59]     0.0    0.00    0.00     704         print_real3 [59]
 -----------------------------------------------
                 0.00    0.00     489/489         srgb_to_linear_color [68]
@@ -621,7 +621,7 @@ index % time    self  children    called     name
                 0.00    0.00       1/179         xcalloc [64]
                 0.00    0.00       1/1           bvh_subdivide [88]
                 0.00    0.00       1/1           bound_boxes [86]
-                0.00    0.00       1/1           print_tree [99]
+                0.00    0.00       1/1           print_bvh_tree [99]
 -----------------------------------------------
                                  118             bvh_subdivide [88]
                 0.00    0.00       1/1           bvh_build [87]
@@ -667,11 +667,11 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           quit [100]
 [98]     0.0    0.00    0.00       1         print_error [98]
 -----------------------------------------------
-                                 118             print_tree [99]
+                                 118             print_bvh_tree [99]
                 0.00    0.00       1/1           bvh_build [87]
-[99]     0.0    0.00    0.00       1+118     print_tree [99]
+[99]     0.0    0.00    0.00       1+118     print_bvh_tree [99]
                 0.00    0.00     704/704         print_real3 [59]
-                                 118             print_tree [99]
+                                 118             print_bvh_tree [99]
 -----------------------------------------------
                 0.00    0.00       1/1           main [51]
 [100]    0.0    0.00    0.00       1         quit [100]
@@ -814,7 +814,7 @@ Index by function name
    [6] collision (phong_effect.c) [97] init_threads (init_app.c) [105] scan_C (scan_CAL.c)
   [28] collision_aabb (collision_aabb.c) [56] linear_to_srgb (color_linear_conversion.c) [82] scan_L (scan_CAL.c)
   [21] collision_aabb_base (collision_aabb.c) [43] linear_to_srgb_color (color_linear_conversion.c) [67] scan_color (scan_numbers.c)
-  [30] color_add_linear (color_linear.c) [50] load_scene (load_scene.c) [76] scan_cy (scan_elem.c)
+  [30] add_color_linear (color_linear.c) [50] load_scene (load_scene.c) [76] scan_cy (scan_elem.c)
   [91] setup_A (setup_CAL.c) [71] merge_boxes (bound_boxes.c) [66] scan_elem (load_scene.c)
   [53] setup_C (setup_CAL.c) [12] minus3 (vec_op_1.c) [106] scan_scene_from_file (load_scene.c)
   [81] setup_L (setup_CAL.c) [36] mul_color_linear (color_linear.c) [73] scan_sp (scan_elem.c)
@@ -830,4 +830,4 @@ Index by function name
   [23] dot (vec_op_2.c)       [26] polynome2 (polynome2.c) [64] xcalloc (xcalloc.c)
   [47] draw_pixel_to_img (draw_pixel_to_img.c) [98] print_error (main.c) [63] xmalloc (xmalloc.c)
   [69] elem_bounding_box (elem_bounding_box.c) [59] print_real3 (print.c) [85] xopen (xopen.c)
-  [54] elem_inf_any_hit (any_hit.c) [99] print_tree (print_tree.c)
+  [54] elem_inf_any_hit (any_hit.c) [99] print_bvh_tree (print_bvh_tree.c)
