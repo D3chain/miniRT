@@ -17,7 +17,7 @@ Each sample counts as 0.01 seconds.
   0.35     25.80     0.09                             ft_dabs
   0.00     25.80     0.00       56     0.00     0.00  scan_t_real
   0.00     25.80     0.00       20     0.00     0.00  render
-  0.00     25.80     0.00       16     0.00     0.00  complete_C
+  0.00     25.80     0.00       16     0.00     0.00  setup_C
   0.00     25.80     0.00       15     0.00     0.00  scan_t_real3
   0.00     25.80     0.00       10     0.00     0.00  event_mouse_click
   0.00     25.80     0.00       10     0.00     0.00  event_mouse_release
@@ -25,14 +25,14 @@ Each sample counts as 0.01 seconds.
   0.00     25.80     0.00        8     0.00     0.00  event_mouse_motion
   0.00     25.80     0.00        4     0.00     0.00  scan_L
   0.00     25.80     0.00        3     0.00     0.00  elem_bounding_box
-  0.00     25.80     0.00        2     0.00     0.00  complete_pl
+  0.00     25.80     0.00        2     0.00     0.00  setup_pl
   0.00     25.80     0.00        2     0.00     0.00  scan_pl
   0.00     25.80     0.00        2     0.00     0.00  zoom_aliasing_reenable
   0.00     25.80     0.00        1     0.00     0.00  bound_boxes
   0.00     25.80     0.00        1     0.00     0.00  bvh_subdivide
-  0.00     25.80     0.00        1     0.00     0.00  complete_co
-  0.00     25.80     0.00        1     0.00     0.00  complete_cy
-  0.00     25.80     0.00        1     0.00     0.00  complete_sp
+  0.00     25.80     0.00        1     0.00     0.00  setup_co
+  0.00     25.80     0.00        1     0.00     0.00  setup_cy
+  0.00     25.80     0.00        1     0.00     0.00  setup_sp
   0.00     25.80     0.00        1     0.00     0.00  event_keyboard_press
   0.00     25.80     0.00        1     0.00     0.00  print_tree
   0.00     25.80     0.00        1     0.00     0.00  scan_A
@@ -151,7 +151,7 @@ index % time    self  children    called     name
                 0.00    0.00       1/16          main [67]
                 0.00    0.00       7/16          event_mouse_motion [20]
                 0.00    0.00       8/16          event_mouse_click [17]
-[15]     0.0    0.00    0.00      16         complete_C [15]
+[15]     0.0    0.00    0.00      16         setup_C [15]
 -----------------------------------------------
                 0.00    0.00       1/15          scan_sp [38]
                 0.00    0.00       2/15          scan_C [34]
@@ -164,7 +164,7 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00      10/10          mlx_loop [93]
 [17]     0.0    0.00    0.00      10         event_mouse_click [17]
-                0.00    0.00       8/16          complete_C [15]
+                0.00    0.00       8/16          setup_C [15]
 -----------------------------------------------
                 0.00    0.00      10/10          mlx_loop [93]
 [18]     0.0    0.00    0.00      10         event_mouse_release [18]
@@ -181,7 +181,7 @@ index % time    self  children    called     name
                 0.00    0.00       8/8           mlx_loop [93]
 [20]     0.0    0.00    0.00       8         event_mouse_motion [20]
                 0.00    0.00       8/20          render [14]
-                0.00    0.00       7/16          complete_C [15]
+                0.00    0.00       7/16          setup_C [15]
 -----------------------------------------------
                 0.00    0.00       4/4           main [67]
 [21]     0.0    0.00    0.00       4         scan_L [21]
@@ -193,7 +193,7 @@ index % time    self  children    called     name
 [22]     0.0    0.00    0.00       3         elem_bounding_box [22]
 -----------------------------------------------
                 0.00    0.00       2/2           main [67]
-[23]     0.0    0.00    0.00       2         complete_pl [23]
+[23]     0.0    0.00    0.00       2         setup_pl [23]
 -----------------------------------------------
                 0.00    0.00       2/2           main [67]
 [24]     0.0    0.00    0.00       2         scan_pl [24]
@@ -212,13 +212,13 @@ index % time    self  children    called     name
 [27]     0.0    0.00    0.00       1         bvh_subdivide [27]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
-[28]     0.0    0.00    0.00       1         complete_co [28]
+[28]     0.0    0.00    0.00       1         setup_co [28]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
-[29]     0.0    0.00    0.00       1         complete_cy [29]
+[29]     0.0    0.00    0.00       1         setup_cy [29]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
-[30]     0.0    0.00    0.00       1         complete_sp [30]
+[30]     0.0    0.00    0.00       1         setup_sp [30]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [93]
 [31]     0.0    0.00    0.00       1         event_keyboard_press [31]
@@ -355,9 +355,9 @@ Index by function name
    [6] bvh_any_hit (any_hit.c) [12] ft_dabs               [19] scan_color (scan_numbers.c)
   [27] bvh_subdivide (bvh_build.c) [11] ft_dblcmp         [37] scan_cy (scan_shapes.c)
    [5] bvh_traverse (trace.c) [32] print_tree (print_tree.c) [24] scan_pl (scan_shapes.c)
-  [15] complete_C (complete_RCAL.c) [7] ray_hit_cone (ray_hit_cone.c) [38] scan_sp (scan_shapes.c)
-  [28] complete_co (complete_shapes.c) [8] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
-  [29] complete_cy (complete_shapes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [16] scan_t_real3 (scan_numbers.c)
-  [23] complete_pl (complete_shapes.c) [14] render (run_scene.c) [2] trace (trace.c)
-  [30] complete_sp (complete_shapes.c) [1] render_routine (render.c) [25] zoom_aliasing_reenable (event_mouse.c)
+  [15] setup_C (setup_RCAL.c) [7] ray_hit_cone (ray_hit_cone.c) [38] scan_sp (scan_shapes.c)
+  [28] setup_co (setup_shapes.c) [8] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
+  [29] setup_cy (setup_shapes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [16] scan_t_real3 (scan_numbers.c)
+  [23] setup_pl (setup_shapes.c) [14] render (run_scene.c) [2] trace (trace.c)
+  [30] setup_sp (setup_shapes.c) [1] render_routine (render.c) [25] zoom_aliasing_reenable (event_mouse.c)
   [22] elem_bounding_box (elem_bounding_box.c) [33] scan_A (scan_RCAL.c)

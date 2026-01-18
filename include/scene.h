@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/17 12:49:36 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/17 19:12:15 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,16 @@ struct s_mouse
 
 	struct s_mouse_position	pos;
 	
-	struct s_mouse_motion	zoom;
-	struct s_mouse_motion	motion;
+	// struct s_mouse_motion	zoom;
+	// struct s_mouse_motion	motion;
 
 	struct timeval			last_action_time;
 	bool					is_scrolling;
+
+	t_real					pan_speed;
+	t_real					base_pan_speed;
+
+	bool					fast_move;
 };
 
 struct s_viewport

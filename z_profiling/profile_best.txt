@@ -16,9 +16,9 @@ Each sample counts as 0.01 seconds.
   0.00      1.99     0.00      241     0.00     0.00  scan_t_real3
   0.00      1.99     0.00      163     0.00     0.00  scan_color
   0.00      1.99     0.00      156     0.00     0.00  elem_bounding_box
-  0.00      1.99     0.00       79     0.00     0.00  complete_sp
+  0.00      1.99     0.00       79     0.00     0.00  setup_sp
   0.00      1.99     0.00       79     0.00     0.00  scan_sp
-  0.00      1.99     0.00       77     0.00     0.00  complete_cy
+  0.00      1.99     0.00       77     0.00     0.00  setup_cy
   0.00      1.99     0.00       77     0.00     0.00  scan_cy
   0.00      1.99     0.00        6     0.00     0.00  scan_L
   0.00      1.99     0.00        1     0.00     0.00  bound_boxes
@@ -137,7 +137,7 @@ index % time    self  children    called     name
 [14]     0.0    0.00    0.00     156         elem_bounding_box [14]
 -----------------------------------------------
                 0.00    0.00      79/79          main [56]
-[15]     0.0    0.00    0.00      79         complete_sp [15]
+[15]     0.0    0.00    0.00      79         setup_sp [15]
 -----------------------------------------------
                 0.00    0.00      79/79          main [56]
 [16]     0.0    0.00    0.00      79         scan_sp [16]
@@ -146,7 +146,7 @@ index % time    self  children    called     name
                 0.00    0.00      79/163         scan_color [13]
 -----------------------------------------------
                 0.00    0.00      77/77          main [56]
-[17]     0.0    0.00    0.00      77         complete_cy [17]
+[17]     0.0    0.00    0.00      77         setup_cy [17]
 -----------------------------------------------
                 0.00    0.00      77/77          main [56]
 [18]     0.0    0.00    0.00      77         scan_cy [18]
@@ -289,6 +289,6 @@ Index by function name
    [4] bvh_any_hit (any_hit.c) [23] print_tree (print_tree.c) [16] scan_sp (scan_elem.c)
   [21] bvh_subdivide (bvh_build.c) [6] ray_hit_cylinder (ray_hit_cylinder.c) [11] scan_t_real (scan_numbers.c)
    [5] bvh_traverse (trace.c)  [7] ray_hit_sphere (ray_hit_sphere.c) [12] scan_t_real3 (scan_numbers.c)
-  [17] complete_cy (complete_elem.c) [24] render (run_scene.c) [3] trace (trace.c)
-  [15] complete_sp (complete_elem.c) [25] scan_A (scan_CAL.c)
+  [17] setup_cy (setup_elem.c) [24] render (run_scene.c) [3] trace (trace.c)
+  [15] setup_sp (setup_elem.c) [25] scan_A (scan_CAL.c)
   [14] elem_bounding_box (elem_bounding_box.c) [26] scan_C (scan_CAL.c)

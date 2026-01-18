@@ -38,6 +38,7 @@ static int	init_mlx(struct s_app *app)
 		return (app->status = ERR_MLX);
 	}
 	mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bpp, &mlx.img.size_line, &mlx.img.endian);
+	init_draw_function(&mlx.img);
 	if (!mlx.img.addr)
 	{
 		mlx_destroy_image(mlx.mlx, mlx.img.img);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   app.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 22:27:19 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 01:03:48 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ struct s_screen
 
 struct s_img
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				size_line;
+	int				endian;
+
+	void (*draw_fn)(struct s_img *img, t_int2 pos, int color);
 };
 
 struct	s_mlx
@@ -82,7 +84,8 @@ struct s_app
 /*	PROTOTYPES	*/
 
 int		init_app(struct s_app *app, int argc, char *argv[]);
-int		init_scene(struct s_app *app, const char *filename);
+void	init_draw_function(struct s_img *img);
+
 void	cleanup_app(struct s_app *app);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/17 12:19:16 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 01:17:30 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,24 @@
 __attribute__((always_inline))
 static inline void	mouse_left_button(struct s_app *app)
 {
-	const t_real	pan_speed = app->scene.camera.mouse.zoom.pan_speed / ZOOM_TO_PAN_RATIO;
 	t_int2			offset;
 	
 	offset = app->scene.camera.mouse.pos.dir;
-	camera_view(&app->scene.camera, 
-			(t_real2){offset.x * pan_speed, offset.y * pan_speed});
-	complete_C(app, &app->scene.camera, false);
+	camera_view(app, &app->scene.camera, 
+			(t_real2){offset.x * CAMERA_VIEW_FACTOR, offset.y * CAMERA_VIEW_FACTOR});	
 }
 
 __attribute__((always_inline))
 static inline void	mouse_middle_button(struct s_app *app)
 {
-	update_camera(&app->scene.camera);
-	camera_pan(&app->scene.camera, &app->scene.camera.mouse);
-	complete_C(app, &app->scene.camera, false);
+	camera_pan(app, &app->scene.camera, &app->scene.camera.mouse);
 }
 
 __attribute__((always_inline))
 static inline void	mouse_right_button(struct s_app *app)
 {
-	bvh_update_coord(app->scene.bvh_root, app->scene.camera.mouse.pos.dir);
-	complete_scene(app, &app->scene);
+	update_shapes_coord(app->scene.bvh_root, app->scene.camera.mouse.pos.dir);
+	setup_shapes(app, &app->scene);
 	bound_boxes(app->scene.bvh_root);
 }
 

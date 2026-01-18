@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/17 12:44:16 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/17 21:09:03 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ static inline t_color_linear	average_linear_color(t_color_linear incremented, in
 	incremented.g /= samples;
 	incremented.b /= samples;
 	return (incremented);
-}
-
-__attribute__((always_inline))
-static inline t_real	offset(struct s_app *app, t_real x, t_real y)
-{
-	
 }
 
 t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)

@@ -1,19 +1,19 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/13 13:22:15 by echatela          #+#    #+#              #
-#    Updated: 2026/01/16 22:29:01 by cgajean          ###   ########.fr        #
-#                                                                              #
+#																			#
+#														 :::	::::::::	#
+#	Makefile										 :+:	:+:	:+:	#
+#													 +:+ +:+		 +:+	#
+#	By: fox <fox@student.42.fr>					+#++:+	 +#+		 #
+#												 +#+#+#+#+#+ +#+			#
+#	Created: 2025/11/13 13:22:15 by echatela		#+#	#+#			#
+#	Updated: 2026/01/17 21:10:33 by fox			### ########.fr		#
+#																			#
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3 -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops -pg
+CFLAGS		:=	-MMD -MP -g3 -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -26,30 +26,102 @@ LDLIBS		+= -lXext -lX11 -lm -lbsd
 
 ROOT_SRC	:=	main.c
 
-APP_SRC		:=	init_app.c cleanup_app.c
-LOAD_SRC	:=	load_scene.c scan_RCAL.c scan_shapes.c scan_numbers.c complete_RCAL.c complete_shapes.c
-RUN_SRC		:=	run_scene.c	\
-				event/event_keyboard.c event/event_mouse.c event/event_mouse_motion.c event/update/update_antialiasing.c event/update/update_speed.c event/update/update_mouse.c event/update/update_camera.c event/update/update_bvh_coord.c	\
-				bvh/bvh_build.c bvh/elem_bounding_box.c bvh/bound_boxes.c bvh/sort_elems.c bvh/collision_aabb.c bvh/any_hit.c bvh/print_tree.c	\
-				ray/init_ray.c ray/ray_hit.c ray/ray_hit_sphere.c ray/ray_hit_cylinder.c ray/ray_hit_plane.c ray/ray_hit_cone.c	\
-				render/render.c render/draw_pixel_to_img.c render/antialiasing.c render/trace.c render/basic_render.c
-MATH_SRC	:=	polynome2.c vec_op_1.c vec_op_2.c vec_op_3.c
-WRAPPER_SRC	:=	xmalloc.c xcalloc.c xopen.c
-ERROR_SRC	:=	err_per.c fill.c
-COLOR_SRC	:=	color_linear_conversion.c color_linear.c tone_mapping.c fresnel_schlick.c phong_effect.c	\
-				util/closest_hit_dst.c
-UTIL_SRC	:=	token.c print.c
+# Application core
+APP_SRC		:=	init_app.c															\
+				cleanup_app.c
 
-SRC_PATHS	:= \
-	$(addprefix app/,$(APP_SRC)) 			\
-	$(addprefix load/,$(LOAD_SRC)) 			\
-	$(addprefix run/,$(RUN_SRC)) 			\
-	$(addprefix math/,$(MATH_SRC)) 			\
-	$(addprefix wrapper/,$(WRAPPER_SRC)) 	\
-	$(addprefix util/,$(UTIL_SRC)) 			\
-	$(addprefix error/,$(ERROR_SRC)) 		\
-	$(addprefix color/,$(COLOR_SRC)) 		\
-	$(ROOT_SRC)
+# Colors and lighting
+COLOR_SRC	:=	color_linear_conversion.c											\
+				color_linear.c														\
+				tone_mapping.c														\
+				fresnel_schlick.c													\
+				phong_effect.c														\
+				util/closest_hit_dst.c
+
+# Error handling
+ERROR_SRC	:=	err_per.c															\
+				fill.c
+
+# Scene loading
+LOAD_SRC	:=	load_scene.c														\
+				scan_RCAL.c															\
+				scan_shapes.c														\
+				scan_numbers.c
+
+# Math utilities
+MATH_SRC	:=	polynome2.c															\
+				vec_op_1.c															\
+				vec_op_2.c															\
+				vec_op_3.c
+
+# Events
+EVENT_SRC	:=	event/event_keyboard.c												\
+				event/event_mouse.c													\
+				event/event_mouse_motion.c
+
+# Event updates
+UPDATE_SRC	:=	event/update/update_antialiasing.c									\
+				event/update/update_zoom_speed.c									\
+				event/update/update_mouse.c											\
+				event/update/update_camera.c										\
+				event/update/update_shapes_coord.c
+
+# BVH (Bounding Volume Hierarchy)
+BVH_SRC		:=	bvh/bvh_build.c														\
+				bvh/elem_bounding_box.c												\
+				bvh/bound_boxes.c													\
+				bvh/sort_elems.c													\
+				bvh/collision_aabb.c												\
+				bvh/any_hit.c														\
+				bvh/print_tree.c
+
+# Ray tracing
+RAY_SRC		:=	ray/init_ray.c														\
+				ray/ray_hit.c														\
+				ray/ray_hit_sphere.c												\
+				ray/ray_hit_cylinder.c												\
+				ray/ray_hit_plane.c													\
+				ray/ray_hit_cone.c
+
+# Rendering
+RENDER_SRC	:=	render/render.c														\
+				render/draw_pixel_to_img.c											\
+				render/antialiasing.c												\
+				render/trace.c														\
+				render/basic_render.c
+
+# Combine run sources
+RUN_SRC		:=	run_scene.c															\
+				$(EVENT_SRC)														\
+				$(UPDATE_SRC)														\
+				$(BVH_SRC)															\
+				$(RAY_SRC)															\
+				$(RENDER_SRC)
+
+# Setup
+SETUP_SRC	:=	setup_RCAL.c														\
+				setup_viewport.c													\
+				setup_shapes.c
+
+# Utilities
+UTIL_SRC	:=	token.c																\
+				print.c
+
+# Wrappers
+WRAPPER_SRC	:=	xmalloc.c															\
+				xcalloc.c															\
+				xopen.c
+
+SRC_PATHS	:=	$(addprefix app/,$(APP_SRC))										\
+				$(addprefix color/,$(COLOR_SRC))									\
+				$(addprefix error/,$(ERROR_SRC))									\
+				$(addprefix load/,$(LOAD_SRC))										\
+				$(addprefix math/,$(MATH_SRC))										\
+				$(addprefix run/,$(RUN_SRC))										\
+				$(addprefix setup/,$(SETUP_SRC))									\
+				$(addprefix util/,$(UTIL_SRC))										\
+				$(addprefix wrapper/,$(WRAPPER_SRC))								\
+				$(ROOT_SRC)
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC_PATHS))
 

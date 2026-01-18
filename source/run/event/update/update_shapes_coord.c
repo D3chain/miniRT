@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   update_bvh_coord.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:51:51 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 20:04:13 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 21:03:41 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	bvh_update_coord(t_bvh_base *tree, t_int2 offset)
+void	update_shapes_coord(t_bvh_base *tree, t_int2 offset)
 {
 	int				n;
 	int				n_elem;
@@ -20,8 +20,8 @@ void	bvh_update_coord(t_bvh_base *tree, t_int2 offset)
 	
 	if (tree->type == NODE_BOX)
 	{
-		bvh_update_coord(((t_bvh_node *)tree)->left, offset);
-		bvh_update_coord(((t_bvh_node *)tree)->right, offset);
+		update_shapes_coord(((t_bvh_node *)tree)->left, offset);
+		update_shapes_coord(((t_bvh_node *)tree)->right, offset);
 	}
 	else
 	{
@@ -30,8 +30,8 @@ void	bvh_update_coord(t_bvh_base *tree, t_int2 offset)
 		while (n < n_elem)
 		{
 			e = &((t_bvh_elem_box *)tree)->elems[n];
-			e->u.any.coord.x += (t_real) offset.x / 5;
-			e->u.any.coord.y -= (t_real) offset.y / 5;
+			e->u.any.coord.x += offset.x / OBJ_DRAG_DIV_FACTOR;
+			e->u.any.coord.y -= offset.y / OBJ_DRAG_DIV_FACTOR;
 			++n;
 		}
 	}

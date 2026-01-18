@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/15 12:19:06 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 20:59:15 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 		line = gets_next_line(fd);
 	}
 	close(fd);
-}
-
-void	 complete_scene(struct s_app *app, struct s_scene *scene)
-{
-	static void	(*complete_fct[N_SCENE_ELEMS])(struct s_app *, struct s_elem *) = {
-		complete_pl, complete_sp, complete_cy, complete_co};
-	int	i;
-
-	i = -1;
-	while (++i < scene->n_elem)
-		complete_fct[scene->elems[i].type](app, &scene->elems[i]);
-	i = -1;
-	while (++i < scene->n_elem_inf)
-		complete_fct[scene->elems_inf[i].type](app, &scene->elems_inf[i]);
 }
 
 static int	scan_file(struct s_app *app, const char *line)
@@ -115,8 +101,8 @@ int	load_scene(struct s_app *app, const char *file)
 		return (app->status);
 	if (scan_scene_from_file(app, file))
 		return (app->status);
-	complete_scene(app, &app->scene);
-	complete_RCAL(app);
+	setup_shapes(app, &app->scene);
+	setup_RCAL(app);
 	bvh_build(app, &app->scene);
 	return (0);
 }

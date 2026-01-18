@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/17 12:44:57 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 01:12:37 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ struct s_rodrigues
 	t_real3	term3;
 };
 
-void	update_camera(struct s_camera *camera)
+void	update_camera(struct s_app *app, struct s_camera *camera)
 {
 	static const t_real3	world_up = (t_real3){FLT_0,FLT_1,FLT_0};
 	static const t_real3	fallback = (t_real3){FLT_0,FLT_0,FLT_1};
@@ -35,10 +35,12 @@ void	update_camera(struct s_camera *camera)
 	else
 		camera->dir_right = normalize3(cross3(cam_dir_norm, world_up));
 	camera->dir_up = cross3(camera->dir_right, cam_dir_norm);
-	
+	app->scene.camera.fov_rad = ft_toradian(app->scene.camera.fov);
+	setup_viewport(app, &app->scene.camera);	
 }
 
-// Rotation around an arbitrary axix (Rodrigues's formula)
+//	Rotation around an arbitrary axis (Rodrigues's rotation formula)
+//	https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
 __attribute__((always_inline))
 static inline t_real3	rotate_around_axis(t_real3 vec, t_real3 axis, t_real angle)
 {
@@ -54,14 +56,14 @@ static inline t_real3	rotate_around_axis(t_real3 vec, t_real3 axis, t_real angle
 	return (plus3(r.term1, plus3(r.term2, r.term3)));
 }
 
-void	camera_view(struct s_camera *camera, t_real2 value)
+void camera_view(struct s_app *app, struct s_camera *camera, t_real2 delta_pixels)
 {
-	t_real3	new_dir;
-	
-	new_dir = rotate_around_axis(camera->dir, camera->dir_up, -value.x);
-	new_dir = rotate_around_axis(new_dir, camera->dir_right, value.y);
+	t_real3 new_dir;
+
+	new_dir = rotate_around_axis(camera->dir, camera->dir_up, -delta_pixels.x * MOUSE_SENSITIVITY);
+	new_dir = rotate_around_axis(new_dir, camera->dir_right, delta_pixels.y * MOUSE_SENSITIVITY);
 	camera->dir = normalize3(new_dir);
-	update_camera(camera);
+	update_camera(app, camera);
 }
 
 void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
@@ -78,9 +80,9 @@ void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
 	
 }
 
-void	camera_pan(struct s_camera *camera, struct s_mouse *mouse)
+void	camera_pan(struct s_app *app, struct s_camera *camera, struct s_mouse *mouse)
 {
-	const t_real	factor = camera->mouse.zoom.pan_speed * ZOOM_MIN_SPEED;
+	const t_real	factor = camera->mouse.pan_speed * ZOOM_MIN_SPEED;
 	t_real3			offset;
 
 	offset = fmul3(camera->dir_right, mouse->pos.dir.x * factor);
@@ -88,6 +90,5 @@ void	camera_pan(struct s_camera *camera, struct s_mouse *mouse)
 
 	offset = fmul3(camera->dir_up, mouse->pos.dir.y * factor);
 	camera->focal_center = plus3(camera->focal_center, offset);
-	update_camera(camera);
+	update_camera(app, camera);
 }
-

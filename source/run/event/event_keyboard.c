@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_keyboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 21:59:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/17 21:14:01 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,33 @@ static inline void	print_camera(struct s_app *app)
 	print_real3(app->scene.camera.dir, "\tdirection:");
 }
 
+static inline void	fov_modify(struct s_app *app, int key)
+{
+	static const t_real	min_fov = FOV_MIN;
+	static const t_real	max_fov = FOV_MAX;
+	t_real				new_fov;
+
+	if (key == XK_KP_Add)
+	{
+		new_fov = app->scene.camera.fov + FOV_MODIFY;
+		if (new_fov > max_fov)
+			app->scene.camera.fov = max_fov;
+		else
+			app->scene.camera.fov = new_fov;
+	}
+	else
+	{
+		new_fov = app->scene.camera.fov - FOV_MODIFY;
+		if (new_fov < min_fov)
+			app->scene.camera.fov = min_fov;
+		else
+			app->scene.camera.fov = new_fov;
+	}
+	printf("FOV=%.0f\n", app->scene.camera.fov);
+	update_camera(app, &app->scene.camera);
+	render(app);
+}
+
 int	event_keyboard_press(int key, struct s_app *app)
 {
 	if (key == XK_Escape)
@@ -28,6 +55,8 @@ int	event_keyboard_press(int key, struct s_app *app)
 	else if (key == XK_p)
 		print_camera(app);
 	else if (key == XK_equal || key == XK_minus || key == XK_BackSpace)
-		zoom_speed(key, app);
+		update_zoom_speed(key, app);
+	else if (key == XK_KP_Add || key == XK_KP_Subtract)
+		fov_modify(app, key);
 	return (0);
 }

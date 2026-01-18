@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:03:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/17 12:18:55 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/17 20:59:15 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	event_mouse_click(int button, int x, int y, struct s_app *app)
 			factor = -1;
 		else
 			factor = 1;
-		camera_zoom(app, &app->scene.camera, factor * app->scene.camera.mouse.zoom.pan_speed);
-		complete_C(app, &app->scene.camera, false);
+		camera_zoom(app, &app->scene.camera, factor * app->scene.camera.mouse.pan_speed);
+		setup_C(app, &app->scene.camera, false);
 	}	
 	return (0);
 }
