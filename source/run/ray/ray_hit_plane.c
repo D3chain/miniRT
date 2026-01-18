@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:42 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 22:22:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 22:42:39 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ t_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 {
 	t_hit_info				closest_hit;
 	const struct s_plane	plane = ((struct s_elem *)elem)->u.plane;
+	const t_real			denom = dot(ray->dir, plane.normal);
 
-	closest_hit.dst = plane_dst(ray, plane.normal, plane.coord);
+	if (fabs(denom) < EPSILON)
+		return ((t_hit_info){0});
+	closest_hit.dst = dot(minus3(plane.coord, ray->origin), plane.normal) / denom;
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	if (closest_hit.did_hit)
 	{

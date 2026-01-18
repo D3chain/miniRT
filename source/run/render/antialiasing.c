@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/18 12:19:45 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 20:48:31 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static inline t_color_linear	average_color_linear(t_color_linear color, t_real i
 {
 	return (scale_color_linear(color, inv_samples));
 }
-
 
 t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 {

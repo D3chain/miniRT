@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 13:50:03 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 23:19:52 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,19 @@ int	event_keyboard_press(int key, struct s_app *app)
 		update_antialiasing(key, app);
 	else if (key == XK_c)
 		print_camera(app);
+	else if (key == XK_r)
+		print_render(app);		
 	else if (key == XK_equal || key == XK_minus || key == XK_BackSpace)
 		update_zoom_speed(key, app);
 	else if (key == XK_KP_Add || key == XK_KP_Subtract)
 		fov_modify(app, key);
 	else if (key == XK_t)
 		print_bvh_tree(app->scene.bvh_root);
+	else if (key == XK_d)
+		toggle_downsampling(&app->render.antialiasing);
+	else if (key == XK_Page_Up)
+		increase_downsampling(&app->render.antialiasing);
+	else if (key == XK_Page_Down)
+		decrease_downsampling(&app->render.antialiasing);
 	return (0);
 }

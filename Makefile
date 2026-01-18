@@ -33,10 +33,7 @@ APP_SRC		:=	init_app.c															\
 # Colors and lighting
 COLOR_SRC	:=	color_linear_conversion.c											\
 				color_linear.c														\
-				tone_mapping.c														\
-				fresnel_schlick.c													\
-				phong_effect.c														\
-				util/closest_hit_dst.c
+				phong_effect.c
 
 # Error handling
 ERROR_SRC	:=	err_per.c															\
@@ -64,6 +61,7 @@ UPDATE_SRC	:=	event/update/update_antialiasing.c									\
 				event/update/update_zoom_speed.c									\
 				event/update/update_mouse.c											\
 				event/update/update_camera.c										\
+				event/update/update_downsampling.c									\
 				event/update/update_shapes_coord.c
 
 # BVH (Bounding Volume Hierarchy)
@@ -80,10 +78,11 @@ RAY_SRC		:=	ray/init_ray.c														\
 				ray/ray_hit_sphere.c												\
 				ray/ray_hit_cylinder.c												\
 				ray/ray_hit_plane.c													\
-				ray/ray_hit_cone.c
+				ray/ray_hit_cone.c													\
+				ray/closest_hit_dst.c
 
 # Rendering
-RENDER_SRC	:=	render/render.c														\
+RENDER_SRC	:=	render/render_routine.c												\
 				render/draw_pixel_to_img.c											\
 				render/antialiasing.c												\
 				render/trace.c														\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/16 21:25:01 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 23:07:37 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,23 @@ int	render(struct s_app *app)
 	join_threads(&app->threads);
 	reset_th_idx(&app->threads);
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
-	// printf("image printed\n");
 	return (ERR_NONE);
 }
 
-__attribute__((always_inline))
-static inline void	setup_mlx_hooks(struct s_app *app)
+static void	setup_mlx_hooks(struct s_app *app)
 {
 	mlx_hook(app->mlx.win, DestroyNotify, ButtonPressMask, event_mouse_close, app);
 	mlx_hook(app->mlx.win, MotionNotify, ButtonMotionMask, event_mouse_motion, app);
 	mlx_hook(app->mlx.win, ButtonPress, ButtonPressMask, event_mouse_click, app);
 	mlx_hook(app->mlx.win, ButtonRelease, ButtonReleaseMask, event_mouse_release, app);
 	mlx_hook(app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
-	mlx_loop_hook(app->mlx.mlx, zoom_aliasing_reenable, app);
+	mlx_loop_hook(app->mlx.mlx, idle_scroll_reenable, app);
 }
 
 int run_scene(struct s_app *app)
 {
-	app->mlx.win = mlx_new_window(app->mlx.mlx, app->mlx.screen.resolution.x, app->mlx.screen.resolution.y, "miniRT");
+	app->mlx.win = mlx_new_window(app->mlx.mlx, 
+			app->mlx.screen.resolution.x, app->mlx.screen.resolution.y, "miniRT");
 	setup_mlx_hooks(app);
 	render(app);
 	mlx_loop(app->mlx.mlx);

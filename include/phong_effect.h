@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 12:17:39 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:08:41 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,12 @@ struct s_phong_effect
 t_real				rgb_to_linear(t_real channel);
 t_color_linear		srgb_to_linear_color(t_color color);
 
-t_real				linear_to_srgb(t_real channel);
+// t_real				linear_to_srgb(t_real channel);
 t_color 			linear_to_srgb_color(t_color_linear linear);
 
 t_color_linear 		add_color_linear(t_color_linear a, t_color_linear b);
 t_color_linear 		scale_color_linear(t_color_linear c, t_real factor);
 t_color_linear 		mul_color_linear(t_color_linear a, t_color_linear b, t_real factor);
-
-/*	Tone mapping	*/
-t_color_linear		tone_map_clamp(t_color_linear c);
-t_color_linear		tone_map_reinhard(t_color_linear c);
-t_color_linear		tone_map_aces(t_color_linear x);
-t_color_linear		tone_map_luminance(t_color_linear c);
-
-t_real				fresnel_schlick(struct s_scene *scene, t_material mat, t_real3 N, t_real3 V);
 
 t_color_linear 		phong_effect(struct s_scene *scene, t_hit_info *hit_info);
 t_color_linear		basic_render(struct s_app *app, t_real x, t_real y);

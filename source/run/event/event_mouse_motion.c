@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 01:17:30 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 19:36:06 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	event_mouse_motion(int x, int y, struct s_app *app)
 	const int		button = app->scene.camera.mouse.button;
 
 	update_mouse_position_nobutton(&app->scene.camera.mouse, x, y);
+	start_downsampling(&app->render.antialiasing);
 	if (button == Button1)
 		mouse_left_button(app);
 	else if (button == Button2)

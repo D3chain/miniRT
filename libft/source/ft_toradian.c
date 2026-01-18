@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toradian.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:33:51 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 17:12:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 22:18:44 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # define PI M_PI
 #endif
 
-double	ft_toradian(double angle)
+t_real	ft_toradian(t_real angle)
 {
-	return (angle * PI / 180);
+	static const t_real	PI_OVER_180 = PI / 180;
+	
+	return (angle * PI_OVER_180);
 }

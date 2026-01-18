@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 23:08:52 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:48:00 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	compute_cone_quadratic(const struct s_cone *cone, const t_ray *ray,
 	dir_dot_axis = dot(ray->dir, cone->axis);
 	x_dot_axis = dot(x, cone->axis);
 	coefs[0] = dir_dot_axis * dir_dot_axis - cone->cos2_theta;
-	coefs[1] = 2.0 * (dir_dot_axis * x_dot_axis - cone->cos2_theta
+	coefs[1] = FLT_2 * (dir_dot_axis * x_dot_axis - cone->cos2_theta
 		* dot(ray->dir, x));
 	coefs[2] = x_dot_axis * x_dot_axis - cone->cos2_theta * dot(x, x);
 }
@@ -45,12 +45,12 @@ static bool	solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2)
 	t_real	sqrt_disc;
 	t_real	tmp;
 
-	discriminant = coefs[1] * coefs[1] - 4.0 * coefs[0] * coefs[2];
+	discriminant = coefs[1] * coefs[1] - FLT_4 * coefs[0] * coefs[2];
 	if (discriminant < 0)
 		return (false);
 	sqrt_disc = sqrt(discriminant);
-	*t1 = (- coefs[1] - sqrt_disc) / (2.0 * coefs[0]);
-	*t2 = (- coefs[1] + sqrt_disc) / (2.0 * coefs[0]);
+	*t1 = (- coefs[1] - sqrt_disc) / (FLT_2 * coefs[0]);
+	*t2 = (- coefs[1] + sqrt_disc) / (FLT_2 * coefs[0]);
 	if (*t1 > *t2)
 	{
 		tmp = *t1;
@@ -67,7 +67,7 @@ static bool	is_within_cone_height(const struct s_cone *cone, t_real3 point)
 
 	apex_to_point = minus3(point, cone->apex);
 	projection = dot(apex_to_point, cone->axis);
-	return (projection >= 0.0 && projection <= cone->height);
+	return (projection >= EPSILON && projection <= cone->height);
 }
 
 static t_real3	compute_cone_normal(const struct s_cone *cone, t_real3 point)
@@ -84,10 +84,10 @@ static t_real3	compute_cone_normal(const struct s_cone *cone, t_real3 point)
 
 static t_hit_info	intersect_cone_body(const t_ray *ray, const struct s_cone *cone)
 {
-	t_real3	x;
+	t_real3		x;
 	t_real		coefs[3];
 	t_real		t[2];
-	t_real3	point;
+	t_real3		point;
 
 	x = minus3(ray->origin, cone->apex);
 	compute_cone_quadratic(cone, ray, x, coefs);
@@ -112,8 +112,8 @@ static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 {
 	t_real		denom;
 	t_real		t;
-	t_real3	point;
-	t_real3	base_to_point;
+	t_real3		point;
+	t_real3		base_to_point;
 
 	denom = dot(ray->dir, cone->axis);
 	if (fabs(denom) < EPSILON)
@@ -131,8 +131,8 @@ static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 t_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 {
 	const struct s_cone	cone = ((struct s_elem *)elem)->u.cone;
-	t_hit_info		body_hit;
-	t_hit_info		cap_hit;
+	t_hit_info			body_hit;
+	t_hit_info			cap_hit;
 
 	body_hit = intersect_cone_body(ray, &cone);
 	cap_hit = intersect_cap(ray, &cone);

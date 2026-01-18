@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dabs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:40:51 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/13 17:13:51 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 22:23:04 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_dabs(double a)
+t_real	ft_dabs(t_real a)
 {
-	if (a < 0)
-		a *= -1;
+	if (a < FLT_0)
+		return (a *= -FLT_1);
 	return (a);
 }

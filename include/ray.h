@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:04:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 00:24:53 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:42:12 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_hit_info			cmp_hit_info(t_hit_info a, t_hit_info b);
 
 t_real				closest_hit_dst_dbl(const t_real a, const t_real b);
 t_real				closest_hit_dst_sol2(t_sol2 sol);
-t_real	plane_dst(const struct s_ray *ray, const t_real3 normal, const t_real3 point);
+t_real				plane_dst(const struct s_ray *ray, const t_real3 normal, const t_real3 point);
 
 t_hit_info			ray_hit_sphere(const struct s_ray *ray, const void *elem);
 t_hit_info			ray_hit_cylinder(const struct s_ray *ray, const void *elem);

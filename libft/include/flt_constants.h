@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 12:39:27 by fox               #+#    #+#             */
-/*   Updated: 2026/01/17 20:07:15 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:15:10 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@
 #  define FLT_98   98.0
 #  define FLT_99   99.0
 #  define FLT_100  100.0
+
+#  define FLT_255  255.0
 
 #  define FLT_0_0  0.0
 #  define FLT_0_1  0.1
@@ -234,6 +236,8 @@
 #  define FLT_98   98.0f
 #  define FLT_99   99.0f
 #  define FLT_100  100.0f
+
+#  define FLT_255  255.0f
 
 #  define FLT_0_0  0.0f
 #  define FLT_0_1  0.1f

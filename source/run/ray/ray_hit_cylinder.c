@@ -48,15 +48,15 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), 2 * dot(tmp_a, tmp_b),
 		dot(tmp_b, tmp_b) - cylinder->radius_sq);
 	
-	if (sol.r1 > 0.0)
-		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p1)) <= 0
-			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p2)) >= 0)
-		sol.r1 = -1.0;
+	if (sol.r1 > EPSILON) 
+		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p1)) <= EPSILON
+			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r1), cylinder->p2)) >= EPSILON)
+		sol.r1 = -FLT_1;
 
-	if (sol.r2 > 0.0)
-		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p1)) <= 0
-			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p2)) >= 0)
-		sol.r2 = -1.0;
+	if (sol.r2 > EPSILON)
+		if (dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p1)) <= EPSILON
+			|| dot(cylinder->axis, minus3(project(ray->origin, ray->dir, sol.r2), cylinder->p2)) >= EPSILON)
+		sol.r2 = -FLT_1;
 	return (sol);
 }
 

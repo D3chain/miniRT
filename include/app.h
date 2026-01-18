@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 01:03:48 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 20:53:29 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ struct s_img
 	int				bpp;
 	int				size_line;
 	int				endian;
-
-	void (*draw_fn)(struct s_img *img, t_int2 pos, int color);
 };
 
 struct	s_mlx
@@ -63,9 +61,10 @@ struct s_render
 	int				resolution;	
 	int				n_tiles;
 	int				tile_side;
+	t_real			inv_tile_side;
 	int				tile_area;
 
-	t_antialiasing			antialiasing;
+	t_antialiasing	antialiasing;
 };
 
 struct s_app
@@ -84,7 +83,6 @@ struct s_app
 /*	PROTOTYPES	*/
 
 int		init_app(struct s_app *app, int argc, char *argv[]);
-void	init_draw_function(struct s_img *img);
 
 void	cleanup_app(struct s_app *app);
 

@@ -6,19 +6,20 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 20:27:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 12:07:24 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:58:24 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((always_inline))
-static inline void	toggle_antialiasing(struct s_antialiasing *a)
+inline void	toggle_antialiasing(struct s_antialiasing *a)
 {
 	a->enabled = !a->enabled;
-	printf("\nAntialiasing=%d\n", a->enabled);
 	if (a->enabled)
-		printf("Oversampling=%d\n\n", a->samples);
+		a->rfn = antialiasing;
+	else
+		a->rfn = basic_render;
 }
 
 __attribute__((always_inline))
@@ -27,35 +28,48 @@ static inline void	increase_sample_amount(t_antialiasing *a)
 	if (a->enabled == false)
 	{
 		a->enabled = true;
-		printf("\nOversampling has been enabled\n");
+		a->rfn = antialiasing;
+		printf("\nUpsampling is enabled\n");
 	}
 	++a->grid_size;
+	a->inv_grid_size = FLT_1 / a->grid_size;
 	a->samples = a->grid_size * a->grid_size;
-	printf("Oversampling=%d\n", a->samples);
+	a->inv_samples = FLT_1 / (t_real)a->samples;
+	a->inv_grid_size = FLT_1 / (t_real)a->grid_size;
+	a->offset_factor = FLT_0_5 - a->grid_size / FLT_2; 
+	printf("Upsampling=%d\n", a->samples);
 }
 
 __attribute__((always_inline))
 static inline void	decrease_sample_amount(t_antialiasing *a)
 {
-	if (a->grid_size == 2)
+	if (a->grid_size <= 2)
 	{
 		a->enabled = false;
-		printf("\nOversampling has been disabled.\n");
-	}
-	else if (a->grid_size > 2)
-	{
-		--a->grid_size;
-		a->samples = a->grid_size * a->grid_size;
-		printf("Oversampling=%d\n", a->samples);
+		a->rfn = basic_render;
+		printf("\nUpsampling is disabled.\n");
 	}
 	else
-		printf("Oversampling is already disabled.\n");
+	{
+		--a->grid_size;
+		a->inv_grid_size = FLT_1 / a->grid_size;
+		a->samples = a->grid_size * a->grid_size;
+		a->inv_samples = FLT_1 / (t_real)a->samples;
+		a->inv_grid_size = FLT_1 / (t_real)a->grid_size;
+		a->offset_factor = FLT_0_5 - a->grid_size / FLT_2; 
+		printf("Upsampling=%d\n", a->samples);
+	}
 }
 
 void	update_antialiasing(int key, struct s_app *app)
 {
-	if (key == XK_a)	
+	if (key == XK_a)
+	{
 		toggle_antialiasing(&app->render.antialiasing);
+		printf("\nAntialiasing=%d\n", app->render.antialiasing.enabled);
+		if (app->render.antialiasing.enabled)
+			printf("Upsampling=%d\n\n", app->render.antialiasing.samples);
+	}
 	else if (key == XK_z)
 		increase_sample_amount(&app->render.antialiasing);
 	else if (key == XK_e)

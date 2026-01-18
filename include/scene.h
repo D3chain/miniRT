@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 12:06:26 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 19:26:46 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,24 @@ struct s_light
 	
 };
 
+typedef t_color_linear		(*render_fn)(struct s_app*, t_real, t_real);
+typedef void				(*tile_fn)(struct s_app *app, t_int2 tile, render_fn rend);
+
 struct s_antialiasing
 {
+	render_fn		rfn;
+	tile_fn			tfn;
+
 	bool			enabled;
 	int				samples;
 	int				grid_size;
 	t_real			inv_samples;
 	t_real			inv_grid_size;
 	t_real			offset_factor;
+
+	bool			downsample_activation;
+	bool			downsample_state;
+	int				downsample_rate;
 };
 
 struct s_scene

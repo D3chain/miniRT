@@ -9,7 +9,6 @@
                 "-g3",
                 "${workspaceFolder}/source/*.c",
                 "${workspaceFolder}/source/color/*.c",
-				"${workspaceFolder}/source/color/util/*.c",
                 "${workspaceFolder}/source/error/*.c",
                 "${workspaceFolder}/source/app/*.c",
 				"${workspaceFolder}/source/load/*.c",

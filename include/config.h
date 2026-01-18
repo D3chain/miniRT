@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 12:42:52 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 23:19:09 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include "minirt.h"
 
-# define EPSILON	FLT_0_1 / FLT_10
+# ifdef USE_DBL_NUMBER
+#  define EPSILON	1e-4
+# else
+#  define EPSILON	1e-4f
+# endif
 # define COEF_SPEC	FLT_0_2
 # define SHININESS	FLT_100
 
@@ -47,15 +51,29 @@
 /*																*/
 /*	This part defines the behavior of the antialiasing system	*/
 /*																*/
-# ifndef OVERSAMPLING
-#  define OVERSAMPLING	16
+
+# ifndef UPSAMPLING
+#  define UPSAMPLING	16
 # endif
 
-# ifdef OVERSAMPLING
-#  if OVERSAMPLING < 1
-#   define OVERSAMPLING 4
+# ifdef UPSAMPLING
+#  if UPSAMPLING < 1
+#   define UPSAMPLING 4
 #  endif
 # endif
+
+# ifndef DOWNSAMPLING
+#  define DOWNSAMPLING	4
+# endif
+
+# ifdef DOWNSAMPLING
+#  if DOWNSAMPLING < 1
+#   define DOWNSAMPLING 4
+#  endif
+# endif
+
+# define UPSAMPLING_INIT_ACTIV		true
+# define DOWNSAMPLING_INIT_ACTIV	false
 
 
 /*																*/
@@ -115,7 +133,10 @@
 
 # define ZOOM_TO_PAN_RATIO		10
 
-# define ZOOM_ALIASING_REENABLE_TIME	100
+# define IDLE_SCROLL_REENABLE_TILE	100
+
+# define MIN_DOWNSAMPLING_RATE	2
+# define MAX_DOWNSAMPLING_RATE	32
 
 # define CAMERA_VIEW_FACTOR	FLT_0_5
 

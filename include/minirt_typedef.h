@@ -6,14 +6,12 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:01:20 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 12:21:49 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 22:13:46 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_TYPEDEF_H
 # define MINIRT_TYPEDEF_H
-
-typedef FLT_TYPE				t_real;
 
 typedef enum e_status			t_status;
 

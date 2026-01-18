@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:52:18 by fox               #+#    #+#             */
-/*   Updated: 2026/01/18 12:52:38 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 18:26:20 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ struct s_bvh_node
 	t_bvh_base		*right;
 	
 };
-
 
 /*	Construction of the BVH tree	*/
 void		bvh_build(struct s_app *app, struct s_scene *scene);

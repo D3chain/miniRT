@@ -27,7 +27,7 @@ Each sample counts as 0.01 seconds.
   0.00     25.80     0.00        3     0.00     0.00  elem_bounding_box
   0.00     25.80     0.00        2     0.00     0.00  setup_pl
   0.00     25.80     0.00        2     0.00     0.00  scan_pl
-  0.00     25.80     0.00        2     0.00     0.00  zoom_aliasing_reenable
+  0.00     25.80     0.00        2     0.00     0.00  idle_scroll_reenable
   0.00     25.80     0.00        1     0.00     0.00  bound_boxes
   0.00     25.80     0.00        1     0.00     0.00  bvh_subdivide
   0.00     25.80     0.00        1     0.00     0.00  setup_co
@@ -142,7 +142,7 @@ index % time    self  children    called     name
                 0.00    0.00      45/56          scan_t_real3 [16]
 [13]     0.0    0.00    0.00      56         scan_t_real [13]
 -----------------------------------------------
-                0.00    0.00       1/20          zoom_aliasing_reenable [25]
+                0.00    0.00       1/20          idle_scroll_reenable [25]
                 0.00    0.00       1/20          main [67]
                 0.00    0.00       8/20          event_mouse_motion [20]
                 0.00    0.00      10/20          event_mouse_release [18]
@@ -201,7 +201,7 @@ index % time    self  children    called     name
                 0.00    0.00       2/10          scan_color [19]
 -----------------------------------------------
                 0.00    0.00       2/2           mlx_loop [93]
-[25]     0.0    0.00    0.00       2         zoom_aliasing_reenable [25]
+[25]     0.0    0.00    0.00       2         idle_scroll_reenable [25]
                 0.00    0.00       1/20          render [14]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
@@ -359,5 +359,5 @@ Index by function name
   [28] setup_co (setup_shapes.c) [8] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
   [29] setup_cy (setup_shapes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [16] scan_t_real3 (scan_numbers.c)
   [23] setup_pl (setup_shapes.c) [14] render (run_scene.c) [2] trace (trace.c)
-  [30] setup_sp (setup_shapes.c) [1] render_routine (render.c) [25] zoom_aliasing_reenable (event_mouse.c)
+  [30] setup_sp (setup_shapes.c) [1] render_routine (render.c) [25] idle_scroll_reenable (event_mouse.c)
   [22] elem_bounding_box (elem_bounding_box.c) [33] scan_A (scan_RCAL.c)

@@ -1,0 +1,355 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 36.12      0.13     0.13   256830     0.00     0.00  trace
+ 13.89      0.18     0.05   537375     0.00     0.00  ray_hit_plane
+ 13.89      0.23     0.05   291988     0.00     0.00  ray_hit_cone
+ 11.11      0.27     0.04   349640     0.00     0.00  ray_hit_sphere
+ 11.11      0.31     0.04                             phong_effect.c.0fbbf156
+  5.56      0.33     0.02   312884     0.00     0.00  ray_hit_cylinder
+  5.56      0.35     0.02                             ft_dblcmp
+  2.78      0.36     0.01       72     0.14     4.17  render_tile
+  0.00      0.36     0.00   249121     0.00     0.00  bvh_any_hit
+  0.00      0.36     0.00   242083     0.00     0.00  bvh_traverse
+  0.00      0.36     0.00    60432     0.00     0.00  antialiasing
+  0.00      0.36     0.00    23705     0.00     0.00  idle_scroll_reenable
+  0.00      0.36     0.00       44     0.00     0.00  scan_t_real
+  0.00      0.36     0.00       12     0.00     0.00  scan_t_real3
+  0.00      0.36     0.00        7     0.00     0.00  scan_color
+  0.00      0.36     0.00        2     0.00     0.00  scan_pl
+  0.00      0.36     0.00        2     0.00     2.08  setup_co
+  0.00      0.36     0.00        2     0.00     4.17  setup_pl
+  0.00      0.36     0.00        1     0.00     0.00  bound_boxes
+  0.00      0.36     0.00        1     0.00     0.00  bvh_subdivide
+  0.00      0.36     0.00        1     0.00     0.00  cleanup_app
+  0.00      0.36     0.00        1     0.00     0.00  event_keyboard_press
+  0.00      0.36     0.00        1     0.00     0.00  scan_A
+  0.00      0.36     0.00        1     0.00     0.00  scan_C
+  0.00      0.36     0.00        1     0.00     0.00  scan_L
+  0.00      0.36     0.00        1     0.00     0.00  scan_R
+  0.00      0.36     0.00        1     0.00     0.00  scan_co
+  0.00      0.36     0.00        1     0.00     0.00  scan_cy
+  0.00      0.36     0.00        1     0.00     0.00  scan_sp
+  0.00      0.36     0.00        1     0.00     4.17  setup_cy
+  0.00      0.36     0.00        1     0.00     0.00  setup_sp
+  0.00      0.36     0.00        1     0.00     0.00  setup_viewport
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2025 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 2.78% of 0.36 seconds
+
+index % time    self  children    called     name
+                0.00    0.00       1/72          setup_cy [16]
+                0.00    0.00       1/72          setup_co [15]
+                0.00    0.01       2/72          main [10]
+                0.00    0.01       2/72          setup_pl [14]
+                0.01    0.27      66/72          render_routine [4]
+[1]     83.3    0.01    0.29      72         render_tile [1]
+                0.00    0.29   60432/60432       antialiasing [3]
+-----------------------------------------------
+                0.13    0.16  256830/256830      antialiasing [3]
+[2]     80.6    0.13    0.16  256830         trace [2]
+                0.00    0.09  242083/242083      bvh_traverse [5]
+                0.05    0.00  537375/537375      ray_hit_plane [6]
+                0.00    0.02  249121/249121      bvh_any_hit [13]
+-----------------------------------------------
+                0.00    0.29   60432/60432       render_tile [1]
+[3]     80.6    0.00    0.29   60432         antialiasing [3]
+                0.13    0.16  256830/256830      trace [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]     76.4    0.00    0.28                 render_routine [4]
+                0.01    0.27      66/72          render_tile [1]
+-----------------------------------------------
+                0.00    0.09  242083/242083      trace [2]
+[5]     25.6    0.00    0.09  242083         bvh_traverse [5]
+                0.04    0.00  248423/291988      ray_hit_cone [7]
+                0.03    0.00  287065/349640      ray_hit_sphere [9]
+                0.02    0.00  263079/312884      ray_hit_cylinder [12]
+-----------------------------------------------
+                0.05    0.00  537375/537375      trace [2]
+[6]     13.9    0.05    0.00  537375         ray_hit_plane [6]
+-----------------------------------------------
+                0.01    0.00   43565/291988      bvh_any_hit [13]
+                0.04    0.00  248423/291988      bvh_traverse [5]
+[7]     13.9    0.05    0.00  291988         ray_hit_cone [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]     11.1    0.04    0.00                 phong_effect.c.0fbbf156 [8]
+-----------------------------------------------
+                0.01    0.00   62575/349640      bvh_any_hit [13]
+                0.03    0.00  287065/349640      bvh_traverse [5]
+[9]     11.1    0.04    0.00  349640         ray_hit_sphere [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     6.9    0.00    0.03                 main [10]
+                0.00    0.01       2/2           setup_pl [14]
+                0.00    0.01       2/72          render_tile [1]
+                0.00    0.00       2/2           setup_co [15]
+                0.00    0.00       1/1           setup_cy [16]
+                0.00    0.00       2/2           scan_pl [21]
+                0.00    0.00       1/1           setup_sp [33]
+                0.00    0.00       1/1           setup_viewport [34]
+                0.00    0.00       1/1           bvh_subdivide [23]
+                0.00    0.00       1/1           bound_boxes [22]
+                0.00    0.00       1/1           cleanup_app [24]
+                0.00    0.00       1/1           scan_co [30]
+                0.00    0.00       1/1           scan_cy [31]
+                0.00    0.00       1/1           scan_sp [32]
+                0.00    0.00       1/1           scan_L [28]
+                0.00    0.00       1/1           scan_C [27]
+                0.00    0.00       1/1           scan_A [26]
+                0.00    0.00       1/1           scan_R [29]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     5.6    0.02    0.00                 ft_dblcmp [11]
+-----------------------------------------------
+                0.00    0.00   49805/312884      bvh_any_hit [13]
+                0.02    0.00  263079/312884      bvh_traverse [5]
+[12]     5.6    0.02    0.00  312884         ray_hit_cylinder [12]
+-----------------------------------------------
+                0.00    0.02  249121/249121      trace [2]
+[13]     4.9    0.00    0.02  249121         bvh_any_hit [13]
+                0.01    0.00   43565/291988      ray_hit_cone [7]
+                0.01    0.00   62575/349640      ray_hit_sphere [9]
+                0.00    0.00   49805/312884      ray_hit_cylinder [12]
+-----------------------------------------------
+                0.00    0.01       2/2           main [10]
+[14]     2.3    0.00    0.01       2         setup_pl [14]
+                0.00    0.01       2/72          render_tile [1]
+-----------------------------------------------
+                0.00    0.00       2/2           main [10]
+[15]     1.2    0.00    0.00       2         setup_co [15]
+                0.00    0.00       1/72          render_tile [1]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[16]     1.2    0.00    0.00       1         setup_cy [16]
+                0.00    0.00       1/72          render_tile [1]
+-----------------------------------------------
+                0.00    0.00   23705/23705       mlx_loop [113]
+[17]     0.0    0.00    0.00   23705         idle_scroll_reenable [17]
+-----------------------------------------------
+                0.00    0.00       1/44          scan_A [26]
+                0.00    0.00       1/44          scan_C [27]
+                0.00    0.00       1/44          scan_L [28]
+                0.00    0.00       1/44          scan_sp [32]
+                0.00    0.00       2/44          scan_cy [31]
+                0.00    0.00       2/44          scan_co [30]
+                0.00    0.00      36/44          scan_t_real3 [19]
+[18]     0.0    0.00    0.00      44         scan_t_real [18]
+-----------------------------------------------
+                0.00    0.00       1/12          scan_L [28]
+                0.00    0.00       1/12          scan_sp [32]
+                0.00    0.00       2/12          scan_C [27]
+                0.00    0.00       2/12          scan_cy [31]
+                0.00    0.00       2/12          scan_co [30]
+                0.00    0.00       4/12          scan_pl [21]
+[19]     0.0    0.00    0.00      12         scan_t_real3 [19]
+                0.00    0.00      36/44          scan_t_real [18]
+-----------------------------------------------
+                0.00    0.00       1/7           scan_A [26]
+                0.00    0.00       1/7           scan_L [28]
+                0.00    0.00       1/7           scan_sp [32]
+                0.00    0.00       1/7           scan_cy [31]
+                0.00    0.00       1/7           scan_co [30]
+                0.00    0.00       2/7           scan_pl [21]
+[20]     0.0    0.00    0.00       7         scan_color [20]
+-----------------------------------------------
+                0.00    0.00       2/2           main [10]
+[21]     0.0    0.00    0.00       2         scan_pl [21]
+                0.00    0.00       4/12          scan_t_real3 [19]
+                0.00    0.00       2/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[22]     0.0    0.00    0.00       1         bound_boxes [22]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[23]     0.0    0.00    0.00       1         bvh_subdivide [23]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[24]     0.0    0.00    0.00       1         cleanup_app [24]
+-----------------------------------------------
+                0.00    0.00       1/1           mlx_loop [113]
+[25]     0.0    0.00    0.00       1         event_keyboard_press [25]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[26]     0.0    0.00    0.00       1         scan_A [26]
+                0.00    0.00       1/44          scan_t_real [18]
+                0.00    0.00       1/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[27]     0.0    0.00    0.00       1         scan_C [27]
+                0.00    0.00       2/12          scan_t_real3 [19]
+                0.00    0.00       1/44          scan_t_real [18]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[28]     0.0    0.00    0.00       1         scan_L [28]
+                0.00    0.00       1/12          scan_t_real3 [19]
+                0.00    0.00       1/44          scan_t_real [18]
+                0.00    0.00       1/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[29]     0.0    0.00    0.00       1         scan_R [29]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[30]     0.0    0.00    0.00       1         scan_co [30]
+                0.00    0.00       2/12          scan_t_real3 [19]
+                0.00    0.00       2/44          scan_t_real [18]
+                0.00    0.00       1/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[31]     0.0    0.00    0.00       1         scan_cy [31]
+                0.00    0.00       2/12          scan_t_real3 [19]
+                0.00    0.00       2/44          scan_t_real [18]
+                0.00    0.00       1/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[32]     0.0    0.00    0.00       1         scan_sp [32]
+                0.00    0.00       1/12          scan_t_real3 [19]
+                0.00    0.00       1/44          scan_t_real [18]
+                0.00    0.00       1/7           scan_color [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[33]     0.0    0.00    0.00       1         setup_sp [33]
+-----------------------------------------------
+                0.00    0.00       1/1           main [10]
+[34]     0.0    0.00    0.00       1         setup_viewport [34]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2025 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [3] antialiasing (antialiasing.c) [12] ray_hit_cylinder (ray_hit_cylinder.c) [21] scan_pl (scan_shapes.c)
+  [22] bound_boxes (bound_boxes.c) [6] ray_hit_plane (ray_hit_plane.c) [32] scan_sp (scan_shapes.c)
+  [13] bvh_any_hit (any_hit.c) [9] ray_hit_sphere (ray_hit_sphere.c) [18] scan_t_real (scan_numbers.c)
+  [23] bvh_subdivide (bvh_build.c) [1] render_tile (render_routine.c) [19] scan_t_real3 (scan_numbers.c)
+   [5] bvh_traverse (trace.c) [26] scan_A (scan_RCAL.c)   [15] setup_co (setup_shapes.c)
+  [24] cleanup_app (cleanup_app.c) [27] scan_C (scan_RCAL.c) [16] setup_cy (setup_shapes.c)
+  [25] event_keyboard_press (event_keyboard.c) [28] scan_L (scan_RCAL.c) [14] setup_pl (setup_shapes.c)
+  [11] ft_dblcmp              [29] scan_R (scan_RCAL.c)   [33] setup_sp (setup_shapes.c)
+  [17] idle_scroll_reenable (event_mouse.c) [30] scan_co (scan_shapes.c) [34] setup_viewport (setup_viewport.c)
+   [8] phong_effect.c.0fbbf156 [20] scan_color (scan_numbers.c) [2] trace (trace.c)
+   [7] ray_hit_cone (ray_hit_cone.c) [31] scan_cy (scan_shapes.c)

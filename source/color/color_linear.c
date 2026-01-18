@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 23:56:46 by fox               #+#    #+#             */
-/*   Updated: 2026/01/18 12:22:14 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 18:26:07 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ t_color_linear scale_color_linear(t_color_linear col, t_real factor)
 	col.b *= factor;
 	return (col);
 }
-

@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:03:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 12:06:45 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/18 23:08:12 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline long	get_elapsed_ms(struct timeval start, struct timeval end)
 	);
 }
 
-int	zoom_aliasing_reenable(void *p)
+int	idle_scroll_reenable(void *p)
 {
 	struct s_app	*app;
 	struct timeval	now;
@@ -37,10 +37,12 @@ int	zoom_aliasing_reenable(void *p)
 	{
 		gettimeofday(&now, NULL);
 		elapsed_ms = get_elapsed_ms(app->scene.camera.mouse.last_action_time, now);
-		if (elapsed_ms >= ZOOM_ALIASING_REENABLE_TIME)
+		if (elapsed_ms >= IDLE_SCROLL_REENABLE_TILE)
 		{
 			app->scene.camera.mouse.is_scrolling = false;
 			app->render.antialiasing.enabled = true;
+			app->render.antialiasing.rfn = antialiasing;
+			stop_downsampling(&app->render.antialiasing);
 			render(app);
 		}
 	}
@@ -49,18 +51,19 @@ int	zoom_aliasing_reenable(void *p)
 
 int	event_mouse_click(int button, int x, int y, struct s_app *app)
 {
-	int		factor;
+	t_real		factor;
 
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
-	app->render.antialiasing.enabled = false;
+	toggle_antialiasing(&app->render.antialiasing);
+	start_downsampling(&app->render.antialiasing);
 	if (button == Button4 || button == Button5)
 	{
 		gettimeofday(&app->scene.camera.mouse.last_action_time, NULL);
 		app->scene.camera.mouse.is_scrolling = true;
 		if (button == Button5)
-			factor = -1;
+			factor = -FLT_1;
 		else
-			factor = 1;
+			factor = FLT_1;
 		camera_zoom(app, &app->scene.camera, factor * app->scene.camera.mouse.pan_speed);
 		setup_C(app, &app->scene.camera, false);
 	}	
@@ -74,8 +77,10 @@ int	event_mouse_release(int button, int x, int y, struct s_app *app)
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
 	
 	if (button == Button1 || button == Button2 || button == Button3)
-		app->render.antialiasing.enabled = true;
-
+	{
+		toggle_antialiasing(&app->render.antialiasing);
+		stop_downsampling(&app->render.antialiasing);
+	}
 	render(app);
 	return (0);
 }

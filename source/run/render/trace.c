@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:10:09 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 13:25:21 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 21:03:36 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ t_color_linear	trace(struct s_scene *scene, t_ray *ray)
 {
 	t_hit_info	hit_info;
 
-	hit_info = cmp_hit_info(bvh_traverse(scene->bvh_root, ray), elem_inf_hit(scene, ray));
+	if (scene->n_elem_inf)
+		hit_info = cmp_hit_info(bvh_traverse(scene->bvh_root, ray), elem_inf_hit(scene, ray));
+	else
+		hit_info = bvh_traverse(scene->bvh_root, ray);
 	if (!hit_info.did_hit)
 		return ((t_color_linear){BLACK});
 	return (phong_effect(scene, &hit_info));

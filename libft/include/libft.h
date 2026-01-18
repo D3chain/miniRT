@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:24:44 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/13 16:51:00 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/18 22:20:05 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stddef.h>
+
+# include "flt_constants.h"
+
+typedef FLT_TYPE		t_real;
 
 typedef unsigned char	t_byte;
 typedef size_t			t_op_t;
@@ -119,9 +123,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstfree(t_list *data);
 
 // misc / maths
-double	ft_toradian(double angle);
-double	ft_dblcmp(double d1, double d2, double epsilon);
-double	ft_dabs(double a);
+t_real	ft_toradian(t_real angle);
+t_real	ft_dblcmp(t_real d1, t_real d2, t_real epsilon);
+t_real	ft_dabs(t_real a);
 
 //	get_next_line
 # if BUFFER_SIZE >= 4096
