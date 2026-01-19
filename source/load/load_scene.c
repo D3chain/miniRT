@@ -6,7 +6,7 @@
 /*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 23:53:26 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 00:23:59 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int	load_scene(struct s_app *app)
 		return (app->status);
 	if (scan_scene_from_file(app, app->file_name))
 		return (app->status);
-	setup_shapes(app, &app->scene);
 	setup_RCAL(app);
+	setup_shapes(app, &app->scene);
 	bvh_build(app, &app->scene);
 	return (ERR_NONE);
 }
