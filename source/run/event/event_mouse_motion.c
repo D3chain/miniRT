@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_mouse_motion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 19:36:06 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 12:31:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static inline void	mouse_middle_button(struct s_app *app)
 __attribute__((always_inline))
 static inline void	mouse_right_button(struct s_app *app)
 {
-	update_shapes_coord(app->scene.bvh_root, app->scene.camera.mouse.pos.dir);
+	update_shapes_coord(&app->scene.camera, app->scene.bvh_root, app->scene.camera.mouse.pos.dir);
 	setup_shapes(app, &app->scene);
 	bound_boxes(app->scene.bvh_root);
 }

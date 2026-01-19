@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 13:46:56 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 15:26:55 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 # define UTIL_H
 
 # include "minirt.h"
+
+# ifdef USE_DBL_NUMBER
+#  define FLT_FMT	"%.2lf"
+# else
+#  define FLT_FMT	"%.2f"
+# endif
+ 
+# define REAL		FLT_FMT
+# define REAL3		REAL","REAL","REAL
+# define INT			"%d"
+# define	COLOR_RGB	INT","INT","INT
 
 int		scan_int(struct s_app *app, int *res, const char *str);
 int		scan_uint8_t(struct s_app *app, uint8_t *res, const char *str);
@@ -29,5 +40,8 @@ void	print_color_linear(t_color_linear color, char *text);
 void	print_bvh_tree(t_bvh_base *root);
 void	print_render(struct s_app *app);
 void	print_camera(struct s_app *app);
+
+void	print_map(struct s_app *app);
+void	print_RCAL(struct s_app *app, int fd);
 
 #endif

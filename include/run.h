@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:57:28 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 23:07:37 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 12:31:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	update_mouse_position(struct s_mouse *mouse, int button, int x, int y);
 void	update_mouse_position_nobutton(struct s_mouse *mouse, int x, int y);
 void	update_antialiasing(int key, struct s_app *app);
 void	update_zoom_speed(int key, struct s_app *app);
-void	update_shapes_coord(t_bvh_base *tree, t_int2 offset);
+void	update_shapes_coord(struct s_camera *camera, t_bvh_base *tree, t_int2 offset);
 void	update_camera(struct s_app *app, struct s_camera *camera);
 
 void	camera_view(struct s_app *app, struct s_camera *camera, t_real2 value);

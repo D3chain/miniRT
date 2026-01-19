@@ -12,8 +12,6 @@
 
 #include "minirt.h"
 
-
-
 static int	init_mlx(struct s_app *app)
 {
 	struct s_mlx	mlx;
@@ -70,6 +68,7 @@ void	init_graphic_data(struct s_app *app)
 		app->render.n_tiles = (app->render.resolution + app->render.tile_area - 1) / app->render.tile_area;
 	}
 	app->render.inv_tile_side = FLT_1 / app->render.tile_side;
+	update_camera(app, &app->scene.camera);
 	print_render(app);
 }
 

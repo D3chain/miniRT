@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2025/12/08 16:42:41 by echatela         ###   ########.fr        #
+#    Updated: 2026/01/19 15:35:02 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS = \
 		$(SRC_DIR)/ft_strmapi.c 						\
 		$(SRC_DIR)/ft_striteri.c 						\
 														\
+		$(SRC_DIR)/ft_strstr.c							\
 		$(SRC_DIR)/ft_strnstr.c							\
 		$(SRC_DIR)/ft_strchr.c 							\
 		$(SRC_DIR)/ft_strrchr.c 						\

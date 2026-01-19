@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/17 20:59:15 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 13:05:36 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,15 @@ static int	scan_scene_from_file(struct s_app *app, const char *file)
 	return (0);
 }
 
-int	load_scene(struct s_app *app, const char *file)
+int	load_scene(struct s_app *app)
 {
 	char		*line;
 	int			n_elem;
 
-	count_scene_from_file(app, file);
+	count_scene_from_file(app, app->file_name);
 	if (app->status)
 		return (app->status);
-	if (scan_scene_from_file(app, file))
+	if (scan_scene_from_file(app, app->file_name))
 		return (app->status);
 	setup_shapes(app, &app->scene);
 	setup_RCAL(app);

@@ -6,13 +6,14 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:35:29 by fox               #+#    #+#             */
-/*   Updated: 2026/01/14 13:21:50 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 10:29:31 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static bool	check_leaf_shadow(t_bvh_elem_box *box, t_ray *ray, 
+__attribute__((always_inline))
+static inline bool	check_leaf_shadow(t_bvh_elem_box *box, t_ray *ray, 
                                 t_real max_dist)
 {
 	static struct s_hit_info	(*ray_hit_func[])(const struct s_ray *,
@@ -25,7 +26,7 @@ static bool	check_leaf_shadow(t_bvh_elem_box *box, t_ray *ray,
 	while (++i < box->n_elems)
 	{
 		hit = ray_hit_func[box->elems[i].type](ray, &box->elems[i]);
-		if (hit.did_hit && hit.dst > 0.001 && hit.dst < max_dist)
+		if (hit.did_hit && hit.dst > EPSILON && hit.dst < max_dist)
 			return (true);
 	}
 	return (false);
@@ -59,7 +60,7 @@ bool	elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist)
 	while (++i < scene->n_elem_inf)
 	{
 		hit = ray_hit_plane(ray, &scene->elems_inf[i]);
-		if (hit.did_hit && hit.dst > 0.001 && hit.dst < max_dist)
+		if (hit.did_hit && hit.dst > EPSILON && hit.dst < max_dist)
 			return (true);
 	}
 	return (false);

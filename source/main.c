@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 21:09:33 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 13:10:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	print_error(struct s_app *app)
 
 /* ************************************************************************** */
 
-static int	check_arg(int argc, char *argv[])
+static int	check_arg(struct s_app *app, int argc, char *argv[])
 {
 	if (argc != 2 || ft_strrcmp(argv[1], ".rt"))
 	{
 		printf("Usage: ./%s <filename.rt>\n", argv[0]);
 		return (1);
 	}
+	app->file_name = argv[1];
 	return (ERR_NONE);
 }
 
@@ -44,10 +45,11 @@ int	main(int argc, char *argv[])
 {
 	struct s_app	app;
 
-	if (check_arg(argc, argv))
-		return (ERR_PARS);
 	ft_memset(&app, 0, sizeof(app));
-	if (load_scene(&app, argv[1]))
+	if (check_arg(&app, argc, argv))
+		return (ERR_PARS);
+	printf("%s\n", app.file_name);
+	if (load_scene(&app))
 		return (quit(&app));
 	if (init_app(&app, argc, argv))
 		return (quit(&app));

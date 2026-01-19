@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:04:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 22:42:12 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 10:45:20 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void				init_ray(struct s_app *app, struct s_ray *ray, t_real x, t_real y);
 t_hit_info			ray_hit(t_bvh_elem_box *box, const t_ray *ray);
 
 t_hit_info			elem_inf_hit(struct s_scene *scene, t_ray *ray);
-t_hit_info			cmp_hit_info(t_hit_info a, t_hit_info b);
 
 t_real				closest_hit_dst_dbl(const t_real a, const t_real b);
 t_real				closest_hit_dst_sol2(t_sol2 sol);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_routine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:31 by fox               #+#    #+#             */
-/*   Updated: 2026/01/18 20:48:10 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 11:35:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ inline void	render_tile_downsampled(struct s_app *app, t_int2 tile, render_fn re
 		coord.x = start.x;
 		while (coord.x < end.x)
 		{
-			if (!(coord.x % app->render.antialiasing.downsample_rate) || !(coord.y % app->render.antialiasing.downsample_rate))
+			if (!(coord.x % app->render.antialiasing.downsample_rate) && !(coord.y % app->render.antialiasing.downsample_rate))
 				color_value = linear_to_srgb_color(rend(app, coord.x, coord.y)).value;
 			draw_pixel_to_img(&app->mlx.img, app->mlx.screen.resolution, coord, color_value);
 			++coord.x;

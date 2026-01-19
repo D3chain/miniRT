@@ -18,22 +18,22 @@ static const t_sol2	caps_intersect(const struct s_ray *ray,
 {
 	t_sol2			sol;
 	const t_real3	p1 = project(cylinder->coord, cylinder->axis,
-		cylinder->height / 2);
+		cylinder->height / FLT_2);
 	const t_real3	p2 = project(cylinder->coord,
-		fmul3(cylinder->axis, -1.0), cylinder->height / 2);
+		fmul3(cylinder->axis, -FLT_1), cylinder->height / FLT_2);
 	const t_real	rdot = dot(cylinder->axis, ray->dir);
 	
-	if (ft_dblcmp(rdot, 0.0, EPSILON) == 0.0)
+	if (ft_dblcmp(rdot, FLT_0, EPSILON) == FLT_0)
 		return (sol.n = 0, sol);
 	sol.n = 2;
 	sol.r1 = plane_dst(ray, cylinder->axis, p1);
 	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r1), p1))
-		> cylinder->radius * cylinder->radius)
-		sol.r1 = -1.0;
+		> cylinder->radius_sq)
+		sol.r1 = -FLT_1;
 	sol.r2 = plane_dst(ray, cylinder->axis, p2);
 	if (sqdot(minus3(project(ray->origin, ray->dir, sol.r2), p2))
 		> cylinder->radius_sq)
-		sol.r2 = -1.0;
+		sol.r2 = -FLT_1;
 	return (sol);
 }
 
@@ -45,7 +45,7 @@ static const t_sol2	tube_intersect(const struct s_ray *ray,
 	const t_real3	tmp_a = minus3(ray->dir, fmul3(cylinder->axis, dot(ray->dir, cylinder->axis)));
 	const t_real3	tmp_b = minus3(offset, fmul3(cylinder->axis, dot(offset, cylinder->axis)));	
 	
-	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), 2 * dot(tmp_a, tmp_b),
+	t_sol2	sol = polynome2(dot(tmp_a, tmp_a), FLT_2 * dot(tmp_a, tmp_b),
 		dot(tmp_b, tmp_b) - cylinder->radius_sq);
 	
 	if (sol.r1 > EPSILON) 
@@ -83,7 +83,7 @@ t_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
 	}
 	if (dst_tube >= EPSILON)
 	{
-		if (closest_hit.dst < EPSILON || ft_dblcmp(dst_tube, closest_hit.dst, EPSILON) < 0.0)
+		if (closest_hit.dst < EPSILON || ft_dblcmp(dst_tube, closest_hit.dst, EPSILON) < FLT_0)
 		{
 			closest_hit.dst = dst_tube;
 			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);

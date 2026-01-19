@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 19:26:46 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 14:44:25 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ struct s_scene;
 # define IOR_GLASS  		1.5
 # define IOR_DIAMOND 		2.42
 # define IOR_ENVIRONMENT	IOR_AIR
+
+enum {
+	R	= 0,
+	C	= 1,
+	A	= 2,
+	L	= 3
+};
 
 enum {
 	PLANE		= 0,
@@ -160,6 +167,7 @@ struct s_antialiasing
 
 struct s_scene
 {
+
 	struct s_camera			camera;
 
 	struct s_ambient		ambient;
@@ -199,10 +207,10 @@ struct s_plane
 
 struct s_cylinder
 {
-	t_real3	coord;
-	t_real3	p1;
-	t_real3	p2;
-	t_real3	axis;
+	t_real3		coord;
+	t_real3		p1;
+	t_real3		p2;
+	t_real3		axis;
 	t_real		radius;
 	t_real		radius_sq;
 	t_real		height;

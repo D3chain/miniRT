@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_keyboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 23:19:52 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 13:41:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int	event_keyboard_press(int key, struct s_app *app)
 	else if (key == XK_c)
 		print_camera(app);
 	else if (key == XK_r)
-		print_render(app);		
+		print_render(app);
+	else if (key == XK_m)
+		print_map(app);		
 	else if (key == XK_equal || key == XK_minus || key == XK_BackSpace)
 		update_zoom_speed(key, app);
 	else if (key == XK_KP_Add || key == XK_KP_Subtract)

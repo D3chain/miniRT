@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#																			#
-#														 :::	::::::::	#
-#	Makefile										 :+:	:+:	:+:	#
-#													 +:+ +:+		 +:+	#
-#	By: fox <fox@student.42.fr>					+#++:+	 +#+		 #
-#												 +#+#+#+#+#+ +#+			#
-#	Created: 2025/11/13 13:22:15 by echatela		#+#	#+#			#
-#	Updated: 2026/01/17 21:10:33 by fox			### ########.fr		#
-#																			#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
+#    Updated: 2026/01/19 15:29:16 by cgajean          ###   ########.fr        #
+#                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
@@ -104,6 +104,9 @@ SETUP_SRC	:=	setup_RCAL.c														\
 # Utilities
 UTIL_SRC	:=	token.c																\
 				print_bvh_tree.c													\
+				print_map.c															\
+				print_RCAL.c														\
+				print_shapes.c														\
 				print_parameters.c													\
 				print.c
 

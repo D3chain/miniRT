@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/18 22:48:00 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/19 11:07:59 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2)
 	t_real	tmp;
 
 	discriminant = coefs[1] * coefs[1] - FLT_4 * coefs[0] * coefs[2];
-	if (discriminant < 0)
+	if (discriminant < EPSILON)
 		return (false);
 	sqrt_disc = sqrt(discriminant);
 	*t1 = (- coefs[1] - sqrt_disc) / (FLT_2 * coefs[0]);
@@ -92,7 +92,7 @@ static t_hit_info	intersect_cone_body(const t_ray *ray, const struct s_cone *con
 	x = minus3(ray->origin, cone->apex);
 	compute_cone_quadratic(cone, ray, x, coefs);
 	if (!solve_quadratic(coefs, &t[0], &t[1]))
-		return ((t_hit_info){false, -1, {0}, {0}, cone->material});
+		return ((t_hit_info){0});
 	if (t[0] > EPSILON)
 	{
 		point = project(ray->origin, ray->dir, t[0]);
@@ -105,7 +105,7 @@ static t_hit_info	intersect_cone_body(const t_ray *ray, const struct s_cone *con
 		if (is_within_cone_height(cone, point))
 			return (create_hit(t[1], ray, cone, compute_cone_normal(cone, point)));
 	}
-	return ((t_hit_info){false, -1, {0}, {0}, cone->material});
+	return ((t_hit_info){0});
 }
 
 static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
@@ -117,15 +117,15 @@ static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 
 	denom = dot(ray->dir, cone->axis);
 	if (fabs(denom) < EPSILON)
-		return ((t_hit_info){false, -1, {0}, {0}, cone->material});
+		return ((t_hit_info){0});
 	t = dot(minus3(cone->base, ray->origin), cone->axis) / denom;
 	if (t <= EPSILON)
-		return ((t_hit_info){false, -1, {0}, {0}, cone->material});
+		return ((t_hit_info){0});
 	point = project(ray->origin, ray->dir, t);
 	base_to_point = minus3(point, cone->base);
 	if (dot(base_to_point, base_to_point) <= cone->radius_sq)
 		return (create_hit(t, ray, cone, cone->axis));
-	return ((t_hit_info){false, -1, {0}, {0}, cone->material});
+	return ((t_hit_info){0});
 }
 
 t_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
@@ -146,5 +146,5 @@ t_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 		return (body_hit);
 	if (cap_hit.did_hit)
 		return (cap_hit);
-	return ((t_hit_info){false, -1, {0}, {0}, cone.material});
+	return ((t_hit_info){0});
 }
