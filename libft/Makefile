@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/19 15:35:02 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/19 18:39:06 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fPIE -MMD -MP 
+CFLAGS = -Wall -Wextra -Werror -fPIE -MMD -MP -g3
 
 MAIN_DIR = .
 SRC_DIR = $(MAIN_DIR)/source

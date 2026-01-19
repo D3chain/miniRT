@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 16:03:16 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:21:37 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 # include "error.h"            // Gestion d'erreurs
 # include "wrapper.h"          // Wrappers malloc, etc.
 
-// # include "init.h"             // Initialisation
 # include "load.h"             // Chargement de scène
 # include "run.h"              // Boucle principale
 

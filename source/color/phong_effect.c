@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_effect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 10:49:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 22:26:40 by fox              ###   ########.fr       */
+/*   Created: 2026/01/19 16:24:03 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/19 18:43:12 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static inline t_real fresnel_schlick(struct s_scene *scene, t_phong *phong)
 
 static inline void	ambient_light(struct s_scene *scene, t_phong *phong)
 {
-	phong->ambient_light_color_linear = mul_color_linear(
+	phong->ambient_color_linear = mul_color_linear(
 		phong->hit_info.material.color_linear,
 		scene->ambient.color_linear,
 		scene->ambient.ratio * phong->hit_info.material.ka
 	);
-	phong->final_color_linear = phong->ambient_light_color_linear;
+	phong->final_color_linear = phong->ambient_color_linear;
 }
 
 static inline void	diffuse_specular_light(struct s_scene *scene, 
@@ -87,7 +87,6 @@ t_color_linear phong_effect(struct s_scene *scene, t_hit_info *hit_info)
 	t_phong phong;
 	int		i;
 
-	// phong = (t_phong){0};
 	phong.hit_info = *hit_info;
 	ambient_light(scene, &phong);
 	i = 0;

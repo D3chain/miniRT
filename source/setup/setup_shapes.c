@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 15:19:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/17 20:59:15 by fox              ###   ########.fr       */
+/*   Created: 2026/01/19 16:20:08 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/19 16:32:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	setup_material(t_material *mat)
 {	
-	// il faudra parser les materiaux
 	
 	mat->ka = 0.1;
 	mat->kd = 0.7;
@@ -22,9 +21,6 @@ static void	setup_material(t_material *mat)
 		
 	mat->shininess = SHININESS;
 	mat->ior = 1.5;
-
-	mat->kr = 0.7;
-	mat->kt = 0.7;
 }
 
 void	setup_pl(struct s_app *app, struct s_elem *elem)

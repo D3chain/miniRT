@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_elem.c                                        :+:      :+:    :+:   */
+/*   scan_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 00:40:36 by fox               #+#    #+#             */
-/*   Updated: 2026/01/13 16:48:26 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/19 16:20:52 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/19 17:39:45 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,3 +105,97 @@ int	scan_co(struct s_app *app, const char *line, int *i_elem)
 		return (app->status = ERR_PARS);			
 	return (0);
 }
+
+// int	scan_pl(struct s_app *app, const char *line, int *i_elem)
+// {
+// 	static int	i;
+	
+// 	app->scene.elems_inf[i].type = PLANE;
+// 	line += scan_t_real3(app, &app->scene.elems_inf[i].u.plane.coord, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real3(app, &app->scene.elems_inf[i].u.plane.normal, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_color(app, &app->scene.elems_inf[i].u.plane.material.color, line);
+// 	ft_skipspaces(&line);
+// 	if (app->status || *line)
+// 		return (app->status = ERR_PARS);
+// 	++i;
+// 	return (0);
+// }
+
+// int	scan_sp(struct s_app *app, const char *line, int *i_elem)
+// {
+// 	app->scene.elems[*i_elem].type = SPHERE;
+// 	line += scan_t_real3(app, &app->scene.elems[*i_elem].u.sphere.coord, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real(app, &app->scene.elems[*i_elem].u.sphere.radius, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	app->scene.elems[*i_elem].u.sphere.radius /= 2;
+// 	ft_skipspaces(&line);
+// 	line += scan_color(app, &app->scene.elems[*i_elem].u.sphere.material.color, line);
+// 	ft_skipspaces(&line);
+// 	if (app->status || *line)
+// 		return (app->status = ERR_PARS);
+// 	return (0);
+// }
+
+// int	scan_cy(struct s_app *app, const char *line, int *i_elem)
+// {
+// 	app->scene.elems[*i_elem].type = CYLINDER;
+// 	line += scan_t_real3(app, &app->scene.elems[*i_elem].u.cylinder.coord, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real3(app, &app->scene.elems[*i_elem].u.cylinder.axis, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real(app, &app->scene.elems[*i_elem].u.cylinder.radius, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	app->scene.elems[*i_elem].u.cylinder.radius /= 2;
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real(app, &app->scene.elems[*i_elem].u.cylinder.height, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_color(app, &app->scene.elems[*i_elem].u.cylinder.material.color, line);
+// 	ft_skipspaces(&line);
+// 	if (app->status || *line)
+// 		return (app->status = ERR_PARS);			
+// 	return (0);
+// }
+
+// int	scan_co(struct s_app *app, const char *line, int *i_elem)
+// {
+// 	app->scene.elems[*i_elem].type = CONE;
+// 	line += scan_t_real3(app, &app->scene.elems[*i_elem].u.cone.coord, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real3(app, &app->scene.elems[*i_elem].u.cone.axis, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real(app, &app->scene.elems[*i_elem].u.cone.radius, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	app->scene.elems[*i_elem].u.cone.radius /= 2;
+// 	ft_skipspaces(&line);
+// 	line += scan_t_real(app, &app->scene.elems[*i_elem].u.cone.height, line);
+// 	if (app->status)
+// 		return (app->status);
+// 	ft_skipspaces(&line);
+// 	line += scan_color(app, &app->scene.elems[*i_elem].u.cone.material.color, line);
+// 	ft_skipspaces(&line);
+// 	if (app->status || *line)
+// 		return (app->status = ERR_PARS);			
+// 	return (0);
+// }

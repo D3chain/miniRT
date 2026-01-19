@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 13:10:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 17:52:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int argc, char *argv[])
 	ft_memset(&app, 0, sizeof(app));
 	if (check_arg(&app, argc, argv))
 		return (ERR_PARS);
-	printf("%s\n", app.file_name);
 	if (load_scene(&app))
 		return (quit(&app));
 	if (init_app(&app, argc, argv))

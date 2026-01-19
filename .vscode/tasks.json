@@ -20,7 +20,7 @@
 				"${workspaceFolder}/source/run/event/update/*.c",
 				"${workspaceFolder}/source/run/render/*.c",
 				"${workspaceFolder}/source/setup/*.c",
-				"${workspaceFolder}/source/util/*.c",
+				"${workspaceFolder}/source/print/*.c",
                 "${workspaceFolder}/source/wrapper/*.c",
                 "${workspaceFolder}/libft/libft.a",
                 "-I",

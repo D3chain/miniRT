@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/19 16:11:38 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/19 17:49:44 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ ERROR_SRC	:=	err_per.c															\
 LOAD_SRC	:=	load_scene.c														\
 				scan_RCAL.c															\
 				scan_shapes.c														\
+				scan_material.c														\
 				scan_numbers.c
 
 # Math utilities

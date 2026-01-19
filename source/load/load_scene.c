@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 16:03:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 18:05:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,20 @@ static int	scan_file(struct s_app *app, const char *line)
 	static int			i_elem;
 	static const char	*l_elem[N_SCENE_ITEMS] = SCENE_ITEMS;
 
-	i = 0;
-	while (i < N_SCENE_ITEMS)
-	{
+	i = -1;
+	while (++i < N_SCENE_ITEMS)
 		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
 		{
 			scan_fct[i](app, next_tok(line), &i_elem);
+			if (i == N_SETUP_ITEMS)
+				scan_material(app, line, &app->scene.elems_inf[i_elem].u.any.material);
+			else if (i > N_SETUP_ITEMS)
+				scan_material(app, line, &app->scene.elems[i_elem].u.any.material);
 			if (i > N_SETUP_ITEMS)
 				++i_elem;
 			break ;
 		}
-		++i;
-	}
-	if (i == N_SCENE_ITEMS)
-		app->status = ERR_PARS;
-	return (app->status);
+	return (app->status = (ERR_PARS * (i == N_SCENE_ITEMS)));
 }
 
 static int	scan_scene_from_file(struct s_app *app, const char *file)

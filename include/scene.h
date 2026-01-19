@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 15:59:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 17:36:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,22 +192,22 @@ struct s_scene
 
 struct s_sphere
 {
-	t_real3	coord;
+	t_material	material;
+	t_real3		coord;
 	t_real		radius;
 	t_real		radius_sq;
-	t_material	material;
 };
 
 struct s_plane
 {
+	t_material	material;
 	t_real3	coord;
 	t_real3	normal;
-	t_material	material;
-
 };
 
 struct s_cylinder
 {
+	t_material	material;
 	t_real3		coord;
 	t_real3		p1;
 	t_real3		p2;
@@ -215,25 +215,25 @@ struct s_cylinder
 	t_real		radius;
 	t_real		radius_sq;
 	t_real		height;
-	t_material	material;
 };
 
 struct s_cone
 {
-	t_real3	coord;
-	t_real3	apex;
-	t_real3	base;
-	t_real3	axis;
+	t_material	material;
+	t_real3		coord;
+	t_real3		apex;
+	t_real3		base;
+	t_real3		axis;
 	t_real		radius;
 	t_real		radius_sq;
 	t_real		height;
 	t_real		theta;
 	t_real		cos2_theta;
-	t_material	material;
 };
 struct s_any
 {
-	t_real3	coord;
+	t_material	material;
+	t_real3		coord;
 };
 
 struct s_elem

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_effect.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/14 16:38:48 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/18 22:08:41 by fox              ###   ########.fr       */
+/*   Created: 2026/01/19 16:19:14 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/19 17:30:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define GREEN	0xFF00
 # define BLUE 	0xFF
 
-
 struct s_app;
 struct s_scene;
 
@@ -32,27 +31,19 @@ struct s_phong_effect
 	t_hit_info	hit_info;
 	t_hit_info	shadow_hit;
 	
-	t_real3	N;	
-	t_real3	P;
-	t_real3	V;
-	t_real3	L;
-	t_real3	R;
+	t_real3		N;	
+	t_real3		P;
+	t_real3		V;
+	t_real3		L;
+	t_real3		R;
 
 	t_real		NdotL;
 	t_real		RdotV;
-	
-	t_color	i_a;
-	t_color	i_d;
-	t_color	i_s;
 
-	t_color_linear	ambient_light_color_linear;
-	t_color_linear	light_color_linear;
-
+	t_color_linear	ambient_color_linear;
 	t_color_linear	diffuse_color_linear;
 	t_color_linear	specular_color_linear;
-
 	t_color_linear	final_color_linear;
-
 
 	t_real	light_distance;
 	
