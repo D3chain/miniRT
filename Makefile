@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/19 16:02:24 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/19 16:11:38 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ PRINT_SRC	:=	print_bvh_tree.c													\
 # Wrappers
 WRAPPER_SRC	:=	xmalloc.c															\
 				xcalloc.c															\
+				xstrdup.c															\
 				xopen.c
 
 SRC_PATHS	:=	$(addprefix app/,$(APP_SRC))										\
