@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrapper.h                                          :+:      :+:    :+:   */
+/*   xstrdup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 19:15:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 16:09:26 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/19 16:07:39 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/19 16:09:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRAPPER_H
-# define WRAPPER_H
+#include "minirt.h"
 
-# include "minirt.h"
+char	*xstrdup(struct s_app *app, const char *source)
+{
+	char	*ptr;
 
-void	*xmalloc(struct s_app *app, size_t size);
-void	*xcalloc(struct s_app *app, size_t size);
-int		xopen(struct s_app *app, const char *file, int oflag);
-char	*xstrdup(struct s_app *app, const char *source);
-
-#endif
+	ptr = ft_strdup(source);
+	if (!ptr)
+		app->status = ERR_SYS;
+	return (ptr);
+}

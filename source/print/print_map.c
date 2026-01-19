@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 15:48:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:10:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static int	new_file(struct s_app *app)
 	const struct tm	*t = localtime(&now);
 	int				fd;
 
-	filename = ft_strdup(app->file_name);
+	filename = xstrdup(app, app->file_name);
 	if (!filename)
-		return (-1);
+		return (app->status = ERR_NONE, -1);
 	*ft_strstr(filename, ".rt") = '\0';
 	snprintf(new_name, sizeof(new_name), "%s_%04d%02d%02d_%02d%02d%02d.rt",
 		filename,
