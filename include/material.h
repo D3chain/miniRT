@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:19:03 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:30:39 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 22:51:18 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ struct s_material
 	t_color			color;
 	t_color_linear	color_linear;
 	
-	t_real	kd;
 	t_real	ka;
+	t_real	kd;
 	t_real	ks;
 	
 	t_real	shininess;

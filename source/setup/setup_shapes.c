@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   setup_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:08 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:32:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 22:17:23 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static void	setup_material(t_material *mat)
-{	
-	
-	mat->ka = 0.1;
-	mat->kd = 0.7;
-	mat->ks = COEF_SPEC;
-		
-	mat->shininess = SHININESS;
-	mat->ior = 1.5;
-}
 
 void	setup_pl(struct s_app *app, struct s_elem *elem)
 {
@@ -30,7 +19,6 @@ void	setup_pl(struct s_app *app, struct s_elem *elem)
 	plane = &elem->u.plane;
 	plane->normal = normalize3(plane->normal);
 	plane->material.color_linear = srgb_to_linear_color(plane->material.color);
-	setup_material(&plane->material);
 }
 
 void	setup_sp(struct s_app *app, struct s_elem *elem)
@@ -40,7 +28,6 @@ void	setup_sp(struct s_app *app, struct s_elem *elem)
 	sphere = &elem->u.sphere;
 	sphere->radius_sq = sphere->radius * sphere->radius;
 	sphere->material.color_linear = srgb_to_linear_color(sphere->material.color);
-	setup_material(&sphere->material);
 }
 
 void	setup_cy(struct s_app *app, struct s_elem *elem)
@@ -53,7 +40,6 @@ void	setup_cy(struct s_app *app, struct s_elem *elem)
 	cylinder->p2 = project(cylinder->coord, cylinder->axis, cylinder->height / 2);
 	cylinder->radius_sq = cylinder->radius * cylinder->radius;
 	cylinder->material.color_linear = srgb_to_linear_color(cylinder->material.color);
-	setup_material(&cylinder->material);
 }
 
 void	setup_co(struct s_app *app, struct s_elem *elem)
@@ -70,7 +56,6 @@ void	setup_co(struct s_app *app, struct s_elem *elem)
 	cos_theta = cos(cone->theta);
 	cone->cos2_theta = cos_theta * cos_theta;
 	cone->material.color_linear = srgb_to_linear_color(cone->material.color);
-	setup_material(&cone->material);
 }
 
 void	 setup_shapes(struct s_app *app, struct s_scene *scene)

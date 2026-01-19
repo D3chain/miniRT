@@ -1,0 +1,131 @@
+# Resolution
+R	1024	768
+
+# Ambient light
+A   0.15   255,255,255
+
+# Camera
+C   0,0,-300   0,0,1   70
+
+# Light principale
+L   100,150,-150   0.7   255,255,255
+
+# Light secondaire (fill)
+L   -80,50,-100   0.3   200,220,255
+
+
+# ====================================
+# MATÉRIAUX MATS (rangée du haut)
+# ====================================
+
+# Plâtre/Mur blanc
+sp  -120,80,50    35  240,240,235    k_amb=0.2  k_dif=0.7  k_spc=0.1  shine=5     ior__=1.5
+
+# Pierre/Béton
+sp  -70,80,50     35  150,145,140    k_amb=0.15 k_dif=0.75 k_spc=0.1  shine=8     ior__=1.6
+
+# Bois brut
+sp  -20,80,50     35  139,90,43      k_amb=0.2  k_dif=0.75 k_spc=0.05 shine=3     ior__=1.5
+
+# Terre cuite
+sp  30,80,50      35  180,85,50      k_amb=0.25 k_dif=0.7  k_spc=0.05 shine=4     ior__=1.5
+
+
+# ====================================
+# MATÉRIAUX SEMI-BRILLANTS (rangée 2)
+# ====================================
+
+# Plastique mat
+sp  -120,40,50    35  70,130,180     k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=32    ior__=1.46
+
+# Bois verni
+sp  -70,40,50     35  101,67,33      k_amb=0.15 k_dif=0.5  k_spc=0.35 shine=64    ior__=1.5
+
+# Céramique émaillée
+sp  -20,40,50     35  240,248,255    k_amb=0.1  k_dif=0.5  k_spc=0.4  shine=80    ior__=1.5
+
+# Cuir
+sp  30,40,50      35  139,69,19      k_amb=0.2  k_dif=0.65 k_spc=0.15 shine=16    ior__=1.5
+
+
+# ====================================
+# MATÉRIAUX BRILLANTS (rangée 3)
+# ====================================
+
+# Plastique brillant
+sp  -120,0,50     35  220,20,60      k_amb=0.05 k_dif=0.4  k_spc=0.55 shine=128   ior__=1.46
+
+# Porcelaine/Céramique glacée
+sp  -70,0,50      35  255,250,240    k_amb=0.05 k_dif=0.35 k_spc=0.6  shine=150   ior__=1.55
+
+# Marbre poli
+sp  -20,0,50      35  230,230,250    k_amb=0.1  k_dif=0.3  k_spc=0.6  shine=200   ior__=1.55
+
+# Verre dépoli
+sp  30,0,50       35  220,240,255    k_amb=0.05 k_dif=0.2  k_spc=0.75 shine=100   ior__=1.5
+
+
+# ====================================
+# MÉTAUX (rangée 4)
+# ====================================
+
+# Or
+sp  -120,-40,50   35  255,215,0      k_amb=0.02 k_dif=0.2  k_spc=0.78 shine=300   ior__=0.47
+
+# Argent
+sp  -70,-40,50    35  230,232,250    k_amb=0.02 k_dif=0.15 k_spc=0.83 shine=350   ior__=0.18
+
+# Cuivre
+sp  -20,-40,50    35  184,115,51     k_amb=0.03 k_dif=0.25 k_spc=0.72 shine=280   ior__=1.1
+
+# Aluminium brossé
+sp  30,-40,50     35  192,192,192    k_amb=0.05 k_dif=0.3  k_spc=0.65 shine=120   ior__=1.44
+
+
+# ====================================
+# MÉTAUX SPÉCIAUX (rangée 5)
+# ====================================
+
+# Chrome/Métal poli
+sp  -95,-80,50    35  225,225,230    k_amb=0.01 k_dif=0.1  k_spc=0.89 shine=400   ior__=2.5
+
+# Fer rouillé
+sp  -45,-80,50    35  183,65,14      k_amb=0.2  k_dif=0.6  k_spc=0.2  shine=20    ior__=2.9
+
+
+# ====================================
+# MATÉRIAUX TRANSPARENTS (rangée 6)
+# ====================================
+
+# Verre transparent
+sp  -120,-120,50  35  240,248,255    k_amb=0.0  k_dif=0.05 k_spc=0.95 shine=500   ior__=1.5
+
+# Diamant
+sp  -70,-120,50   35  230,245,255    k_amb=0.0  k_dif=0.02 k_spc=0.98 shine=600   ior__=2.42
+
+# Eau
+sp  -20,-120,50   35  100,180,220    k_amb=0.0  k_dif=0.1  k_spc=0.9  shine=400   ior__=1.33
+
+# Glace
+sp  30,-120,50    35  200,230,255    k_amb=0.05 k_dif=0.15 k_spc=0.8  shine=350   ior__=1.31
+
+
+# ====================================
+# MATÉRIAUX ORGANIQUES (coin droit)
+# ====================================
+
+# Peau humaine
+sp  80,80,50      35  255,205,180    k_amb=0.15 k_dif=0.7  k_spc=0.15 shine=10    ior__=1.4
+
+# Fruit (pomme)
+sp  80,40,50      35  220,20,60      k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=40    ior__=1.35
+
+# Caoutchouc
+sp  80,0,50       35  40,40,40       k_amb=0.15 k_dif=0.75 k_spc=0.1  shine=6     ior__=1.52
+
+
+# ====================================
+# SOL (plan de référence)
+# ====================================
+
+pl  0,-150,0   0,1,0   200,200,200   k_amb=0.2  k_dif=0.7  k_spc=0.1  shine=5     ior__=1.5

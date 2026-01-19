@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 18:05:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 23:53:26 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static int	scan_file(struct s_app *app, const char *line)
 								scan_L, scan_pl, scan_sp, scan_cy, scan_co};
 	int					i;
 	static int			i_elem;
+	static int			i_elem_inf;
 	static const char	*l_elem[N_SCENE_ITEMS] = SCENE_ITEMS;
 
 	i = -1;
@@ -65,11 +66,9 @@ static int	scan_file(struct s_app *app, const char *line)
 		{
 			scan_fct[i](app, next_tok(line), &i_elem);
 			if (i == N_SETUP_ITEMS)
-				scan_material(app, line, &app->scene.elems_inf[i_elem].u.any.material);
+				scan_material(app, line, &app->scene.elems_inf[i_elem_inf++].u.any.material);
 			else if (i > N_SETUP_ITEMS)
-				scan_material(app, line, &app->scene.elems[i_elem].u.any.material);
-			if (i > N_SETUP_ITEMS)
-				++i_elem;
+				scan_material(app, line, &app->scene.elems[i_elem++].u.any.material);
 			break ;
 		}
 	return (app->status = (ERR_PARS * (i == N_SCENE_ITEMS)));

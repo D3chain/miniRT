@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flt_constants.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:23:16 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:23:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 22:50:35 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@
 #  define FLT_0_02	0.02
 
 #  define FLT_1_1	1.1
-
+#  define FLT_1_5	1.5
 
 # else
 
@@ -264,6 +264,7 @@
 #  define FLT_0_9	0.9f
 
 #  define FLT_1_1	1.1f
+#  define FLT_1_5	1.5f
 
 #  define FLT_0_02	0.02f
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 13:53:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 23:41:29 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,25 @@
 
 # include "minirt.h"
 
+//	DFL MATERIAL
+# define DFL_KA						FLT_0_1
+# define DFL_KD						FLT_0_7
+# define DFL_KS						FLT_0_2
+# define DFL_SHINE					FLT_100
+# define DFL_IOR					FLT_1_5
 
-# define COEF_SPEC	FLT_0_2
-# define SHININESS	FLT_100
+# define MIN_KA   					FLT_0
+# define MIN_KD   					FLT_0
+# define MIN_KS   					FLT_0
+# define MIN_SHINE					FLT_1
+# define MIN_IOR  					FLT_1
 
+# define MAX_K_SUM					FLT_1_1
 
 //	SCREEN RESOLUTION
 # define WIN_WIDTH					1920
 # define WIN_HEIGHT					1080
-# define IMG_RATIO	((t_real) WIN_WIDTH / WIN_HEIGHT)
+# define IMG_RATIO					((t_real) WIN_WIDTH / WIN_HEIGHT)
 
 //	SAMPLING
 # define UPSAMPLING_INIT_ACTIV		true

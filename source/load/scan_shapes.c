@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   scan_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 17:39:45 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 23:45:31 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	scan_pl(struct s_app *app, const char *line, int *i_elem)
+int	scan_pl(struct s_app *app, const char *line, int *_)
 {
 	static int	i;
-	
+
+	(void) _;	
 	app->scene.elems_inf[i].type = PLANE;
 	line += scan_t_real3(app, &app->scene.elems_inf[i].u.plane.coord, line);
 	if (app->status)

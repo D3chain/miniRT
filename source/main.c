@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 17:52:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 22:36:11 by fox              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 {
 	struct s_app	app;
 
+	srand(time(NULL));
 	ft_memset(&app, 0, sizeof(app));
 	if (check_arg(&app, argc, argv))
 		return (ERR_PARS);
