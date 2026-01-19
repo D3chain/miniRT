@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/19 15:29:16 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/19 16:02:24 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,13 +102,12 @@ SETUP_SRC	:=	setup_RCAL.c														\
 				setup_shapes.c
 
 # Utilities
-UTIL_SRC	:=	token.c																\
-				print_bvh_tree.c													\
+PRINT_SRC	:=	print_bvh_tree.c													\
 				print_map.c															\
 				print_RCAL.c														\
 				print_shapes.c														\
 				print_parameters.c													\
-				print.c
+				printf_real_values.c
 
 # Wrappers
 WRAPPER_SRC	:=	xmalloc.c															\
@@ -122,7 +121,7 @@ SRC_PATHS	:=	$(addprefix app/,$(APP_SRC))										\
 				$(addprefix math/,$(MATH_SRC))										\
 				$(addprefix run/,$(RUN_SRC))										\
 				$(addprefix setup/,$(SETUP_SRC))									\
-				$(addprefix util/,$(UTIL_SRC))										\
+				$(addprefix print/,$(PRINT_SRC))										\
 				$(addprefix wrapper/,$(WRAPPER_SRC))								\
 				$(ROOT_SRC)
 

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 15:26:55 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:02:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		scan_uint8_t(struct s_app *app, uint8_t *res, const char *str);
 int		scan_t_real(struct s_app *app, t_real *res, const char *str);
 int		scan_t_real3(struct s_app *app, t_real3 *res, const char *str);
 int		scan_color(struct s_app *app, t_color *res, const char *str);
-char	*next_tok(const char *str);
 
 void	print_real3(t_real3 d, char *text);
 void	print_color(t_color color, char *text);

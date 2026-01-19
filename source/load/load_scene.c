@@ -6,11 +6,20 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 13:05:36 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:03:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static char	*next_tok(const char *str)
+{
+	while (*str && !ft_isspace(*str))
+		str++;
+	while (*str && ft_isspace(*str))
+		str++;
+	return ((char *)str);
+}
 
 static void	count_scene_from_file(struct s_app *app, const char *file)
 {
@@ -43,11 +52,12 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 
 static int	scan_file(struct s_app *app, const char *line)
 {
+	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, \
+							const char *, int *) = {scan_R, scan_A, scan_C, \
+								scan_L, scan_pl, scan_sp, scan_cy, scan_co};
 	int					i;
 	static int			i_elem;
-	static const char	*l_elem[N_SCENE_ITEMS] = {"R", "A", "C", "L", "pl", "sp", "cy", "co"};
-	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, const char *, int *) = {
-		scan_R, scan_A, scan_C, scan_L, scan_pl, scan_sp, scan_cy, scan_co};
+	static const char	*l_elem[N_SCENE_ITEMS] = SCENE_ITEMS;
 
 	i = 0;
 	while (i < N_SCENE_ITEMS)
@@ -71,9 +81,12 @@ static int	scan_scene_from_file(struct s_app *app, const char *file)
 	int		fd;
 	char	*line;
 
-	app->scene.elems = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem);
-	app->scene.elems_inf = xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem_inf);
-	app->scene.light = xmalloc(app, sizeof(struct s_light) * app->scene.n_light);
+	app->scene.elems = \
+		xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem);
+	app->scene.elems_inf = \
+		xmalloc(app, sizeof(struct s_elem) * app->scene.n_elem_inf);
+	app->scene.light = \
+		xmalloc(app, sizeof(struct s_light) * app->scene.n_light);
 	if (app->status)
 		return (app->status);
 	fd = xopen(app, file, O_RDONLY);
@@ -87,8 +100,7 @@ static int	scan_scene_from_file(struct s_app *app, const char *file)
 		free(line);
 		line = gets_next_line(fd);
 	}
-	close(fd);
-	return (0);
+	return (close(fd), ERR_NONE);
 }
 
 int	load_scene(struct s_app *app)
@@ -104,5 +116,5 @@ int	load_scene(struct s_app *app)
 	setup_shapes(app, &app->scene);
 	setup_RCAL(app);
 	bvh_build(app, &app->scene);
-	return (0);
+	return (ERR_NONE);
 }

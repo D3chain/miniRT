@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 14:13:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:03:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # include "app.h"              // Structure principale app
 
 # include "mathematics.h"        // Fonctions mathématiques
-# include "util.h"             // Fonctions utilitaires diverses
+# include "print.h"             // Fonctions utilitaires diverses
 # include "error.h"            // Gestion d'erreurs
 # include "wrapper.h"          // Wrappers malloc, etc.
 

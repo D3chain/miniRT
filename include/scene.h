@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 14:44:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/19 15:59:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ struct s_app;
 struct s_scene;
 
 # define 	FOCAL_LENGTH	FLT_1
-// # define VIEW_HEIGHT	2.0
 # define	N_SCENE_ITEMS	8
 # define	N_SETUP_ITEMS	4
 # define	N_SCENE_ELEMS	(N_SCENE_ITEMS - N_SETUP_ITEMS)
+
+# define	SCENE_ITEMS		{"R", "A", "C", "L", "pl", "sp", "cy", "co"}
 
 
 
