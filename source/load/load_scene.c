@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 16:53:56 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:26:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_elem_iter
 	int				i_elem;
 	int				i_elem_inf;
 	struct s_elem	*tab;
-} t_elem_iter;
+}	t_elem_iter;
 
 static char	*next_tok(const char *str)
 {
@@ -61,18 +61,18 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 
 static int	scan_file(struct s_app *app, const char *line)
 {
-	static scan_fn		sfn = {scan_R, scan_A, scan_C, \
-							scan_L, scan_pl, scan_sp, scan_cy, scan_co};
-	static const char	*l_elem[N_SCENE_ITEMS] = SCENE_ITEMS;
+	static t_scan_fn	sfn = {scan_r, scan_a, scan_c, scan_l, scan_pl, scan_sp, scan_cy, scan_co};
+	static const char	*l_elem[N_SCENE_ITEMS] = {"R", "A", "C", "L", "pl", "sp", "cy", "co"};
 	static t_elem_iter	it;
 
 	it.i = -1;
 	while (++it.i < N_SCENE_ITEMS)
+	{
 		if (ft_strncmp(l_elem[it.i], line, ft_strlen(l_elem[it.i])) == 0)
 		{
 			it.cur_i = &it.i_elem;
 			it.tab = app->scene.elems;
-			if (it.i == N_SETUP_ITEMS)	
+			if (it.i == N_SETUP_ITEMS)
 			{
 				it.tab = app->scene.elems_inf;
 				it.cur_i = &it.i_elem_inf;
@@ -84,6 +84,7 @@ static int	scan_file(struct s_app *app, const char *line)
 				scan_material(app, line, &it.tab[(*it.cur_i)++].u.any.material);
 			break ;
 		}
+	}
 	return (app->status = (ERR_PARS * (it.i == N_SCENE_ITEMS)));
 }
 
@@ -116,15 +117,12 @@ static int	scan_scene_from_file(struct s_app *app, const char *file)
 
 int	load_scene(struct s_app *app)
 {
-	char		*line;
-	int			n_elem;
-
 	count_scene_from_file(app, app->file_name);
 	if (app->status)
 		return (app->status);
 	if (scan_scene_from_file(app, app->file_name))
 		return (app->status);
-	setup_RCAL(app);
+	setup_rcal(app);
 	setup_shapes(app, &app->scene);
 	bvh_build(app, &app->scene);
 	return (ERR_NONE);

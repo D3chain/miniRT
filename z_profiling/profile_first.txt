@@ -78,8 +78,8 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00       59     0.00     0.00  sort_elems
   0.00     18.06     0.00       29     0.00   569.30  render_tile
   0.00     18.06     0.00       28     0.00     0.00  next_tile
-  0.00     18.06     0.00        6     0.00     0.00  setup_L
-  0.00     18.06     0.00        6     0.00     0.00  scan_L
+  0.00     18.06     0.00        6     0.00     0.00  setup_l
+  0.00     18.06     0.00        6     0.00     0.00  scan_l
   0.00     18.06     0.00        3     0.00     0.00  get_th_idx
   0.00     18.06     0.00        2     0.00     0.00  cross3
   0.00     18.06     0.00        2     0.00     0.00  xopen
@@ -88,8 +88,8 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00        1     0.00     0.00  bvh_subdivide
   0.00     18.06     0.00        1     0.00     0.00  check_arg
   0.00     18.06     0.00        1     0.00     0.00  cleanup_app
-  0.00     18.06     0.00        1     0.00     0.00  setup_A
-  0.00     18.06     0.00        1     0.00     0.01  setup_C
+  0.00     18.06     0.00        1     0.00     0.00  setup_a
+  0.00     18.06     0.00        1     0.00     0.01  setup_c
   0.00     18.06     0.00        1     0.00     0.25  setup_scene
   0.00     18.06     0.00        1     0.00     0.00  count_scene_from_file
   0.00     18.06     0.00        1     0.00     0.00  event_keyboard_press
@@ -104,8 +104,8 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00        1     0.00     0.00  render
   0.00     18.06     0.00        1     0.00     0.00  reset_th_idx
   0.00     18.06     0.00        1     0.00     0.00  run_scene
-  0.00     18.06     0.00        1     0.00     0.00  scan_A
-  0.00     18.06     0.00        1     0.00     0.00  scan_C
+  0.00     18.06     0.00        1     0.00     0.00  scan_a
+  0.00     18.06     0.00        1     0.00     0.00  scan_c
   0.00     18.06     0.00        1     0.00     0.00  scan_scene_from_file
 
  %         the percentage of the total running time of the
@@ -228,7 +228,7 @@ index % time    self  children    called     name
                 1.75    0.00 3650673/4179641     plus3 [17]
                 1.31    0.00 3637395/7480958     fmul3 [14]
 -----------------------------------------------
-                0.00    0.00       1/8180594     setup_C [53]
+                0.00    0.00       1/8180594     setup_c [53]
                 0.00    0.00    4038/8180594     normal_tube [48]
                 0.04    0.00   94293/8180594     init_ray [27]
                 0.08    0.00  202275/8180594     reflect [29]
@@ -247,7 +247,7 @@ index % time    self  children    called     name
                 0.21    0.00 4240376/14604213     dot [23]
                 0.00    0.02   17616/3483052     project [11]
 -----------------------------------------------
-                0.00    0.00       8/7480958     setup_C [53]
+                0.00    0.00       8/7480958     setup_c [53]
                 0.00    0.00      77/7480958     setup_cy [52]
                 0.00    0.00      98/7480958     orient_normal [45]
                 0.00    0.00    1979/7480958     normal_tube [48]
@@ -272,7 +272,7 @@ index % time    self  children    called     name
                 0.02    2.06  201625/1012578     ray_hit_cylinder [8]
                 0.04    0.16   99541/495261      ray_hit_sphere [20]
 -----------------------------------------------
-                0.00    0.00       4/4179641     setup_C [53]
+                0.00    0.00       4/4179641     setup_c [53]
                 0.00    0.00    2031/4179641     normal_tube [48]
                 0.08    0.00  173685/4179641     init_ray [27]
                 0.17    0.00  353248/4179641     collision [6]
@@ -324,7 +324,7 @@ index % time    self  children    called     name
                 0.27    0.00 5318866/14604213     plane_dst [18]
 [23]     4.1    0.74    0.00 14604213         dot [23]
 -----------------------------------------------
-                0.00    0.00       2/1252763     setup_C [53]
+                0.00    0.00       2/1252763     setup_c [53]
                 0.00    0.00      77/1252763     setup_cy [52]
                 0.00    0.00    2198/1252763     normal_tube [48]
                 0.05    0.00   88230/1252763     init_ray [27]
@@ -432,10 +432,10 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           load_scene [50]
 [49]     0.0    0.00    0.00       1         setup_scene [49]
                 0.00    0.00      77/77          setup_cy [52]
-                0.00    0.00       1/1           setup_C [53]
+                0.00    0.00       1/1           setup_c [53]
                 0.00    0.00      79/79          setup_sp [72]
-                0.00    0.00       6/6           setup_L [81]
-                0.00    0.00       1/1           setup_A [91]
+                0.00    0.00       6/6           setup_l [81]
+                0.00    0.00       1/1           setup_a [91]
 -----------------------------------------------
                 0.00    0.00       1/1           main [51]
 [50]     0.0    0.00    0.00       1         load_scene [50]
@@ -460,7 +460,7 @@ index % time    self  children    called     name
                 0.00    0.00      77/156         randomize_material [70]
 -----------------------------------------------
                 0.00    0.00       1/1           setup_scene [49]
-[53]     0.0    0.00    0.00       1         setup_C [53]
+[53]     0.0    0.00    0.00       1         setup_c [53]
                 0.00    0.00       8/7480958     fmul3 [14]
                 0.00    0.00       4/4179641     plus3 [17]
                 0.00    0.00       2/1252763     normalize3 [24]
@@ -479,9 +479,9 @@ index % time    self  children    called     name
                 0.00    0.00   20536/20536       antialiasing [3]
 [57]     0.0    0.00    0.00   20536         average_linear_color [57]
 -----------------------------------------------
-                0.00    0.00       1/964         scan_C [105]
-                0.00    0.00       1/964         scan_A [104]
-                0.00    0.00       6/964         scan_L [82]
+                0.00    0.00       1/964         scan_c [105]
+                0.00    0.00       1/964         scan_a [104]
+                0.00    0.00       6/964         scan_l [82]
                 0.00    0.00      79/964         scan_sp [73]
                 0.00    0.00     154/964         scan_cy [76]
                 0.00    0.00     723/964         scan_t_real3 [62]
@@ -496,8 +496,8 @@ index % time    self  children    called     name
                 0.00    0.00     489/489         scan_color [67]
 [61]     0.0    0.00    0.00     489         scan_uint8_t [61]
 -----------------------------------------------
-                0.00    0.00       2/241         scan_C [105]
-                0.00    0.00       6/241         scan_L [82]
+                0.00    0.00       2/241         scan_c [105]
+                0.00    0.00       6/241         scan_l [82]
                 0.00    0.00      79/241         scan_sp [73]
                 0.00    0.00     154/241         scan_cy [76]
 [62]     0.0    0.00    0.00     241         scan_t_real3 [62]
@@ -521,19 +521,19 @@ index % time    self  children    called     name
                 0.00    0.00     164/164         next_tok [65]
                 0.00    0.00      79/79          scan_sp [73]
                 0.00    0.00      77/77          scan_cy [76]
-                0.00    0.00       6/6           scan_L [82]
-                0.00    0.00       1/1           scan_A [104]
-                0.00    0.00       1/1           scan_C [105]
+                0.00    0.00       6/6           scan_l [82]
+                0.00    0.00       1/1           scan_a [104]
+                0.00    0.00       1/1           scan_c [105]
 -----------------------------------------------
-                0.00    0.00       1/163         scan_A [104]
-                0.00    0.00       6/163         scan_L [82]
+                0.00    0.00       1/163         scan_a [104]
+                0.00    0.00       6/163         scan_l [82]
                 0.00    0.00      77/163         scan_cy [76]
                 0.00    0.00      79/163         scan_sp [73]
 [67]     0.0    0.00    0.00     163         scan_color [67]
                 0.00    0.00     489/489         scan_uint8_t [61]
 -----------------------------------------------
-                0.00    0.00       1/163         setup_A [91]
-                0.00    0.00       6/163         setup_L [81]
+                0.00    0.00       1/163         setup_a [91]
+                0.00    0.00       6/163         setup_l [81]
                 0.00    0.00      77/163         setup_cy [52]
                 0.00    0.00      79/163         setup_sp [72]
 [68]     0.0    0.00    0.00     163         srgb_to_linear_color [68]
@@ -590,11 +590,11 @@ index % time    self  children    called     name
 [80]     0.0    0.00    0.00      28         next_tile [80]
 -----------------------------------------------
                 0.00    0.00       6/6           setup_scene [49]
-[81]     0.0    0.00    0.00       6         setup_L [81]
+[81]     0.0    0.00    0.00       6         setup_l [81]
                 0.00    0.00       6/163         srgb_to_linear_color [68]
 -----------------------------------------------
                 0.00    0.00       6/6           scan_elem [66]
-[82]     0.0    0.00    0.00       6         scan_L [82]
+[82]     0.0    0.00    0.00       6         scan_l [82]
                 0.00    0.00       6/241         scan_t_real3 [62]
                 0.00    0.00       6/964         scan_t_real [58]
                 0.00    0.00       6/163         scan_color [67]
@@ -602,7 +602,7 @@ index % time    self  children    called     name
                 0.00    0.00       3/3           render_routine [2]
 [83]     0.0    0.00    0.00       3         get_th_idx [83]
 -----------------------------------------------
-                0.00    0.00       2/2           setup_C [53]
+                0.00    0.00       2/2           setup_c [53]
 [84]     0.0    0.00    0.00       2         cross3 [84]
 -----------------------------------------------
                 0.00    0.00       1/2           count_scene_from_file [92]
@@ -637,7 +637,7 @@ index % time    self  children    called     name
 [90]     0.0    0.00    0.00       1         cleanup_app [90]
 -----------------------------------------------
                 0.00    0.00       1/1           setup_scene [49]
-[91]     0.0    0.00    0.00       1         setup_A [91]
+[91]     0.0    0.00    0.00       1         setup_a [91]
                 0.00    0.00       1/163         srgb_to_linear_color [68]
 -----------------------------------------------
                 0.00    0.00       1/1           load_scene [50]
@@ -690,12 +690,12 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           render [101]
 -----------------------------------------------
                 0.00    0.00       1/1           scan_elem [66]
-[104]    0.0    0.00    0.00       1         scan_A [104]
+[104]    0.0    0.00    0.00       1         scan_a [104]
                 0.00    0.00       1/964         scan_t_real [58]
                 0.00    0.00       1/163         scan_color [67]
 -----------------------------------------------
                 0.00    0.00       1/1           scan_elem [66]
-[105]    0.0    0.00    0.00       1         scan_C [105]
+[105]    0.0    0.00    0.00       1         scan_c [105]
                 0.00    0.00       2/241         scan_t_real3 [62]
                 0.00    0.00       1/964         scan_t_real [58]
 -----------------------------------------------
@@ -810,14 +810,14 @@ Index by function name
    [9] check_leaf_shadow (any_hit.c) [94] init_app (init_app.c) [60] rgb_to_linear (color_linear_conversion.c)
   [90] cleanup_app (main.c)   [95] init_graphic_data (init_app.c) [103] run_scene (run_scene.c)
   [35] closest_hit_dst_dbl (closest_hit_dst.c) [96] init_mlx (init_app.c) [32] scale_color_linear (color_linear.c)
-  [31] closest_hit_dst_sol2 (closest_hit_dst.c) [27] init_ray (init_ray.c) [104] scan_A (scan_CAL.c)
-   [6] collision (phong_effect.c) [97] init_threads (init_app.c) [105] scan_C (scan_CAL.c)
-  [28] collision_aabb (collision_aabb.c) [56] linear_to_srgb (color_linear_conversion.c) [82] scan_L (scan_CAL.c)
+  [31] closest_hit_dst_sol2 (closest_hit_dst.c) [27] init_ray (init_ray.c) [104] scan_a (scan_cAL.c)
+   [6] collision (phong_effect.c) [97] init_threads (init_app.c) [105] scan_c (scan_cAL.c)
+  [28] collision_aabb (collision_aabb.c) [56] linear_to_srgb (color_linear_conversion.c) [82] scan_l (scan_cAL.c)
   [21] collision_aabb_base (collision_aabb.c) [43] linear_to_srgb_color (color_linear_conversion.c) [67] scan_color (scan_numbers.c)
   [30] add_color_linear (color_linear.c) [50] load_scene (load_scene.c) [76] scan_cy (scan_elem.c)
-  [91] setup_A (setup_CAL.c) [71] merge_boxes (bound_boxes.c) [66] scan_elem (load_scene.c)
-  [53] setup_C (setup_CAL.c) [12] minus3 (vec_op_1.c) [106] scan_scene_from_file (load_scene.c)
-  [81] setup_L (setup_CAL.c) [36] mul_color_linear (color_linear.c) [73] scan_sp (scan_elem.c)
+  [91] setup_a (setup_cAL.c) [71] merge_boxes (bound_boxes.c) [66] scan_elem (load_scene.c)
+  [53] setup_c (setup_cAL.c) [12] minus3 (vec_op_1.c) [106] scan_scene_from_file (load_scene.c)
+  [81] setup_l (setup_cAL.c) [36] mul_color_linear (color_linear.c) [73] scan_sp (scan_elem.c)
   [52] setup_cy (setup_elem.c) [80] next_tile (render.c) [58] scan_t_real (scan_numbers.c)
   [49] setup_scene (load_scene.c) [65] next_tok (token.c) [62] scan_t_real3 (scan_numbers.c)
   [72] setup_sp (setup_elem.c) [41] norm3 (vec_op_3.c) [61] scan_uint8_t (scan_numbers.c)

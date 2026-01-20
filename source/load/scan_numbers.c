@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:14:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 18:56:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:26:48 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	scan_int(struct s_app *app, int *res, const char *str)
 {
 	int	i;
 
+	i = 0;
 	if (*str == '-')
 		++i;
 	if (!ft_isdigit(*str))
@@ -62,27 +63,24 @@ int	scan_t_real(struct s_app *app, t_real *res, const char *str)
 	int				i;
 	int				j;
 	int				sign;
-	
+
 	sign = 1;
 	i = 0;
-	if (str[i] == '-')
-	{
+	if (str[i] == '-' && ++i)
 		sign = -1;
-		++i;
-	}
 	if (!ft_isdigit(str[i]))
 		return (app->status = ERR_PARS, -1);
 	*res = ft_atoi(str);
-	while(ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 		++i;
 	if (str[i] == '.')
 	{
 		if (!ft_isdigit(str[++i]))
 			return (app->status = ERR_PARS, -1);
 		j = i;
-		while(ft_isdigit(str[i]))
+		while (ft_isdigit(str[i]))
 			++i;
-		*res += sign * ft_atoi(&str[j]) * pow(10.0, j - i);
+		*res += sign * ft_atoi(&str[j]) * pow(FLT_10, j - i);
 	}
 	return (i);
 }

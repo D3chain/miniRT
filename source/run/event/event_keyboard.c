@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 13:41:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:27:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	event_keyboard_press(int key, struct s_app *app)
 	else if (key == XK_r)
 		print_render(app);
 	else if (key == XK_m)
-		print_map(app);		
+		print_map(app);
 	else if (key == XK_equal || key == XK_minus || key == XK_BackSpace)
 		update_zoom_speed(key, app);
 	else if (key == XK_KP_Add || key == XK_KP_Subtract)

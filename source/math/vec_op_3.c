@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:56 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:58 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:13:33 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ __attribute__((const))
 t_real3	orient_normal(t_real3 normal, t_real3 ray)
 {
 	if (dot(ray, normal) >= EPSILON)
-		return (fmul3(normal, -1.0));
+		return (fmul3(normal, -FLT_1));
 	return (normal);
 }
 

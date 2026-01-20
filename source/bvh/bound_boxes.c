@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:39 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:44:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	bound_boxes(t_bvh_base *node)
 	{
 		bound_boxes((t_bvh_base *)((t_bvh_node *)node)->left);
 		bound_boxes((t_bvh_base *)((t_bvh_node *)node)->right);
-		((t_bvh_node *)node)->bbox = merge_boxes(((t_bvh_node *)node)->left->bbox, ((t_bvh_node *)node)->right->bbox);
+		((t_bvh_node *)node)->bbox = merge_boxes(\
+										((t_bvh_node *)node)->left->bbox, \
+										((t_bvh_node *)node)->right->bbox);
 	}
 	else
 	{

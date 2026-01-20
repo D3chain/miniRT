@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 16:41:47 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:09:46 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	scan_pl(struct s_app *app, const char *line, int i_elem)
 {
 	struct s_plane	*p;
-	
+
 	p = &app->scene.elems_inf[i_elem].u.plane;
 	app->scene.elems_inf[i_elem].type = PLANE;
 	line += scan_t_real3(app, &p->coord, line);
@@ -34,7 +34,7 @@ int	scan_pl(struct s_app *app, const char *line, int i_elem)
 int	scan_sp(struct s_app *app, const char *line, int i_elem)
 {
 	struct s_sphere	*s;
-	
+
 	s = &app->scene.elems[i_elem].u.sphere;
 	app->scene.elems[i_elem].type = SPHERE;
 	line += scan_t_real3(app, &s->coord, line);

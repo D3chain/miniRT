@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 15:53:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:33:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 static void	print_pl(struct s_elem *e, int fd)
 {
-	struct s_plane	*plane = (struct s_plane *) e;
-	
+	const struct s_plane	*plane = (struct s_plane *) e;
+
 	dprintf(fd, "pl\t"REAL3"\t"REAL3"\t"COLOR_RGB,
-		e->u.plane.coord.x,
-		e->u.plane.coord.y,
-		e->u.plane.coord.z,
-		e->u.plane.normal.x,
-		e->u.plane.normal.y,
-		e->u.plane.normal.z,
-		e->u.plane.material.color.s_rgb.r,
-		e->u.plane.material.color.s_rgb.g,
-		e->u.plane.material.color.s_rgb.b
-	);
+		plane->coord.x,
+		plane->coord.y,
+		plane->coord.z,
+		plane->normal.x,
+		plane->normal.y,
+		plane->normal.z,
+		plane->material.color.s_rgb.r,
+		plane->material.color.s_rgb.g,
+		plane->material.color.s_rgb.b);
 }
 
 static void	print_planes(int fd, struct s_scene *scene)
@@ -86,7 +85,7 @@ void	print_map(struct s_app *app)
 		printf("Snapshot failed!\n");
 	else
 	{
-		print_RCAL(app, fd);
+		print_rcal(app, fd);
 		print_planes(fd, &app->scene);
 		print_bvh_rec(fd, app->scene.bvh_root);
 		printf("Snapshot saved!\n");

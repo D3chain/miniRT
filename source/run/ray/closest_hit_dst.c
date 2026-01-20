@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:25:18 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:25:20 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:02:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ inline t_real	closest_hit_dst_dbl(const t_real a, const t_real b)
 		return (b);
 	if (b < EPSILON)
 		return (a);
-	return (fmin(a, b));	
+	return (fmin(a, b));
 }
 
 t_real	closest_hit_dst_sol2(t_sol2 sol)

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:26:21 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 15:53:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:33:39 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,52 @@
 
 static void	print_sp(struct s_elem *e, int fd)
 {
-	struct s_sphere	*sphere = (struct s_sphere *) e;
-	
+	const struct s_sphere	*sphere = (struct s_sphere *) e;
+
 	dprintf(fd, "sp\t"REAL3"\t"REAL"\t"COLOR_RGB,
-		e->u.sphere.coord.x,
-		e->u.sphere.coord.y,
-		e->u.sphere.coord.z,
-		e->u.sphere.radius * FLT_2,
-		e->u.sphere.material.color.s_rgb.r,
-		e->u.sphere.material.color.s_rgb.g,
-		e->u.sphere.material.color.s_rgb.b
-	);
+		sphere->coord.x,
+		sphere->coord.y,
+		sphere->coord.z,
+		sphere->radius * FLT_2,
+		sphere->material.color.s_rgb.r,
+		sphere->material.color.s_rgb.g,
+		sphere->material.color.s_rgb.b);
 }
 
 static void	print_cy(struct s_elem *e, int fd)
 {
-	struct s_cylinder	*cylinder = (struct s_cylinder *) e;
-	
+	const struct s_cylinder	*cylinder = (struct s_cylinder *) e;
+
 	dprintf(fd, "cy\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB,
-		e->u.cylinder.coord.x,
-		e->u.cylinder.coord.y,
-		e->u.cylinder.coord.z,		
-		e->u.cylinder.axis.x,
-		e->u.cylinder.axis.y,
-		e->u.cylinder.axis.z,
-		e->u.cylinder.radius * FLT_2,
-		e->u.cylinder.height,
-		e->u.cylinder.material.color.s_rgb.r,
-		e->u.cylinder.material.color.s_rgb.g,
-		e->u.cylinder.material.color.s_rgb.b
-	);
+		cylinder->coord.x,
+		cylinder->coord.y,
+		cylinder->coord.z,
+		cylinder->axis.x,
+		cylinder->axis.y,
+		cylinder->axis.z,
+		cylinder->radius * FLT_2,
+		cylinder->height,
+		cylinder->material.color.s_rgb.r,
+		cylinder->material.color.s_rgb.g,
+		cylinder->material.color.s_rgb.b);
 }
 
 static void	print_co(struct s_elem *e, int fd)
 {
-	struct s_cone	*cone = (struct s_cone *) e;
-	
+	const struct s_cone	*cone = (struct s_cone *) e;
+
 	dprintf(fd, "co\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB,
-		e->u.cone.coord.x,
-		e->u.cone.coord.y,
-		e->u.cone.coord.z,		
-		e->u.cone.axis.x,
-		e->u.cone.axis.y,
-		e->u.cone.axis.z,
-		e->u.cone.radius * FLT_2,
-		e->u.cone.height,
-		e->u.cone.material.color.s_rgb.r,
-		e->u.cone.material.color.s_rgb.g,
-		e->u.cone.material.color.s_rgb.b
-	);
+		cone->coord.x,
+		cone->coord.y,
+		cone->coord.z,
+		cone->axis.x,
+		cone->axis.y,
+		cone->axis.z,
+		cone->radius * FLT_2,
+		cone->height,
+		cone->material.color.s_rgb.r,
+		cone->material.color.s_rgb.g,
+		cone->material.color.s_rgb.b);
 }
 
 void	print_shapes(int fd, t_bvh_elem_box *e)

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:25:08 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:25:09 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:07:10 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 __attribute__((hot))
 t_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray)
 {
-	static t_hit_info	(*ray_hit_func[])(const struct s_ray *,	const void*) = {
-		ray_hit_plane,
-		ray_hit_sphere,
-		ray_hit_cylinder, 
-		ray_hit_cone
+	const t_ray_hit_fn	rhfn = {\
+		ray_hit_plane, ray_hit_sphere, ray_hit_cylinder, ray_hit_cone
 	};
 	t_hit_info			closest_hit;
 	t_hit_info			hit_point;
@@ -29,10 +26,10 @@ t_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray)
 	i = -1;
 	while (++i < box->n_elems)
 	{
-		hit_point = ray_hit_func[box->elems[i].type](ray, &box->elems[i]);
+		hit_point = rhfn[box->elems[i].type](ray, &box->elems[i]);
 		if (hit_point.did_hit)
 			if (!closest_hit.did_hit || hit_point.dst < closest_hit.dst)
-		        closest_hit = hit_point;
+				closest_hit = hit_point;
 	}
 	return (closest_hit);
 }

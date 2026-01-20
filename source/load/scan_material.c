@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:26:42 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 16:37:33 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:09:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	setup_material(t_material *mat)
 	mat->ka = DFL_KA;
 	mat->kd = DFL_KD;
 	mat->ks = DFL_KS;
-	mat->shininess = DFL_SHINE;	
+	mat->shininess = DFL_SHINE;
 	mat->ior = DFL_IOR;
 }
 
@@ -32,7 +32,7 @@ static void	set_param(t_real *param, t_real value, t_real minimum)
 static void	clamp_k_factors(t_material *mat)
 {
 	const t_real	k_sum = mat->ka + mat->kd + mat->ks;
-	
+
 	if (k_sum > FLT_1_1)
 	{
 		mat->ka /= k_sum;

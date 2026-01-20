@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:47 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:13:21 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ t_real3	fmul3(t_real3 a, t_real factor)
 	});
 }
 
-
-
-
 __attribute__((const))
-t_real3 reflect(t_real3 incident, t_real3 normal)
+t_real3	reflect(t_real3 incident, t_real3 normal)
 {
 	const t_real		dot_product = dot(incident, normal);
-	const t_real3		scaled_normal = fmul3(normal, 2.0 * dot_product);
-	
+	const t_real3		scaled_normal = fmul3(normal, FLT_2 * dot_product);
+
 	return (minus3(incident, scaled_normal));
 }
 

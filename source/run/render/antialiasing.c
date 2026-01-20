@@ -6,14 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:22 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:50:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((always_inline))
-static inline t_color_linear	increment_color_linear(t_color_linear incremented, t_color_linear with)
+static inline t_color_linear
+	increment_color_linear(t_color_linear incremented, t_color_linear with)
 {
 	incremented.r += with.r;
 	incremented.g += with.g;
@@ -22,7 +23,8 @@ static inline t_color_linear	increment_color_linear(t_color_linear incremented, 
 }
 
 __attribute__((always_inline))
-static inline t_color_linear	average_color_linear(t_color_linear color, t_real inv_samples)
+static inline t_color_linear
+	average_color_linear(t_color_linear color, t_real inv_samples)
 {
 	return (scale_color_linear(color, inv_samples));
 }

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 17:40:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:25:45 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 static void	print_error(struct s_app *app)
 {
 	if (app->status == ERR_SYS)
-		dprintf(STDERR_FILENO, "Fatal system error, restart MiniRT.\n");
+		dprintf(STDERR_FILENO, \
+			"Fatal system error, restart MiniRT.\n");
 	if (app->status == ERR_MLX)
-		dprintf(STDERR_FILENO, "Fatal MLX error, restart MiniRT.\n");
+		dprintf(STDERR_FILENO, \
+			"Fatal MLX error, restart MiniRT.\n");
 	if (app->status == ERR_PARS)
-		dprintf(STDERR_FILENO, "Parsing error, restart MiniRT with a valid [filename.rt] file.\n");
+		dprintf(STDERR_FILENO, \
+			"Parsing error, restart MiniRT with a valid [filename.rt] file.\n");
 }
 
 static int	check_arg(struct s_app *app, int argc, char *argv[])
@@ -27,7 +30,7 @@ static int	check_arg(struct s_app *app, int argc, char *argv[])
 	if (argc != 2 || ft_strrcmp(argv[1], ".rt"))
 	{
 		printf("Usage: ./%s <filename.rt>\n", argv[0]);
-		return (1);
+		return (app->status = ERR_PARS);
 	}
 	app->file_name = argv[1];
 	return (ERR_NONE);
@@ -49,7 +52,7 @@ int	main(int argc, char *argv[])
 		return (ERR_PARS);
 	if (load_scene(&app))
 		return (quit(&app));
-	if (init_app(&app, argc, argv))
+	if (init_app(&app))
 		return (quit(&app));
 	if (run_scene(&app))
 		return (quit(&app));

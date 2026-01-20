@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:13 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:24:15 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:45:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static t_div_axis	get_div_axis(t_bvh_elem_box *cur_box)
 	return (DIV_ALONG_Z);
 }
 
-static t_bvh_node	*divide_box(struct s_app *app, t_bvh_elem_box *cur_box, t_div_axis div_axis)
+static t_bvh_node
+	*divide_box(struct s_app *app, t_bvh_elem_box *cur_box, t_div_axis div_axis)
 {
 	t_bvh_node	*node;
 	int			mid;

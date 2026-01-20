@@ -6,14 +6,14 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/20 17:13:25 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/20 20:24:43 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-# CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3 #-ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
+# CFLAGS		:=	-Wall -Wextra -Werror
+CFLAGS		:=	-MMD -MP -g3 -Wall -Wextra -Werror # -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -50,7 +50,7 @@ ERROR_SRC	:=	err_per.c															\
 
 # Scene loading
 LOAD_SRC	:=	load_scene.c														\
-				scan_RCAL.c															\
+				scan_rcal.c															\
 				scan_shapes.c														\
 				scan_material.c														\
 				scan_numbers.c
@@ -99,14 +99,14 @@ RUN_SRC		:=	run_scene.c															\
 				$(RENDER_SRC)
 
 # Setup
-SETUP_SRC	:=	setup_RCAL.c														\
+SETUP_SRC	:=	setup_rcal.c														\
 				setup_viewport.c													\
 				setup_shapes.c
 
 # Utilities
 PRINT_SRC	:=	print_bvh_tree.c													\
 				print_map.c															\
-				print_RCAL.c														\
+				print_rcal.c														\
 				print_shapes.c														\
 				print_shape_material.c												\
 				print_parameters.c													\

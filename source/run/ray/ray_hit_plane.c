@@ -6,19 +6,21 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:27 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:20:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:28:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_real	plane_dst(const struct s_ray *ray, const t_real3 normal, const t_real3 point)
+__attribute__((hot))
+t_real
+	plane_dst(const struct s_ray *ray, const t_real3 normal, \
+		const t_real3 point)
 {
-	const t_real	d = -dot(normal, point);
-	
 	return (dot(minus3(point, ray->origin), normal) / dot(ray->dir, normal));
 }
 
+__attribute__((hot))
 t_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 {
 	t_hit_info				closest_hit;
@@ -27,7 +29,8 @@ t_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
 
 	if (fabs(denom) < EPSILON)
 		return ((t_hit_info){0});
-	closest_hit.dst = dot(minus3(plane.coord, ray->origin), plane.normal) / denom;
+	closest_hit.dst = dot(\
+		minus3(plane.coord, ray->origin), plane.normal) / denom;
 	closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 	if (closest_hit.did_hit)
 	{

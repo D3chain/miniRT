@@ -6,12 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 11:07:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:26:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+__attribute__((hot))
 t_hit_info	create_hit(t_real dst, const t_ray *ray,
 	const struct s_cone *cone, t_real3 normal)
 {
@@ -25,6 +26,7 @@ t_hit_info	create_hit(t_real dst, const t_ray *ray,
 	return (hit);
 }
 
+__attribute__((hot))
 static void	compute_cone_quadratic(const struct s_cone *cone, const t_ray *ray,
 	t_real3 x, t_real coefs[3])
 {
@@ -39,6 +41,7 @@ static void	compute_cone_quadratic(const struct s_cone *cone, const t_ray *ray,
 	coefs[2] = x_dot_axis * x_dot_axis - cone->cos2_theta * dot(x, x);
 }
 
+__attribute__((hot))
 static bool	solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2)
 {
 	t_real	discriminant;
@@ -60,6 +63,7 @@ static bool	solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2)
 	return (true);
 }
 
+__attribute__((hot))
 static bool	is_within_cone_height(const struct s_cone *cone, t_real3 point)
 {
 	t_real3	apex_to_point;
@@ -70,6 +74,7 @@ static bool	is_within_cone_height(const struct s_cone *cone, t_real3 point)
 	return (projection >= EPSILON && projection <= cone->height);
 }
 
+__attribute__((hot))
 static t_real3	compute_cone_normal(const struct s_cone *cone, t_real3 point)
 {
 	t_real3	apex_to_point;
@@ -82,6 +87,7 @@ static t_real3	compute_cone_normal(const struct s_cone *cone, t_real3 point)
 	return (normalize3(minus3(point, axis_point)));
 }
 
+__attribute__((hot))
 static t_hit_info	intersect_cone_body(const t_ray *ray, const struct s_cone *cone)
 {
 	t_real3		x;
@@ -108,6 +114,7 @@ static t_hit_info	intersect_cone_body(const t_ray *ray, const struct s_cone *con
 	return ((t_hit_info){0});
 }
 
+__attribute__((hot))
 static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 {
 	t_real		denom;
@@ -127,7 +134,7 @@ static t_hit_info	intersect_cap(const t_ray *ray, const struct s_cone *cone)
 		return (create_hit(t, ray, cone, cone->axis));
 	return ((t_hit_info){0});
 }
-
+__attribute__((hot))
 t_hit_info	ray_hit_cone(const struct s_ray *ray, const void *elem)
 {
 	const struct s_cone	cone = ((struct s_elem *)elem)->u.cone;

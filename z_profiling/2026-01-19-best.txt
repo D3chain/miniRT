@@ -24,10 +24,10 @@ Each sample counts as 0.01 seconds.
   0.00      3.46     0.00        1     0.00     0.00  event_keyboard_press
   0.00      3.46     0.00        1     0.00     0.00  print_render
   0.00      3.46     0.00        1     0.00     0.00  render
-  0.00      3.46     0.00        1     0.00     0.00  scan_A
-  0.00      3.46     0.00        1     0.00     0.00  scan_C
-  0.00      3.46     0.00        1     0.00     0.00  scan_L
-  0.00      3.46     0.00        1     0.00     0.00  scan_R
+  0.00      3.46     0.00        1     0.00     0.00  scan_a
+  0.00      3.46     0.00        1     0.00     0.00  scan_c
+  0.00      3.46     0.00        1     0.00     0.00  scan_l
+  0.00      3.46     0.00        1     0.00     0.00  scan_r
   0.00      3.46     0.00        1     0.00     0.00  scan_pl
   0.00      3.46     0.00        1     0.00     0.00  setup_pl
   0.00      3.46     0.00        1     0.00     0.00  setup_viewport
@@ -76,11 +76,11 @@ index % time    self  children    called     name
                 2.21    0.00       1/1           bvh_subdivide [2]
                 0.00    0.01    2082/2082        scan_sp [14]
                 0.00    0.00       1/1           scan_pl [17]
-                0.00    0.00       1/1           scan_L [16]
-                0.00    0.00       1/1           scan_A [15]
+                0.00    0.00       1/1           scan_l [16]
+                0.00    0.00       1/1           scan_a [15]
                 0.00    0.00    2082/2082        setup_sp [22]
-                0.00    0.00       1/1           scan_C [27]
-                0.00    0.00       1/1           scan_R [28]
+                0.00    0.00       1/1           scan_c [27]
+                0.00    0.00       1/1           scan_r [28]
                 0.00    0.00       1/1           setup_pl [29]
                 0.00    0.00       1/1           setup_viewport [30]
                 0.00    0.00       1/1           bound_boxes [23]
@@ -128,8 +128,8 @@ index % time    self  children    called     name
                                                  <spontaneous>
 [10]     0.6    0.02    0.00                 _init [10]
 -----------------------------------------------
-                0.00    0.00       1/2085        scan_A [15]
-                0.00    0.00       1/2085        scan_L [16]
+                0.00    0.00       1/2085        scan_a [15]
+                0.00    0.00       1/2085        scan_l [16]
                 0.00    0.00       1/2085        scan_pl [17]
                 0.01    0.00    2082/2085        scan_sp [14]
 [11]     0.3    0.01    0.00    2085         scan_color [11]
@@ -147,12 +147,12 @@ index % time    self  children    called     name
                 0.00    0.00    2082/8346        scan_t_real [19]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[15]     0.0    0.00    0.00       1         scan_A [15]
+[15]     0.0    0.00    0.00       1         scan_a [15]
                 0.00    0.00       1/2085        scan_color [11]
                 0.00    0.00       1/8346        scan_t_real [19]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[16]     0.0    0.00    0.00       1         scan_L [16]
+[16]     0.0    0.00    0.00       1         scan_l [16]
                 0.00    0.00       1/2085        scan_color [11]
                 0.00    0.00       1/2087        scan_t_real3 [20]
                 0.00    0.00       1/8346        scan_t_real [19]
@@ -165,15 +165,15 @@ index % time    self  children    called     name
                 0.00    0.00   12933/12933       mlx_loop [87]
 [18]     0.0    0.00    0.00   12933         idle_scroll_reenable [18]
 -----------------------------------------------
-                0.00    0.00       1/8346        scan_C [27]
-                0.00    0.00       1/8346        scan_A [15]
-                0.00    0.00       1/8346        scan_L [16]
+                0.00    0.00       1/8346        scan_c [27]
+                0.00    0.00       1/8346        scan_a [15]
+                0.00    0.00       1/8346        scan_l [16]
                 0.00    0.00    2082/8346        scan_sp [14]
                 0.00    0.00    6261/8346        scan_t_real3 [20]
 [19]     0.0    0.00    0.00    8346         scan_t_real [19]
 -----------------------------------------------
-                0.00    0.00       1/2087        scan_L [16]
-                0.00    0.00       2/2087        scan_C [27]
+                0.00    0.00       1/2087        scan_l [16]
+                0.00    0.00       2/2087        scan_c [27]
                 0.00    0.00       2/2087        scan_pl [17]
                 0.00    0.00    2082/2087        scan_sp [14]
 [20]     0.0    0.00    0.00    2087         scan_t_real3 [20]
@@ -201,12 +201,12 @@ index % time    self  children    called     name
 [26]     0.0    0.00    0.00       1         render [26]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[27]     0.0    0.00    0.00       1         scan_C [27]
+[27]     0.0    0.00    0.00       1         scan_c [27]
                 0.00    0.00       2/2087        scan_t_real3 [20]
                 0.00    0.00       1/8346        scan_t_real [19]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[28]     0.0    0.00    0.00       1         scan_R [28]
+[28]     0.0    0.00    0.00       1         scan_r [28]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
 [29]     0.0    0.00    0.00       1         setup_pl [29]
@@ -310,8 +310,8 @@ Index by function name
   [23] bound_boxes (bound_boxes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [19] scan_t_real (scan_numbers.c)
    [8] bvh_any_hit (any_hit.c) [26] render (run_scene.c)  [20] scan_t_real3 (scan_numbers.c)
    [2] bvh_subdivide (bvh_build.c) [3] render_tile (render_routine.c) [29] setup_pl (setup_shapes.c)
-   [7] bvh_traverse (trace.c) [15] scan_A (scan_RCAL.c)   [22] setup_sp (setup_shapes.c)
-  [21] elem_bounding_box (elem_bounding_box.c) [27] scan_C (scan_RCAL.c) [30] setup_viewport (setup_viewport.c)
-  [24] event_keyboard_press (event_keyboard.c) [16] scan_L (scan_RCAL.c) [6] trace (trace.c)
-  [12] ft_memset              [28] scan_R (scan_RCAL.c)
+   [7] bvh_traverse (trace.c) [15] scan_a (scan_rcal.c)   [22] setup_sp (setup_shapes.c)
+  [21] elem_bounding_box (elem_bounding_box.c) [27] scan_c (scan_rcal.c) [30] setup_viewport (setup_viewport.c)
+  [24] event_keyboard_press (event_keyboard.c) [16] scan_l (scan_rcal.c) [6] trace (trace.c)
+  [12] ft_memset              [28] scan_r (scan_rcal.c)
   [13] ft_strlen              [11] scan_color (scan_numbers.c)

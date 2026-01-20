@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 20:27:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:24:28 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:40:13 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static inline void	increase_sample_amount(t_antialiasing *a)
 	a->samples = a->grid_size * a->grid_size;
 	a->inv_samples = FLT_1 / (t_real)a->samples;
 	a->inv_grid_size = FLT_1 / (t_real)a->grid_size;
-	a->offset_factor = FLT_0_5 - a->grid_size / FLT_2; 
+	a->offset_factor = FLT_0_5 - a->grid_size / FLT_2;
 	printf("Upsampling=%d\n", a->samples);
 }
 
@@ -56,7 +56,7 @@ static inline void	decrease_sample_amount(t_antialiasing *a)
 		a->samples = a->grid_size * a->grid_size;
 		a->inv_samples = FLT_1 / (t_real)a->samples;
 		a->inv_grid_size = FLT_1 / (t_real)a->grid_size;
-		a->offset_factor = FLT_0_5 - a->grid_size / FLT_2; 
+		a->offset_factor = FLT_0_5 - a->grid_size / FLT_2;
 		printf("Upsampling=%d\n", a->samples);
 	}
 }
@@ -76,4 +76,3 @@ void	update_antialiasing(int key, struct s_app *app)
 		decrease_sample_amount(&app->render.antialiasing);
 	render(app);
 }
-

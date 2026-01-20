@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 15:49:46 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:15:55 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_render(struct s_app *app);
 void	print_camera(struct s_app *app);
 
 void	print_map(struct s_app *app);
-void	print_RCAL(struct s_app *app, int fd);
+void	print_rcal(struct s_app *app, int fd);
 void	print_shapes(int fd, t_bvh_elem_box *e);
 void	print_shape_material(int fd, t_material *m);
 

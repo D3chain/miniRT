@@ -20,14 +20,14 @@ Each sample counts as 0.01 seconds.
   0.00      1.71     0.00       79     0.00     0.00  scan_sp
   0.00      1.71     0.00       77     0.00     0.00  setup_cy
   0.00      1.71     0.00       77     0.00     0.00  scan_cy
-  0.00      1.71     0.00        6     0.00     0.00  scan_L
+  0.00      1.71     0.00        6     0.00     0.00  scan_l
   0.00      1.71     0.00        1     0.00     0.00  bound_boxes
   0.00      1.71     0.00        1     0.00     0.00  bvh_subdivide
   0.00      1.71     0.00        1     0.00     0.00  event_keyboard_press
   0.00      1.71     0.00        1     0.00     0.00  print_bvh_tree
   0.00      1.71     0.00        1     0.00     0.00  render
-  0.00      1.71     0.00        1     0.00     0.00  scan_A
-  0.00      1.71     0.00        1     0.00     0.00  scan_C
+  0.00      1.71     0.00        1     0.00     0.00  scan_a
+  0.00      1.71     0.00        1     0.00     0.00  scan_c
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -112,23 +112,23 @@ index % time    self  children    called     name
                                                  <spontaneous>
 [10]     0.6    0.01    0.00                 ft_dblcmp [10]
 -----------------------------------------------
-                0.00    0.00       1/964         scan_C [26]
-                0.00    0.00       1/964         scan_A [25]
-                0.00    0.00       6/964         scan_L [19]
+                0.00    0.00       1/964         scan_c [26]
+                0.00    0.00       1/964         scan_a [25]
+                0.00    0.00       6/964         scan_l [19]
                 0.00    0.00      79/964         scan_sp [16]
                 0.00    0.00     154/964         scan_cy [18]
                 0.00    0.00     723/964         scan_t_real3 [12]
 [11]     0.0    0.00    0.00     964         scan_t_real [11]
 -----------------------------------------------
-                0.00    0.00       2/241         scan_C [26]
-                0.00    0.00       6/241         scan_L [19]
+                0.00    0.00       2/241         scan_c [26]
+                0.00    0.00       6/241         scan_l [19]
                 0.00    0.00      79/241         scan_sp [16]
                 0.00    0.00     154/241         scan_cy [18]
 [12]     0.0    0.00    0.00     241         scan_t_real3 [12]
                 0.00    0.00     723/964         scan_t_real [11]
 -----------------------------------------------
-                0.00    0.00       1/163         scan_A [25]
-                0.00    0.00       6/163         scan_L [19]
+                0.00    0.00       1/163         scan_a [25]
+                0.00    0.00       6/163         scan_l [19]
                 0.00    0.00      77/163         scan_cy [18]
                 0.00    0.00      79/163         scan_sp [16]
 [13]     0.0    0.00    0.00     163         scan_color [13]
@@ -155,7 +155,7 @@ index % time    self  children    called     name
                 0.00    0.00      77/163         scan_color [13]
 -----------------------------------------------
                 0.00    0.00       6/6           main [56]
-[19]     0.0    0.00    0.00       6         scan_L [19]
+[19]     0.0    0.00    0.00       6         scan_l [19]
                 0.00    0.00       6/241         scan_t_real3 [12]
                 0.00    0.00       6/964         scan_t_real [11]
                 0.00    0.00       6/163         scan_color [13]
@@ -183,12 +183,12 @@ index % time    self  children    called     name
 [24]     0.0    0.00    0.00       1         render [24]
 -----------------------------------------------
                 0.00    0.00       1/1           main [56]
-[25]     0.0    0.00    0.00       1         scan_A [25]
+[25]     0.0    0.00    0.00       1         scan_a [25]
                 0.00    0.00       1/964         scan_t_real [11]
                 0.00    0.00       1/163         scan_color [13]
 -----------------------------------------------
                 0.00    0.00       1/1           main [56]
-[26]     0.0    0.00    0.00       1         scan_C [26]
+[26]     0.0    0.00    0.00       1         scan_c [26]
                 0.00    0.00       2/241         scan_t_real3 [12]
                 0.00    0.00       1/964         scan_t_real [11]
 -----------------------------------------------
@@ -283,12 +283,12 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [8] _init                  [22] event_keyboard_press (event.c) [19] scan_L (scan_CAL.c)
+   [8] _init                  [22] event_keyboard_press (event.c) [19] scan_l (scan_cAL.c)
    [1] antialiasing (antialiasing.c) [9] ft_dabs          [13] scan_color (scan_numbers.c)
   [20] bound_boxes (bound_boxes.c) [10] ft_dblcmp         [18] scan_cy (scan_elem.c)
    [4] bvh_any_hit (any_hit.c) [23] print_bvh_tree (print_bvh_tree.c) [16] scan_sp (scan_elem.c)
   [21] bvh_subdivide (bvh_build.c) [6] ray_hit_cylinder (ray_hit_cylinder.c) [11] scan_t_real (scan_numbers.c)
    [5] bvh_traverse (trace.c)  [7] ray_hit_sphere (ray_hit_sphere.c) [12] scan_t_real3 (scan_numbers.c)
   [17] setup_cy (setup_elem.c) [24] render (run_scene.c) [3] trace (trace.c)
-  [15] setup_sp (setup_elem.c) [25] scan_A (scan_CAL.c)
-  [14] elem_bounding_box (elem_bounding_box.c) [26] scan_C (scan_CAL.c)
+  [15] setup_sp (setup_elem.c) [25] scan_a (scan_cAL.c)
+  [14] elem_bounding_box (elem_bounding_box.c) [26] scan_c (scan_cAL.c)

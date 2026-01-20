@@ -15,10 +15,10 @@
 void	print_shape_material(int fd, t_material *m)
 {
 	static const char	*factors[] = MAT_FACTORS;
-	const t_real 		values[] = {m->ka, m->kd, m->ks, m->shininess, m->ior};
+	const t_real		values[] = {m->ka, m->kd, m->ks, m->shininess, m->ior};
 	int					i;
 
-	i= -1;
+	i = -1;
 	while (++i < N_MAT_FACTORS)
 		dprintf(fd, "\t%s="REAL, factors[i], values[i]);
 }

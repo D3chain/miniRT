@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 13:05:03 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:26:04 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ struct s_app
 
 /*	PROTOTYPES	*/
 
-int		init_app(struct s_app *app, int argc, char *argv[]);
-
+int		init_app(struct s_app *app);
 void	cleanup_app(struct s_app *app);
 
 #endif

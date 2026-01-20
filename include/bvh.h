@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:18:50 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 17:06:46 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:40:08 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ struct s_bvh_node
 	t_bvh_base		*right;
 	
 };
+
+typedef struct s_hit_info (*t_ray_hit_fn[])(const struct s_ray *, const void*);
 
 /*	Construction of the BVH tree	*/
 void		bvh_build(struct s_app *app, struct s_scene *scene);

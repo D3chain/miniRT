@@ -12,6 +12,52 @@
 
 #include "minirt.h"
 
+static void	init_antialiasing(struct s_app *app)
+{
+	app->render.antialiasing.enabled = UPSAMPLING_INIT_ACTIV;
+	app->render.antialiasing.rfn = antialiasing;
+	app->render.antialiasing.tfn = render_tile;
+	app->render.antialiasing.samples = UPSAMPLING;
+	app->render.antialiasing.inv_samples = FLT_1 / UPSAMPLING;
+	app->render.antialiasing.grid_size = sqrt(UPSAMPLING);
+	app->render.antialiasing.inv_grid_size = \
+		FLT_1 / app->render.antialiasing.grid_size;
+	app->render.antialiasing.offset_factor = \
+		FLT_0_5 - app->render.antialiasing.grid_size / FLT_2;
+	app->render.antialiasing.downsample_activation = \
+		DOWNSAMPLING_INIT_ACTIV;
+	app->render.antialiasing.downsample_state = false;
+	app->render.antialiasing.downsample_rate = DOWNSAMPLING;
+}
+
+static void	init_render(struct s_app *app)
+{
+	app->render.tile_side = TILE_SIDE;
+	app->render.tile_area = TILE_SIDE * TILE_SIDE;
+	app->render.resolution = \
+		app->mlx.screen.resolution.x * app->mlx.screen.resolution.y;
+	app->render.n_tiles = \
+		ceil((t_real) app->render.resolution / app->render.tile_area);
+	while (app->render.n_tiles < app->threads.cpu_cores \
+			&& app->render.tile_side > 1)
+	{
+		app->render.tile_side /= 2;
+		app->render.tile_area = app->render.tile_side * app->render.tile_side;
+		app->render.n_tiles = \
+			(app->render.resolution + app->render.tile_area - 1) \
+			/ app->render.tile_area;
+	}
+	app->render.inv_tile_side = FLT_1 / app->render.tile_side;
+}
+
+static int	init_threads(struct s_app *app)
+{
+	app->threads.cpu_cores = sysconf(_SC_NPROCESSORS_ONLN) - 1;
+	app->threads.th_tab = \
+		xcalloc(app, app->threads.cpu_cores * sizeof(struct s_thread));
+	return (app->status);
+}
+
 static int	init_mlx(struct s_app *app)
 {
 	struct s_mlx	mlx;
@@ -20,13 +66,15 @@ static int	init_mlx(struct s_app *app)
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		return (app->status = ERR_MLX);
-	mlx.img.img = mlx_new_image(mlx.mlx, mlx.screen.resolution.x, mlx.screen.resolution.y);
+	mlx.img.img = mlx_new_image(\
+		mlx.mlx, mlx.screen.resolution.x, mlx.screen.resolution.y);
 	if (!mlx.img.img)
 	{
 		mlx_destroy_display(mlx.mlx);
 		return (app->status = ERR_MLX);
 	}
-	mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bpp, &mlx.img.size_line, &mlx.img.endian);
+	mlx.img.addr = mlx_get_data_addr(\
+		mlx.img.img, &mlx.img.bpp, &mlx.img.size_line, &mlx.img.endian);
 	if (!mlx.img.addr)
 	{
 		mlx_destroy_image(mlx.mlx, mlx.img.img);
@@ -37,47 +85,15 @@ static int	init_mlx(struct s_app *app)
 	return (0);
 }
 
-int	init_threads(struct s_app *app)
-{
-	app->threads.cpu_cores = sysconf(_SC_NPROCESSORS_ONLN) - 1;
-	app->threads.th_tab = xcalloc(app, app->threads.cpu_cores * sizeof(struct s_thread));
-	return (app->status);
-}
-
-void	init_graphic_data(struct s_app *app)
-{
-	app->render.antialiasing.enabled = UPSAMPLING_INIT_ACTIV;
-	app->render.antialiasing.rfn = antialiasing;
-	app->render.antialiasing.tfn = render_tile;
-	app->render.antialiasing.samples = UPSAMPLING;
-	app->render.antialiasing.inv_samples = FLT_1 / UPSAMPLING;
-	app->render.antialiasing.grid_size = sqrt(UPSAMPLING);
-	app->render.antialiasing.inv_grid_size = FLT_1 / app->render.antialiasing.grid_size;
-	app->render.resolution = app->mlx.screen.resolution.x * app->mlx.screen.resolution.y;
-	app->render.antialiasing.offset_factor = FLT_0_5 - app->render.antialiasing.grid_size / FLT_2;
-	app->render.antialiasing.downsample_activation = DOWNSAMPLING_INIT_ACTIV;
-	app->render.antialiasing.downsample_state = false;
-	app->render.antialiasing.downsample_rate = DOWNSAMPLING;
-	app->render.tile_side = TILE_SIDE;
-	app->render.tile_area  = TILE_SIDE * TILE_SIDE;
-	app->render.n_tiles = ceil((t_real) app->render.resolution / app->render.tile_area);
-	while (app->render.n_tiles < app->threads.cpu_cores && app->render.tile_side > 1)
-	{
-		app->render.tile_side /= 2;
-		app->render.tile_area = app->render.tile_side * app->render.tile_side;
-		app->render.n_tiles = (app->render.resolution + app->render.tile_area - 1) / app->render.tile_area;
-	}
-	app->render.inv_tile_side = FLT_1 / app->render.tile_side;
-	update_camera(app, &app->scene.camera);
-	print_render(app);
-}
-
-int	init_app(struct s_app *app, int argc, char *argv[])
+int	init_app(struct s_app *app)
 {
 	if (init_mlx(app))
 		return (app->status);
-		if (init_threads(app))
-			return (app->status);
-	init_graphic_data(app);
+	if (init_threads(app))
+		return (app->status);
+	init_render(app);
+	init_antialiasing(app);
+	update_camera(app, &app->scene.camera);
+	print_render(app);
 	return (ERR_NONE);
 }

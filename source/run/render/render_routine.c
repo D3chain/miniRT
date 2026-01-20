@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_routine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 00:19:42 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 19:53:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ static int	get_th_idx(struct s_thread *t)
 	return (th_idx);
 }
 
-static bool	next_tile(struct s_app *app, int cores, t_int2 *coord, t_int2 screen_resolution)
+static bool
+	next_tile(struct s_app *app, int cores, \
+		t_int2 *coord, t_int2 screen_resolution)
 {
 	coord->x = coord->x + app->render.tile_side * cores;
 	while (true)
@@ -44,7 +46,8 @@ static bool	next_tile(struct s_app *app, int cores, t_int2 *coord, t_int2 screen
 			coord->y += app->render.tile_side;
 			if (coord->y >= screen_resolution.y)
 				return (false);
-			coord->x = (int)(coord->x * app->render.inv_tile_side) % cores * app->render.tile_side;
+			coord->x = (int)(coord->x * app->render.inv_tile_side) % cores \
+			* app->render.tile_side;
 		}
 		else
 			return (true);
@@ -99,11 +102,12 @@ inline void	render_tile(struct s_app *app, t_int2 tile, render_fn rend)
 	const t_int2	start = {tile.x, tile.y};
 	t_int2			end;
 	t_int2			coord;
-	
-	end = (t_int2){tile.x + app->render.tile_side, tile.y + app->render.tile_side};
-	if (end.x > r.x) 
+
+	end = (t_int2){tile.x + app->render.tile_side, tile.y \
+		+ app->render.tile_side};
+	if (end.x > r.x)
 		end.x = r.x;
-	if (end.y > r.y) 
+	if (end.y > r.y)
 		end.y = r.y;
 	coord.y = start.y;
 	while (coord.y < end.y)
@@ -111,7 +115,7 @@ inline void	render_tile(struct s_app *app, t_int2 tile, render_fn rend)
 		coord.x = start.x;
 		while (coord.x < end.x)
 		{
-			draw_pixel_to_img(&app->mlx.img, app->mlx.screen.resolution, coord, 
+			draw_pixel_to_img(&app->mlx.img, app->mlx.screen.resolution, coord, \
 				linear_to_srgb_color(rend(app, coord.x, coord.y)).value);
 			++coord.x;
 		}
@@ -119,7 +123,7 @@ inline void	render_tile(struct s_app *app, t_int2 tile, render_fn rend)
 	}
 }
 
-void *render_routine(void *p)
+void	*render_routine(void *p)
 {
 	struct s_app	*app;
 	t_int2			coord;
@@ -129,7 +133,6 @@ void *render_routine(void *p)
 	app = p;
 	cores = app->threads.cpu_cores;
 	th_idx = get_th_idx(&app->threads);
-
 	coord.y = 0;
 	coord.x = th_idx * app->render.tile_side;
 	while (true)

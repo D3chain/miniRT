@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 17:18:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:11:18 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ struct s_scene;
 # define	N_SCENE_ITEMS	8
 # define	N_SETUP_ITEMS	4
 # define	N_SCENE_ELEMS	(N_SCENE_ITEMS - N_SETUP_ITEMS)
-
-# define	SCENE_ITEMS		{"R", "A", "C", "L", "pl", "sp", "cy", "co"}
-
-
 
 /*	refraction coefficients	*/
 # define IOR_AIR    		1.0

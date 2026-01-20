@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_RCAL.c                                        :+:      :+:    :+:   */
+/*   scan_rcal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 16:20:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 19:09:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	scan_R(struct s_app *app, const char *line, int _)
+int	scan_r(struct s_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_int(app, &app->mlx.screen.resolution.x, line);
@@ -28,7 +28,7 @@ int	scan_R(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_C(struct s_app *app, const char *line, int _)
+int	scan_c(struct s_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_t_real3(app, &app->scene.camera.focal_center, line);
@@ -48,7 +48,7 @@ int	scan_C(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_A(struct s_app *app, const char *line, int _)
+int	scan_a(struct s_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_t_real(app, &app->scene.ambient.ratio, line);
@@ -62,10 +62,10 @@ int	scan_A(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_L(struct s_app *app, const char *line, int _)
+int	scan_l(struct s_app *app, const char *line, int _)
 {
 	static int	light_index;
-	
+
 	(void) _;
 	line += scan_t_real3(app, &app->scene.light[light_index].coord, line);
 	if (app->status)

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:52:39 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 16:46:38 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:31:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ enum {
 	IOR__	
 };
 
-typedef int (*scan_fn[N_SCENE_ITEMS])(struct s_app *, const char *, int);
+typedef int		(*t_scan_fn[N_SCENE_ITEMS])(struct s_app *, const char *, int);
+typedef void	(*t_setup_fn[N_SCENE_ELEMS])(struct s_app *, struct s_elem *);
 
 int		load_scene(struct s_app *app);
 
-int		scan_R(struct s_app *app, const char *line, int _);
-int		scan_C(struct s_app *app, const char *line, int _);
-int		scan_A(struct s_app *app, const char *line, int _);
-int		scan_L(struct s_app *app, const char *line, int _);
+int		scan_r(struct s_app *app, const char *line, int _);
+int		scan_c(struct s_app *app, const char *line, int _);
+int		scan_a(struct s_app *app, const char *line, int _);
+int		scan_l(struct s_app *app, const char *line, int _);
 
 int		scan_pl(struct s_app *app, const char *line, int i_elem);
 int		scan_sp(struct s_app *app, const char *line, int i_elem);
@@ -45,11 +46,11 @@ int		scan_co(struct s_app *app, const char *line, int i_elem);
 
 void	scan_material(struct s_app *app, const char *line, t_material *mat);
 
-void	setup_RCAL(struct s_app *app);
-void	setup_R(struct s_app *app, struct s_screen *screen);
-void	setup_A(struct s_app *app, struct s_ambient *ambient);
-void	setup_C(struct s_app *app, struct s_camera *camera, bool setup_pan_speed);
-void	setup_L(struct s_app *app, struct s_light *light);
+void	setup_rcal(struct s_app *app);
+void	setup_r(struct s_app *app, struct s_screen *screen);
+void	setup_a(struct s_app *app, struct s_ambient *ambient);
+void	setup_c(struct s_app *app, struct s_camera *camera, bool setup_pan_speed);
+void	setup_l(struct s_app *app, struct s_light *light);
 
 void	setup_pl(struct s_app *app, struct s_elem *elem);
 void	setup_sp(struct s_app *app, struct s_elem *elem);

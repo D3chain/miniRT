@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 14:03:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 11:29:27 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/20 19:32:48 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/20 20:32:02 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ int	event_mouse_close(struct s_app *app)
 __attribute__((always_inline))
 static inline long	get_elapsed_ms(struct timeval start, struct timeval end)
 {
-	return (
-		(end.tv_sec - start.tv_sec) * 1000 + (end.tv_usec - start.tv_usec) / 1000
-	);
+	return ((end.tv_sec - start.tv_sec) * 1000
+		+ (end.tv_usec - start.tv_usec) / 1000);
 }
 
 int	idle_scroll_reenable(void *p)
@@ -31,12 +30,13 @@ int	idle_scroll_reenable(void *p)
 	struct s_app	*app;
 	struct timeval	now;
 	long			elapsed_ms;
-	
+
 	app = p;
 	if (app->scene.camera.mouse.is_scrolling)
 	{
 		gettimeofday(&now, NULL);
-		elapsed_ms = get_elapsed_ms(app->scene.camera.mouse.last_action_time, now);
+		elapsed_ms = \
+			get_elapsed_ms(app->scene.camera.mouse.last_action_time, now);
 		if (elapsed_ms >= IDLE_SCROLL_REENABLE_TILE)
 		{
 			app->scene.camera.mouse.is_scrolling = false;
@@ -64,16 +64,16 @@ int	event_mouse_click(int button, int x, int y, struct s_app *app)
 			factor = -FLT_1;
 		else
 			factor = FLT_1;
-		camera_zoom(app, &app->scene.camera, factor * app->scene.camera.mouse.pan_speed);
-		setup_C(app, &app->scene.camera, false);
+		camera_zoom(\
+			app, &app->scene.camera, factor \
+			* app->scene.camera.mouse.pan_speed);
+		setup_c(app, &app->scene.camera, false);
 	}	
 	return (0);
 }
 
 int	event_mouse_release(int button, int x, int y, struct s_app *app)
 {
-	t_real2	xy_offset;
-	
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
 	if (button == Button1 || button == Button2 || button == Button3)
 	{

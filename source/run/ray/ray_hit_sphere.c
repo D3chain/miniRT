@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 18:45:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 20:08:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 	t_hit_info					closest_hit;
 	const struct s_sphere		sphere = ((struct s_elem *)elem)->u.sphere;
 	const t_real3				offset = minus3(ray->origin, sphere.coord);
-	const t_sol2				dst = polynome2(dot(ray->dir, ray->dir),
-				FLT_2 * dot(offset, ray->dir),
-				dot(offset, offset) - sphere.radius_sq);
-	
+	const t_sol2				dst = polynome2(dot(ray->dir, ray->dir), \
+									FLT_2 * dot(offset, ray->dir), \
+									dot(offset, offset) - sphere.radius_sq);
+
 	closest_hit.did_hit = false;
 	if (dst.n)
 	{
@@ -28,8 +28,11 @@ t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
 		closest_hit.did_hit = (closest_hit.dst >= EPSILON);
 		if (closest_hit.did_hit)
 		{
-			closest_hit.hit_point = project(ray->origin, ray->dir, closest_hit.dst);
-			closest_hit.normal = orient_normal(normalize3(minus3(closest_hit.hit_point, sphere.coord)), ray->dir);
+			closest_hit.hit_point = \
+				project(ray->origin, ray->dir, closest_hit.dst);
+			closest_hit.normal = \
+				orient_normal(normalize3(\
+					minus3(closest_hit.hit_point, sphere.coord)), ray->dir);
 			closest_hit.material = sphere.material;
 		}
 	}
