@@ -6,14 +6,14 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/20 15:52:34 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/20 17:13:25 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
 # CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -g3
-CFLAGS		:=	-MMD -MP -g3 -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
+CFLAGS		:=	-MMD -MP -g3 #-ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -29,6 +29,15 @@ ROOT_SRC	:=	main.c
 # Application core
 APP_SRC		:=	init_app.c															\
 				cleanup_app.c
+
+# BVH (Bounding Volume Hierarchy)
+BVH_SRC		:=	bvh_build.c															\
+				bvh_destroy.c														\
+				elem_bounding_box.c													\
+				bound_boxes.c														\
+				sort_elems.c														\
+				collision_aabb.c													\
+				any_hit.c
 
 # Colors and lighting
 COLOR_SRC	:=	color_linear_conversion.c											\
@@ -65,13 +74,6 @@ UPDATE_SRC	:=	event/update/update_antialiasing.c									\
 				event/update/update_downsampling.c									\
 				event/update/update_shapes_coord.c
 
-# BVH (Bounding Volume Hierarchy)
-BVH_SRC		:=	bvh/bvh_build.c														\
-				bvh/elem_bounding_box.c												\
-				bvh/bound_boxes.c													\
-				bvh/sort_elems.c													\
-				bvh/collision_aabb.c												\
-				bvh/any_hit.c
 
 # Ray tracing
 RAY_SRC		:=	ray/init_ray.c														\
@@ -93,7 +95,6 @@ RENDER_SRC	:=	render/render_routine.c												\
 RUN_SRC		:=	run_scene.c															\
 				$(EVENT_SRC)														\
 				$(UPDATE_SRC)														\
-				$(BVH_SRC)															\
 				$(RAY_SRC)															\
 				$(RENDER_SRC)
 
@@ -118,13 +119,14 @@ WRAPPER_SRC	:=	xmalloc.c															\
 				xopen.c
 
 SRC_PATHS	:=	$(addprefix app/,$(APP_SRC))										\
+				$(addprefix bvh/,$(BVH_SRC))										\
 				$(addprefix color/,$(COLOR_SRC))									\
 				$(addprefix error/,$(ERROR_SRC))									\
 				$(addprefix load/,$(LOAD_SRC))										\
 				$(addprefix math/,$(MATH_SRC))										\
 				$(addprefix run/,$(RUN_SRC))										\
 				$(addprefix setup/,$(SETUP_SRC))									\
-				$(addprefix print/,$(PRINT_SRC))										\
+				$(addprefix print/,$(PRINT_SRC))									\
 				$(addprefix wrapper/,$(WRAPPER_SRC))								\
 				$(ROOT_SRC)
 

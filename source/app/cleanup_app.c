@@ -1,28 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_up.c                                         :+:      :+:    :+:   */
+/*   cleanup_app.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:57:25 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/14 13:57:39 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 17:45:36 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+static void	clean_scene(struct s_scene *scene)
+{
+	if (scene->light)
+		free(scene->light);
+	if (scene->elems)
+		free(scene->elems);
+	if (scene->elems_inf)
+		free(scene->elems_inf);
+}
+
+static void	clean_mlx(struct s_mlx *mlx)
+{
+	if (mlx->win)
+		mlx_destroy_window(mlx->mlx, mlx->win);
+	if (mlx->img.img)
+		mlx_destroy_image(mlx->mlx, mlx->img.img);
+	if (mlx->mlx)
+	{
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
+	}
+}
+
+static void	clean_threading(struct s_thread *t)
+{
+	if (t->th_tab)
+		free(t->th_tab);
+}
+
 void	cleanup_app(struct s_app *app)
 {
-	if (app->mlx.mlx)
-	{
-		if (app->mlx.win)
-			mlx_destroy_window(app->mlx.mlx, app->mlx.win);
-		if (app->mlx.img.img)
-			mlx_destroy_image(app->mlx.mlx, app->mlx.img.img);
-		mlx_destroy_display(app->mlx.mlx);
-		free(app->mlx.mlx);
-	}
-	if (app->scene.elems)
-		free(app->scene.elems);
+	clean_scene(&app->scene);
+	bvh_destroy(app->scene.bvh_root);
+	clean_threading(&app->threads);
+	clean_mlx(&app->mlx);
 }

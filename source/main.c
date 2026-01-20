@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 22:36:11 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 17:40:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-/* phony functions for compilation */
-
-
-
-void	print_error(struct s_app *app)
+static void	print_error(struct s_app *app)
 {
-	;
+	if (app->status == ERR_SYS)
+		dprintf(STDERR_FILENO, "Fatal system error, restart MiniRT.\n");
+	if (app->status == ERR_MLX)
+		dprintf(STDERR_FILENO, "Fatal MLX error, restart MiniRT.\n");
+	if (app->status == ERR_PARS)
+		dprintf(STDERR_FILENO, "Parsing error, restart MiniRT with a valid [filename.rt] file.\n");
 }
-
-/* ************************************************************************** */
 
 static int	check_arg(struct s_app *app, int argc, char *argv[])
 {
@@ -45,7 +44,6 @@ int	main(int argc, char *argv[])
 {
 	struct s_app	app;
 
-	srand(time(NULL));
 	ft_memset(&app, 0, sizeof(app));
 	if (check_arg(&app, argc, argv))
 		return (ERR_PARS);

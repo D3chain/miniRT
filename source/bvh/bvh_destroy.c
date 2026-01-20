@@ -1,50 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   bvh_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 15:02:09 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 17:34:55 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/20 17:02:40 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/20 17:22:19 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minirt.h"
 
-enum e_status
+void	bvh_destroy(t_bvh_base *root)
 {
-	ERR_NONE	= 0,
-	ERR_SYS		= 1,
-	ERR_MLX		= 2,
-	ERR_PARS	= 3
-};
-
-struct s_real2
-{
-    t_real  x;
-    t_real  y;
-};
-
-struct s_real3
-{
-    t_real  x;
-    t_real  y;
-    t_real  z;
-};
-
-struct s_int2
-{
-	int	x;
-	int	y;
-};
-
-struct s_int3
-{
-	int	x;
-	int	y;
-	int	z;
-};
-
-#endif
+	if (!root)
+		return ;
+	if (root->type == NODE_BOX)
+	{
+		bvh_destroy((t_bvh_base *)((t_bvh_node *)root)->left);
+		bvh_destroy((t_bvh_base *)((t_bvh_node *)root)->right);
+	}
+	free(root);
+}

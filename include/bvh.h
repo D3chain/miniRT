@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:18:50 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:18:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 17:06:46 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void		sort_elems(t_bvh_elem_box *cur_box, t_div_axis div_axis);
 void		bound_boxes(t_bvh_base *node);
 t_boundbox	elem_bounding_box(struct s_elem *elem);
 
+/*	Destruction of the BVH tree		*/
+void		bvh_destroy(t_bvh_base *root);
 
 /*	Traversal of the BVH and hit analysis	*/
 t_hit_info	bvh_traverse(t_bvh_base *tree, t_ray *ray);

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 17:36:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 17:18:18 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ struct s_mouse
 	int						button;
 
 	struct s_mouse_position	pos;
-	
-	// struct s_mouse_motion	zoom;
-	// struct s_mouse_motion	motion;
 
 	struct timeval			last_action_time;
 	bool					is_scrolling;
