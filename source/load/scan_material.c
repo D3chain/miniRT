@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_material.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:26:42 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 00:01:11 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:37:33 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	scan_material(struct s_app *app, const char *line, t_material *mat)
 	{
 		scanned = ft_strstr(line, param[i]);
 		if (!scanned)
-		continue ;
-			scan_t_real(app, &param_value, scanned + LEN_FACTOR_NAME + 1);
+			continue ;
+		scan_t_real(app, &param_value, scanned + LEN_FACTOR_NAME + 1);
 		if (i == K_AMB)
 			set_param(&mat->ka, param_value, MIN_KA);
 		else if (i == K_DIF)

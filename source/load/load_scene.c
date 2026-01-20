@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   load_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 00:23:59 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:53:56 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+typedef struct s_elem_iter
+{
+	int				i;
+	int				*cur_i;
+	int				i_elem;
+	int				i_elem_inf;
+	struct s_elem	*tab;
+} t_elem_iter;
 
 static char	*next_tok(const char *str)
 {
@@ -52,26 +61,30 @@ static void	count_scene_from_file(struct s_app *app, const char *file)
 
 static int	scan_file(struct s_app *app, const char *line)
 {
-	static int			(*scan_fct[N_SCENE_ITEMS])(struct s_app *, \
-							const char *, int *) = {scan_R, scan_A, scan_C, \
-								scan_L, scan_pl, scan_sp, scan_cy, scan_co};
-	int					i;
-	static int			i_elem;
-	static int			i_elem_inf;
+	static scan_fn		sfn = {scan_R, scan_A, scan_C, \
+							scan_L, scan_pl, scan_sp, scan_cy, scan_co};
 	static const char	*l_elem[N_SCENE_ITEMS] = SCENE_ITEMS;
+	static t_elem_iter	it;
 
-	i = -1;
-	while (++i < N_SCENE_ITEMS)
-		if (ft_strncmp(l_elem[i], line, ft_strlen(l_elem[i])) == 0)
+	it.i = -1;
+	while (++it.i < N_SCENE_ITEMS)
+		if (ft_strncmp(l_elem[it.i], line, ft_strlen(l_elem[it.i])) == 0)
 		{
-			scan_fct[i](app, next_tok(line), &i_elem);
-			if (i == N_SETUP_ITEMS)
-				scan_material(app, line, &app->scene.elems_inf[i_elem_inf++].u.any.material);
-			else if (i > N_SETUP_ITEMS)
-				scan_material(app, line, &app->scene.elems[i_elem++].u.any.material);
+			it.cur_i = &it.i_elem;
+			it.tab = app->scene.elems;
+			if (it.i == N_SETUP_ITEMS)	
+			{
+				it.tab = app->scene.elems_inf;
+				it.cur_i = &it.i_elem_inf;
+			}
+			sfn[it.i](app, next_tok(line), *it.cur_i);
+			if (app->status)
+				return (app->status);
+			if (it.i >= N_SETUP_ITEMS)
+				scan_material(app, line, &it.tab[(*it.cur_i)++].u.any.material);
 			break ;
 		}
-	return (app->status = (ERR_PARS * (i == N_SCENE_ITEMS)));
+	return (app->status = (ERR_PARS * (it.i == N_SCENE_ITEMS)));
 }
 
 static int	scan_scene_from_file(struct s_app *app, const char *file)

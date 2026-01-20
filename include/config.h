@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 23:41:29 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 15:36:06 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 # define ZOOM_TO_PAN_RATIO			10
 
 
-# define OBJ_DRAG_DIV_FACTOR		FLT_0_2
+# define OBJ_DRAG_DIV_FACTOR		FLT_0_3
 
 # define ZOOM_BASE_PAN_SPEED		FLT_0_5
 # define ZOOM_FAST_PAN_SPEED		FLT_2

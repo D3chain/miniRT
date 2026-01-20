@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/19 17:49:44 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/20 15:52:34 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ PRINT_SRC	:=	print_bvh_tree.c													\
 				print_map.c															\
 				print_RCAL.c														\
 				print_shapes.c														\
+				print_shape_material.c												\
 				print_parameters.c													\
 				printf_real_values.c
 

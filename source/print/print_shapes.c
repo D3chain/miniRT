@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:26:21 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 15:28:31 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 15:53:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	print_sp(struct s_elem *e, int fd)
 {
 	struct s_sphere	*sphere = (struct s_sphere *) e;
 	
-	dprintf(fd, "sp\t"REAL3"\t"REAL"\t"COLOR_RGB"\n",
+	dprintf(fd, "sp\t"REAL3"\t"REAL"\t"COLOR_RGB,
 		e->u.sphere.coord.x,
 		e->u.sphere.coord.y,
 		e->u.sphere.coord.z,
@@ -31,7 +31,7 @@ static void	print_cy(struct s_elem *e, int fd)
 {
 	struct s_cylinder	*cylinder = (struct s_cylinder *) e;
 	
-	dprintf(fd, "cy\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB"\n",
+	dprintf(fd, "cy\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB,
 		e->u.cylinder.coord.x,
 		e->u.cylinder.coord.y,
 		e->u.cylinder.coord.z,		
@@ -50,7 +50,7 @@ static void	print_co(struct s_elem *e, int fd)
 {
 	struct s_cone	*cone = (struct s_cone *) e;
 	
-	dprintf(fd, "co\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB"\n",
+	dprintf(fd, "co\t"REAL3"\t"REAL3"\t""\t"REAL"\t""\t"REAL"\t"COLOR_RGB,
 		e->u.cone.coord.x,
 		e->u.cone.coord.y,
 		e->u.cone.coord.z,		
@@ -73,5 +73,9 @@ void	print_shapes(int fd, t_bvh_elem_box *e)
 
 	i = -1;
 	while (++i < e->n_elems)
+	{
 		print_fn[e->elems[i].type - 1]((struct s_elem *) &e->elems[i], fd);
+		print_shape_material(fd, &e->elems[i].u.any.material);
+		dprintf(fd, "\n");
+	}
 }

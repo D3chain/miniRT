@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:52:39 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 00:01:11 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:46:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,19 @@ enum {
 	IOR__	
 };
 
+typedef int (*scan_fn[N_SCENE_ITEMS])(struct s_app *, const char *, int);
+
 int		load_scene(struct s_app *app);
 
-int		scan_R(struct s_app *app, const char *line, int *_);
-int		scan_C(struct s_app *app, const char *line, int *_);
-int		scan_A(struct s_app *app, const char *line, int *_);
-int		scan_L(struct s_app *app, const char *line, int *_);
+int		scan_R(struct s_app *app, const char *line, int _);
+int		scan_C(struct s_app *app, const char *line, int _);
+int		scan_A(struct s_app *app, const char *line, int _);
+int		scan_L(struct s_app *app, const char *line, int _);
 
-int		scan_pl(struct s_app *app, const char *line, int *_);
-int		scan_sp(struct s_app *app, const char *line, int *i_elem);
-int		scan_cy(struct s_app *app, const char *line, int *i_elem);
-int		scan_co(struct s_app *app, const char *line, int *i_elem);
+int		scan_pl(struct s_app *app, const char *line, int i_elem);
+int		scan_sp(struct s_app *app, const char *line, int i_elem);
+int		scan_cy(struct s_app *app, const char *line, int i_elem);
+int		scan_co(struct s_app *app, const char *line, int i_elem);
 
 void	scan_material(struct s_app *app, const char *line, t_material *mat);
 

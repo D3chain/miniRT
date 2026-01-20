@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:10:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 15:53:35 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	print_pl(struct s_elem *e, int fd)
 {
 	struct s_plane	*plane = (struct s_plane *) e;
 	
-	dprintf(fd, "pl\t"REAL3"\t"REAL3"\t"COLOR_RGB"\n",
+	dprintf(fd, "pl\t"REAL3"\t"REAL3"\t"COLOR_RGB,
 		e->u.plane.coord.x,
 		e->u.plane.coord.y,
 		e->u.plane.coord.z,
@@ -35,7 +35,11 @@ static void	print_planes(int fd, struct s_scene *scene)
 
 	i = -1;
 	while (++i < scene->n_elem_inf)
-		print_pl(&scene->elems_inf[i], fd);	
+	{
+		print_pl(&scene->elems_inf[i], fd);
+		print_shape_material(fd, &scene->elems_inf[i].u.any.material);
+		dprintf(fd, "\n");
+	}
 	dprintf(fd, "\n");
 }
 

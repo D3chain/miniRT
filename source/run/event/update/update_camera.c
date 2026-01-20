@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:24:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/20 15:33:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static inline t_real3	rotate_around_axis(t_real3 vec, t_real3 axis, t_real angle
 	return (plus3(r.term1, plus3(r.term2, r.term3)));
 }
 
-void camera_view(struct s_app *app, struct s_camera *camera, t_real2 delta_pixels)
+__attribute__((always_inline))
+inline void camera_view(struct s_app *app, struct s_camera *camera, t_real2 delta_pixels)
 {
 	t_real3 new_dir;
 
@@ -66,6 +67,7 @@ void camera_view(struct s_app *app, struct s_camera *camera, t_real2 delta_pixel
 	update_camera(app, camera);
 }
 
+__attribute__((always_inline))
 void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
 {
 	t_ray	zoom_dir;
@@ -77,18 +79,16 @@ void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
 	}
 	else
 		camera->focal_center = plus3(camera->focal_center, fmul3(camera->dir, value));
-	
 }
 
+__attribute__((always_inline))
 void	camera_pan(struct s_app *app, struct s_camera *camera, struct s_mouse *mouse)
 {
-	const t_real	factor = camera->mouse.pan_speed * ZOOM_MIN_SPEED;
 	t_real3			offset;
 
-	offset = fmul3(camera->dir_right, mouse->pos.dir.x * factor);
+	offset = fmul3(camera->dir_right, mouse->pos.dir.x * ZOOM_BASE_PAN_SPEED);
 	camera->focal_center = plus3(camera->focal_center, offset);
-
-	offset = fmul3(camera->dir_up, mouse->pos.dir.y * factor);
+	offset = fmul3(camera->dir_up, mouse->pos.dir.y * ZOOM_BASE_PAN_SPEED);
 	camera->focal_center = plus3(camera->focal_center, offset);
 	update_camera(app, camera);
 }
