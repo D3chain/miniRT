@@ -6,13 +6,12 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/20 20:24:43 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/20 20:36:08 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-# CFLAGS		:=	-Wall -Wextra -Werror
 CFLAGS		:=	-MMD -MP -g3 -Wall -Wextra -Werror # -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
