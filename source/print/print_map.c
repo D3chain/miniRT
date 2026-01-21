@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:59 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	print_pl(t_shape *e, int fd)
 {
 	const t_plane	*plane = (t_plane *) e;
 
-	dprintf(fd, "pl\t"REAL3"\t"REAL3"\t"COLOR_RGB,
+	dprintf(fd, "pl\t"REAL","REAL","REAL"\t"REAL","REAL","REAL"\t"INT","INT","INT,
 		plane->coord.x,
 		plane->coord.y,
 		plane->coord.z,
@@ -36,7 +36,7 @@ static void	print_planes(int fd, t_scene *scene)
 	while (++i < scene->n_elem_inf)
 	{
 		print_pl(&scene->elems_inf[i], fd);
-		print_shape_material(fd, &scene->elems_inf[i].u.any.material);
+		print_shape_material(fd, &scene->elems_inf[i].u_.any.material);
 		dprintf(fd, "\n");
 	}
 	dprintf(fd, "\n");

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:48:37 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:02:25 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@
 //	SCREEN RESOLUTION
 # define WIN_WIDTH					1920
 # define WIN_HEIGHT					1080
-# define IMG_RATIO					((t_real) WIN_WIDTH / WIN_HEIGHT)
 
 //	SAMPLING
-# define UPSAMPLING_INIT_ACTIV		true
+# define UPSAMPLING_INIT_ACTIV		1
 # define UPSAMPLING					4
 
-# define DOWNSAMPLING_INIT_ACTIV	true
+# define DOWNSAMPLING_INIT_ACTIV	1
 # define DOWNSAMPLING				8
 # define MAX_DOWNSAMPLING_RATE		32
 # define MIN_DOWNSAMPLING_RATE		2
@@ -61,7 +60,6 @@
 # define MOUSE_SENSITIVITY			FLT_0_02
 # define ZOOM_TO_PAN_RATIO			10
 
-
 # define OBJ_DRAG_DIV_FACTOR		FLT_0_3
 
 # define ZOOM_BASE_PAN_SPEED		FLT_0_5
@@ -74,6 +72,6 @@
 # define CAMERA_VIEW_FACTOR			FLT_0_5
 
 //	PRINT
-# define MAX_NAME_LEN				128
+# define MAX_NAME_LEN				256
 
 #endif

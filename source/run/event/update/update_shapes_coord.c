@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:51:51 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 13:50:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:27 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static inline void	traverse_bvh(
 	while (n < n_elem)
 	{
 		sh = &tree->elems[n];
-		sh->u.any.coord = plus3(sh->u.any.coord, vec_offset);
+		sh->u_.any.coord = plus3(sh->u_.any.coord, vec_offset);
 		++n;
 	}
 }

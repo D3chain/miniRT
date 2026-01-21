@@ -6,14 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:15:41 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/16 19:02:39 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 16:57:47 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATHEMATICS_H
 # define MATHEMATICS_H
 
-# include "minirt.h"
+# include "minirt_typedef.h"
+# include "types.h"
 
 struct s_sol2
 {
@@ -32,7 +33,7 @@ t_real3	normalize3(t_real3 v);
 /*	vec_op_2.c	*/
 t_real3	fmul3(t_real3 a, t_real factor);
 t_real3	fplus3(t_real3 a, t_real factor);
-t_real3 reflect(t_real3 incident, t_real3 normal);
+t_real3	reflect(t_real3 incident, t_real3 normal);
 t_real3	project(t_real3 origin, t_real3 dir, t_real dst);
 
 /*	vec_op_3.c	*/
@@ -40,7 +41,6 @@ t_real3	orient_normal(t_real3 normal, t_real3 ray);
 t_real	norm3(t_real3 vec);
 t_real	dot(t_real3 a, t_real3 b);
 t_real	sqdot(t_real3 v);
-
 
 /*	polynome2.c	*/
 t_sol2	polynome2(t_real a, t_real b, t_real c);

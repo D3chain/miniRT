@@ -23,7 +23,7 @@ Each sample counts as 0.01 seconds.
   0.00      1.99     0.00        6     0.00     0.00  scan_l
   0.00      1.99     0.00        1     0.00     0.00  bound_boxes
   0.00      1.99     0.00        1     0.00     0.00  bvh_subdivide
-  0.00      1.99     0.00        1     0.00     0.00  event_keyboard_press
+  0.00      1.99     0.00        1     0.00     0.00  event_keyboard
   0.00      1.99     0.00        1     0.00     0.00  print_bvh_tree
   0.00      1.99     0.00        1     0.00     0.00  render
   0.00      1.99     0.00        1     0.00     0.00  scan_a
@@ -172,7 +172,7 @@ index % time    self  children    called     name
                                  118             bvh_subdivide [21]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [82]
-[22]     0.0    0.00    0.00       1         event_keyboard_press [22]
+[22]     0.0    0.00    0.00       1         event_keyboard [22]
 -----------------------------------------------
                                   59             print_bvh_tree [23]
                 0.00    0.00       1/1           main [56]
@@ -283,7 +283,7 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [8] _init                  [22] event_keyboard_press (event.c) [19] scan_l (scan_cAL.c)
+   [8] _init                  [22] event_keyboard (event.c) [19] scan_l (scan_cAL.c)
    [1] antialiasing (antialiasing.c) [9] ft_dabs          [13] scan_color (scan_numbers.c)
   [20] bound_boxes (bound_boxes.c) [10] ft_dblcmp         [18] scan_cy (scan_elem.c)
    [4] bvh_any_hit (any_hit.c) [23] print_bvh_tree (print_bvh_tree.c) [16] scan_sp (scan_elem.c)

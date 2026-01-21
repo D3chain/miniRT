@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:21:01 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:50 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	print_shape_box(t_bvh_elem_box *elem_box, int depth)
 	{
 		printf("\t       │\n");
 		printf("\t       └── elem #%d  ", elem_box->elems[i].type);
-		print_real3(elem_box->elems[i].u.any.coord, "coord: ");
+		print_real3(elem_box->elems[i].u_.any.coord, "coord: ");
 		print_real3(elem_box->bbox.beg, "\t\t\t    deb: ");
 		print_real3(elem_box->bbox.end, "\t\t\t    end: ");
 		i++;

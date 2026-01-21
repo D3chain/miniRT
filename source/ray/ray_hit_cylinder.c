@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:55:56 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:12:01 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:26:51 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ __attribute__((hot))
 t_hit_info	ray_hit_cylinder(const t_ray *ray, const void *elem)
 {
 	struct s_hit_info	hit;
-	const t_cylinder	cylinder = ((t_shape *)elem)->u.cylinder;
+	const t_cylinder	cylinder = ((t_shape *)elem)->u_.cylinder;
 	const t_real		dst_tube = \
 		closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
 

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:27 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:12:11 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ __attribute__((hot))
 t_hit_info	ray_hit_plane(const t_ray *ray, const void *elem)
 {
 	t_hit_info		closest_hit;
-	const t_plane	plane = ((t_shape *)elem)->u.plane;
+	const t_plane	plane = ((t_shape *)elem)->u_.plane;
 	const t_real	denom = dot(ray->dir, plane.normal);
 
 	if (fabs(denom) < EPSILON)

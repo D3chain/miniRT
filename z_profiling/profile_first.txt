@@ -92,7 +92,7 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00        1     0.00     0.01  setup_c
   0.00     18.06     0.00        1     0.00     0.25  setup_scene
   0.00     18.06     0.00        1     0.00     0.00  count_scene_from_file
-  0.00     18.06     0.00        1     0.00     0.00  event_keyboard_press
+  0.00     18.06     0.00        1     0.00     0.00  event_keyboard
   0.00     18.06     0.00        1     0.00     0.00  init_app
   0.00     18.06     0.00        1     0.00     0.00  init_graphic_data
   0.00     18.06     0.00        1     0.00     0.00  init_mlx
@@ -645,7 +645,7 @@ index % time    self  children    called     name
                 0.00    0.00       1/2           xopen [85]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [168]
-[93]     0.0    0.00    0.00       1         event_keyboard_press [93]
+[93]     0.0    0.00    0.00       1         event_keyboard [93]
 -----------------------------------------------
                 0.00    0.00       1/1           main [51]
 [94]     0.0    0.00    0.00       1         init_app [94]
@@ -797,7 +797,7 @@ notice and this notice are preserved.
 Index by function name
 
   [22] _init                  [37] elem_inf_hit (trace.c) [11] project (vec_op_2.c)
-  [46] ambient_light (phong_effect.c) [93] event_keyboard_press (event.c) [100] quit (main.c)
+  [46] ambient_light (phong_effect.c) [93] event_keyboard (event.c) [100] quit (main.c)
    [3] antialiasing (antialiasing.c) [14] fmul3 (vec_op_1.c) [70] randomize_material (randomize_material.c)
   [57] average_linear_color (antialiasing.c) [40] fresnel_schlick (fresnel_schlick.c) [16] ray_hit (ray_hit.c)
   [86] bound_boxes (bound_boxes.c) [39] ft_dabs            [8] ray_hit_cylinder (ray_hit_cylinder.c)

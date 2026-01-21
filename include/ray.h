@@ -6,12 +6,18 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:04:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:28:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 16:58:53 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
+
+# include <stdbool.h>
+# include "material.h"
+# include "types.h"
+
+typedef struct s_hit_info	(*t_ray_hit_fn[])(const t_ray *, const void*);
 
 struct s_ray
 {
@@ -47,6 +53,6 @@ t_hit_info	intersect_cone_cap(const t_ray *ray, const t_cone *cone);
 
 void		compute_cone_quadratic(const t_cone *cone, const t_ray *ray, \
 												t_real3 x, t_real coefs[3]);
-bool		solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2);						
+bool		solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2);
 
 #endif

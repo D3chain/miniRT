@@ -21,7 +21,7 @@ Each sample counts as 0.01 seconds.
   0.00      3.46     0.00     2082     0.00     0.00  scan_sp
   0.00      3.46     0.00     2082     0.00     0.00  setup_sp
   0.00      3.46     0.00        1     0.00     0.00  bound_boxes
-  0.00      3.46     0.00        1     0.00     0.00  event_keyboard_press
+  0.00      3.46     0.00        1     0.00     0.00  event_keyboard
   0.00      3.46     0.00        1     0.00     0.00  print_render
   0.00      3.46     0.00        1     0.00     0.00  render
   0.00      3.46     0.00        1     0.00     0.00  scan_a
@@ -192,7 +192,7 @@ index % time    self  children    called     name
                                 1090             bound_boxes [23]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [87]
-[24]     0.0    0.00    0.00       1         event_keyboard_press [24]
+[24]     0.0    0.00    0.00       1         event_keyboard [24]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
 [25]     0.0    0.00    0.00       1         print_render [25]
@@ -312,6 +312,6 @@ Index by function name
    [2] bvh_subdivide (bvh_build.c) [3] render_tile (render_routine.c) [29] setup_pl (setup_shapes.c)
    [7] bvh_hit (trace.c) [15] scan_a (scan_rcal.c)   [22] setup_sp (setup_shapes.c)
   [21] elem_bounding_box (elem_bounding_box.c) [27] scan_c (scan_rcal.c) [30] setup_viewport (setup_viewport.c)
-  [24] event_keyboard_press (event_keyboard.c) [16] scan_l (scan_rcal.c) [6] trace (trace.c)
+  [24] event_keyboard (event_keyboard.c) [16] scan_l (scan_rcal.c) [6] trace (trace.c)
   [12] ft_memset              [28] scan_r (scan_rcal.c)
   [13] ft_strlen              [11] scan_color (scan_numbers.c)

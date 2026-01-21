@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:26:42 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:14:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static void	clamp_k_factors(t_material *mat)
 
 void	scan_material(t_app *app, const char *line, t_material *mat)
 {
-	static const char	*param[] = MAT_FACTORS;
-	char				*scanned;
-	t_real				param_value;
-	int					i;
+	const char	*param[] = {"k_amb", "k_dif", "k_spc", "shine", "ior__"};
+	char		*scanned;
+	t_real		param_value;
+	int			i;
 
 	setup_material(mat);
 	i = -1;

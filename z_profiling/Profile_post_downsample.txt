@@ -24,7 +24,7 @@ Each sample counts as 0.01 seconds.
   0.00      0.36     0.00        1     0.00     0.00  bound_boxes
   0.00      0.36     0.00        1     0.00     0.00  bvh_subdivide
   0.00      0.36     0.00        1     0.00     0.00  cleanup_app
-  0.00      0.36     0.00        1     0.00     0.00  event_keyboard_press
+  0.00      0.36     0.00        1     0.00     0.00  event_keyboard
   0.00      0.36     0.00        1     0.00     0.00  scan_a
   0.00      0.36     0.00        1     0.00     0.00  scan_c
   0.00      0.36     0.00        1     0.00     0.00  scan_l
@@ -206,7 +206,7 @@ index % time    self  children    called     name
 [24]     0.0    0.00    0.00       1         cleanup_app [24]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [113]
-[25]     0.0    0.00    0.00       1         event_keyboard_press [25]
+[25]     0.0    0.00    0.00       1         event_keyboard [25]
 -----------------------------------------------
                 0.00    0.00       1/1           main [10]
 [26]     0.0    0.00    0.00       1         scan_a [26]
@@ -348,7 +348,7 @@ Index by function name
   [23] bvh_subdivide (bvh_build.c) [1] render_tile (render_routine.c) [19] scan_t_real3 (scan_numbers.c)
    [5] bvh_hit (trace.c) [26] scan_a (scan_rcal.c)   [15] setup_co (setup_shapes.c)
   [24] cleanup_app (cleanup_app.c) [27] scan_c (scan_rcal.c) [16] setup_cy (setup_shapes.c)
-  [25] event_keyboard_press (event_keyboard.c) [28] scan_l (scan_rcal.c) [14] setup_pl (setup_shapes.c)
+  [25] event_keyboard (event_keyboard.c) [28] scan_l (scan_rcal.c) [14] setup_pl (setup_shapes.c)
   [11] ft_dblcmp              [29] scan_r (scan_rcal.c)   [33] setup_sp (setup_shapes.c)
   [17] idle_scroll_reenable (event_mouse.c) [30] scan_co (scan_shapes.c) [34] setup_viewport (setup_viewport.c)
    [8] phong_effect.c.0fbbf156 [20] scan_color (scan_numbers.c) [2] trace (trace.c)

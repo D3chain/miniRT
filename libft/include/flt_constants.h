@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   flt_constants.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fox <fox@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:23:16 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 22:50:35 by fox              ###   ########.fr       */
+/*   Updated: 2026/01/21 17:29:19 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLOAT_CONSTANTS_H
-# define FLOAT_CONSTANTS_H
+#ifndef FLT_CONSTANTS_H
+# define FLT_CONSTANTS_H
 
 # ifdef USE_DBL_NUMBER
 #  define FLT_TYPE double
 
-#  define EPSILON	1e-4
+#  define EPSILON	0.0001
 
 #  define FLT_0		0.0
 #  define FLT_1		1.0
@@ -119,11 +119,11 @@
 #  define FLT_98	98.0
 #  define FLT_99	99.0
 #  define FLT_10	100.0
-	
+
 #  define FLT_17	175.0
-	
+
 #  define FLT_25	255.0
-	
+
 #  define FLT_0_	0.0
 #  define FLT_0_	0.1
 #  define FLT_0_2	0.2
@@ -144,7 +144,7 @@
 
 #  define FLT_TYPE	float
 
-#  define EPSILON	1e-4f
+#  define EPSILON	0.0001f
 
 #  define FLT_0		0.0f
 #  define FLT_1		1.0f

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 16:37:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static inline void	fov_modify(t_app *app, int key)
 	render(app);
 }
 
-int	event_keyboard_press(int key, t_app *app)
+int	event_keyboard(int key, t_app *app)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(app->mlx.mlx);

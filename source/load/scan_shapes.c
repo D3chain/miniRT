@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:59:01 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:26:37 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	scan_pl(t_app *app, const char *line, int i_elem)
 {
 	t_plane	*p;
 
-	p = &app->scene.elems_inf[i_elem].u.plane;
+	p = &app->scene.elems_inf[i_elem].u_.plane;
 	app->scene.elems_inf[i_elem].type = PLANE;
 	line += scan_t_real3(app, &p->coord, line);
 	if (app->status)
@@ -35,7 +35,7 @@ int	scan_sp(t_app *app, const char *line, int i_elem)
 {
 	t_sphere	*s;
 
-	s = &app->scene.elems[i_elem].u.sphere;
+	s = &app->scene.elems[i_elem].u_.sphere;
 	app->scene.elems[i_elem].type = SPHERE;
 	line += scan_t_real3(app, &s->coord, line);
 	if (app->status)
@@ -55,7 +55,7 @@ int	scan_cy(t_app *app, const char *line, int i_elem)
 {
 	t_cylinder	*c;
 
-	c = &app->scene.elems[i_elem].u.cylinder;
+	c = &app->scene.elems[i_elem].u_.cylinder;
 	app->scene.elems[i_elem].type = CYLINDER;
 	line += scan_t_real3(app, &c->coord, line);
 	if (app->status)
@@ -68,7 +68,7 @@ int	scan_cy(t_app *app, const char *line, int i_elem)
 	line += scan_t_real(app, &c->radius, line);
 	if (app->status)
 		return (app->status);
-	app->scene.elems[i_elem].u.cylinder.radius /= 2;
+	app->scene.elems[i_elem].u_.cylinder.radius /= 2;
 	ft_skipspaces(&line);
 	line += scan_t_real(app, &c->height, line);
 	if (app->status)
@@ -83,7 +83,7 @@ int	scan_co(t_app *app, const char *line, int i_elem)
 {
 	t_cone	*c;
 
-	c = &app->scene.elems[i_elem].u.cone;
+	c = &app->scene.elems[i_elem].u_.cone;
 	app->scene.elems[i_elem].type = CONE;
 	line += scan_t_real3(app, &c->coord, line);
 	if (app->status)

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:46:36 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 14:26:54 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ inline bool	solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2)
 __attribute__((always_inline, hot))
 inline t_hit_info	ray_hit_cone(const t_ray *ray, const void *elem)
 {
-	const t_cone	cone = ((t_shape *)elem)->u.cone;
+	const t_cone	cone = ((t_shape *)elem)->u_.cone;
 	t_hit_info		body_hit;
 	t_hit_info		cap_hit;
 

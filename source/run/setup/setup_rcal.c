@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:55 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:13:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:02:00 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	setup_r(t_app *app, t_screen *screen)
 	{
 		screen->resolution.x = WIN_WIDTH;
 		screen->resolution.y = WIN_HEIGHT;
-		screen->img_ratio = IMG_RATIO;
+		screen->img_ratio = WIN_WIDTH / WIN_HEIGHT;
 	}
 	else
 		screen->img_ratio = \

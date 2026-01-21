@@ -14,7 +14,8 @@
 
 void	print_shape_material(int fd, t_material *m)
 {
-	static const char	*factors[] = MAT_FACTORS;
+	static const char	*factors[] = \
+		{"k_amb", "k_dif", "k_spc", "shine", "ior__"};
 	const t_real		values[] = {m->ka, m->kd, m->ks, m->shininess, m->ior};
 	int					i;
 

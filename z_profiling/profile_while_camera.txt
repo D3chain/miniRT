@@ -33,7 +33,7 @@ Each sample counts as 0.01 seconds.
   0.00     25.80     0.00        1     0.00     0.00  setup_co
   0.00     25.80     0.00        1     0.00     0.00  setup_cy
   0.00     25.80     0.00        1     0.00     0.00  setup_sp
-  0.00     25.80     0.00        1     0.00     0.00  event_keyboard_press
+  0.00     25.80     0.00        1     0.00     0.00  event_keyboard
   0.00     25.80     0.00        1     0.00     0.00  print_bvh_tree
   0.00     25.80     0.00        1     0.00     0.00  scan_a
   0.00     25.80     0.00        1     0.00     0.00  scan_c
@@ -221,7 +221,7 @@ index % time    self  children    called     name
 [30]     0.0    0.00    0.00       1         setup_sp [30]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [93]
-[31]     0.0    0.00    0.00       1         event_keyboard_press [31]
+[31]     0.0    0.00    0.00       1         event_keyboard [31]
 -----------------------------------------------
                 0.00    0.00       1/1           main [67]
 [32]     0.0    0.00    0.00       1         print_bvh_tree [32]
@@ -348,7 +348,7 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [10] _init                  [31] event_keyboard_press (event_keyboard.c) [34] scan_c (scan_rcal.c)
+  [10] _init                  [31] event_keyboard (event_keyboard.c) [34] scan_c (scan_rcal.c)
    [3] antialiasing (antialiasing.c) [17] event_mouse_click (event_mouse.c) [21] scan_l (scan_rcal.c)
    [4] basic_render (basic_render.c) [20] event_mouse_motion (event_mouse_motion.c) [35] scan_r (scan_rcal.c)
   [26] bound_boxes (bound_boxes.c) [18] event_mouse_release (event_mouse.c) [36] scan_co (scan_shapes.c)

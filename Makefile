@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/21 14:51:50 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/21 16:43:52 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,16 +74,15 @@ UPDATE_SRC	:=	event/update/update_antialiasing.c									\
 				event/update/update_downsampling.c									\
 				event/update/update_shapes_coord.c
 
-
 # Ray tracing
-RAY_SRC		:=	ray/init_ray.c														\
-				ray/ray_hit.c														\
-				ray/ray_hit_sphere.c												\
-				ray/ray_hit_cylinder.c												\
-				ray/ray_hit_plane.c													\
-				ray/ray_hit_cone_1.c												\
-				ray/ray_hit_cone_2.c												\
-				ray/closest_hit_dst.c
+RAY_SRC		:=	init_ray.c															\
+				ray_hit.c															\
+				ray_hit_sphere.c													\
+				ray_hit_cylinder.c													\
+				ray_hit_plane.c														\
+				ray_hit_cone_1.c													\
+				ray_hit_cone_2.c													\
+				closest_hit_dst.c
 
 # Rendering
 RENDER_SRC	:=	render/render_routine.c												\
@@ -93,17 +92,19 @@ RENDER_SRC	:=	render/render_routine.c												\
 				render/trace.c														\
 				render/basic_render.c
 
+# Setup
+SETUP_SRC	:=	setup/setup_rcal.c													\
+				setup/setup_viewport.c												\
+				setup/setup_shapes.c				
+
 # Combine run sources
 RUN_SRC		:=	run_scene.c															\
 				$(EVENT_SRC)														\
 				$(UPDATE_SRC)														\
-				$(RAY_SRC)															\
-				$(RENDER_SRC)
+				$(RENDER_SRC)														\
+				$(SETUP_SRC)
 
-# Setup
-SETUP_SRC	:=	setup_rcal.c														\
-				setup_viewport.c													\
-				setup_shapes.c
+
 
 # Utilities
 PRINT_SRC	:=	print_bvh_tree.c													\
@@ -126,8 +127,8 @@ SRC_PATHS	:=	$(addprefix app/,$(APP_SRC))										\
 				$(addprefix error/,$(ERROR_SRC))									\
 				$(addprefix load/,$(LOAD_SRC))										\
 				$(addprefix math/,$(MATH_SRC))										\
+				$(addprefix ray/,$(RAY_SRC))										\
 				$(addprefix run/,$(RUN_SRC))										\
-				$(addprefix setup/,$(SETUP_SRC))									\
 				$(addprefix print/,$(PRINT_SRC))									\
 				$(addprefix wrapper/,$(WRAPPER_SRC))								\
 				$(ROOT_SRC)

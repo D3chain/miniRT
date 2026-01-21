@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 12:46:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 13:47:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:25:29 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	scan_file_line(t_app *app, const char *line)
 				return (app->status);
 			if (i >= N_SETUP_ITEMS)
 				scan_material(app, line, \
-							&shape_tbl[(shape_i)].u.any.material);
+							&shape_tbl[(shape_i)].u_.any.material);
 			break ;
 		}
 	}

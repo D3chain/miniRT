@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 16:24:13 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:58:58 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/21 17:24:06 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/21 17:24:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ static t_div_axis	get_div_axis(t_bvh_elem_box *cur_box)
 {
 	struct s_span		s;
 
-	s = (struct s_span){.min = cur_box->elems->u.any.coord, .i = -1};
+	s = (struct s_span){.min = cur_box->elems->u_.any.coord, .i = -1};
 	s.max = s.min;
 	while (++s.i < cur_box->n_elems)
 	{
-		if (cur_box->elems[s.i].u.any.coord.x < s.min.x)
-			s.min.x = cur_box->elems[s.i].u.any.coord.x;
-		if (cur_box->elems[s.i].u.any.coord.x > s.max.x)
-			s.max.x = cur_box->elems[s.i].u.any.coord.x;
-		if (cur_box->elems[s.i].u.any.coord.y < s.min.y)
-			s.min.y = cur_box->elems[s.i].u.any.coord.y;
-		if (cur_box->elems[s.i].u.any.coord.y > s.max.y)
-			s.max.y = cur_box->elems[s.i].u.any.coord.y;
-		if (cur_box->elems[s.i].u.any.coord.z < s.min.z)
-			s.min.z = cur_box->elems[s.i].u.any.coord.z;
-		if (cur_box->elems[s.i].u.any.coord.z > s.max.z)
-			s.max.z = cur_box->elems[s.i].u.any.coord.z;
+		if (cur_box->elems[s.i].u_.any.coord.x < s.min.x)
+			s.min.x = cur_box->elems[s.i].u_.any.coord.x;
+		if (cur_box->elems[s.i].u_.any.coord.x > s.max.x)
+			s.max.x = cur_box->elems[s.i].u_.any.coord.x;
+		if (cur_box->elems[s.i].u_.any.coord.y < s.min.y)
+			s.min.y = cur_box->elems[s.i].u_.any.coord.y;
+		if (cur_box->elems[s.i].u_.any.coord.y > s.max.y)
+			s.max.y = cur_box->elems[s.i].u_.any.coord.y;
+		if (cur_box->elems[s.i].u_.any.coord.z < s.min.z)
+			s.min.z = cur_box->elems[s.i].u_.any.coord.z;
+		if (cur_box->elems[s.i].u_.any.coord.z > s.max.z)
+			s.max.z = cur_box->elems[s.i].u_.any.coord.z;
 	}
 	s.span = (t_real3){s.max.x - s.min.x, s.max.y - s.min.y, s.max.z - s.min.z};
 	if (s.span.x >= s.span.y && s.span.x >= s.span.z)

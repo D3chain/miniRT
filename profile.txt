@@ -63,7 +63,7 @@ Each sample counts as 0.01 seconds.
   0.00      0.80     0.00        1     0.00     0.00  cleanup_app
   0.00      0.80     0.00        1     0.00     0.00  count_scene_from_file
   0.00      0.80     0.00        1     0.00     0.00  elem_bounding_box
-  0.00      0.80     0.00        1     0.00     0.00  event_keyboard_press
+  0.00      0.80     0.00        1     0.00     0.00  event_keyboard
   0.00      0.80     0.00        1     0.00     0.00  init_antialiasing
   0.00      0.80     0.00        1     0.00     0.00  init_app
   0.00      0.80     0.00        1     0.00     0.00  init_mlx
@@ -281,7 +281,7 @@ index % time    self  children    called     name
                                                  <spontaneous>
 [27]     1.2    0.00    0.01                 mlx_loop [27]
                 0.01    0.00  410767/410767      idle_scroll_reenable [23]
-                0.00    0.00       1/1           event_keyboard_press [69]
+                0.00    0.00       1/1           event_keyboard [69]
 -----------------------------------------------
                 0.00    0.01   10232/10232       diffuse_specular_light [13]
 [28]     1.0    0.00    0.01   10232         reflect [28]
@@ -478,7 +478,7 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           sphere_box [93]
 -----------------------------------------------
                 0.00    0.00       1/1           mlx_loop [27]
-[69]     0.0    0.00    0.00       1         event_keyboard_press [69]
+[69]     0.0    0.00    0.00       1         event_keyboard [69]
 -----------------------------------------------
                 0.00    0.00       1/1           init_app [32]
 [70]     0.0    0.00    0.00       1         init_antialiasing [70]
@@ -694,7 +694,7 @@ Index by function name
   [37] draw_pixel_to_img       [6] ray_hit_sphere         [93] sphere_box (elem_bounding_box.c)
   [68] elem_bounding_box      [28] reflect                [53] srgb_to_linear_color
   [26] elem_inf_any_hit       [77] render                  [4] trace
-  [69] event_keyboard_press    [1] render_tile            [33] update_camera
+  [69] event_keyboard    [1] render_tile            [33] update_camera
   [15] fmul3                  [44] rgb_to_linear          [55] xcalloc
   [51] get_th_idx (render_routine.c) [78] run_scene       [49] xmalloc
   [23] idle_scroll_reenable   [19] scale_color_linear     [56] xopen

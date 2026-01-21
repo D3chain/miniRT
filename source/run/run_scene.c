@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 12:45:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 16:37:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	setup_mlx_hooks(t_app *app)
 		app->mlx.win, ButtonRelease, ButtonReleaseMask, \
 		event_mouse_release, app);
 	mlx_hook(\
-		app->mlx.win, KeyPress, KeyPressMask, event_keyboard_press, app);
+		app->mlx.win, KeyPress, KeyPressMask, event_keyboard, app);
 	mlx_loop_hook(\
 		app->mlx.mlx, idle_scroll_reenable, app);
 }

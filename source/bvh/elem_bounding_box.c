@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:19 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:24:33 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static t_boundbox	cone_box(t_shape *elem)
 	t_real3	base;
 	t_real3	ext;
 
-	radius = elem->u.cone.radius;
-	axis = elem->u.cone.axis;
-	apex = elem->u.cone.apex;
-	base = elem->u.cone.base;
+	radius = elem->u_.cone.radius;
+	axis = elem->u_.cone.axis;
+	apex = elem->u_.cone.apex;
+	base = elem->u_.cone.base;
 	ext.x = radius * sqrt(1.0 - axis.x * axis.x);
 	ext.y = radius * sqrt(1.0 - axis.y * axis.y);
 	ext.z = radius * sqrt(1.0 - axis.z * axis.z);
@@ -44,10 +44,10 @@ static t_boundbox	cylinder_box(t_shape *elem)
 	t_real3	p2;
 	t_real3	ext;
 
-	radius = elem->u.cylinder.radius;
-	axis = elem->u.cylinder.axis;
-	p1 = elem->u.cylinder.p1;
-	p2 = elem->u.cylinder.p2;
+	radius = elem->u_.cylinder.radius;
+	axis = elem->u_.cylinder.axis;
+	p1 = elem->u_.cylinder.p1;
+	p2 = elem->u_.cylinder.p2;
 	ext.x = radius * sqrt(1.0 - axis.x * axis.x);
 	ext.y = radius * sqrt(1.0 - axis.y * axis.y);
 	ext.z = radius * sqrt(1.0 - axis.z * axis.z);
@@ -65,8 +65,8 @@ static t_boundbox	sphere_box(t_shape *elem)
 	t_real3	coord;
 	t_real	radius;
 
-	coord = elem->u.sphere.coord;
-	radius = elem->u.sphere.radius;
+	coord = elem->u_.sphere.coord;
+	radius = elem->u_.sphere.radius;
 	return ((t_boundbox){
 		.beg.x = coord.x - radius,
 		.beg.y = coord.y - radius,

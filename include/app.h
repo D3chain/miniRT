@@ -6,14 +6,25 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 12:44:27 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:13:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APP_H
 # define APP_H
 
+# include "minirt_typedef.h"
+# include "types.h"
+
 typedef t_int2	t_resolution;
+
+enum e_status
+{
+	ERR_NONE	= 0,
+	ERR_SYS		= 1,
+	ERR_MLX		= 2,
+	ERR_PARS	= 3
+};
 
 struct s_screen
 {
@@ -23,42 +34,21 @@ struct s_screen
 
 struct s_img
 {
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				size_line;
-	int				endian;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			size_line;
+	int			endian;
 };
 
 struct s_mlx
 {
-	const char		*title;
+	char		*title;
+	void		*mlx;
+	void		*win;
 
-	void			*mlx;
-
-	void			*win;
-	
 	t_screen	screen;	
-
-	t_img	img;
-};
-
-struct s_thread
-{
-	pthread_t		*th_tab;
-	_Atomic	int 	th_idx;
-	int				cpu_cores;
-};
-
-struct s_render
-{
-	int				resolution;	
-	int				n_tiles;
-	int				tile_side;
-	t_real			inv_tile_side;
-	int				tile_area;
-
-	t_antialiasing	antialiasing;
+	t_img		img;
 };
 
 struct s_app
@@ -72,8 +62,7 @@ struct s_app
 	t_thread	threads;
 };
 
-/*	PROTOTYPES	*/
-
+/*	app	*/
 int		init_app(t_app *app);
 void	cleanup_app(t_app *app);
 

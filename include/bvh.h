@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:18:50 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 13:54:43 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:13:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minirt.h"
 
-typedef enum e_divide_axis t_div_axis;
+typedef enum e_divide_axis	t_div_axis;
 
 enum e_bvh_type
 {
@@ -48,7 +48,7 @@ struct s_bvh_elem_box
 	t_boundbox		bbox;
 
 	int				n_elems;
-	t_shape	*elems;
+	t_shape			*elems;
 };
 
 struct s_bvh_node
@@ -58,10 +58,7 @@ struct s_bvh_node
 
 	t_bvh_base		*left;
 	t_bvh_base		*right;
-	
 };
-
-typedef struct s_hit_info (*t_ray_hit_fn[])(const t_ray *, const void*);
 
 /*	Construction of the BVH tree	*/
 void		bvh_build(t_app *app, t_scene *scene);

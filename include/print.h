@@ -6,25 +6,25 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 12:15:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 16:47:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#ifndef PRINT_H
+# define PRINT_H
 
-# include "minirt.h"
+# include "minirt_typedef.h"
+# include "types.h"
+# include "material.h"
 
 # ifdef USE_DBL_NUMBER
 #  define FLT_FMT	"%.2lf"
 # else
 #  define FLT_FMT	"%.2f"
 # endif
- 
+
 # define REAL		FLT_FMT
-# define REAL3		REAL","REAL","REAL
-# define INT			"%d"
-# define	COLOR_RGB	INT","INT","INT
+# define INT		"%d"
 
 int		scan_int(t_app *app, int *res, const char *str);
 int		scan_uint8_t(t_app *app, uint8_t *res, const char *str);

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:08 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:13:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:27:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	setup_pl(t_app *app, t_shape *elem)
 	t_plane	*plane;
 
 	(void) app;
-	plane = &elem->u.plane;
+	plane = &elem->u_.plane;
 	plane->normal = normalize3(plane->normal);
 	plane->material.color_linear = srgb_to_linear_color(plane->material.color);
 }
@@ -27,7 +27,7 @@ void	setup_sp(t_app *app, t_shape *elem)
 	t_sphere	*sphere;
 
 	(void) app;
-	sphere = &elem->u.sphere;
+	sphere = &elem->u_.sphere;
 	sphere->radius_sq = sphere->radius * sphere->radius;
 	sphere->material.color_linear = \
 		srgb_to_linear_color(sphere->material.color);
@@ -38,7 +38,7 @@ void	setup_cy(t_app *app, t_shape *elem)
 	t_cylinder	*cylinder;
 
 	(void) app;
-	cylinder = &elem->u.cylinder;
+	cylinder = &elem->u_.cylinder;
 	cylinder->axis = normalize3(cylinder->axis);
 	cylinder->p1 = project(cylinder->coord, \
 		fmul3(cylinder->axis, -1.0), cylinder->height / 2);
@@ -55,7 +55,7 @@ void	setup_co(t_app *app, t_shape *elem)
 	t_real	cos_theta;
 
 	(void) app;
-	cone = &elem->u.cone;
+	cone = &elem->u_.cone;
 	cone->axis = normalize3(cone->axis);
 	cone->apex = \
 		project(cone->coord, fmul3(cone->axis, -1.0), cone->height / 2);
