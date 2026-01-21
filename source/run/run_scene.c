@@ -6,21 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:27:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 19:24:55 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:45:26 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-__attribute__((always_inline))
-static inline void	reset_th_idx(struct s_thread *t)
-{
-	pthread_mutex_lock(&t->th_idx_mtx);
-	t->th_idx = 0;
-	pthread_mutex_unlock(&t->th_idx_mtx);
-}
-
-static inline void	join_threads(struct s_thread *t)
+static inline void	join_threads(t_thread *t)
 {
 	int	i;
 
@@ -29,7 +21,7 @@ static inline void	join_threads(struct s_thread *t)
 		pthread_join(t->th_tab[i], NULL);
 }
 
-int	render(struct s_app *app)
+int	render(t_app *app)
 {
 	int	i;
 
@@ -41,12 +33,12 @@ int	render(struct s_app *app)
 			return (ERR_SYS);
 	}
 	join_threads(&app->threads);
-	reset_th_idx(&app->threads);
+	app->threads.th_idx = 0;
 	mlx_put_image_to_window(app->mlx.mlx, app->mlx.win, app->mlx.img.img, 0, 0);
 	return (ERR_NONE);
 }
 
-static void	setup_mlx_hooks(struct s_app *app)
+static void	setup_mlx_hooks(t_app *app)
 {
 	mlx_hook(\
 		app->mlx.win, DestroyNotify, ButtonPressMask, event_mouse_close, app);
@@ -63,7 +55,7 @@ static void	setup_mlx_hooks(struct s_app *app)
 		app->mlx.mlx, idle_scroll_reenable, app);
 }
 
-int	run_scene(struct s_app *app)
+int	run_scene(t_app *app)
 {
 	app->mlx.win = mlx_new_window(app->mlx.mlx, \
 			app->mlx.screen.resolution.x, \

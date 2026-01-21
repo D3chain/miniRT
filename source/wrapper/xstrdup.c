@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:07:39 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:09:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-char	*xstrdup(struct s_app *app, const char *source)
+char	*xstrdup(t_app *app, const char *source)
 {
 	char	*ptr;
 

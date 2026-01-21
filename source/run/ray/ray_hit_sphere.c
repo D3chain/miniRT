@@ -6,18 +6,18 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:27:06 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:08:53 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:12:19 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit_info	ray_hit_sphere(const struct s_ray *ray, const void *elem)
+t_hit_info	ray_hit_sphere(const t_ray *ray, const void *elem)
 {
-	t_hit_info					closest_hit;
-	const struct s_sphere		sphere = ((struct s_elem *)elem)->u.sphere;
-	const t_real3				offset = minus3(ray->origin, sphere.coord);
-	const t_sol2				dst = polynome2(dot(ray->dir, ray->dir), \
+	t_hit_info			closest_hit;
+	const t_sphere		sphere = ((t_shape *)elem)->u.sphere;
+	const t_real3		offset = minus3(ray->origin, sphere.coord);
+	const t_sol2		dst = polynome2(dot(ray->dir, ray->dir), \
 									FLT_2 * dot(offset, ray->dir), \
 									dot(offset, offset) - sphere.radius_sq);
 

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:25:12 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:42:42 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:48:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist)
 }
 
 __attribute__((hot))
-bool	elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist)
+bool	elem_inf_any_hit(t_scene *scene, t_ray *ray, t_real max_dist)
 {
 	struct s_hit_info	hit;
 	int					i;

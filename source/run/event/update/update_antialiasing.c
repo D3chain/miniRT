@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 20:27:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:40:13 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static inline void	decrease_sample_amount(t_antialiasing *a)
 	}
 }
 
-void	update_antialiasing(int key, struct s_app *app)
+void	update_antialiasing(int key, t_app *app)
 {
 	if (key == XK_a)
 	{

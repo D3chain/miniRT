@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 15:22:52 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 19:19:38 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:15:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_color(t_color color, char *text)
 			color.s_rgb.r, color.s_rgb.g, color.s_rgb.b);
 }
 
-void	print_color_linear(t_color_linear color, char *text)
+void	print_color_lin(t_color_lin color, char *text)
 {
 	if (text)
 		printf("%s", text);

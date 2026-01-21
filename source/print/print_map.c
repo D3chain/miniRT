@@ -6,15 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:33:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	print_pl(struct s_elem *e, int fd)
+static void	print_pl(t_shape *e, int fd)
 {
-	const struct s_plane	*plane = (struct s_plane *) e;
+	const t_plane	*plane = (t_plane *) e;
 
 	dprintf(fd, "pl\t"REAL3"\t"REAL3"\t"COLOR_RGB,
 		plane->coord.x,
@@ -28,7 +28,7 @@ static void	print_pl(struct s_elem *e, int fd)
 		plane->material.color.s_rgb.b);
 }
 
-static void	print_planes(int fd, struct s_scene *scene)
+static void	print_planes(int fd, t_scene *scene)
 {
 	int			i;
 
@@ -53,7 +53,7 @@ static void	print_bvh_rec(int fd, t_bvh_base *node)
 		print_shapes(fd, (t_bvh_elem_box *)node);
 }
 
-static int	new_file(struct s_app *app)
+static int	new_file(t_app *app)
 {
 	char			new_name[MAX_NAME_LEN];
 	char			*filename;
@@ -77,7 +77,7 @@ static int	new_file(struct s_app *app)
 	return (free(filename), fd);
 }
 
-void	print_map(struct s_app *app)
+void	print_map(t_app *app)
 {
 	const int		fd = new_file(app);
 

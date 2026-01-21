@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:55 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:32:23 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:13:32 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	setup_r(struct s_app *app, struct s_screen *screen)
+void	setup_r(t_app *app, t_screen *screen)
 {
 	(void) app;
 	if (screen->resolution.x < 1 || screen->resolution.y < 1)
@@ -27,7 +27,7 @@ void	setup_r(struct s_app *app, struct s_screen *screen)
 }
 
 void
-	setup_c(struct s_app *app, struct s_camera *camera, bool setup_pan_speed)
+	setup_c(t_app *app, t_camera *camera, bool setup_pan_speed)
 {
 	(void) app;
 	camera->dir = normalize3(camera->dir);
@@ -44,7 +44,7 @@ void
 	}
 }
 
-void	setup_a(struct s_app *app, struct s_ambient *ambient)
+void	setup_a(t_app *app, t_ambient *ambient)
 {
 	(void) app;
 	if (ambient->ratio > FLT_1)
@@ -54,7 +54,7 @@ void	setup_a(struct s_app *app, struct s_ambient *ambient)
 	ambient->color_linear = srgb_to_linear_color(ambient->color);
 }
 
-void	setup_l(struct s_app *app, struct s_light *light)
+void	setup_l(t_app *app, t_light *light)
 {
 	(void) app;
 	if (light->ratio > FLT_1)
@@ -64,7 +64,7 @@ void	setup_l(struct s_app *app, struct s_light *light)
 	light->color_linear = srgb_to_linear_color(light->color);
 }
 
-void	setup_rcal(struct s_app *app)
+void	setup_rcal(t_app *app)
 {
 	int	i;
 
@@ -73,5 +73,5 @@ void	setup_rcal(struct s_app *app)
 	setup_a(app, &app->scene.ambient);
 	i = -1;
 	while (++i < app->scene.n_light)
-		setup_l(app, &app->scene.light[i]);	
+		setup_l(app, &app->scene.light[i]);
 }

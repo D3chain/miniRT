@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:28:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:09:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	scan_r(struct s_app *app, const char *line, int _)
+int	scan_r(t_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_int(app, &app->mlx.screen.resolution.x, line);
@@ -28,7 +28,7 @@ int	scan_r(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_c(struct s_app *app, const char *line, int _)
+int	scan_c(t_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_t_real3(app, &app->scene.camera.focal_center, line);
@@ -48,7 +48,7 @@ int	scan_c(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_a(struct s_app *app, const char *line, int _)
+int	scan_a(t_app *app, const char *line, int _)
 {
 	(void) _;
 	line += scan_t_real(app, &app->scene.ambient.ratio, line);
@@ -62,7 +62,7 @@ int	scan_a(struct s_app *app, const char *line, int _)
 	return (0);
 }
 
-int	scan_l(struct s_app *app, const char *line, int _)
+int	scan_l(t_app *app, const char *line, int _)
 {
 	static int	light_index;
 

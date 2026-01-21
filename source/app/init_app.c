@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-static void	init_antialiasing(struct s_app *app)
+static void	init_antialiasing(t_app *app)
 {
 	app->render.antialiasing.enabled = UPSAMPLING_INIT_ACTIV;
 	app->render.antialiasing.rfn = antialiasing;
@@ -30,7 +30,7 @@ static void	init_antialiasing(struct s_app *app)
 	app->render.antialiasing.downsample_rate = DOWNSAMPLING;
 }
 
-static void	init_render(struct s_app *app)
+static void	init_render(t_app *app)
 {
 	app->render.tile_side = TILE_SIDE;
 	app->render.tile_area = TILE_SIDE * TILE_SIDE;
@@ -50,17 +50,17 @@ static void	init_render(struct s_app *app)
 	app->render.inv_tile_side = FLT_1 / app->render.tile_side;
 }
 
-static int	init_threads(struct s_app *app)
+static int	init_threads(t_app *app)
 {
 	app->threads.cpu_cores = sysconf(_SC_NPROCESSORS_ONLN) - 1;
 	app->threads.th_tab = \
-		xcalloc(app, app->threads.cpu_cores * sizeof(struct s_thread));
+		xcalloc(app, app->threads.cpu_cores * sizeof(t_thread));
 	return (app->status);
 }
 
-static int	init_mlx(struct s_app *app)
+static int	init_mlx(t_app *app)
 {
-	struct s_mlx	mlx;
+	t_mlx	mlx;
 
 	mlx = app->mlx;
 	mlx.mlx = mlx_init();
@@ -85,7 +85,7 @@ static int	init_mlx(struct s_app *app)
 	return (0);
 }
 
-int	init_app(struct s_app *app)
+int	init_app(t_app *app)
 {
 	if (init_mlx(app))
 		return (app->status);

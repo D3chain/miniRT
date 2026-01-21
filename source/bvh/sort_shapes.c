@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_elems.c                                       :+:      :+:    :+:   */
+/*   sort_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 16:20:32 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:45:43 by cgajean          ###   ########.fr       */
+/*   Created: 2026/01/21 14:50:48 by cgajean           #+#    #+#             */
+/*   Updated: 2026/01/21 14:50:57 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_real	get_coord(struct s_elem elem, t_div_axis axis)
+static t_real	get_coord(t_shape elem, t_div_axis axis)
 {
 	if (axis == DIV_ALONG_X)
 		return (elem.u.any.coord.x);
@@ -21,12 +21,12 @@ static t_real	get_coord(struct s_elem elem, t_div_axis axis)
 	return (elem.u.any.coord.z);
 }
 
-void	sort_elems(t_bvh_elem_box *cur_box, t_div_axis div_axis)
+void	sort_shapes(t_bvh_elem_box *cur_box, t_div_axis div_axis)
 {
-	int				i;
-	struct s_elem	tmp_elem;
-	t_real			coord_i;
-	t_real			coord_i_plus_1;
+	int		i;
+	t_shape	tmp_elem;
+	t_real	coord_i;
+	t_real	coord_i_plus_1;
 
 	i = -1;
 	while (++i < cur_box->n_elems - 1)

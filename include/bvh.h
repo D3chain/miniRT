@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:18:50 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:40:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 13:54:43 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define BVH_H
 
 # include "minirt.h"
-
-struct s_app;
-struct s_scene;
 
 typedef enum e_divide_axis t_div_axis;
 
@@ -51,7 +48,7 @@ struct s_bvh_elem_box
 	t_boundbox		bbox;
 
 	int				n_elems;
-	struct s_elem	*elems;
+	t_shape	*elems;
 };
 
 struct s_bvh_node
@@ -64,21 +61,20 @@ struct s_bvh_node
 	
 };
 
-typedef struct s_hit_info (*t_ray_hit_fn[])(const struct s_ray *, const void*);
+typedef struct s_hit_info (*t_ray_hit_fn[])(const t_ray *, const void*);
 
 /*	Construction of the BVH tree	*/
-void		bvh_build(struct s_app *app, struct s_scene *scene);
-void		sort_elems(t_bvh_elem_box *cur_box, t_div_axis div_axis);
+void		bvh_build(t_app *app, t_scene *scene);
+void		sort_shapes(t_bvh_elem_box *cur_box, t_div_axis div_axis);
 void		bound_boxes(t_bvh_base *node);
-t_boundbox	elem_bounding_box(struct s_elem *elem);
+t_boundbox	elem_bounding_box(t_shape *elem);
 
 /*	Destruction of the BVH tree		*/
 void		bvh_destroy(t_bvh_base *root);
 
 /*	Traversal of the BVH and hit analysis	*/
-t_hit_info	bvh_traverse(t_bvh_base *tree, t_ray *ray);
 bool		bvh_any_hit(t_bvh_base *tree, t_ray *ray, t_real max_dist);
-bool		elem_inf_any_hit(struct s_scene *scene, t_ray *ray, t_real max_dist);
+bool		elem_inf_any_hit(t_scene *scene, t_ray *ray, t_real max_dist);
 bool		collision_aabb(t_bvh_node *node, t_ray *ray);
 bool		collision_aabb_base(t_bvh_base *base, t_ray *ray);
 

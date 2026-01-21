@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:07:18 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 19:11:18 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:47:40 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SCENE_H
 
 # include "minirt.h"
-
-struct s_app;
-struct s_scene;
 
 # define 	FOCAL_LENGTH	FLT_1
 # define	N_SCENE_ITEMS	8
@@ -77,17 +74,17 @@ struct s_mouse_position
 
 struct s_mouse
 {
-	int						button;
+	int				button;
 
-	struct s_mouse_position	pos;
+	t_mouse_pos		pos;
 
-	struct timeval			last_action_time;
-	bool					is_scrolling;
+	struct timeval	last_action_time;
+	bool			is_scrolling;
 
-	t_real					pan_speed;
-	t_real					base_pan_speed;
+	t_real			pan_speed;
+	t_real			base_pan_speed;
 
-	bool					fast_move;
+	bool			fast_move;
 };
 
 struct s_viewport
@@ -118,16 +115,16 @@ struct s_camera
 	t_real				fov_reference;
 	t_real				pan_fov_ratio;
 	
-	struct s_viewport	wp;
+	t_viewport	wp;
 
-	struct s_mouse		mouse;
+	t_mouse		mouse;
 };
 
 struct s_ambient
 {
 	t_real			ratio;
 	t_color			color;
-	t_color_linear	color_linear;
+	t_color_lin	color_linear;
 };
 
 struct s_light
@@ -135,12 +132,12 @@ struct s_light
 	t_real3			coord;
 	t_real			ratio;
 	t_color			color;
-	t_color_linear	color_linear;
+	t_color_lin		color_linear;
 	
 };
 
-typedef t_color_linear		(*render_fn)(struct s_app*, t_real, t_real);
-typedef void				(*tile_fn)(struct s_app *app, t_int2 tile, render_fn rend);
+typedef t_color_lin		(*render_fn)(t_app*, t_real, t_real);
+typedef void			(*tile_fn)(t_app *app, t_int2 tile);
 
 struct s_antialiasing
 {
@@ -162,22 +159,22 @@ struct s_antialiasing
 struct s_scene
 {
 
-	struct s_camera			camera;
+	t_camera	camera;
 
-	struct s_ambient		ambient;
+	t_ambient	ambient;
 
-	struct s_light			*light;
-	int						n_light;
+	t_light		*light;
+	int			n_light;
 
-	struct s_elem			*elems;
-	int						n_elem;
+	t_shape		*elems;
+	int			n_elem;
 
-	struct s_elem			*elems_inf;
-	int						n_elem_inf;
+	t_shape		*elems_inf;
+	int			n_elem_inf;
 	
-	t_real					environment_ior;
+	t_real		environment_ior;
 
-	t_bvh_base				*bvh_root;
+	t_bvh_base	*bvh_root;
 };
 
 
@@ -229,15 +226,15 @@ struct s_any
 	t_real3		coord;
 };
 
-struct s_elem
+struct s_shape
 {
 	int		type;
 	union {
-		struct s_any		any;
-		struct s_sphere 	sphere;
-		struct s_plane		plane;
-		struct s_cylinder	cylinder;
-		struct s_cone		cone;
+		t_any		any;
+		t_sphere 	sphere;
+		t_plane		plane;
+		t_cylinder	cylinder;
+		t_cone		cone;
 	}	u;
 };
 

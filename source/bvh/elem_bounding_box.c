@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:19 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:24:20 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_boundbox	cone_box(struct s_elem *elem)
+static t_boundbox	cone_box(t_shape *elem)
 {
 	t_real	radius;
 	t_real3	axis;
@@ -36,7 +36,7 @@ static t_boundbox	cone_box(struct s_elem *elem)
 		.end.z = fmax(base.z, apex.z) + ext.z});
 }
 
-static t_boundbox	cylinder_box(struct s_elem *elem)
+static t_boundbox	cylinder_box(t_shape *elem)
 {
 	t_real	radius;
 	t_real3	axis;
@@ -60,7 +60,7 @@ static t_boundbox	cylinder_box(struct s_elem *elem)
 		.end.z = fmax(p1.z, p2.z) + ext.z});
 }
 
-static t_boundbox	sphere_box(struct s_elem *elem)
+static t_boundbox	sphere_box(t_shape *elem)
 {
 	t_real3	coord;
 	t_real	radius;
@@ -76,7 +76,7 @@ static t_boundbox	sphere_box(struct s_elem *elem)
 		.end.z = coord.z + radius});
 }
 
-t_boundbox	elem_bounding_box(struct s_elem *elem)
+t_boundbox	elem_bounding_box(t_shape *elem)
 {
 	int	type;
 

@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 20:25:45 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	print_error(struct s_app *app)
+static void	print_error(t_app *app)
 {
 	if (app->status == ERR_SYS)
 		dprintf(STDERR_FILENO, \
@@ -25,7 +25,7 @@ static void	print_error(struct s_app *app)
 			"Parsing error, restart MiniRT with a valid [filename.rt] file.\n");
 }
 
-static int	check_arg(struct s_app *app, int argc, char *argv[])
+static int	check_arg(t_app *app, int argc, char *argv[])
 {
 	if (argc != 2 || ft_strrcmp(argv[1], ".rt"))
 	{
@@ -36,7 +36,7 @@ static int	check_arg(struct s_app *app, int argc, char *argv[])
 	return (ERR_NONE);
 }
 
-static int	quit(struct s_app *app)
+static int	quit(t_app *app)
 {
 	print_error(app);
 	cleanup_app(app);
@@ -45,7 +45,7 @@ static int	quit(struct s_app *app)
 
 int	main(int argc, char *argv[])
 {
-	struct s_app	app;
+	t_app	app;
 
 	ft_memset(&app, 0, sizeof(app));
 	if (check_arg(&app, argc, argv))

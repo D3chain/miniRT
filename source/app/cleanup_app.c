@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:57:25 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 17:45:36 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:50:18 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	clean_scene(struct s_scene *scene)
+static void	clean_scene(t_scene *scene)
 {
 	if (scene->light)
 		free(scene->light);
@@ -22,7 +22,7 @@ static void	clean_scene(struct s_scene *scene)
 		free(scene->elems_inf);
 }
 
-static void	clean_mlx(struct s_mlx *mlx)
+static void	clean_mlx(t_mlx *mlx)
 {
 	if (mlx->win)
 		mlx_destroy_window(mlx->mlx, mlx->win);
@@ -35,13 +35,13 @@ static void	clean_mlx(struct s_mlx *mlx)
 	}
 }
 
-static void	clean_threading(struct s_thread *t)
+static void	clean_threading(t_thread *t)
 {
 	if (t->th_tab)
 		free(t->th_tab);
 }
 
-void	cleanup_app(struct s_app *app)
+void	cleanup_app(t_app *app)
 {
 	clean_scene(&app->scene);
 	bvh_destroy(app->scene.bvh_root);

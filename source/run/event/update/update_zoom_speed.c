@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:49 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:50:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # define FLT_PRECISION	"%0.1f"
 #endif
 
-static void	equal_key_pressed(struct s_app *app)
+static void	equal_key_pressed(t_app *app)
 {
 	app->scene.camera.mouse.base_pan_speed *= ZOOM_INCREASE_FACTOR;
 }
 
-static void	backspace_key_pressed(struct s_app *app)
+static void	backspace_key_pressed(t_app *app)
 {
 	static t_real		speed[2] = {ZOOM_BASE_PAN_SPEED, ZOOM_FAST_PAN_SPEED};
 	static const char	*state[] = {"OFF", "ON"};
@@ -38,14 +38,14 @@ static void	backspace_key_pressed(struct s_app *app)
 	printf("Fast zoom is %s\n", state[fast_move]);
 }
 
-static void	minus_key_pressed(struct s_app *app)
+static void	minus_key_pressed(t_app *app)
 {
 	if (app->scene.camera.mouse.base_pan_speed * ZOOM_DECREASE_FACTOR \
 			> ZOOM_MIN_SPEED)
 		app->scene.camera.mouse.base_pan_speed *= ZOOM_DECREASE_FACTOR;
 }
 
-void	update_zoom_speed(int key, struct s_app *app)
+void	update_zoom_speed(int key, t_app *app)
 {
 	if (key == XK_equal)
 		equal_key_pressed(app);

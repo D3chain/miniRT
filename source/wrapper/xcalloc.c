@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:19:57 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 16:19:59 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	*xcalloc(struct s_app *app, size_t size)
+void	*xcalloc(t_app *app, size_t size)
 {
 	void	*ptr;
 

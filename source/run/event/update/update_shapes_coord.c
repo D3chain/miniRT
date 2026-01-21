@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:51:51 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:27:14 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 13:50:17 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 __attribute__((always_inline))
 static inline void	traverse_bvh(
-	struct s_camera *camera, t_bvh_elem_box *tree, t_int2 offset)
+	t_camera *camera, t_bvh_elem_box *tree, t_int2 offset)
 {
 	const t_real3	vec_offset = {
 		.x = (camera->dir_right.x * offset.x + camera->dir_up.x * offset.y) \
@@ -26,20 +26,20 @@ static inline void	traverse_bvh(
 	};
 	int				n_elem;
 	int				n;
-	struct s_elem	*e;
+	t_shape			*sh;
 
 	n = 0;
 	n_elem = tree->n_elems;
 	while (n < n_elem)
 	{
-		e = &tree->elems[n];
-		e->u.any.coord = plus3(e->u.any.coord, vec_offset);
+		sh = &tree->elems[n];
+		sh->u.any.coord = plus3(sh->u.any.coord, vec_offset);
 		++n;
 	}
 }
 
 void	update_shapes_coord(
-	struct s_camera *camera, t_bvh_base *tree, t_int2 offset)
+	t_camera *camera, t_bvh_base *tree, t_int2 offset)
 {
 	if (tree->type == NODE_BOX)
 	{

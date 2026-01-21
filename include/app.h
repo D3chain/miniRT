@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:53:02 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/20 20:26:04 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:44:27 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define APP_H
 
 typedef t_int2	t_resolution;
-
-struct s_app;
-struct s_scene;
 
 struct s_screen
 {
@@ -33,7 +30,7 @@ struct s_img
 	int				endian;
 };
 
-struct	s_mlx
+struct s_mlx
 {
 	const char		*title;
 
@@ -41,18 +38,15 @@ struct	s_mlx
 
 	void			*win;
 	
-	struct s_screen	screen;	
+	t_screen	screen;	
 
-	struct s_img	img;
+	t_img	img;
 };
 
-struct	s_thread
+struct s_thread
 {
 	pthread_t		*th_tab;
-	
-	pthread_mutex_t	th_idx_mtx;
-	int				th_idx;
-
+	_Atomic	int 	th_idx;
 	int				cpu_cores;
 };
 
@@ -69,22 +63,18 @@ struct s_render
 
 struct s_app
 {
-	char			*file_name;
+	t_status	status;
+	char		*file_name;
 
-	struct s_mlx	mlx;
-
-	struct s_scene	scene;
-
-	struct s_render	render;
-
-	struct s_thread	threads;
-	
-	t_status		status;
+	t_mlx		mlx;
+	t_scene		scene;
+	t_render	render;
+	t_thread	threads;
 };
 
 /*	PROTOTYPES	*/
 
-int		init_app(struct s_app *app);
-void	cleanup_app(struct s_app *app);
+int		init_app(t_app *app);
+void	cleanup_app(t_app *app);
 
 #endif

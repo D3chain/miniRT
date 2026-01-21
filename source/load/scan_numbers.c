@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:14:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:26:48 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	scan_color(struct s_app *app, t_color *res, const char *str)
+int	scan_color(t_app *app, t_color *res, const char *str)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	scan_color(struct s_app *app, t_color *res, const char *str)
 	return (i);
 }
 
-int	scan_int(struct s_app *app, int *res, const char *str)
+int	scan_int(t_app *app, int *res, const char *str)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ int	scan_int(struct s_app *app, int *res, const char *str)
 	return (i);
 }
 
-int	scan_uint8_t(struct s_app *app, uint8_t *res, const char *str)
+int	scan_uint8_t(t_app *app, uint8_t *res, const char *str)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ int	scan_uint8_t(struct s_app *app, uint8_t *res, const char *str)
 	return (i);
 }
 
-int	scan_t_real(struct s_app *app, t_real *res, const char *str)
+int	scan_t_real(t_app *app, t_real *res, const char *str)
 {
 	int				i;
 	int				j;
@@ -85,7 +85,7 @@ int	scan_t_real(struct s_app *app, t_real *res, const char *str)
 	return (i);
 }
 
-int	scan_t_real3(struct s_app *app, t_real3 *res, const char *str)
+int	scan_t_real3(t_app *app, t_real3 *res, const char *str)
 {
 	int			i;
 

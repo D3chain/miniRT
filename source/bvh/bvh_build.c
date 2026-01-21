@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:13 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:45:17 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static t_div_axis	get_div_axis(t_bvh_elem_box *cur_box)
 }
 
 static t_bvh_node
-	*divide_box(struct s_app *app, t_bvh_elem_box *cur_box, t_div_axis div_axis)
+	*divide_box(t_app *app, t_bvh_elem_box *cur_box, t_div_axis div_axis)
 {
 	t_bvh_node	*node;
 	int			mid;
 
-	sort_elems(cur_box, div_axis);
+	sort_shapes(cur_box, div_axis);
 	node = xcalloc(app, sizeof(t_bvh_node));
 	if (app->status)
 		return (NULL);
@@ -76,7 +76,7 @@ static t_bvh_node
 	return (free(cur_box), node);
 }
 
-static t_bvh_base	*bvh_subdivide(struct s_app *app, t_bvh_elem_box *cur_box)
+static t_bvh_base	*bvh_subdivide(t_app *app, t_bvh_elem_box *cur_box)
 {
 	t_bvh_node	*node;
 
@@ -91,7 +91,7 @@ static t_bvh_base	*bvh_subdivide(struct s_app *app, t_bvh_elem_box *cur_box)
 	}
 }
 
-void	bvh_build(struct s_app *app, struct s_scene *scene)
+void	bvh_build(t_app *app, t_scene *scene)
 {
 	scene->bvh_root = xcalloc(app, sizeof(t_bvh_elem_box));
 	if (app->status)

@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:03 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:14:08 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:01:15 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	setup_viewport(struct s_app *app, struct s_camera *camera)
+void	setup_viewport(t_app *app, t_camera *camera)
 {
 	static const t_real	dir_ceil = FLT_1 - FLT_0_1 / FLT_10;
 

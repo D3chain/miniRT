@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:32:48 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:32:02 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 13:49:22 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	event_mouse_close(struct s_app *app)
+int	event_mouse_close(t_app *app)
 {
 	mlx_loop_end(app->mlx.mlx);
 	return (0);
@@ -27,7 +27,7 @@ static inline long	get_elapsed_ms(struct timeval start, struct timeval end)
 
 int	idle_scroll_reenable(void *p)
 {
-	struct s_app	*app;
+	t_app			*app;
 	struct timeval	now;
 	long			elapsed_ms;
 
@@ -49,9 +49,9 @@ int	idle_scroll_reenable(void *p)
 	return (0);
 }
 
-int	event_mouse_click(int button, int x, int y, struct s_app *app)
+int	event_mouse_click(int button, int x, int y, t_app *app)
 {
-	t_real		factor;
+	t_real	factor;
 
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
 	toggle_antialiasing(&app->render.antialiasing);
@@ -72,7 +72,7 @@ int	event_mouse_click(int button, int x, int y, struct s_app *app)
 	return (0);
 }
 
-int	event_mouse_release(int button, int x, int y, struct s_app *app)
+int	event_mouse_release(int button, int x, int y, t_app *app)
 {
 	update_mouse_position(&app->scene.camera.mouse, button, x, y);
 	if (button == Button1 || button == Button2 || button == Button3)

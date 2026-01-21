@@ -19,7 +19,7 @@ Each sample counts as 0.01 seconds.
   2.50      0.72     0.02     9814     0.00     0.00  project
   1.25      0.73     0.01   410767     0.00     0.00  idle_scroll_reenable
   1.25      0.74     0.01   126794     0.00     0.00  polynome2
-  1.25      0.75     0.01   123899     0.00     0.00  bvh_traverse
+  1.25      0.75     0.01   123899     0.00     0.00  bvh_hit
   1.25      0.76     0.01    22933     0.00     0.00  mul_color_linear
   1.25      0.77     0.01    10818     0.00     0.00  diffuse_specular_light
   1.25      0.78     0.01    10303     0.00     0.00  elem_inf_any_hit
@@ -153,7 +153,7 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.02    0.37  121289/121289      antialiasing [3]
 [4]     48.3    0.02    0.37  121289         trace [4]
-                0.01    0.22  123899/123899      bvh_traverse [7]
+                0.01    0.22  123899/123899      bvh_hit [7]
                 0.01    0.12    8339/8339        phong_effect [10]
 -----------------------------------------------
                 0.06    0.22  107084/107084      antialiasing [3]
@@ -175,10 +175,10 @@ index % time    self  children    called     name
                 0.00    0.00   10832/10832       orient_normal [40]
 -----------------------------------------------
                 0.01    0.22  123899/123899      trace [4]
-[7]     28.9    0.01    0.22  123899         bvh_traverse [7]
+[7]     28.9    0.01    0.22  123899         bvh_hit [7]
                 0.00    0.22  127120/127120      ray_hit [8]
 -----------------------------------------------
-                0.00    0.22  127120/127120      bvh_traverse [7]
+                0.00    0.22  127120/127120      bvh_hit [7]
 [8]     27.7    0.00    0.22  127120         ray_hit [8]
                 0.08    0.14  136718/146724      ray_hit_sphere [6]
 -----------------------------------------------
@@ -677,7 +677,7 @@ Index by function name
   [58] bvh_build              [20] linear_to_srgb_color   [82] scan_material
   [59] bvh_destroy            [34] load_scene             [83] scan_r
   [60] bvh_subdivide (bvh_build.c) [9] minus3             [84] scan_scene_from_file (load_scene.c)
-   [7] bvh_traverse           [25] mul_color_linear       [85] scan_sp
+   [7] bvh_hit           [25] mul_color_linear       [85] scan_sp
   [61] check_arg (main.c)     [42] next_tile (render_routine.c) [43] scan_t_real
   [62] clamp_k_factors (scan_material.c) [47] next_tok (load_scene.c) [50] scan_t_real3
   [63] clean_mlx (cleanup_app.c) [41] norm3               [45] scan_uint8_t

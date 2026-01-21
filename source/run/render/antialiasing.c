@@ -6,15 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:22 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:50:52 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:13:09 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((always_inline))
-static inline t_color_linear
-	increment_color_linear(t_color_linear incremented, t_color_linear with)
+static inline t_color_lin
+	increment_color_lin(t_color_lin incremented, t_color_lin with)
 {
 	incremented.r += with.r;
 	incremented.g += with.g;
@@ -23,22 +23,22 @@ static inline t_color_linear
 }
 
 __attribute__((always_inline))
-static inline t_color_linear
-	average_color_linear(t_color_linear color, t_real inv_samples)
+static inline t_color_lin
+	average_color_linear(t_color_lin color, t_real inv_samples)
 {
 	return (scale_color_linear(color, inv_samples));
 }
 
-t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
+t_color_lin	antialiasing(t_app *app, t_real x, t_real y)
 {
-	const struct s_antialiasing	*aa;
-	t_color_linear				color;
-	t_ray						ray;
-	t_real2						offset;
-	t_int2						grid;
+	t_antialiasing	*aa;
+	t_color_lin		color;
+	t_ray			ray;
+	t_real2			offset;
+	t_int2			grid;
 
 	aa = &app->render.antialiasing;
-	color = (t_color_linear){0};
+	color = (t_color_lin){0};
 	grid.x = 0;
 	while (grid.x < aa->grid_size)
 	{
@@ -48,7 +48,7 @@ t_color_linear	antialiasing(struct s_app *app, t_real x, t_real y)
 			offset.x = (grid.x + aa->offset_factor) * aa->inv_grid_size;
 			offset.y = (grid.y + aa->offset_factor) * aa->inv_grid_size;
 			init_ray(app, &ray, x + offset.x, y + offset.y);
-			color = increment_color_linear(color, trace(&app->scene, &ray));
+			color = increment_color_lin(color, trace(&app->scene, &ray));
 			grid.y++;
 		}
 		grid.x++;

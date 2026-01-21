@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:11:02 by echatela          #+#    #+#             */
-/*   Updated: 2025/12/02 11:49:32 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	*xmalloc(struct s_app *app, size_t size)
+void	*xmalloc(t_app *app, size_t size)
 {
 	void	*ptr;
 

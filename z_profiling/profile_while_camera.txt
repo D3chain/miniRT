@@ -5,7 +5,7 @@ Each sample counts as 0.01 seconds.
  time   seconds   seconds    calls  us/call  us/call  name    
  54.19     13.98    13.98  3443617     4.06     7.00  trace
  10.66     16.73     2.75  5748560     0.48     0.48  ray_hit_cone
- 10.39     19.41     2.68  3572524     0.75     1.71  bvh_traverse
+ 10.39     19.41     2.68  3572524     0.75     1.71  bvh_hit
   9.46     21.85     2.44  6242372     0.39     0.39  ray_hit_cylinder
   5.97     23.39     1.54 12919883     0.12     0.31  bvh_any_hit
   2.79     24.11     0.72  6277494     0.11     0.11  ray_hit_sphere
@@ -89,7 +89,7 @@ index % time    self  children    called     name
                 6.52    4.73 1606602/3443617     basic_render [4]
                 7.46    5.40 1837015/3443617     antialiasing [3]
 [2]     93.4   13.98   10.13 3443617         trace [2]
-                2.68    3.43 3572524/3572524     bvh_traverse [5]
+                2.68    3.43 3572524/3572524     bvh_hit [5]
                 1.54    2.48 12919883/12919883     bvh_any_hit [6]
 -----------------------------------------------
                 0.23   12.86  461171/461171      render_routine [1]
@@ -101,7 +101,7 @@ index % time    self  children    called     name
                 6.52    4.73 1606602/3443617     trace [2]
 -----------------------------------------------
                 2.68    3.43 3572524/3572524     trace [2]
-[5]     23.7    2.68    3.43 3572524         bvh_traverse [5]
+[5]     23.7    2.68    3.43 3572524         bvh_hit [5]
                 1.59    0.00 3324519/5748560     ray_hit_cone [7]
                 1.41    0.00 3605604/6242372     ray_hit_cylinder [8]
                 0.43    0.00 3736408/6277494     ray_hit_sphere [9]
@@ -113,15 +113,15 @@ index % time    self  children    called     name
                 0.29    0.00 2541086/6277494     ray_hit_sphere [9]
 -----------------------------------------------
                 1.16    0.00 2424041/5748560     bvh_any_hit [6]
-                1.59    0.00 3324519/5748560     bvh_traverse [5]
+                1.59    0.00 3324519/5748560     bvh_hit [5]
 [7]     10.7    2.75    0.00 5748560         ray_hit_cone [7]
 -----------------------------------------------
                 1.03    0.00 2636768/6242372     bvh_any_hit [6]
-                1.41    0.00 3605604/6242372     bvh_traverse [5]
+                1.41    0.00 3605604/6242372     bvh_hit [5]
 [8]      9.5    2.44    0.00 6242372         ray_hit_cylinder [8]
 -----------------------------------------------
                 0.29    0.00 2541086/6277494     bvh_any_hit [6]
-                0.43    0.00 3736408/6277494     bvh_traverse [5]
+                0.43    0.00 3736408/6277494     bvh_hit [5]
 [9]      2.8    0.72    0.00 6277494         ray_hit_sphere [9]
 -----------------------------------------------
                                                  <spontaneous>
@@ -354,7 +354,7 @@ Index by function name
   [26] bound_boxes (bound_boxes.c) [18] event_mouse_release (event_mouse.c) [36] scan_co (scan_shapes.c)
    [6] bvh_any_hit (any_hit.c) [12] ft_dabs               [19] scan_color (scan_numbers.c)
   [27] bvh_subdivide (bvh_build.c) [11] ft_dblcmp         [37] scan_cy (scan_shapes.c)
-   [5] bvh_traverse (trace.c) [32] print_bvh_tree (print_bvh_tree.c) [24] scan_pl (scan_shapes.c)
+   [5] bvh_hit (trace.c) [32] print_bvh_tree (print_bvh_tree.c) [24] scan_pl (scan_shapes.c)
   [15] setup_c (setup_rcal.c) [7] ray_hit_cone (ray_hit_cone.c) [38] scan_sp (scan_shapes.c)
   [28] setup_co (setup_shapes.c) [8] ray_hit_cylinder (ray_hit_cylinder.c) [13] scan_t_real (scan_numbers.c)
   [29] setup_cy (setup_shapes.c) [9] ray_hit_sphere (ray_hit_sphere.c) [16] scan_t_real3 (scan_numbers.c)

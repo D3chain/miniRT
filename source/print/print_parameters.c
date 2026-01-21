@@ -6,13 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:08 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:21:12 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	print_render(struct s_app *app)
+void	print_render(t_app *app)
 {
 	static const char	*state[] = {"OFF", "ON"};
 
@@ -38,7 +38,7 @@ void	print_render(struct s_app *app)
 	printf("\n\n");
 }
 
-void	print_camera(struct s_app *app)
+void	print_camera(t_app *app)
 {
 	printf("╔════════════════════════════════╗\n");
 	printf("║          CAMERA SETUP          ║\n");

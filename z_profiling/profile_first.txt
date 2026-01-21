@@ -29,7 +29,7 @@ Each sample counts as 0.01 seconds.
   0.55     17.31     0.10   250398     0.00     0.00  mul_color_linear
   0.55     17.41     0.10    84307     0.00     0.00  init_ray
   0.50     17.50     0.09  1012578     0.00     0.01  ray_hit_cylinder
-  0.33     17.56     0.06    88439     0.00     0.03  bvh_traverse
+  0.33     17.56     0.06    88439     0.00     0.03  bvh_hit
   0.28     17.61     0.05  1980434     0.00     0.00  closest_hit_dst_sol2
   0.28     17.66     0.05   400798     0.00     0.02  check_leaf_shadow
   0.28     17.71     0.05                             ft_dabs
@@ -75,7 +75,7 @@ Each sample counts as 0.01 seconds.
   0.00     18.06     0.00       77     0.00     0.00  scan_cy
   0.00     18.06     0.00       59     0.00     0.00  divide_box
   0.00     18.06     0.00       59     0.00     0.00  get_div_axis
-  0.00     18.06     0.00       59     0.00     0.00  sort_elems
+  0.00     18.06     0.00       59     0.00     0.00  sort_shapes
   0.00     18.06     0.00       29     0.00   569.30  render_tile
   0.00     18.06     0.00       28     0.00     0.00  next_tile
   0.00     18.06     0.00        6     0.00     0.00  setup_l
@@ -169,7 +169,7 @@ index % time    self  children    called     name
                 0.03   16.06   79214/79214       antialiasing [3]
 [4]     89.1    0.03   16.06   79214         trace [4]
                 0.01   13.26   49279/49279       phong_effect [5]
-                0.06    2.63   88439/88439       bvh_traverse [15]
+                0.06    2.63   88439/88439       bvh_hit [15]
                 0.02    0.07   80409/80409       elem_inf_hit [37]
 -----------------------------------------------
                 0.01   13.26   49279/49279       trace [4]
@@ -260,14 +260,14 @@ index % time    self  children    called     name
                 1.31    0.00 3637395/7480958     project [11]
 [14]    14.9    2.69    0.00 7480958         fmul3 [14]
 -----------------------------------------------
-                              527979             bvh_traverse [15]
+                              527979             bvh_hit [15]
                 0.06    2.63   88439/88439       trace [4]
-[15]    14.9    0.06    2.63   88439+527979  bvh_traverse [15]
+[15]    14.9    0.06    2.63   88439+527979  bvh_hit [15]
                 0.04    2.28   97841/97841       ray_hit [16]
                 0.31    0.00 1630182/1630182     collision_aabb [28]
-                              527979             bvh_traverse [15]
+                              527979             bvh_hit [15]
 -----------------------------------------------
-                0.04    2.28   97841/97841       bvh_traverse [15]
+                0.04    2.28   97841/97841       bvh_hit [15]
 [16]    12.8    0.04    2.28   97841         ray_hit [16]
                 0.02    2.06  201625/1012578     ray_hit_cylinder [8]
                 0.04    0.16   99541/495261      ray_hit_sphere [20]
@@ -346,7 +346,7 @@ index % time    self  children    called     name
                 0.05    0.00   88230/1252763     normalize3 [24]
                 0.04    0.00   94293/8180594     minus3 [12]
 -----------------------------------------------
-                0.31    0.00 1630182/1630182     bvh_traverse [15]
+                0.31    0.00 1630182/1630182     bvh_hit [15]
 [28]     1.7    0.31    0.00 1630182         collision_aabb [28]
 -----------------------------------------------
                 0.11    0.17  217926/217926      diffuse_specular_light [19]
@@ -470,7 +470,7 @@ index % time    self  children    called     name
                 0.00    0.00  202382/202382      collision [6]
 [54]     0.0    0.00    0.00  202382         elem_inf_any_hit [54]
 -----------------------------------------------
-                0.00    0.00  111632/111632      sort_elems [79]
+                0.00    0.00  111632/111632      sort_shapes [79]
 [55]     0.0    0.00    0.00  111632         get_coord [55]
 -----------------------------------------------
                 0.00    0.00   66262/66262       linear_to_srgb_color [43]
@@ -577,13 +577,13 @@ index % time    self  children    called     name
                 0.00    0.00      59/59          bvh_subdivide [88]
 [77]     0.0    0.00    0.00      59         divide_box [77]
                 0.00    0.00     177/179         xcalloc [64]
-                0.00    0.00      59/59          sort_elems [79]
+                0.00    0.00      59/59          sort_shapes [79]
 -----------------------------------------------
                 0.00    0.00      59/59          bvh_subdivide [88]
 [78]     0.0    0.00    0.00      59         get_div_axis [78]
 -----------------------------------------------
                 0.00    0.00      59/59          divide_box [77]
-[79]     0.0    0.00    0.00      59         sort_elems [79]
+[79]     0.0    0.00    0.00      59         sort_shapes [79]
                 0.00    0.00  111632/111632      get_coord [55]
 -----------------------------------------------
                 0.00    0.00      28/28          render_routine [2]
@@ -803,8 +803,8 @@ Index by function name
   [86] bound_boxes (bound_boxes.c) [39] ft_dabs            [8] ray_hit_cylinder (ray_hit_cylinder.c)
    [7] bvh_any_hit (any_hit.c) [44] ft_dblcmp             [38] ray_hit_plane (ray_hit_plane.c)
   [87] bvh_build (bvh_build.c) [25] ft_memset             [20] ray_hit_sphere (ray_hit_sphere.c)
-  [88] bvh_subdivide (bvh_build.c) [55] get_coord (sort_elems.c) [29] reflect (vec_op_2.c)
-  [15] bvh_traverse (trace.c) [78] get_div_axis (bvh_build.c) [101] render (run_scene.c)
+  [88] bvh_subdivide (bvh_build.c) [55] get_coord (sort_shapes.c) [29] reflect (vec_op_2.c)
+  [15] bvh_hit (trace.c) [78] get_div_axis (bvh_build.c) [101] render (run_scene.c)
   [10] caps_intersect (ray_hit_cylinder.c) [83] get_th_idx (render.c) [1] render_tile (render.c)
   [89] check_arg (init_app.c) [42] increment_linear_color (antialiasing.c) [102] reset_th_idx (run_scene.c)
    [9] check_leaf_shadow (any_hit.c) [94] init_app (init_app.c) [60] rgb_to_linear (color_linear_conversion.c)
@@ -821,7 +821,7 @@ Index by function name
   [52] setup_cy (setup_elem.c) [80] next_tile (render.c) [58] scan_t_real (scan_numbers.c)
   [49] setup_scene (load_scene.c) [65] next_tok (token.c) [62] scan_t_real3 (scan_numbers.c)
   [72] setup_sp (setup_elem.c) [41] norm3 (vec_op_3.c) [61] scan_uint8_t (scan_numbers.c)
-  [92] count_scene_from_file (load_scene.c) [48] normal_tube (ray_hit_cylinder.c) [79] sort_elems (sort_elems.c)
+  [92] count_scene_from_file (load_scene.c) [48] normal_tube (ray_hit_cylinder.c) [79] sort_shapes (sort_shapes.c)
   [84] cross3 (vec_op_1.c)    [24] normalize3 (vec_op_2.c) [74] sphere_box (elem_bounding_box.c)
   [75] cylinder_box (elem_bounding_box.c) [45] orient_normal (vec_op_3.c) [33] sqdot (vec_op_2.c)
   [34] define_pattern          [5] phong_effect (phong_effect.c) [68] srgb_to_linear_color (color_linear_conversion.c)

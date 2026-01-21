@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:25:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:51:41 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:35:51 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 __attribute__((hot))
 void
-	draw_pixel_to_img(struct s_img *img, t_int2 resolution, \
+	draw_pixel_to_img(t_img *img, t_int2 resolution, \
 		t_int2 pos, int color)
 {
 	uint32_t	pixel;

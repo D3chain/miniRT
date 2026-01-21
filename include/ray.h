@@ -6,15 +6,12 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:04:24 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/19 10:45:20 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:28:08 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
-
-struct s_app;
-struct s_scene;
 
 struct s_ray
 {
@@ -31,18 +28,25 @@ struct s_hit_info
 	t_material	material;
 };
 
-void				init_ray(struct s_app *app, struct s_ray *ray, t_real x, t_real y);
-t_hit_info			ray_hit(t_bvh_elem_box *box, const t_ray *ray);
+void		init_ray(t_app *app, t_ray *ray, t_real x, t_real y);
+t_hit_info	ray_hit(t_bvh_elem_box *box, const t_ray *ray);
 
-t_hit_info			elem_inf_hit(struct s_scene *scene, t_ray *ray);
+t_hit_info	elem_inf_hit(t_scene *scene, t_ray *ray);
 
-t_real				closest_hit_dst_dbl(const t_real a, const t_real b);
-t_real				closest_hit_dst_sol2(t_sol2 sol);
-t_real				plane_dst(const struct s_ray *ray, const t_real3 normal, const t_real3 point);
+t_real		closest_hit_dst_dbl(const t_real a, const t_real b);
+t_real		closest_hit_dst_sol2(t_sol2 sol);
+t_real		plane_dst(const t_ray *ray, const t_real3 normal, \
+												const t_real3 point);
 
-t_hit_info			ray_hit_sphere(const struct s_ray *ray, const void *elem);
-t_hit_info			ray_hit_cylinder(const struct s_ray *ray, const void *elem);
-t_hit_info			ray_hit_cone(const struct s_ray *ray, const void *elem);
-t_hit_info			ray_hit_plane(const struct s_ray *ray, const void *elem);
+t_hit_info	ray_hit_plane(const t_ray *ray, const void *elem);
+t_hit_info	ray_hit_sphere(const t_ray *ray, const void *elem);
+t_hit_info	ray_hit_cylinder(const t_ray *ray, const void *elem);
+t_hit_info	ray_hit_cone(const t_ray *ray, const void *elem);
+t_hit_info	intersect_cone_body(const t_ray *ray, const t_cone *cone);
+t_hit_info	intersect_cone_cap(const t_ray *ray, const t_cone *cone);
+
+void		compute_cone_quadratic(const t_cone *cone, const t_ray *ray, \
+												t_real3 x, t_real coefs[3]);
+bool		solve_quadratic(t_real coefs[3], t_real *t1, t_real *t2);						
 
 #endif

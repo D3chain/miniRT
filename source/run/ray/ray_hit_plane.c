@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:27 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:28:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:12:11 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 __attribute__((hot))
 t_real
-	plane_dst(const struct s_ray *ray, const t_real3 normal, \
+	plane_dst(const t_ray *ray, const t_real3 normal, \
 		const t_real3 point)
 {
 	return (dot(minus3(point, ray->origin), normal) / dot(ray->dir, normal));
 }
 
 __attribute__((hot))
-t_hit_info	ray_hit_plane(const struct s_ray *ray, const void *elem)
+t_hit_info	ray_hit_plane(const t_ray *ray, const void *elem)
 {
-	t_hit_info				closest_hit;
-	const struct s_plane	plane = ((struct s_elem *)elem)->u.plane;
-	const t_real			denom = dot(ray->dir, plane.normal);
+	t_hit_info		closest_hit;
+	const t_plane	plane = ((t_shape *)elem)->u.plane;
+	const t_real	denom = dot(ray->dir, plane.normal);
 
 	if (fabs(denom) < EPSILON)
 		return ((t_hit_info){0});

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:23:59 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:50:30 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:15:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ t_real	rgb_to_linear(t_real channel)
 }
 
 __attribute__((pure))
-t_color_linear	srgb_to_linear_color(t_color color)
+t_color_lin	srgb_to_linear_color(t_color color)
 {
-	return ((t_color_linear){
+	return ((t_color_lin){
 		rgb_to_linear(color.s_rgb.r / FLT_255),
 		rgb_to_linear(color.s_rgb.g / FLT_255),
 		rgb_to_linear(color.s_rgb.b / FLT_255),
@@ -61,7 +61,7 @@ static inline t_real	linear_to_srgb(t_real channel)
 }
 
 __attribute__((pure))
-t_color	linear_to_srgb_color(t_color_linear col)
+t_color	linear_to_srgb_color(t_color_lin col)
 {
 	return ((t_color){
 		.s_rgb.r = (uint8_t)(linear_to_srgb(col.r) * FLT_255),

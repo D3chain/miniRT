@@ -6,15 +6,15 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 19:55:56 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 20:28:02 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:12:01 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((hot))
-static t_sol2	caps_intersect(const struct s_ray *ray, \
-	const struct s_cylinder *cylinder)
+static t_sol2	caps_intersect(const t_ray *ray, \
+	const t_cylinder *cylinder)
 {
 	t_sol2			sol;
 	const t_real3	p1 = project(cylinder->coord, cylinder->axis, \
@@ -38,8 +38,8 @@ static t_sol2	caps_intersect(const struct s_ray *ray, \
 }
 
 __attribute__((hot))
-static t_sol2	tube_intersect(const struct s_ray *ray,
-	const struct s_cylinder *cylinder)
+static t_sol2	tube_intersect(const t_ray *ray,
+	const t_cylinder *cylinder)
 {
 	const t_real3	offset = minus3(ray->origin, cylinder->coord);
 	const t_real3	tmp_a = minus3(ray->dir, \
@@ -67,7 +67,7 @@ static t_sol2	tube_intersect(const struct s_ray *ray,
 }
 
 __attribute__((hot))
-t_real3	normal_tube(const struct s_cylinder *cylinder, const t_real3 hit_point)
+t_real3	normal_tube(const t_cylinder *cylinder, const t_real3 hit_point)
 {
 	const t_real3	oc = minus3(hit_point, cylinder->coord);
 	const t_real	projection = dot(oc, cylinder->axis);
@@ -78,11 +78,11 @@ t_real3	normal_tube(const struct s_cylinder *cylinder, const t_real3 hit_point)
 }
 
 __attribute__((hot))
-t_hit_info	ray_hit_cylinder(const struct s_ray *ray, const void *elem)
+t_hit_info	ray_hit_cylinder(const t_ray *ray, const void *elem)
 {
-	struct s_hit_info		hit;
-	const struct s_cylinder	cylinder = ((struct s_elem *)elem)->u.cylinder;
-	const t_real			dst_tube = \
+	struct s_hit_info	hit;
+	const t_cylinder	cylinder = ((t_shape *)elem)->u.cylinder;
+	const t_real		dst_tube = \
 		closest_hit_dst_sol2(tube_intersect(ray, &cylinder));
 
 	hit.dst = closest_hit_dst_sol2(caps_intersect(ray, &cylinder));

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:15:04 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 16:09:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "minirt.h"
 
-void	*xmalloc(struct s_app *app, size_t size);
-void	*xcalloc(struct s_app *app, size_t size);
-int		xopen(struct s_app *app, const char *file, int oflag);
-char	*xstrdup(struct s_app *app, const char *source);
+void	*xmalloc(t_app *app, size_t size);
+void	*xcalloc(t_app *app, size_t size);
+int		xopen(t_app *app, const char *file, int oflag);
+char	*xstrdup(t_app *app, const char *source);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:21:01 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:15:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	print_node_box(t_bvh_node *node, int depth)
 	print_bvh_tree_rec(node->right, depth + 1);
 }
 
-static void	print_elem_box(t_bvh_elem_box *elem_box, int depth)
+static void	print_shape_box(t_bvh_elem_box *elem_box, int depth)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ void	print_bvh_tree_rec(t_bvh_base *root, int depth)
 	if (root->type == NODE_BOX)
 		print_node_box((t_bvh_node *)root, depth);
 	else
-		print_elem_box((t_bvh_elem_box *)root, depth);
+		print_shape_box((t_bvh_elem_box *)root, depth);
 }
 
 void	print_bvh_tree(t_bvh_base *root)

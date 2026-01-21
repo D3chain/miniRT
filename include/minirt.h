@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:53:10 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/19 16:21:37 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:19:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include <time.h>
+# include <stdint.h>
 # include <errno.h>
 # include <pthread.h>
+# include <time.h>
 # include <sys/time.h>
 
 /*	X11 headers	*/
@@ -37,24 +38,24 @@
 /*	libft header	*/
 # include "libft.h"
 
-# include "minirt_typedef.h"  // Typedefs
-# include "config.h"          // Constantes
-# include "types.h"            // Structures de base (t_real2, t_real3)
+# include "minirt_typedef.h"
+# include "config.h"
+# include "types.h"
 
 # include "material.h"
-# include "ray.h"              // Structures ray et hit_info
-# include "scene.h"            // Structures de scène (camera, light, elems)
-# include "bvh.h"              // Structures BVH
-# include "phong_effect.h"            // Structures couleur et matériaux
+# include "ray.h"
+# include "scene.h"
+# include "bvh.h"
+# include "phong_effect.h"
 
-# include "app.h"              // Structure principale app
+# include "app.h"
 
-# include "mathematics.h"        // Fonctions mathématiques
-# include "print.h"             // Fonctions utilitaires diverses
-# include "error.h"            // Gestion d'erreurs
-# include "wrapper.h"          // Wrappers malloc, etc.
+# include "mathematics.h"
+# include "print.h"
+# include "error.h"
+# include "wrapper.h"
 
-# include "load.h"             // Chargement de scène
-# include "run.h"              // Boucle principale
+# include "load.h"
+# include "run.h"
 
 #endif

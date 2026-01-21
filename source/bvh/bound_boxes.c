@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:20:37 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:44:57 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:14:34 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static t_boundbox	merge_boxes(t_boundbox left, t_boundbox right)
 
 void	bound_boxes(t_bvh_base *node)
 {
-	struct s_elem	*elems;
-	int				n_elems;
-	int				i;
+	t_shape	*elems;
+	int		n_elems;
+	int		i;
 
 	if (node->type == NODE_BOX)
 	{

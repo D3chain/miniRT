@@ -6,14 +6,14 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:03 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 18:54:26 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:15:14 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 __attribute__((always_inline))
-static inline t_real	fresnel_schlick(struct s_scene *scene, t_phong *phong)
+static inline t_real	fresnel_schlick(t_scene *scene, t_phong *phong)
 {
 	const t_real	value = FLT_1 - fmax(0.0, dot(phong->N, phong->V));
 	t_real			f0;
@@ -24,17 +24,17 @@ static inline t_real	fresnel_schlick(struct s_scene *scene, t_phong *phong)
 	return (f0 + (FLT_1 - f0) * value * value * value * value * value);
 }
 
-static inline void	ambient_light(struct s_scene *scene, t_phong *phong)
+static inline void	ambient_light(t_scene *scene, t_phong *phong)
 {
-	phong->ambient_color_linear = mul_color_linear(\
+	phong->ambient_color_lin = mul_color_linear(\
 		phong->hit_info.material.color_linear, \
 		scene->ambient.color_linear, \
 		scene->ambient.ratio * phong->hit_info.material.ka \
 	);
-	phong->final_color_linear = phong->ambient_color_linear;
+	phong->final_color_linear = phong->ambient_color_lin;
 }
 
-static inline void	diffuse_specular_light(struct s_scene *scene, \
+static inline void	diffuse_specular_light(t_scene *scene, \
 		t_phong *phong, int light_index)
 {
 	if (!phong->in_shadow)
@@ -63,7 +63,7 @@ static inline void	diffuse_specular_light(struct s_scene *scene, \
 	}
 }
 
-static inline void	collision(struct s_scene *scene, t_phong *phong, \
+static inline void	collision(t_scene *scene, t_phong *phong, \
 		t_hit_info *hit_info, int light_index)
 {
 	phong->hit_info = *hit_info;
@@ -83,7 +83,7 @@ static inline void	collision(struct s_scene *scene, t_phong *phong, \
 }
 
 __attribute__((hot))
-t_color_linear	phong_effect(struct s_scene *scene, t_hit_info *hit_info)
+t_color_lin	phong_effect(t_scene *scene, t_hit_info *hit_info)
 {
 	t_phong	phong;
 	int		i;

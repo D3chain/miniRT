@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/20 20:36:08 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/21 14:51:50 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-CFLAGS		:=	-MMD -MP -g3 -Wall -Wextra -Werror # -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
+CFLAGS		:=	-MMD -MP -g3 -Wall -Wextra -Werror #-ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -34,7 +34,7 @@ BVH_SRC		:=	bvh_build.c															\
 				bvh_destroy.c														\
 				elem_bounding_box.c													\
 				bound_boxes.c														\
-				sort_elems.c														\
+				sort_shapes.c														\
 				collision_aabb.c													\
 				any_hit.c
 
@@ -49,6 +49,7 @@ ERROR_SRC	:=	err_per.c															\
 
 # Scene loading
 LOAD_SRC	:=	load_scene.c														\
+				scan_file_line.c													\
 				scan_rcal.c															\
 				scan_shapes.c														\
 				scan_material.c														\
@@ -80,11 +81,13 @@ RAY_SRC		:=	ray/init_ray.c														\
 				ray/ray_hit_sphere.c												\
 				ray/ray_hit_cylinder.c												\
 				ray/ray_hit_plane.c													\
-				ray/ray_hit_cone.c													\
+				ray/ray_hit_cone_1.c												\
+				ray/ray_hit_cone_2.c												\
 				ray/closest_hit_dst.c
 
 # Rendering
 RENDER_SRC	:=	render/render_routine.c												\
+				render/render_tile_downsampled.c									\
 				render/draw_pixel_to_img.c											\
 				render/antialiasing.c												\
 				render/trace.c														\

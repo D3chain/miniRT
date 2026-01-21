@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 15:36:06 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:48:37 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define UPSAMPLING_INIT_ACTIV		true
 # define UPSAMPLING					4
 
-# define DOWNSAMPLING_INIT_ACTIV	false
+# define DOWNSAMPLING_INIT_ACTIV	true
 # define DOWNSAMPLING				8
 # define MAX_DOWNSAMPLING_RATE		32
 # define MIN_DOWNSAMPLING_RATE		2

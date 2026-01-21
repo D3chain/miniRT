@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 15:48:52 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/20 19:43:05 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:04:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ struct s_rodrigues
 	t_real3	term3;
 };
 
-void	update_camera(struct s_app *app, struct s_camera *camera)
+void	update_camera(t_app *app, t_camera *camera)
 {
 	static const t_real3	world_up = (t_real3){FLT_0, FLT_1, FLT_0};
 	static const t_real3	fallback = (t_real3){FLT_0, FLT_0, FLT_1};
@@ -59,7 +59,7 @@ static inline t_real3
 
 __attribute__((always_inline))
 inline void
-	camera_view(struct s_app *app, struct s_camera *camera, \
+	camera_view(t_app *app, t_camera *camera, \
 			t_real2 delta_pixels)
 {
 	t_real3	new_dir;
@@ -73,7 +73,7 @@ inline void
 }
 
 __attribute__((always_inline))
-void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
+void	camera_zoom(t_app *app, t_camera *camera, t_real value)
 {
 	t_ray	zoom_dir;
 
@@ -91,8 +91,8 @@ void	camera_zoom(struct s_app *app, struct s_camera *camera, t_real value)
 
 __attribute__((always_inline))
 void
-	camera_pan(struct s_app *app, struct s_camera *camera, \
-			struct s_mouse *mouse)
+	camera_pan(t_app *app, t_camera *camera, \
+			t_mouse *mouse)
 {
 	t_real3			offset;
 

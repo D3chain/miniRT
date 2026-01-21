@@ -12,7 +12,7 @@ Each sample counts as 0.01 seconds.
   5.56      0.35     0.02                             ft_dblcmp
   2.78      0.36     0.01       72     0.14     4.17  render_tile
   0.00      0.36     0.00   249121     0.00     0.00  bvh_any_hit
-  0.00      0.36     0.00   242083     0.00     0.00  bvh_traverse
+  0.00      0.36     0.00   242083     0.00     0.00  bvh_hit
   0.00      0.36     0.00    60432     0.00     0.00  antialiasing
   0.00      0.36     0.00    23705     0.00     0.00  idle_scroll_reenable
   0.00      0.36     0.00       44     0.00     0.00  scan_t_real
@@ -85,7 +85,7 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.13    0.16  256830/256830      antialiasing [3]
 [2]     80.6    0.13    0.16  256830         trace [2]
-                0.00    0.09  242083/242083      bvh_traverse [5]
+                0.00    0.09  242083/242083      bvh_hit [5]
                 0.05    0.00  537375/537375      ray_hit_plane [6]
                 0.00    0.02  249121/249121      bvh_any_hit [13]
 -----------------------------------------------
@@ -98,7 +98,7 @@ index % time    self  children    called     name
                 0.01    0.27      66/72          render_tile [1]
 -----------------------------------------------
                 0.00    0.09  242083/242083      trace [2]
-[5]     25.6    0.00    0.09  242083         bvh_traverse [5]
+[5]     25.6    0.00    0.09  242083         bvh_hit [5]
                 0.04    0.00  248423/291988      ray_hit_cone [7]
                 0.03    0.00  287065/349640      ray_hit_sphere [9]
                 0.02    0.00  263079/312884      ray_hit_cylinder [12]
@@ -107,14 +107,14 @@ index % time    self  children    called     name
 [6]     13.9    0.05    0.00  537375         ray_hit_plane [6]
 -----------------------------------------------
                 0.01    0.00   43565/291988      bvh_any_hit [13]
-                0.04    0.00  248423/291988      bvh_traverse [5]
+                0.04    0.00  248423/291988      bvh_hit [5]
 [7]     13.9    0.05    0.00  291988         ray_hit_cone [7]
 -----------------------------------------------
                                                  <spontaneous>
 [8]     11.1    0.04    0.00                 phong_effect.c.0fbbf156 [8]
 -----------------------------------------------
                 0.01    0.00   62575/349640      bvh_any_hit [13]
-                0.03    0.00  287065/349640      bvh_traverse [5]
+                0.03    0.00  287065/349640      bvh_hit [5]
 [9]     11.1    0.04    0.00  349640         ray_hit_sphere [9]
 -----------------------------------------------
                                                  <spontaneous>
@@ -141,7 +141,7 @@ index % time    self  children    called     name
 [11]     5.6    0.02    0.00                 ft_dblcmp [11]
 -----------------------------------------------
                 0.00    0.00   49805/312884      bvh_any_hit [13]
-                0.02    0.00  263079/312884      bvh_traverse [5]
+                0.02    0.00  263079/312884      bvh_hit [5]
 [12]     5.6    0.02    0.00  312884         ray_hit_cylinder [12]
 -----------------------------------------------
                 0.00    0.02  249121/249121      trace [2]
@@ -346,7 +346,7 @@ Index by function name
   [22] bound_boxes (bound_boxes.c) [6] ray_hit_plane (ray_hit_plane.c) [32] scan_sp (scan_shapes.c)
   [13] bvh_any_hit (any_hit.c) [9] ray_hit_sphere (ray_hit_sphere.c) [18] scan_t_real (scan_numbers.c)
   [23] bvh_subdivide (bvh_build.c) [1] render_tile (render_routine.c) [19] scan_t_real3 (scan_numbers.c)
-   [5] bvh_traverse (trace.c) [26] scan_a (scan_rcal.c)   [15] setup_co (setup_shapes.c)
+   [5] bvh_hit (trace.c) [26] scan_a (scan_rcal.c)   [15] setup_co (setup_shapes.c)
   [24] cleanup_app (cleanup_app.c) [27] scan_c (scan_rcal.c) [16] setup_cy (setup_shapes.c)
   [25] event_keyboard_press (event_keyboard.c) [28] scan_l (scan_rcal.c) [14] setup_pl (setup_shapes.c)
   [11] ft_dblcmp              [29] scan_r (scan_rcal.c)   [33] setup_sp (setup_shapes.c)
