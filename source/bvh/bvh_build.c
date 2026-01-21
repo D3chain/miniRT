@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:13 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 12:32:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:58:58 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ static t_bvh_base	*bvh_subdivide(t_app *app, t_bvh_elem_box *cur_box)
 	else
 	{
 		node = divide_box(app, cur_box, get_div_axis(cur_box));
+		if (app->status)
+			return (NULL);
 		node->left = bvh_subdivide(app, (t_bvh_elem_box *)node->left);
 		node->right = bvh_subdivide(app, (t_bvh_elem_box *)node->right);
 		return ((t_bvh_base *)node);
@@ -100,6 +102,6 @@ void	bvh_build(t_app *app, t_scene *scene)
 	((t_bvh_elem_box *)scene->bvh_root)->elems = scene->elems;
 	((t_bvh_elem_box *)scene->bvh_root)->n_elems = scene->n_elem;
 	scene->bvh_root = bvh_subdivide(app, (t_bvh_elem_box *)scene->bvh_root);
-	bound_boxes(scene->bvh_root);
-	return ;
+	if (!app->status)
+		bound_boxes(scene->bvh_root);
 }

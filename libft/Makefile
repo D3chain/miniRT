@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fox <fox@student.42.fr>                    +#+  +:+       +#+         #
+#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:34 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/20 00:24:36 by fox              ###   ########.fr        #
+#    Updated: 2026/01/21 14:59:28 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fPIE -MMD -MP
+CFLAGS = -Wall -Wextra -Werror -fPIE -MMD -MP -g3
 
 MAIN_DIR = .
 SRC_DIR = $(MAIN_DIR)/source
