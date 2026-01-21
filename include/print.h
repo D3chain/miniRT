@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:20:05 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 16:47:07 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:44:05 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	print_camera(t_app *app);
 
 void	print_map(t_app *app);
 void	print_rcal(t_app *app, int fd);
+void	print_planes(int fd, t_scene *scene);
 void	print_shapes(int fd, t_bvh_elem_box *e);
 void	print_shape_material(int fd, t_material *m);
 

@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/21 16:43:52 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/21 17:54:12 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-CFLAGS		:=	-MMD -MP -g3 -Wall -Wextra -Werror #-ffast-math -O3 -flto -march=native -finline-functions -funroll-loops #-pg
+CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -110,6 +110,7 @@ RUN_SRC		:=	run_scene.c															\
 PRINT_SRC	:=	print_bvh_tree.c													\
 				print_map.c															\
 				print_rcal.c														\
+				print_planes.c														\
 				print_shapes.c														\
 				print_shape_material.c												\
 				print_parameters.c													\
@@ -144,6 +145,10 @@ MLX			:=	$(MLX_DIR)/libmlx_Linux.a
 
 all:	$(LIBFT) mlx $(NAME)
 
+pro:	PRO_FLAG = -DLOAD_PRO
+pro:	re
+pro:	CFLAGS_OPT += -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops
+
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
@@ -151,11 +156,11 @@ mlx:
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(LDLIBS) -o $@ \
+	$(CC) $(CFLAGS) $(CFLAGS_OPT) $(OBJ) $(PRO_FLAG) $(LIBFT) $(MLX) $(LDLIBS) -o $@ \
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CFLAGS_OPT) $(PRO_FLAG) -c $< -o $@
 
 -include $(DEPS)
 
@@ -178,4 +183,4 @@ test: all
 	--trace-children=yes \
 	./miniRT file.rt
 
-.PHONY: all mlx clean fclean re test
+.PHONY: all pro mlx clean fclean re test
