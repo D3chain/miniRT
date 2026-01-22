@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 12:46:45 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:25:29 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 18:22:22 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ typedef int	(*t_scan_fn)(t_app *, const char *, int);
 static char	*next_tok(const char *str)
 {
 	while (*str && !ft_isspace(*str))
-	str++;
+		str++;
 	while (*str && ft_isspace(*str))
-	str++;
+		str++;
 	return ((char *)str);
 }
 

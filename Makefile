@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/22 15:41:14 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/22 18:53:18 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror -g3
+CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -154,6 +154,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 mlx:
+	[ ! -d $(MLX_DIR) ] && git clone https://github.com/42paris/minilibx-linux.git mlx || true
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME):	$(OBJ)
@@ -168,18 +169,18 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	@[ -d $(MLX_DIR) ] && $(MAKE) -C $(MLX_DIR) clean || true
 
 fclean:	clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MLX_DIR) clean
+	@[ -d $(MLX_DIR) ] && rm -rf $(MLX_DIR) || true
 
 re:		fclean all
 
 clean_pro:
 	rm -rf $(OBJ_DIR)
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
 test: all
 	@valgrind \

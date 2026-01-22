@@ -1,0 +1,139 @@
+# ============================================================================
+# SYSTÈME SOLAIRE - Resolution
+# ============================================================================
+
+# R	1920	1080
+# R	1680	1050
+R	1440	900
+# R	1024	768
+# R	800	600
+# R	64	64
+
+# ============================================================================
+# SYSTÈME SOLAIRE - Ray Tracing Scene
+# ============================================================================
+
+# Ambient light (très faible - espace)
+A   0.1   255,255,255
+
+# Camera (vue d'ensemble du système)
+C   0,-150,-800   0,0.15,1   60
+
+# ============================================================================
+# SOLEIL (source de lumière principale)
+# ============================================================================
+
+# Le Soleil émet de la lumière
+L   -50,0,50   1.0   255,240,220
+L   50,0,50  1.0   255,240,220
+L   -50,0,-50   1.0   255,240,220
+L   50,0,-50   1.0   255,240,220
+L   0,50,0   1.0   255,240,220
+L   0,-50,0   1.0   255,240,220
+
+# Soleil (sphère émissive)
+sp  0,0,0   75   255,119,0   k_amb=0.9  k_dif=0.1  k_spc=0.0  shine=1   ior__=1.0
+
+
+# ============================================================================
+# PLANÈTES INTÉRIEURES (Telluriques)
+# ============================================================================
+
+# MERCURE (gris rocheux, cratérisé)
+sp  -180,0,50   8   120,110,100   k_amb=0.1  k_dif=0.8  k_spc=0.1  shine=5   ior__=1.5
+
+# VÉNUS (jaune pâle, nuages épais)
+sp  -260,10,80   18   220,200,150   k_amb=0.15 k_dif=0.75 k_spc=0.1  shine=8   ior__=1.5
+
+# TERRE (bleu océan + continents verts/bruns)
+sp  -350,-5,100   20   80,120,200   k_amb=0.1  k_dif=0.7  k_spc=0.2  shine=20  ior__=1.33
+
+# Lune (grise, autour de la Terre)
+sp  -330,-15,120   5   180,180,170   k_amb=0.1  k_dif=0.85 k_spc=0.05 shine=3   ior__=1.5
+
+# MARS (rouge rouille)
+sp  -470,8,130   12   180,80,50   k_amb=0.12 k_dif=0.8  k_spc=0.08 shine=6   ior__=1.5
+
+
+# ============================================================================
+# CEINTURE D'ASTÉROÏDES (quelques représentants)
+# ============================================================================
+
+sp  -580,20,140   3   100,95,90   k_amb=0.1  k_dif=0.85 k_spc=0.05 shine=2   ior__=1.5
+sp  -600,-15,160   2   110,100,95   k_amb=0.1  k_dif=0.85 k_spc=0.05 shine=2   ior__=1.5
+sp  -620,5,155   4   95,90,85   k_amb=0.1  k_dif=0.85 k_spc=0.05 shine=2   ior__=1.5
+sp  -640,-10,145   2   105,98,92   k_amb=0.1  k_dif=0.85 k_spc=0.05 shine=2   ior__=1.5
+
+
+# ============================================================================
+# PLANÈTES GÉANTES GAZEUSES
+# ============================================================================
+
+# JUPITER (bandes orange/beige + Grande Tache Rouge)
+sp  -800,0,180   80   200,160,120   k_amb=0.15 k_dif=0.7  k_spc=0.15 shine=25  ior__=1.2
+
+# Quelques lunes de Jupiter
+# Io (volcanique, jaune-orange)
+sp  -860,30,200   8   220,180,100   k_amb=0.12 k_dif=0.75 k_spc=0.13 shine=15  ior__=1.4
+
+# Europe (glacée, blanc-bleu)
+sp  -740,25,210   7   230,240,255   k_amb=0.1  k_dif=0.3  k_spc=0.6  shine=200 ior__=1.31
+
+# Ganymède (gris-brun)
+sp  -850,-40,170   9   140,130,120   k_amb=0.1  k_dif=0.8  k_spc=0.1  shine=8   ior__=1.5
+
+# SATURNE (jaune pâle avec anneaux)
+sp  -1100,-10,220   70   230,210,170   k_amb=0.15 k_dif=0.7  k_spc=0.15 shine=30  ior__=1.2
+
+# Anneaux de Saturne (plans inclinés - approximation avec plusieurs sphères aplaties)
+# Anneau intérieur
+sp  -1100,-10,300   4   200,190,180   k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=50  ior__=1.5
+sp  -1100,-10,310   3   190,180,170   k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=50  ior__=1.5
+sp  -1100,-10,320   3   210,200,190   k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=50  ior__=1.5
+
+# Titan (plus grosse lune, orange)
+sp  -1050,30,260   10   220,150,80   k_amb=0.15 k_dif=0.75 k_spc=0.1  shine=10  ior__=1.4
+
+
+# ============================================================================
+# PLANÈTES GÉANTES DE GLACE
+# ============================================================================
+
+# URANUS (bleu-vert glacé)
+sp  -1400,5,270   35   150,220,230   k_amb=0.1  k_dif=0.5  k_spc=0.4  shine=80  ior__=1.3
+
+# NEPTUNE (bleu profond)
+sp  -1600,-8,300   34   70,120,200   k_amb=0.1  k_dif=0.6  k_spc=0.3  shine=60  ior__=1.3
+
+# Triton (lune de Neptune, blanc-rosé)
+sp  -1560,25,330   6   240,230,250   k_amb=0.1  k_dif=0.5  k_spc=0.4  shine=150 ior__=1.31
+
+
+# ============================================================================
+# OBJETS DE LA CEINTURE DE KUIPER
+# ============================================================================
+
+# PLUTON (gris-brun glacé)
+sp  -1850,10,350   4   180,170,160   k_amb=0.08 k_dif=0.7  k_spc=0.22 shine=40  ior__=1.5
+
+# Charon (lune de Pluton)
+sp  -1840,18,360   2   160,155,150   k_amb=0.08 k_dif=0.8  k_spc=0.12 shine=15  ior__=1.5
+
+
+# ============================================================================
+# ÉTOILES LOINTAINES (fond stellaire)
+# ============================================================================
+
+# Petites étoiles lointaines (très faiblement éclairées)
+sp  -2500,500,800   5   255,255,240   k_amb=0.5  k_dif=0.3  k_spc=0.2  shine=100 ior__=1.0
+sp  2300,600,900   4   240,240,255   k_amb=0.5  k_dif=0.3  k_spc=0.2  shine=100 ior__=1.0
+sp  1800,-700,1000   6   255,250,230   k_amb=0.5  k_dif=0.3  k_spc=0.2  shine=100 ior__=1.0
+sp  -1900,800,850   3   250,250,255   k_amb=0.5  k_dif=0.3  k_spc=0.2  shine=100 ior__=1.0
+sp  2100,-650,950   5   255,245,240   k_amb=0.5  k_dif=0.3  k_spc=0.2  shine=100 ior__=1.0
+
+
+# ============================================================================
+# FOND DE L'ESPACE (plan noir très éloigné)
+# ============================================================================
+
+pl  0,0,2000   0,0,-1   5,5,10   k_amb=1.0  k_dif=0.0  k_spc=0.0  shine=1   ior__=1.0

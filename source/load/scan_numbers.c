@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:14:17 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 18:13:35 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	scan_color(t_app *app, t_color *res, const char *str)
 	if (app->status || str[i++] != ',')
 		return (app->status = ERR_PARS, -1);
 	i += scan_uint8_t(app, &res->s_rgb.b, &str[i]);
+	app->status = ERR_PARS * !(str[i] == '\0' || str[i] == '\n' \
+														|| ft_isspace(str[i]));
 	if (app->status)
 		return (-1);
 	return (i);

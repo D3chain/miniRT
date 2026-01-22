@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/22 11:36:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 18:33:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define MAX_K_SUM					FLT_1_1
 
 //	SCREEN RESOLUTION
-# define WIN_WIDTH					1920
-# define WIN_HEIGHT					1080
+# define WIN_WIDTH					1440
+# define WIN_HEIGHT					900
 
 //	SAMPLING
 # define UPSAMPLING_INIT_ACTIV		1
@@ -63,7 +63,7 @@
 # define OBJ_DRAG_DIV_FACTOR		FLT_0_2
 
 # define ZOOM_BASE_PAN_SPEED		FLT_0_5
-# define ZOOM_FAST_PAN_SPEED		FLT_2
+# define ZOOM_FAST_PAN_SPEED		FLT_50
 
 # define ZOOM_INCREASE_FACTOR		FLT_1_1
 # define ZOOM_DECREASE_FACTOR		FLT_0_9
