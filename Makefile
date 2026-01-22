@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/22 14:09:52 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/22 15:41:14 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,12 +141,6 @@ DEPS		:=	$(OBJ:.o=.d)
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 MLX			:=	$(MLX_DIR)/libmlx_Linux.a
 
-# check-mode:
-# 	if [PRO_FLAG = "-DLOAD_PRO"]; then \
-# 		$(MAKE) clean_pro \
-# 	fi
-
-# all:	check-mode
 all:	PRO_FLAG = ""
 all:	CFLAGS_OPT = ""
 all:	$(LIBFT) mlx $(NAME)

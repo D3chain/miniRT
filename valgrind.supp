@@ -1,9 +1,0 @@
-{
-   X11_writev_uninit
-   Memcheck:Param
-   writev(vector[...])
-   fun:__writev
-   fun:writev
-   obj:*/libxcb.so.*
-   obj:*/libX11.so.*
-}
