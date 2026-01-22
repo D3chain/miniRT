@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/21 17:54:12 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/22 14:09:52 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror
+CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror -g3
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
@@ -104,8 +104,6 @@ RUN_SRC		:=	run_scene.c															\
 				$(RENDER_SRC)														\
 				$(SETUP_SRC)
 
-
-
 # Utilities
 PRINT_SRC	:=	print_bvh_tree.c													\
 				print_map.c															\
@@ -114,7 +112,7 @@ PRINT_SRC	:=	print_bvh_tree.c													\
 				print_shapes.c														\
 				print_shape_material.c												\
 				print_parameters.c													\
-				printf_real_values.c
+				print_real_values.c
 
 # Wrappers
 WRAPPER_SRC	:=	xmalloc.c															\
@@ -143,11 +141,20 @@ DEPS		:=	$(OBJ:.o=.d)
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 MLX			:=	$(MLX_DIR)/libmlx_Linux.a
 
+# check-mode:
+# 	if [PRO_FLAG = "-DLOAD_PRO"]; then \
+# 		$(MAKE) clean_pro \
+# 	fi
+
+# all:	check-mode
+all:	PRO_FLAG = ""
+all:	CFLAGS_OPT = ""
 all:	$(LIBFT) mlx $(NAME)
 
+pro:	clean_pro
 pro:	PRO_FLAG = -DLOAD_PRO
-pro:	re
-pro:	CFLAGS_OPT += -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops
+pro:	CFLAGS_OPT = -ffast-math -O3 -flto -march=native -finline-functions -funroll-loops
+pro:	$(LIBFT) mlx $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -176,6 +183,10 @@ fclean:	clean
 
 re:		fclean all
 
+clean_pro:
+	rm -rf $(OBJ_DIR)
+	rm -rf $(NAME)
+
 test: all
 	@valgrind \
 	--leak-check=full \
@@ -183,4 +194,4 @@ test: all
 	--trace-children=yes \
 	./miniRT file.rt
 
-.PHONY: all pro mlx clean fclean re test
+.PHONY: all pro mlx clean fclean re test clean_pro

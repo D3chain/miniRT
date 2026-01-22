@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:02:25 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:36:35 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define UPSAMPLING_INIT_ACTIV		1
 # define UPSAMPLING					4
 
-# define DOWNSAMPLING_INIT_ACTIV	1
+# define DOWNSAMPLING_INIT_ACTIV	0
 # define DOWNSAMPLING				8
 # define MAX_DOWNSAMPLING_RATE		32
 # define MIN_DOWNSAMPLING_RATE		2
@@ -60,7 +60,7 @@
 # define MOUSE_SENSITIVITY			FLT_0_02
 # define ZOOM_TO_PAN_RATIO			10
 
-# define OBJ_DRAG_DIV_FACTOR		FLT_0_3
+# define OBJ_DRAG_DIV_FACTOR		FLT_0_2
 
 # define ZOOM_BASE_PAN_SPEED		FLT_0_5
 # define ZOOM_FAST_PAN_SPEED		FLT_2
@@ -69,7 +69,7 @@
 # define ZOOM_DECREASE_FACTOR		FLT_0_9
 # define ZOOM_MIN_SPEED				FLT_0_1
 
-# define CAMERA_VIEW_FACTOR			FLT_0_5
+# define CAMERA_VIEW_FACTOR			FLT_0_3
 
 //	PRINT
 # define MAX_NAME_LEN				256

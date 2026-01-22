@@ -6,24 +6,46 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 14:42:46 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+#ifdef LOAD_PRO
 
 static void	print_error(t_app *app)
 {
 	if (app->status == ERR_SYS)
 		dprintf(STDERR_FILENO, \
 			"Fatal system error, restart MiniRT.\n");
-	if (app->status == ERR_MLX)
+	else if (app->status == ERR_MLX)
 		dprintf(STDERR_FILENO, \
 			"Fatal MLX error, restart MiniRT.\n");
-	if (app->status == ERR_PARS)
+	else if (app->status == ERR_PARS)
 		dprintf(STDERR_FILENO, \
 			"Parsing error, restart MiniRT with a valid [filename.rt] file.\n");
 }
+
+#else
+
+static void	print_error(t_app *app)
+{
+	char	*err_msg;
+
+	if (app->status == ERR_SYS)
+		err_msg = "Fatal system error, restart MiniRT.\n";
+	else if (app->status == ERR_MLX)
+		err_msg = "Fatal MLX error, restart MiniRT.\n";
+	else if (app->status == ERR_PARS)
+		err_msg = \
+			"Parsing error, restart MiniRT with a valid [filename.rt] file.\n";
+	else
+		err_msg = "";
+	if (*err_msg)
+		write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
+}
+#endif
 
 static int	check_arg(t_app *app, int argc, char *argv[])
 {

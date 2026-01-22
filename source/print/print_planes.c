@@ -6,15 +6,17 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:43:34 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:43:49 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 14:43:52 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+#ifdef LOAD_PRO
+
 static void	print_pl(t_shape *e, int fd)
 {
-	const t_plane	*plane = (t_plane *) e;
+	const t_plane	*plane = &e->u_.plane;
 
 	dprintf(fd, "pl\t"REAL","REAL","REAL"\t"REAL","REAL","REAL"\t"INT","INT","INT,
 		plane->coord.x,
@@ -41,3 +43,5 @@ void	print_planes(int fd, t_scene *scene)
 	}
 	dprintf(fd, "\n");
 }
+
+#endif

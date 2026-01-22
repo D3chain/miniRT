@@ -12,6 +12,8 @@
 
 #include "minirt.h"
 
+#ifdef LOAD_PRO
+
 void	print_shape_material(int fd, t_material *m)
 {
 	static const char	*factors[] = \
@@ -23,3 +25,5 @@ void	print_shape_material(int fd, t_material *m)
 	while (++i < N_MAT_FACTORS)
 		dprintf(fd, "\t%s="REAL, factors[i], values[i]);
 }
+
+#endif

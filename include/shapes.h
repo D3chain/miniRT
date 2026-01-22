@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 16:19:47 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:21:47 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 13:53:07 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ struct s_cone
 	t_real		theta;
 	t_real		cos2_theta;
 };
+
 struct s_any
 {
 	t_material	material;

@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:01:15 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:47:44 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:17:01 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	print_map(t_app *app)
 void	print_map(t_app *app)
 {
 	(void) app;
+	printf("Upgrade to PRO version to export maps!\n");
 	return ;
 }
 

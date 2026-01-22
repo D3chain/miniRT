@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:07:09 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:35:41 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	event_mouse_motion(int x, int y, t_app *app)
 	update_mouse_position_nobutton(&app->scene.camera.mouse, x, y);
 	start_downsampling(&app->render.antialiasing);
 	if (button == Button1)
-		mouse_left_button(app);
-	else if (button == Button2)
 		mouse_middle_button(app);
+	else if (button == Button2)
+		mouse_left_button(app);
 	else if (button == Button3)
 		mouse_right_button(app);
 	render(app);

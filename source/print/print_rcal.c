@@ -6,11 +6,13 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:24:47 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 16:32:35 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 10:46:38 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+#ifdef LOAD_PRO
 
 static void	print_r(t_app *app, int fd)
 {
@@ -68,3 +70,5 @@ void	print_rcal(t_app *app, int fd)
 	print_a(app, fd);
 	print_l(app, fd);
 }
+
+#endif

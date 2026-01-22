@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:25:04 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 14:04:21 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:58:16 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_hit_info	bvh_hit(t_bvh_base *tree, t_ray *ray);
 
-__attribute__((always_inline, hot))
+__attribute__((hot))
 static inline t_hit_info	node_recursion(t_bvh_base *node, t_ray *ray)
 {
 	t_hit_info	hit_left;

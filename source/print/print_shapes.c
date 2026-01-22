@@ -6,15 +6,17 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:26:21 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 17:28:05 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/22 14:43:40 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+#ifdef LOAD_PRO
+
 static void	print_sp(t_shape *e, int fd)
 {
-	const t_sphere	*sphere = (t_sphere *) e;
+	const t_sphere	*sphere = &e->u_.sphere;
 
 	dprintf(fd, "sp\t"REAL","REAL","REAL"\t"REAL"\t"INT","INT","INT,
 		sphere->coord.x,
@@ -28,10 +30,10 @@ static void	print_sp(t_shape *e, int fd)
 
 static void	print_cy(t_shape *e, int fd)
 {
-	const t_cylinder	*cylinder = (t_cylinder *) e;
+	const t_cylinder	*cylinder = &e->u_.cylinder;
 
-	dprintf(fd, "cy\t"REAL","REAL","REAL"\t"REAL","REAL","REAL"\t" \
-										REAL"\t""\t"REAL"\t"INT","INT","INT,
+	dprintf(fd, "cy\t"REAL","REAL","REAL"\t"REAL","REAL","REAL"\t"\
+										REAL"\t"REAL"\t"INT","INT","INT,
 		cylinder->coord.x,
 		cylinder->coord.y,
 		cylinder->coord.z,
@@ -47,10 +49,10 @@ static void	print_cy(t_shape *e, int fd)
 
 static void	print_co(t_shape *e, int fd)
 {
-	const t_cone	*cone = (t_cone *) e;
+	const t_cone	*cone = &e->u_.cone;
 
-	dprintf(fd, "co\t"REAL","REAL","REAL"\t"REAL","REAL","REAL"\t""\t"REAL"\t" \
-													REAL"\t"INT","INT","INT,
+	dprintf(fd, "co\t"REAL","REAL","REAL"\t"REAL","REAL","\
+								REAL"\t"REAL"\t"REAL"\t"INT","INT","INT,
 		cone->coord.x,
 		cone->coord.y,
 		cone->coord.z,
@@ -78,3 +80,5 @@ void	print_shapes(int fd, t_bvh_elem_box *e)
 		dprintf(fd, "\n");
 	}
 }
+
+#endif
