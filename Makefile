@@ -6,13 +6,13 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/22 18:53:18 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/23 12:07:30 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	miniRT
 CC			:=	cc
-CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror
+CFLAGS		:=	-MMD -MP -Wall -Wextra -Werror -g3
 SRC_DIR		:=	source
 OBJ_DIR		:=	.build
 LIBFT_DIR	:=	libft
