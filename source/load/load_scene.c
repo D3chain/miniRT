@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:51:21 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/23 12:13:58 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/23 12:47:51 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ static void	count_scene_from_file(t_app *app, const char *file)
 	close(fd);
 	if (!app->status)
 		app->status = ERR_PARS * ((resolution_flag > IS_RES) \
-								|| (setup_flag != IS_CAM + IS_AMB) \
-								|| (app->scene.n_elem + app->scene.n_elem_inf) <= 0);
+						|| (setup_flag != IS_CAM + IS_AMB) \
+						|| (app->scene.n_elem + app->scene.n_elem_inf) <= 0);
 }
 
 int	load_scene(t_app *app)

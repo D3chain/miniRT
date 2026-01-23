@@ -6,7 +6,7 @@
 #    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/23 12:07:30 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/23 13:30:10 by cgajean          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -182,11 +182,61 @@ clean_pro:
 	rm -rf $(OBJ_DIR)
 	rm -f $(NAME)
 
-test: all
-	@valgrind \
-	--leak-check=full \
-	--show-leak-kinds=all \
-	--trace-children=yes \
-	./miniRT file.rt
+test_wrong: all
+	clear
+	@for file in																\
+		./scene/test/wrong/test_map_wrong_map_name								\
+		./scene/test/wrong/test_map_wrong_map_1.rt								\
+		./scene/test/wrong/test_map_wrong_map_2.rt								\
+		./scene/test/wrong/test_map_wrong_map_3.rt								\
+		./scene/test/wrong/test_map_wrong_map_4.rt								\
+		./scene/test/wrong/test_map_wrong_map_5.rt								\
+		./scene/test/wrong/test_map_wrong_map_6.rt								\
+		./scene/test/wrong/test_map_wrong_map_7.rt								\
+		./scene/test/wrong/test_map_wrong_map_8.rt								\
+		./scene/test/wrong/test_map_wrong_map_9.rt								\
+		./scene/test/wrong/test_map_wrong_map_10.rt;							\
+	do																			\
+		echo "";																\
+		echo "============================================";					\
+		echo " TESTING $$file";													\
+		echo "============================================";					\
+		echo " VALGRIND --leak-check=full --track-fds=yes ";					\
+		echo "============================================";					\
+		valgrind --quiet --leak-check=full --track-fds=yes ./miniRT $$file;		\
+		echo "============================================";					\
+		echo " VALGRIND --tool=helgrind";										\
+		echo "============================================";					\
+		valgrind --quiet --tool=helgrind ./miniRT $$file;						\
+		echo "============================================";					\
+		echo " EXIT CODE: $$?";													\
+		echo "============================================";					\
+		echo "";																\
+	done
 
-.PHONY: all pro mlx clean fclean re test clean_pro
+test_good: all
+	clear
+	@for file in																\
+		./scene/test/working/test_map_one_sphere.rt								\
+		./scene/test/working/test_map_web_cone.rt								\
+		./scene/test/working/test_map_materials.rt								\
+		./scene/test/working/test_map_quarter_cat.rt;							\
+	do																			\
+		echo "";																\
+		echo "============================================";					\
+		echo " TESTING $$file";													\
+		echo "============================================";					\
+		echo " VALGRIND --leak-check=full --track-fds=yes ";					\
+		echo "============================================";					\
+		valgrind --quiet --leak-check=full --track-fds=yes ./miniRT $$file;		\
+		echo "============================================";					\
+		echo " VALGRIND --tool=helgrind";										\
+		echo "============================================";					\
+		valgrind --quiet --tool=helgrind ./miniRT $$file;						\
+		echo "============================================";					\
+		echo " EXIT CODE: $$?";													\
+		echo "============================================";					\
+		echo "";																\
+	done
+
+.PHONY: all pro mlx clean fclean re clean_pro test_wrong test_good 

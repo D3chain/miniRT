@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:41:15 by echatela          #+#    #+#             */
-/*   Updated: 2026/01/22 14:42:46 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/23 13:18:00 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	check_arg(t_app *app, int argc, char *argv[])
 {
 	if (argc != 2 || ft_strrcmp(argv[1], ".rt"))
 	{
-		printf("Usage: ./%s <filename.rt>\n", argv[0]);
+		printf("Usage: %s <filename.rt>\n", argv[0]);
 		return (app->status = ERR_PARS);
 	}
 	app->file_name = argv[1];

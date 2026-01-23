@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:24:49 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/21 11:45:24 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/23 12:46:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	update_zoom_speed(int key, t_app *app)
 	if (key == XK_equal)
 		equal_key_pressed(app);
 	else if (key == XK_minus)
-		return (minus_key_pressed(app));
+		minus_key_pressed(app);
 	else if (key == XK_BackSpace)
 		backspace_key_pressed(app);
 	app->scene.camera.mouse.pan_speed = \
