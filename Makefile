@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+         #
+#    By: echatela <echatela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/19 10:22:57 by cgajean           #+#    #+#              #
-#    Updated: 2026/01/23 13:30:10 by cgajean          ###   ########.fr        #
+#    Updated: 2026/01/23 15:08:33 by echatela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -209,8 +209,6 @@ test_wrong: all
 		echo "============================================";					\
 		valgrind --quiet --tool=helgrind ./miniRT $$file;						\
 		echo "============================================";					\
-		echo " EXIT CODE: $$?";													\
-		echo "============================================";					\
 		echo "";																\
 	done
 
@@ -233,8 +231,6 @@ test_good: all
 		echo " VALGRIND --tool=helgrind";										\
 		echo "============================================";					\
 		valgrind --quiet --tool=helgrind ./miniRT $$file;						\
-		echo "============================================";					\
-		echo " EXIT CODE: $$?";													\
 		echo "============================================";					\
 		echo "";																\
 	done
