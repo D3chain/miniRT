@@ -6,7 +6,7 @@
 /*   By: cgajean <cgajean@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:46:00 by cgajean           #+#    #+#             */
-/*   Updated: 2026/01/22 18:33:42 by cgajean          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:40:42 by cgajean          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@
 # define CAMERA_VIEW_FACTOR			FLT_0_3
 
 //	PRINT
-# define MAX_NAME_LEN				256
+# define MAX_NAME_LEN				64
 
 #endif
